@@ -1,0 +1,415 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="K 쇼핑"/>
+    <meta name="keywords" content="K 쇼핑"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+    <title>K 쇼핑</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/mc/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/mc/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/mc/css/textsizeup.css?201905151143">
+    
+	<!-- script -->
+	
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-1.12.0.js"></script>
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.mobile.custom.js"></script>
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-ui.js"></script>
+	
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/mc/css/contents.css"/>
+
+</head>
+<body>
+
+
+	<div class="noneGnb3" id="wrapper">
+		
+		<!-- S:header -->
+        <div id="header">
+            
+            <!-- S:제목영역 -->
+            <div class="normalTitle" style="position: relative;">
+                <a href="javascript:goBack();" class="btnBack noneText">뒤로</a>
+                <h1>주문서 작성/결제</h1>
+            </div>
+            <!-- E:제목영역 -->
+    	</div>
+        <!-- E:header -->
+
+
+		<div id="content">
+
+            <!-- S:: 주문서 개편  -->
+            
+			<section class="order_sheet">
+                <!-- 주문자/배송정보 -->
+                <div class="tit boardOrderWrite">
+                    <h2><a href="javascript:;" class="h2_boardOrderWrite">주문자/배송정보</a></h2>
+                    <a href="javascript:;" class="btn_sheet btn_boardOrderWrite">배송지변경</a>
+
+                    <div class="depth_delivery">
+                        <div class="d1">
+                            <span class="place">기본 배송지</span>
+                            <span class="name">홍길동</span>
+                            <span class="phone">010-1234-5678</span>
+                        </div>
+                        <div class="d2">
+                            서울시 동작구 보라매로5길 23 삼성보라매옴니타워 4층 
+                        </div>
+                    </div>
+                
+                    <!-- 기존 주문서 -->
+                    <div class="boardOrderWrite_content">
+                        주문자/배송정보
+                    </div>
+                    <!-- //기존 주문서 -->
+                </div>
+                <!-- //boardOrderWrite -->
+
+                <!-- 주문하실 상품 -->
+                <div class="tit orderProWrap">
+                    <h2><a href="javascript:;" class="h2_orderProW">주문하실 상품</a></h2>
+                    <a href="javascript:;" class="btn_sheet btn_orderProW">상품보기</a>
+
+                    <div class="depth_orderProW">
+                        <div class="d1">
+                            <span class="prodName">코지마 안마의자 오딧세이</span>
+                        </div>
+                        <div class="d2">
+                            <span class="prodFigure">수량 1개</span>
+                            <span class="size">대형</span>
+                        </div>
+                        <div class="d3">
+                            <span class="pres">사은품 : 코지마 자동 전자 혈압계 _CBP110A</span> 
+                        </div>
+
+                        <a href="javascript:;" class="btn_etc">외 1건</a>
+                    </div>
+
+                    <!-- 기존 주문서 -->
+                    <div class="orderProW_content">
+                       주문하실 상품
+                    </div>
+                    <!-- //기존 주문서 -->
+                </div><!-- //orderProWrap -->
+
+                <!-- 할인받기 -->
+                <div class="tit boardOrderView">
+                    <h2><a href="javascript:;" class="h2_boardOrderView">할인받기</a</h2>
+                    <a href="javascript:;" class="btn_sheet btn_boardOrderView">정보보기</a>
+
+                    <!-- 기존 주문서::정보보기 눌렀을때 4-2표 보이기 -->
+                    <div class="boardOrderView_content">
+                       할인받기
+                    </div>
+                </div>
+
+                <!-- 결제방법-->
+                <div class="tit boardPay">
+                    <h2><a href="javascript:;" class="h2_btn_pay">결제방법</a></h2>
+                    <a href="javascript:;" class="btn_sheet btn_pay">결제수단변경</a>
+
+                    <!-- 비씨카드 -->
+                    <div class="tit bcCardInfo" style="display: ">
+                        <h2>BC카드<a href="javascript:;" class="btnQuestion" onclick="showTooltip_2('toolTip6',this);return false;">문의</a></h2>
+                        <div class="btn_bcCardePay">일시불</div>
+                        <div class="noneBcTxt">
+                            <strong>※Non-BC 카드 무이자 할부 안내</strong>
+                            카드 전/후면에 비씨카드 로고가 없는 카드, 신세계 플래티
+                            넘카드. 기프트카드, 우리평화, 수협, KDB 산업, 조흥, 신한, 
+                            우체국, 저축은행중앙회, 새마을금고 카드는 무이자 할부가 
+                            제외됩니다.
+                        </div>
+                        <!-- 툴팁 -->
+                        <div class="toolTip_2" id="toolTip6" style="display: none">
+                            <a href="javascript: ;" class="closeBtn noneText tipClose">닫기</a>
+                            <div class="inWrap cBlack alignL">
+                                <table class="settle30Card_tb">
+                                    <colgroup>
+                                        <col style="width:30%;">
+                                        <col style="width:auto;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th class="settle30Card_tit pt10">카드</th>
+                                            <th class="vaM pt10">혜택내용</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="settle30Card_tit" style="padding-top:10px !important">NH/BC/우리</td>
+                                            <td class="vaM">
+                                                <p> <span class="fnum">50,000</span>원 이상 결제시  5%  청구할인</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //비씨카드 -->
+
+                    <div class="boardOrderWrite conts">
+
+                        <!-- 기존 주문서 -->
+                        <div class="pay_content">
+                            주문하실 상품
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 청구할인 안내 -->
+                <div class="tit saleInfo">
+                    <h2><a href="javascript:;" class="h2_saleInfo">청구할인 안내</a></h2>
+                    <a href="javascript:;" class="btn_sheet btn_saleInfo">모두보기</a>
+
+                    <div class="txtBox" style="padding:15px;padding-top:0;background: #fff;display:none">
+                        <!-- Case1: 카드 -->
+                        <div class="asignBox noscroll payment_txt">
+                            <p><span></span>청구할인이 다른 상품을 함께 구매하시면 청구할인율이 다르게 적용 될 수 있습니다.</p>
+                            <p><span></span>청구할인은 결제시점이 아닌 카드대금 청구시 할인되어 결제되며, 1인당 일 최대 청구할인 한도에 따라 할인금액이 달라질 수 있습니다.</p>
+                            <p><span></span>일시불 할인은 카드의 할부결제를 제외한 모든 결제수단에서 적용됩니다.</p>
+                            <p><span></span>기업 법인/기프트/선불 카드 등의 경우 청구할인 대상에서 제외됩니다.</p>
+                            <p><span></span>여러 상품을 한번에 주문시, 한 상품이라도 청구할인 대상 상품이 아닐경우, <font>모든 상품이 청구할인에서 <strong>제외</strong>됩니다.(청구할인행사 대상이 다를 경우도 <strong>제외</strong>)</font></p>
+                        </div>
+                        <!-- Case2: 무통장 -->
+                        <div class="asignBox mt0 noscroll" style="display:none">
+                            <p>입금계좌번호는 주문 완료 시 SMS로 자동 발송됩니다.</p>
+                            <p>현금 환불 등이 발생한 경우 등록된 환불계좌로 입금됩니다.</p>
+                            <h5><a href="javascript:openOtherSite('http://imgs.kshop.co.kr/warrant/pic_warranty_20160422.jpg');">신한은행 채무지급보증 안내</a></h5>
+                            <p>K쇼핑은 현금으로 결제한 모든 금액에 대해 신한은행과 채무지급보증 계약을 체결하여 고객님의 안전거래를 보장하고 있습니다.</p>
+                            <p><a href="javascript:openOtherSite('http://imgs.kshop.co.kr/warrant/pic_warranty_20160422.jpg');">서비스 가입사실 확인</a></p>
+                        </div>
+                        <!-- Case3: 휴대폰 -->
+                        <div class="asignBox mt0 noscroll" style="display:none">
+                            <p>월 최대 50만원 까지 휴대폰결제가 가능합니다.</p>
+                            <p>단, 사용하시는 이동통신사의 휴대폰결제 등급에 따라 결제한도가 제한 될 수 있습니다.</p>
+                            <p class="mt15">휴대폰결제에 대한 현금영수증은 휴대폰 요금을 현금으로 납부하는 경우에 한하여 발급됩니다.</p>
+                            <p>한도문의 : 모빌리언스(1600-0523)</p>
+                            <h5>휴대폰 결제 환불</h5>
+                            <p>당월구매 환불 시 : 휴대폰 결제대금에서 제외</p>
+                            <p>익월구매 환불 시 : 본인 환불계좌를 통해 환불</p>
+                        </div>
+                        
+
+                    </div>
+                    
+                </div>
+
+                <!-- 할인받기 -->
+                <div class="tit boardOrderView">
+                    <!-- 상시로 보이는 표::빨간박스 -->
+                    <div class="saleInfo">
+                        <table>
+                            <caption>주문금액,할인금액,배송비,최종결제금액</caption>
+                            <colgroup>
+                                <col style="width:180px;">
+                                <col style="width:auto;">
+                            </colgroup>
+                            <tbody class="bgBody_2">
+                                <tr>
+                                    <th scope="row">주문금액</th>
+                                    <td class="alignR"><span class="fnum">19,000<em>원</em></span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">할인금액 <a href="javascript:;" class="btnQuestion" onclick="showTooltip_2('toolTip5',this);return false;">문의</a></th>
+                                    <td class="alignR">
+                                        <span class="fnum">10,100<em>원</em></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">
+                                        <div class="line"></div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">배송비</th>
+                                    <td class="alignR"><span class="fnum">+3000<em>원</em></span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><em>최종결제금액</em></th>
+                                    <td class="alignR"><span class="fnum big">95,000<em>원</em></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- 툴팁 -->
+                        <div class="toolTip_2" id="toolTip5" style="display:none;top:50%">
+                            <a href="javascript: ;" class="closeBtn noneText tipClose">닫기</a>
+                            <div class="inWrap cBlack alignL">
+                                <ul class="listBullet">
+                                    <li>
+                                        <div class="saleBox">
+                                            프로모션 할인
+                                            <span class="price">-17,000<em>원</em></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="saleBox">
+                                            쿠폰 할인
+                                            <span class="price">-5,000<em>원</em></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="saleBox">
+                                            적립금
+                                            <span class="price">-3,500<em>원</em></span>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 예상 적립금 -->
+                    <div class="lstSumArea">
+                        <ul class="listBullet">
+                            <li>
+                                <div class="saleBox">
+                                    예상 적립금
+                                    <span class="price">2,970P</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- 결제동의노출 -->
+                <div class="boardOrderWrite conts">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="checkInputForm">
+                                        <input id="accAgr" type="checkbox"> <label for="accAgr">(필수)위 주문의 상품, 가격, 할인, 배송정보에 동의 합니다. (전자상거래법 제8조 제2항)</label>
+                                    </div>
+                                    <div class="mt10">
+                                        <a class="btnOrderC red" href="javascript:;" id="btnOrderGo" style="width:100%;">결제하기</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- E:: //주문서 개편 -->
+            
+
+            <!-- 스크립트 -->
+            <script>
+
+                //주문자/배송정보
+                $(document).on("click",".h2_boardOrderWrite , .btn_boardOrderWrite",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.depth_delivery').hide();
+                        $('.boardOrderWrite').addClass('active');
+                        $('.btn_boardOrderWrite').text('닫기');
+                    }else{
+                        $(this).removeClass('close');
+                        $('.boardOrderWrite').removeClass('active')
+                        $('.depth_delivery').show();
+                        $('.btn_boardOrderWrite').text('배송지 변경');
+                    }
+                });
+
+                //주문하실 상품
+                $(document).on("click",".h2_orderProW , .btn_orderProW",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.orderProWrap').addClass('active');
+                        $('.depth_orderProW').hide();
+                        $('.btn_orderProW').text('닫기');
+                        
+                    }else{
+                        $(this).removeClass('close');
+                        $('.orderProWrap').removeClass('active');
+                        $('.depth_orderProW').show();
+                        $('.btn_orderProW').text('상품보기');
+                    }
+                });
+
+                //할인받기
+                $(document).on("click",".h2_boardOrderView , .btn_boardOrderView",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.boardOrderView').addClass('active');
+                        $('.btn_boardOrderView').text('닫기');
+                        
+                    }else{
+                        $(this).removeClass('close');
+                        $('.boardOrderView').removeClass('active');
+                        $('.btn_boardOrderView').text('정보보기');
+                    }
+                });
+
+                //결제하기
+                $(document).on("click",".h2_btn_pay , .btn_pay",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.boardPay').addClass('active');
+                        $('.btn_pay').text('닫기');
+                        
+                    }else{
+                        $(this).removeClass('close');
+                        $('.boardPay').removeClass('active');
+                        $('.btn_pay').text('결제수단변경');
+                    }
+                });
+
+                //모두보기
+                $(document).on("click",".h2_saleInfo , .btn_saleInfo",function() {
+                    
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.saleInfo').addClass('active');
+                        $('.btn_saleInfo').text('닫기');
+                        $(".txtBox").css('display', '');
+     
+                    }else{
+                        $(this).removeClass('close');
+                        $('.saleInfo').removeClass('active');
+                        $('.btn_saleInfo').text('모두보기');
+                        $(".txtBox").css('display', 'none');
+
+                    }
+                });
+
+                //툴팁 
+                function showTooltip_2(toolName, toolBtn){
+                    var toolBox = $("#" + toolName);
+                    $(".toolTip_2").not("#" + toolName).hide();
+
+                    setTimeout(function(){
+                        toolBox
+                            .fadeIn(100)
+                            .find(".tipClose")
+                            .on("click",function(){
+                            toolBox.fadeOut(100);
+                            return false;
+                        });
+                        return false;
+                    },500);
+                    
+                }
+
+            </script>
+		</div>
+	</div>
+		
+
+		
+		
+		
+
+
+</body>
+</html>

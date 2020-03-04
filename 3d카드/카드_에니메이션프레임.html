@@ -1,0 +1,108 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title> new document </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="https://static.kshop.co.kr/ec/css/common.css" />
+
+	<!-- script -->
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+</head>
+
+<style>
+	.world{
+		width:100vw;height: 100vw;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		perspective: 800px;
+	
+	}
+
+@keyframes poster-ani{
+	0%{
+		transform: rotateY(-10deg);
+	}
+	100%{
+		transform: rotateY(10deg);
+	}
+
+}
+
+	.poster{
+		position: relative;
+		width:400px;
+		height: 400px;
+		border-radius: 10px;
+		background: yellow;
+		border: 2px solid #000;
+		animation: poster-ani 3s infinite linear alternate;
+		transform-style: preserve-3d;
+
+	}
+	.poster-title{
+		padding: 1em 0;
+		font-size: 2rem;
+		text-align: center;
+		font-weight: bold;
+		transform: translateZ(150px);
+	}
+	img{max-width: 100%;height: auto;}
+	.ilbuni{
+		position: absolute;
+		width:85%;
+
+	}
+	.ilbuni:nth-of-type(1){
+		top:70px;
+		left:7%;
+		transform: translateZ(120px);
+	}
+	.ilbuni:nth-of-type(2){
+		left:7%;
+		bottom: 15%;
+		transform: translateZ(30px);
+	}
+	.ilbuni:nth-of-type(3){
+		left:68%;
+		bottom: 0%;
+		transform: translateZ(20px);
+	}
+</style>
+
+<body>
+
+	<div class="world">
+		<section class="poster">
+			<figure class="ilbuni">
+				<img src="./images/figure_1.png">
+			</figure>
+			<figure class="ilbuni">
+				<img src="./images/figure_2.png">
+			</figure>
+			<figure class="ilbuni">
+				<img src="./images/figure_3.png">
+			</figure>
+		</section>
+	</div>
+
+	<script>
+		(function () {
+
+
+		})()
+
+	</script>
+
+</body>
+
+</html>

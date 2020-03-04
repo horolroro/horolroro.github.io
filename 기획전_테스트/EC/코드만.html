@@ -1,0 +1,341 @@
+<!-------------------------------------------- 템플릿 내용 시작 ----------------------------------------------------------->
+<style type="text/css">
+	#showf {
+		position: relative;
+		width: 1180px;
+		border: 1px solid red;
+		overflow: hidden;
+	}
+
+	.top__area {
+		position: relative;
+	}
+
+	.test_slider_1 {
+		width: 1180px;
+	}
+
+	.test_slider_1 .sliderNav {
+		position: relative;
+		margin: 0 auto;
+		padding: 0 0px 0 0px;
+	}
+
+	.test_slider_1 .sliderNav .slick-slide {
+		margin-left: 15px
+	}
+
+	.test_slider_1 .slick-dots {
+		bottom: -56px;
+		left: 0
+	}
+
+	.test_slider_1 .slick-dots a {
+		margin: 0 10px;
+	}
+
+	.test_slider_1 .slick-dots a {
+		display: inline-block;
+		background: #165b95;
+		border-radius: 100%;
+		width: 17px;
+		height: 17px;
+		text-indent: -9999px;
+		opacity: 1;
+	}
+
+	.test_slider_1 .slick-dots a.on {
+		opacity: 1;
+		background: #fff
+	}
+
+	.test_slider_1 .slick-prev,
+	.test_slider_1 .slick-next {
+		top: 50%
+	}
+
+	.test_slider_1 .sliderNav .slick-prev {
+		display: none;
+		left: 0px !important;
+		width: 74px;
+		height: 81px;
+		margin-left: 0px;
+		background: none !important;
+		z-index: 9;
+	}
+
+	.test_slider_1 .sliderNav .slick-prev:before {
+		display: none;
+		width: 74px;
+		height: 81px;
+		background: url(./images/arrow_left.png) 0 0 no-repeat;
+		text-indent: -9999px;
+		display: block;
+		opacity: 1;
+		background-size: contain;
+	}
+
+	.test_slider_1 .sliderNav .slick-next {
+		display: none;
+		right: 0px !important;
+		width: 74px;
+		height: 81px;
+		margin-right: 0;
+		background: none !important;
+		z-index: 9;
+	}
+
+	.test_slider_1 .sliderNav .slick-next:before {
+		display: none;
+		width: 74px;
+		height: 81px;
+		background: url(./images/arrow_right.png) 0 0 no-repeat;
+		text-indent: -9999px;
+		display: block;
+		opacity: 1;
+		background-size: contain;
+	}
+
+	.sept_slider_1 .slide_video .video-wrapper {
+		position: absolute;
+		top: 208px;
+		left: 57px;
+		width: 1180px;
+		
+	}
+
+	.show_youtuber {
+		margin-bottom: 70px;
+	}
+
+	.showf_slider_3_window {
+		overflow: hidden;
+	}
+
+	.showf_slider_3_window .swiper-slide {
+		width: 1180px
+	}
+
+	.showf_slider_3_window .slide_control{position: relative;margin-top:80px;}
+	.showf_slider_3_window .swiper-button-next,
+	.showf_slider_3_window .swiper-button-prev{top: 50%;bottom:0;position: absolute;z-index: 9;}
+	.showf_slider_3_window .swiper-button-prev{left:29px; width:74px; height:81px; background: url(./images/arrow_left.png) no-repeat;background-size: cover;}
+	.showf_slider_3_window .swiper-button-next{right:29px;width:74px; height:81px; background: url(./images/arrow_right.png) no-repeat;background-size: cover;}
+
+	/* .swiper-button-prev.swiper-button-disabled,
+	.swiper-button-next.swiper-button-disabled {
+		opacity: 0.35;
+		cursor: auto;
+	} */
+	.showf_slider_3_window .prodList {
+		width: 100%;
+		padding: 0px;
+		text-align: center;
+		overflow: hidden;
+	}
+	.tab_list{display: flex;justify-content: center;margin-bottom: 30px;}
+	.tab_list li{box-sizing: border-box; margin-left:15px; text-align: center;}
+
+	.tab_list li img.on{display:none}
+	.tab_list li.active img{display: none}
+	.tab_list li.active img.on{ display:block;}
+
+	#showf .popupDim{display: none; position: absolute; top: 0; z-index: 10000001; background: rgba(0,0,0,0.7); bottom: 0; left: 0; right: 0; background: rgb(0,0,0,0.7); -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";}
+	#showf .layerPop_event{position: absolute; bottom: 10%; left: 50%; width: auto;height: auto; transform: translateX(-50%);}
+	#showf .layerPop_event a {display:block;}
+	#showf .btn_close{display:block; position:absolute; height: 80px; width: 60px; right: 0; top: 0;text-indent:-9999px;}
+	
+
+</style>
+
+<div id="showf">
+	<div class="top__area">
+		<h3><img src="./images/top.png" alt="탑타이틀"></h3>
+	</div>
+
+	<!-- QUICK 메뉴 -->
+	<div class="quick">
+		<a href="javascript:;ucMove('1')"><img src="./images/a_btn.png" alt="클릭시페이지이동1"></a>
+	</div>
+
+
+	<!-- 전체 슬라이드 기능 -->
+	<h3><img src="./images/tit_1.png" alt="전체 슬라이드 기능"></h3>
+	<div class="test_slider_1">
+
+		<ul class="sliderNav">
+			<li>
+				<a href="//www.kshop.co.kr/goods/615658"><img src="./images/slide_1_1.png" alt="슬라이드1_1"></a>
+			</li>
+			<li>
+				<a href="//www.kshop.co.kr/goods/613180"><img src="./images/slide_1_2.png" alt="슬라이드1_2"></a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- 부분 슬라이드 기능 -->
+	<div>
+		<img src="./images/tit_2.png" alt="부분 슬라이드 기능">
+	</div>
+
+	<ul class="tab_list">
+		<li class="active"> 
+			<img src="./images/cate_tab_1.png"alt="">
+			<img src="./images/cate_tab_1_on.png" class="on" alt="">
+		</li>
+		<li>
+			<img src="./images/cate_tab_2.png"alt="">
+			<img src="./images/cate_tab_2_on.png" class="on" alt="">
+		</li>
+	</ul>
+
+
+	<div class="swiper-container showf_slider_3_window swiper-no-swiping">
+		<ul class="swiper-wrapper">
+			<li class="swiper-slide">
+				<div class="prodList">
+					<img src="./images/slide_2_1.png" alt="슬라이드_1_타이틀">
+				</div>
+			</li>
+			<li class="swiper-slide">
+				<div class="prodList">
+					<img src="./images/slide_2_2.png" alt="슬라이드_2_타이틀">
+				</div>
+			</li>
+
+		</ul>
+
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+	</div>
+
+
+	<!-- 영상 재생 기능 -->
+	<div class="show_youtuber">
+		<h3><img src="./images/tit_3.png" alt="영상 재생 기능"></h3>
+
+		<!-- VIDEO -->
+		<div class="video-wrapper" style="width:1120px;height:600px;margin:0 auto">
+			<iframe class="yt-player" width="100%" height="100%"
+				src="https://www.youtube.com/embed/JjP6JqKgV40?version=3&loop=1&playlist=JjP6JqKgV40&enablejsapi=1"
+				frameborder="0" allow="autoplay; encrypted-media"></iframe>
+		</div>
+	</div>
+
+	<!-- 클릭시 레이어팝업 -->
+	<div>
+		<a href="javascript:;" class="pop_01"><img src="./images/a_btn_pop.png" alt="클릭 시 레이어팝업"></a> 
+	</div>
+
+	<!-- 기획전 내 하단 탭 이동 기능 -->
+	<div id="quick__show_1">
+		<img src="./images/tit_4.png" alt="기획전 내 하단 탭 이동 기능">
+	</div>
+
+	<!-- 클릭 시 하단 전시 카테고리 2번째 탭으로 이동 -->
+	<div>
+		<a href="#specialplanUnit_2">
+		<img src="./images/a_btn_goto.png" alt="클릭 시 하단 전시 카테고리 2번째 탭으로 이동"></a>
+	</div>
+	<br /><br /><br /><br /><br />
+
+	<!-- 팝 -->
+	<div class="popupDim popup01" style="display: none;">
+		<div class="layerPop_event">
+			<img src="./images/pop_01.png" usemap="#image-map">
+
+			<map name="image-map">
+				<area target="_self" alt="클릭시 엑셀 다운로드 기능" href="" coords="39,412,386,510" shape="rect">
+				<area target="_self" alt="클릭시 기획전으로 이동" href="" coords="410,415,760,514" shape="rect">
+			</map>
+
+			<a href="javascript:;" class="btn_close">닫기</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	window.addEventListener('DOMContentLoaded', function () {
+		var $test_slider_1 = $('.test_slider_1 .sliderNav');
+
+		$test_slider_1.slick({
+			slide: 'li',
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			dots: false,
+			arrows: true,
+			autoplay: false,
+			autoplaySpeed: 5000,
+			touchThreshold: 10,
+			adaptiveHeight: true
+		});
+
+		var showf_slider_3_galleryWindow = new Swiper('.showf_slider_3_window', {
+			spaceBetween: 0,
+			slidesPerView: 1,
+			loop: false,
+			autoHeight: false,
+			noSwipingClass: 'swiper-no-swiping',
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+
+		});
+		showf_slider_3_galleryWindow.on('init slideChange', function () {
+			//console.log('slide changed');
+			
+			var activeIdx = showf_slider_3_galleryWindow.realIndex;
+
+			$('.tab_list li').removeClass('active')
+			if(activeIdx === 0){
+				//console.log(activeIdx)
+				$('.tab_list li').eq(0).addClass('active')
+			}else if(activeIdx === 1){
+				$('.tab_list li').eq(1).addClass('active')
+			}else if(activeIdx === 2){
+				$('.tab_list li').eq(2).addClass('active')
+			}
+		});
+
+		var _tabList = $(".tab_list");
+		var _tabTarget = _tabList.children( "li" );
+		var swiper = new Swiper('.swiper-container');
+
+		_tabTarget.on( "click", function($e){
+			_tabTarget.removeClass('active');
+			$(this).addClass('active');
+			var itemIndex = $(this).index();
+			swiper.slideTo( itemIndex); //index값으로 slideto에 넘김
+		})
+		
+		//팝
+		function pop(selecter,seq){
+			selecter.on('click', this , function(){
+				$('.popup'+seq).css({display:'block'})
+			});
+
+			$(".btn_close").click(function(){
+				$(".popupDim").css("display", "none");
+				return false;
+			});
+		}
+		//열기
+		pop($('.pop_01'),'01');
+	});
+
+	
+
+	//페이지내 이동
+	function ucMove(seq){ 	
+		//var offset = $("#quick__show_" + seq).offset();
+		var clientRectTop = document.querySelector("#quick__show_"+ seq).offsetTop
+
+		console.log(clientRectTop)
+		$('html, body').animate({scrollTop : clientRectTop}, 400); 	
+	}
+
+</script>
+
+
+<!-------------------------------------------- 템플릿 내용 END ----------------------------------------------------------->

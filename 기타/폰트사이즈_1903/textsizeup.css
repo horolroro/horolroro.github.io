@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+
+/* common.css */
+
+h1, h2, h3, h4, h5, h6{margin:0;font-size:1.15rem;}
+
+select{ font-size: 14px;}
+
+.buyingBTM a{ font-size: 16px; }
+.btnBuying a {font-size: 16px;}
+.pName2 {font-size:15px;}
+.tabStyle li a{ font-size:14px;}
+.tabStyle li.active a{font-size:14px;}
+.tabStyle4 a{ font-size: 14px; }
+.tab2{  font-size: 16px; } 
+.wideBtn{; font-size: 14px;}
+.btnWideRed{ font-size: 16px;}
+.btnRedLine3{ font-size: 14px; }
+.btnGray3{  font-size: 16px; }
+input.guideInput{font-size:16px]}
+.categoryArea .category li{  font-size: 14px;}
+.secondTit h2{font-size: 14px;}
+.tbVerti{ font-size: 13px; }
+@media (max-width:320px) {
+	.tab2{font-size:12px}
+	.footer .favoriteMenu a{font-size:11px}
+	.tabStyle4 a{font-size:12px}
+}
+.safety_info table{ font-size: 13px;  }
+
+/* contents.css */
+
+.deal h2{font-size: 16px;}
+.listArea li .txtArea h2{font-size: 16px;}
+.defaultInfo_price{font-size:22px;}
+.benefitArea{ font-size: 14px;}
+.deliverBackChange h2{font-size: 16px;}
+.qnaList .row .stat{font-size: 14px;}
+.qnaList .row .txt .tit{ font-size: 16px;}
+.qnaList .row .txt .theme{ font-size: 14px;}
+.goodsPoint_con{ font-size: 15px;}
+.searchBar .input input::placeholder {font-size:14px}
+.searchArea .con .list li .keyTxt{font-size: 16px;}
+.searchArea .con .clear{font-size: 16px;}
+.keyword li{ font-size: 15px;}
+.resultCount{ font-size: 16px; }
+.preViewTxt h2{ font-size: 14px;}
+.cate li{font-size: 14px; }
+.dashboard .pinkArea li .underline{font-size: 16px;}
+.dashboard .grayArea h2{font-size: 15px;}
+.dashboard .grayArea .div2 div{  font-size: 14px; }
+.titNlinkPack h2{font-size: 15px;}
+.titNlinkPack li{font-size: 14px;}
+.titNlinkPackEven li{ font-size: 14px;}
+.cartInfo .ment{font-size: 13px;}
+.cartInfo2 .ment{ font-size: 14px;}
+.btnOrderC { font-size:14px;}
+.oneSet .btnOrderC, .twoSet .btnOrderC{font-size: 16px; }
+.orderProWrap ul li .infoArea h5 {font-size:16px; }
+.boardOrderView table tbody th {font-size:14px; }
+.boardOrderView table tbody td {font-size:14px; }
+.boardOrderWrite h3, .boardOrderView h3 { font-size:15px;}
+.boardOrderWrite table tbody tr th { font-size:14px; }
+.boardOrderWrite table tbody tr td { font-size:14px;}
+.boardOrderWrite table tbody tr td .adrInputForm p { font-size:13px; }
+.boardOrderWrite table tbody tr.tall p{font-size:13px}
+.listBullet li {font-size:14px;}
+.redTab li a span { font-size:16px;}
+.orderChkList li .top * {font-size:13px;}
+.orderChkList li .info .detail * {font-size:14px;}
+.orderChkList li .info .detail .state {font-size:15px; }
+.ownCoupon li p { font-size:14px; }
+.ownCoupon li strong {font-size:15px;}
+.ownCoupon li strong em {font-size:13px;}
+
+@media (max-width:320px) {
+	.ownCoupon li p{font-size:12px}
+	.btnOrderC{font-size:12px}
+	
+}
+
+/* main.css */
+
+.recom .horizon li .tit { font-size:14px;}
+
+/* mypage.css*/
+
+.orderAdminList li a .bg {font-size:13px;}
+.mySoltWrap select { font-size:14px;}
+.mySoltWrap .btnOrderC {font-size:14px !important;}
+.orderProWrap ul li .infoArea .starArea .date {font-size:14px}
+.pointList01 li .point div p { font-size:16px;}
+.pointList01 li .point div strong {font-size:16px;}
+.myPageWrap .boardOrderWrite table tbody tr td .checkList li {font-size: 13px;}
+ol li.noDataItem p, ul li.noDataItem p { font-size:16px;}
+
+@media (max-width:320px) {
+	.orderAdminList li a .bg {font-size: 11px;}
+	.myPageWrap .boardOrderWrite table tbody tr td .checkList li {font-size:11px}
+}

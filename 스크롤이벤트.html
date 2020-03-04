@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="https://static.kshop.co.kr/ec/css/common.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+ </head>
+
+	<style type="text/css">
+	body{height:500vh}
+		img{width: 100%;}
+		.posinfo {position: fixed; background: dodgerblue; font-size: 26px;line-height: 30px; padding:15px 20px 15px 0;color: #fff;}
+		.container{}
+		.ilbuni{width: 100px; margin:0 auto;transition: 1s;}
+		.ilbuni.active{transform: scale(2);}
+	</style>
+
+<body>
+	<div class="posinfo">
+		<ul id="list">
+			<li>info_1</li>
+			<li>info_2</li>
+			<li>info_3</li>
+			<li>info_4</li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
+
+		<div class="ilbuni" >
+			<img src="./images/ilbuni.gif">
+		</div>
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
+
+		<div class="ilbuni">
+			<img src="./images/ilbuni.gif">
+		</div>
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
+
+		<div class="ilbuni">
+			<img src="./images/ilbuni.gif">
+		</div>
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
+
+		<div class="ilbuni">
+			<img src="./images/ilbuni.gif">
+		</div>
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
+
+		<div class="ilbuni">
+			<img src="./images/ilbuni.gif">
+		</div>
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		
+
+		<div class="ilbuni">
+			<img src="./images/ilbuni.gif">
+		</div>
+	</div>
+	
+
+
+
+	
+</body>
+
+<script>
+	// (function(){
+	// 	var ilbuniElm = document.querySelectorAll('.ilbuni');
+	// 	var posinfoElm = document.querySelector('.posinfo');
+	// 	// console.log('innerHeight=== '+ window.innerHeight)
+
+	// 	function onScroll(){
+	// 		for(i=0; i<ilbuniElm.length; i++){
+				
+	// 			let posY = ilbuniElm[i].getBoundingClientRect().top
+	// 			//console.log(posY)
+	// 			// posinfoElm.innerHTML = posY;
+
+	// 			if(posY < window.innerHeight*0.8){
+	// 				posinfoElm.style.border = '1px solid red'
+	// 				ilbuniElm[i].classList.add('active')
+	// 				// console.log(ilbuniElm[i])
+	// 			}else{
+	// 				ilbuniElm[i].classList.remove('active')
+	// 			}
+	// 		}
+	// 	}
+
+	// 	window.addEventListener('scroll', onScroll)
+	// })()
+
+
+	// -------JQUERY----개선전--
+	// (function(){
+
+	// 	$(document).on("scroll", onScroll);
+
+	// 	const ilbuniElm = $('.ilbuni');
+	// 	const posinfoElm = $('.posinfo');
+
+	// 	function onScroll(){
+	// 		ilbuniElm.each(function (){
+	// 			let posY = parseInt($(this)[0].getBoundingClientRect().top);
+	// 			console.log(posY)
+
+	// 			if(posY < window.innerHeight*0.8){
+	// 				$(this).addClass('active')
+
+	// 			}else{
+	// 				$(this).removeClass('active')
+	// 			}
+	// 		})
+	// 	}
+
+	// })()
+
+	// -------JQUERY----개선후-setinterval로 부하를 줄여줌--
+
+	(function(){
+
+		let didScrolld = false;
+		const ilbuniElm = $('.ilbuni');
+		const posinfoElm = $('.posinfo');
+
+		$(document).on("scroll", function(){
+			didScrolld = true;
+		});
+		var timer = setInterval(function() {
+			if(didScrolld){
+				onScroll();
+				didScrolld = false;
+			}
+		}, 250);
+
+		// ilbuniElm.on('click',function(){
+		// 	clearInterval(timer)
+		// })
+
+		function onScroll(){
+			ilbuniElm.each(function (){
+				let posY = parseInt($(this)[0].getBoundingClientRect().top);
+				//console.log(posY)
+
+				if(posY < window.innerHeight*0.8){
+					$(this).addClass('active')
+					console.log('posY=='+ posY)
+					console.log(window.innerHeight*0.8)
+
+				}else{
+					$(this).removeClass('active')
+				}
+			})
+		}
+
+	})()
+
+		
+
+		
+
+	
+
+
+</script>
+
+ 
+</html>

@@ -1,0 +1,275 @@
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내."/>
+    <meta name="keywords" content="생활의 선물"/>
+	<title>생활의 선물 - K쇼핑</title>
+	<!--파비콘 추가 2016-12-05-->
+	<link rel="icon" href="https://static.kshop.co.kr/ec/images/cm/icon/favicon.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="https://static.kshop.co.kr/ec/images/cm/icon/favicon.ico" type="image/x-icon" />
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/ec/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/ec/css/slick-theme.css"/>
+	<link rel="stylesheet" type="text/css" class="maincss" href="https://static.kshop.co.kr/ec/css/main.css"/>
+	<link rel="stylesheet" type="text/css" class="comcss" href="https://static.kshop.co.kr/ec/css/common.css"/>
+	<link rel="stylesheet" type="text/css" class="comcss" href="https://static.kshop.co.kr/ec/css/contents.css?201902281531"/>
+	<!-- script -->
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/placeholders.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/common.js"></script>
+
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/slick.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-ui.js"></script>
+	<!--[if lt IE 9]>
+		<script src="https://static.kshop.co.kr/ec/js/html5shiv.js"></script>
+		<link rel="stylesheet" type="text/css" class="maincss" href="https://static.kshop.co.kr/ec/css/ie8_font.css"/>
+	<![endif]-->
+	
+</head>
+<body>
+
+		
+	<!-------------------------------------------- 템플릿 내용 시작 ----------------------------------------------------------->
+	<style type="text/css">
+		@keyframes ani-head{
+			to{transform: rotateX(-10deg)}
+		}
+
+		@keyframes ani-running-leg{
+			from{
+				transform: rotateX(-30deg)
+			}
+			to{transform: rotateX(30deg)}
+		}
+
+		@keyframes ani-running-arm{
+			from{
+				transform: rotateX(-30deg)
+			}
+			to{transform: rotateX(30deg)}
+		}
+
+
+		body{height:500vw;color: #555;background: #fff000; transition: background .5s;}
+		.world{
+			position: fixed;
+			left:0;
+			top:0;
+			width:100vw;
+			height: 100vh;
+			perspective: 850px
+		}
+		.stage{
+			position: absolute;
+			left:0;
+			top:0;
+			width:100vw;
+			height:100vh;
+			transform-style: preserve-3d
+		}
+		.house{
+			width:100vw;
+			height:100vh;
+			transform: translateZ(-490vw);
+			transform-style: preserve-3d
+		}
+		.wall{
+			position: absolute;
+			left:0;
+			top:0;
+			width:100vw;
+			height: 100vh;
+			background: rgba(255,255,255,0.8);
+		}
+		.wall-left{
+			background: #f8f8f8;
+			width: 1000vw;
+			transform: rotateY(90deg) translateZ(-500vw);
+		}
+		.wall-right{
+			background: #f8f8f8;
+			width: 1000vw;
+			transform: rotateY(90deg) translateZ(-400vw);
+
+		}
+		.wall-front-a{transform: translateZ(300vw)}
+		.wall-front-b{transform: translateZ(50vw)}
+		.wall-front-c{transform: translateZ(-200vw)}
+		.wall-front-d{transform: translateZ(-500vw)}
+		.wall-content{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height:100vw;
+			background: rgba(255,255,255,0.5);
+			
+		}
+		.wall-title{
+			font-size:5rem;
+		}
+		
+		.progress-bar-con{
+			position: fixed;
+			left: 0;
+			top:0;
+			width: 100vw;
+			height: 5px;
+			background: #555;
+			z-index: 100
+		}
+		.progress-bar{
+			width:0;
+			height:100%;
+			background: #00a8ff
+		}
+
+		/* character */
+
+		.character{
+			position: absolute;
+			left: 12%;
+			bottom: 5%;
+			width: 10vw;
+			height: 15.58vw;
+			transform-style: preserve-3d;
+		}
+		.character[data-direction='foward']{transform: rotateY(180deg)}
+		.character[data-direction='backward']{transform: rotateY(0deg)}
+		.character[data-direction='left']{transform: rotateY(-72deg)}
+		.character[data-direction='right']{transform: rotateY(72deg)}
+
+		.character-face-con{
+			position: absolute;
+			transform-style: preserve-3d;
+			transition: 1s;
+		}
+		.character-face {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-size: cover;
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+		}
+		.character-face.face-back {
+			transform: rotateY(180deg);
+		}
+		.character-head {
+			left: calc(42 / 856 * 100%);
+			top: 0;
+			z-index: 60;
+			width: calc(770 / 856 * 100%);
+			height: calc(648 / 1334 * 100%);
+			transform-origin: center bottom;
+			animation: ani-head 0.6s infinite alternate cubic-bezier(0.46, 0.18, 0.66, 0.93);
+		}
+		.character-head-face.face-front { background-image: url('./images/ilbuni_head_front.png'); }
+		.character-head-face.face-back { background-image: url('./images/ilbuni_head_back.png'); }
+		.character-torso {
+			left: calc(208 / 856 * 100%);
+			top: calc(647 / 1334 * 100%);
+			z-index: 50;
+			width: calc(428 / 856 * 100%);
+			height: calc(385 / 1334 * 100%);
+			transform-origin: center center;
+		}
+		.character-torso-face.face-front { background-image: url('./images/ilbuni_body_front.png'); }
+		.character-torso-face.face-back { background-image: url('./images/ilbuni_body_back.png'); }
+		.character-arm-right {
+			left: 0;
+			top: calc(648 / 1334 * 100%);
+			width: calc(244 / 856 * 100%);
+			height: calc(307 / 1334 * 100%);
+			transform-origin: right top;
+		}
+		.character-arm-right .face-front { background-image: url('./images/ilbuni_arm_0.png'); }
+		.character-arm-right .face-back { background-image: url('./images/ilbuni_arm_1.png'); }
+		.character-arm-left {
+			left: calc(600 / 856 * 100%);
+			top: calc(648 / 1334 * 100%);
+			width: calc(244 / 856 * 100%);
+			height: calc(307 / 1334 * 100%);
+			transform-origin: left top;
+		}
+		.character-arm-left .face-front { background-image: url('./images/ilbuni_arm_1.png'); }
+		.character-arm-left .face-back { background-image: url('./images/ilbuni_arm_0.png'); }
+		.character-leg-right {
+			left: calc(200 / 856 * 100%);
+			top: calc(1031 / 1334 * 100%);
+			width: calc(230 /  856 * 100%);
+			height: calc(300 / 1334 * 100%);
+			transform-origin: center top;
+		}
+		.character-leg-right .face-front { background-image: url('./images/ilbuni_leg_0.png'); }
+		.character-leg-right .face-back { background-image: url('./images/ilbuni_leg_1.png'); }
+		.character-leg-left {
+			left: calc(414 / 856 * 100%);
+			top: calc(1031 / 1334 * 100%);
+			width: calc(230 /  856 * 100%);
+			height: calc(300 / 1334 * 100%);
+			transform-origin: center top;
+		}
+		.character-leg-left .face-front { background-image: url('./images/ilbuni_leg_1.png'); }
+		.character-leg-left .face-back { background-image: url('./images/ilbuni_leg_0.png'); }
+		.character.running .character-leg-right { animation: ani-running-leg 0.2s alternate infinite linear; }
+		.character.running .character-leg-left { animation: ani-running-leg 0.2s alternate-reverse infinite linear; }
+		.character.running .character-arm { animation: ani-running-arm 0.2s alternate infinite linear; }
+
+
+	</style>
+	<div class="progress-bar-con">
+		<div class="progress-bar"></div>
+	</div>
+
+
+	<div class="world"> 	
+		<div class="stage">
+			<div class="house">
+				<section class="wall wall-left"></section>
+				<section class="wall wall-right"></section>
+				<section class="wall wall-front wall-front-a">
+					<div class="wall-content">
+						<h2 class="wall-title">안녕하세요</h2>
+					</div>
+				</section>
+				<section class="wall wall-front wall-front-b">
+					<div class="wall-content">
+						<h2 class="wall-title">Hello</h2>
+					</div>
+				</section>
+				<section class="wall wall-front wall-front-c">
+					<div class="wall-content">
+						<h2 class="wall-title">Hola</h2>
+					</div>
+				</section>
+				<section class="wall wall-front wall-front-d">
+					<div class="wall-content">
+						<h2 class="wall-title">곤니찌와</h2>
+					</div>
+				</section>
+			</div>
+			<!--// house-->
+
+			<!-- 캐릭터 -->
+			
+			 
+		</div>
+		<!--// stage -->
+
+	</div>
+	<script src="./Character.js"></script>
+	<script src="./test.js"></script>
+	
+
+	<!-------------------------------------------- 템플릿 내용 END ----------------------------------------------------------->
+
+
+</body>
+</html>

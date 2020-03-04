@@ -1,0 +1,545 @@
+/* dim 제거 */
+.dim.bgNone {background:none;}
+.boardWriteV1 label {font-size:13px;}
+.w100 {width:100px; display:inline-block;}
+.ellipsis {display:block; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width:100%; word-break: break-all;} /* 한줄 텍스트 줄임표 설정 */
+.ellipLine2 {max-height:65px;display:block;letter-spacing: 0px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis; word-break: break-all;} /* 두줄 텍스트 줄임표 설정 */
+/* dim 제거 */
+/* 로그인 팝업 START */
+.popUpWrap {position:relative;border:1px solid #d7d7d7; max-height:700px; overflow-y:auto; overflow-x:hidden;background: #fff; padding:24px !important; }
+#dimCoupon .popUpWrap{height:500px;}
+.popUpWrap.login {width:440px; margin:0 auto; padding:0 !important;overflow-y:hidden;}
+.popUpWrap .loginWrap {position:relative; width:100%; margin:0;}
+.popUpWrap .loginWrap > h3 {height:45px; line-height:45px; padding-top:10px; padding-left:45px; background:none; text-align:left; font-size:30px; color:#fff; letter-spacing:-1px; color:#000;}
+.popUpWrap .loginWrap .formWrap {margin-top:23px; border:0;}
+.popUpWrap .loginWrap .formWrap h4 {width:180px; height:50px; margin:0 auto; text-indent:-9999px; background:url('../images/main/main_logo.png') no-repeat 0 10px; background-size:180px 40px;}
+.popUpWrap .loginWrap .formWrap .formInputArea {padding:0 45px;}
+/*.popUpWrap .loginWrap .formWrap .formInputArea .loginInfoList {margin:65px -45px 0 -45px !important; padding:18px 45px 0 45px !important; border-top:1px solid #d7d7d7;}*/
+.popUpWrap .loginWrap .formWrap .formInputArea .dataInputArea > ul {padding-bottom:8px;}
+.loginWrap .formWrap .formLinkArea {padding:20px 45px 20px 45px !important;}
+.popUpWrap .loginWrap .formWrap .formLinkArea {margin:0 -45px;}
+.loginWrap .formWrap .formLinkArea{background: #f9f9f9;border-bottom:1px solid #ccc;margin-bottom: 22px}
+.loginWrap .formWrap .formLinkArea  h5 {color:#000; font-size:16px;text-align: center;font-weight: bold; }
+.loginWrap .formWrap .formLinkArea ul {overflow:hidden; width:340px; margin:15px auto 0;}
+.loginWrap .formWrap .formLinkArea ul li {float:left; width:33.3%; height:72px; line-height:20px;margin-top:0; text-align:center;background: #f9f9f9}
+.loginWrap .formWrap .formLinkArea ul li a {display:inline-block; width:100%; height:100%;text-indent: -9999px; color:#555; padding-left:0; padding-top:50px; line-height:24px; text-align:center; font-size:13px; letter-spacing:-1px;}
+.loginWrap .formWrap .formLinkArea ul li.facebook a {background:url('../images/cm/icon/ic_facebook.png') no-repeat center 0;}
+.loginWrap .formWrap .formLinkArea ul li.kakao a {background:url('../images/cm/icon/ic_kakao.png') no-repeat center 0;}
+.loginWrap .formWrap .formLinkArea ul li.naver a {background:url('../images/cm/icon/ic_naver.png') no-repeat center 0;}
+.loginWrap .formWrap .formLinkArea ul li a span {display:inline; background:none; margin-right:0;}
+.loginWrap .formWrap .formInputArea .dataInputArea ul li:first-child {margin-left:130px;}
+
+.loginWrap .inJoin{border-top:1px solid #ccc;padding: 21px 76px 21px 76px;overflow: hidden;}
+.loginWrap .inJoin .btnRedLine{padding:14px; display: block; text-align: center; border:1px solid #ed2024; color: #ed2024; font-size: 16px;}
+.loginWrap .inJoin .btnHalfLeft{width:49%; height: 41px; border: 1px solid #ddd; display: inline-block; text-align: center; padding-top: 12px; float: left;}
+.loginWrap .inJoin .btnHalfRight{width:49%; height: 41px; border: 1px solid #ddd; display: inline-block; text-align: center; padding-top: 12px; float: right;}
+.loginWrap .inJoin .w100{width:100%}
+.loginWrap .inJoin .btnRedLine{font-weight: bold;margin-bottom:8px}
+.loginWrap{border-top: solid 1px #e8e8e8; padding-top: 15px;}
+.loginWrap .btnJoin{padding: 14px; display: block; text-align: center; border:1px solid #ed2024; color: #ed2024; margin-top: 15px; font-size: 14px;}
+.loginWrap .btnGuestOrder{padding: 14px; display: block; text-align: center; border:1px solid #cccccc; color: #000; margin-bottom: 16px; margin-top: 5px; font-size: 14px;}
+.loginWrap .txtBtn{text-align: center;margin: 17px 0;}
+.loginWrap .txtBtn a{ margin-right: 10px; padding-right: 14px; background: url(../images/cm/bg_line.gif) right no-repeat; font-size: 13px;font-weight: bold}
+.loginWrap .txtBtn a:last-child{ margin-right: 0; padding-right: 0; background: none;}
+.loginWrap .inWrap{border: 1px solid #d7d7d7;padding-bottom: 30px}
+.loginWrap .inWrap .text-box{padding: 22px 0;line-height: 23px;background: #f9f9f9;text-align: center;color: #464646;font-weight: bold;font-size: 16px;border-bottom: 1px solid #d7d7d7;}
+.loginWrap .inWrap .btn_join_wrap{width:340px;margin:0 auto;padding-top: 26px;}
+.loginWrap .inWrap .btn_join_wrap h5{font-weight: bold;font-size: 16px;margin-bottom: 13px}
+.loginWrap .inWrap .btn_join_wrap .bg{display: block; border-bottom:1px solid #ccc;margin:30px 0 26px 0}
+
+.loginWrap .bgkshop-login{display: block;height: 48px; color:#fff;background:#e30613 url(../images/cm/icon/icon_kshop_login.png) no-repeat;background-size: contain;}
+.loginWrap .bgnaver-login{display: block;height: 48px; color:#fff;background:#1ec800 url(../images/cm/icon/icon_naver_login.png) no-repeat;background-size: contain;margin-bottom: 13px}
+.loginWrap .bgnaver-login>span,
+.loginWrap .bgkshop-login>span{text-align: center;display: inline-block;width: 280px;margin-left: 59px;line-height: 48px;font-size:20px}
+.loginWrap .bgkakao-login{display: block;height: 48px; color:#fff;background:#fee71b url(../images/cm/icon/icon_kakao_login.png) no-repeat;background-size: contain;}
+.loginWrap .bgkakao-login>span,
+.loginWrap .bgkakao-login>span{text-align: center;display: inline-block;width: 280px;margin-left: 59px;line-height: 48px;font-size:20px;color: #381e1e}
+
+
+.popUpWrap .loginWrap .formWrap .formBottom {padding: 0 66px; margin:0 -45px;}
+.popUpWrap .loginWrap .formWrap .formBottom p {padding:5px 0 10px 0; font-size:15px; color:#ed2024; text-align:center;}
+.popUpWrap .loginWrap .formWrap .formBtnOrder {/*height:65px;*/ border-top:1px solid #d7d7d7; padding:11px 41px;}
+.popUpWrap .loginWrap .formWrap .formBtnOrder a {display:block; margin:0 auto; width:338px; height:45px; line-height:45px; text-align:center; background-color:#555; color:#fff; font-size:20px;}
+.popUpWrap .loginWrap .formWrap .formBottom.join {padding:0; height:35px;}
+.popUpWrap .loginWrap .formWrap .formBottom.join > a {vertical-align:top; line-height:35px;}
+.popUpWrap .loginWrap .formWrap > div {padding-right:75px; padding-left:75px;}
+.popUpWrap .loginWrap .formWrap .topAdult {}
+.popUpWrap .loginWrap .formWrap .topAdult h5 {color:#000; font-size:19px; font-weight:700;}
+.popUpWrap .loginWrap .formWrap .topAdult strong {display:table; width:100%; min-height:84px; margin-top:15px; padding-left:93px; background:url('../images/cm/icon/icon_adult83.png') no-repeat 0 0;}
+.popUpWrap .loginWrap .formWrap .topAdult strong span {display:table-cell; vertical-align:middle; font-size:17px; line-height:21px; color:#464646;}
+.popUpWrap .loginWrap .formWrap .adultSignList {overflow:hidden; margin-top:12px;}
+.popUpWrap .loginWrap .formWrap .adultSignList li {width:162px; height:183px; border:1px solid #ccc; text-align:center;}
+.popUpWrap .loginWrap .formWrap .adultSignList li.phone {float:left; background:#f9fafb url('../images/cm/adult_sign_phone.png') no-repeat center 16px;}
+.popUpWrap .loginWrap .formWrap .adultSignList li.iPin {float:right; background:#f9fafb url('../images/cm/adult_sign_ipin.png') no-repeat center 22px;}
+.popUpWrap .loginWrap .formWrap .adultSignList li a {display:inline-block; width:100%; height:100%; padding-top:149px; font-size:17px; color:#000; letter-spacing:-2px;}
+
+
+/* 로그인 팝업 END */
+
+/* 레이어 팝업 */
+.popUpWrap .subTabWrap .defaultSubTab ul li {width:140px;}
+.popUpWrap table tr td select {padding:0 0 0 8px;}
+.popheader1 li {width:180px !important;}
+.popUpWrap .subTabWrap .defaultSubTab ul li h3 {color:#000 !important; padding-right:15px; padding-left:15px;}
+.layer01, .layer02, .layer03, .layerBanner, .layer04, .layerDetail, .layer05 {position:relative; width:508px; margin:0 auto 0px; padding-bottom:30px; background-color:#fff; border:1px solid #000;}
+.layer01 {}
+.layer02 ,.layer03 {width:408px;}
+.layer04 {width:840px;}
+.layer05 {width:678px;}
+.layerDetail {width:986px;}
+.layerBanner {width:508px; height:auto !important;}
+.sidePadding {}
+.sidePadding > .btnPopArea.mt_14 {padding-bottom:24px;}
+.lPopTit {padding:0px 0px ; height:30px; color:#353535; font-size:20px;line-height: 20px;}
+.layerDetail .lPopTit {padding-left:0;}
+.lPopTit span {margin-left:10px; font-size:13px;}
+.popUpWrap .btnClose {position:absolute; top:24px; right:24px; width:19px; height:19px; text-indent:-9999px; background:url('../images/cm/btn/btn_pop_close01.png') no-repeat 0 0;}
+.popUpWrap .loginWrap .btnClose {top:25px; right:45px;}
+.popUpWrap .pageSubArea {margin-bottom: 30px;}
+#zipcodePop .popUpWrap {height:530px !important; max-height: 530px;}
+#zipcodePop .popUpWrap .btnClose {top:30px;}
+/*
+.popUpWrap .boardListView1, .popUpWrap .boardListView1  {width:100%;} 
+.popUpWrap .boardListView1 thead tr th, .popUpWrap .boardListView1 thead tr th {padding:7px 12px; text-align:center; background-color:#f7f7f7; border-top:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1; font-size:13px; font-weight:bold; color:#000; vertical-align:middle;}
+.popUpWrap .boardListView1 tbody tr td, .popUpWrap .boardListView1 tbody tr td {padding:7px 12px; text-align:center; font-size:12px; border-bottom:1px solid #e1e1e1; vertical-align:middle;}
+.popUpWrap .boardListView1 tbody tr:first-child td {}
+*/
+.popUpWrap .proSelectedArea .proTxt, .popUpWrap .proSelectedArea .proTxt {width:72%;}
+.popUpWrap .proSelectedArea .proTxt > p > strong , .popUpWrap .proSelectedArea .proTxt > p > strong {font-size:20px;line-height: 23px;}
+.layerBanner a {display:inline-block; width:100%; height:100%;}
+.layerBanner a img {overflow:hidden;}
+.btnPopArea {text-align:center; /* margin-bottom: 30px; */}
+.btnPopArea.twoSet {}
+.btn_pop_default, .btn_pop_default01, .btn_pop_default02, .btn_pop_default03 {display:inline-block; padding:4px 10px; text-align:center; border:1px solid #e1e1e1; letter-spacing:-1px; vertical-align:middle;}
+.btn_pop_default01 {min-width:67px; padding:4px 10px; border:1px solid #ccc; background-color:#fff; color:#000 !important; font-weight:bold; font-size:12px;}
+.btn_pop_default02 {padding:7px 10px; min-width:110px; border:1px solid #464646; background-color:#464646; color:#fff !important; font-weight:bold; height:35px; font-size:14px;}
+.btn_pop_default03 {padding:7px 10px; min-width:110px; height:35px; background-color:#fff; border:1px solid #ccc; color:#000 !important; font-size:14px;}
+
+.listBUllettTable {margin-top:10px; padding:0 11px;}
+.listBUllettTable li {font-size:12px; line-height:22px; padding-left:7px; background:url('../images/cm/icon/list_bullet_table.png') no-repeat 0 center;}
+.listBUllettTable.type02 {margin-top:30px; padding-top:5px; padding-left:0; border-top:1px solid #d7d7d7;} 
+.listBUllettTable.type02 li {background:url('../images/cm/icon/list_bullet_pay.png') no-repeat 0 7px;}
+.popUpWrap .prePayWrap {border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+.popUpWrap .prePayList1 {padding:5px 15px;}
+.popUpWrap .prePayList2 {padding:5px 15px;}
+.popUpWrap .prePayList2 li {line-height:24px;}
+.popUpWrap .prePayList1 li p span {margin-right:3px; font-family:'roboto';}
+.popUpWrap .prePayList2 li p span {margin-right:3px; font-family:'roboto';}
+.popUpWrap .prePaySelect .block p {float:right; color:#000; font-size:13px; font-weight:700;}
+.popUpWrap .prePaySelect .block p span {margin-right:3px; font-size:16px; font-family:'roboto';}
+.popUpWrap .prePaySelect .block label {width:auto;}
+.popUpWrap .prePaySelect .block.noneArrow  label {background:none;}
+.popUpWrap .prePaySelect .block {padding:5px 15px; background:#f7f7f7;}
+.popUpWrap .prePaySelect .block strong {float:right;}
+.popUpWrap .prePaySelect .block strong input {height:31px; margin-right:3px; padding:0 6px; border:1px solid #ccc; text-align:right; font-size:16px; font-weight:bold; color:#000;}
+.popUpWrap .prePaySelect .block strong em {font-size:13px; color:#000; vertical-align:middle;}
+.popUpWrap .prePaySelect .on {padding:7px 15px;}
+.popUpWrap .prePaySelect .on p span {margin-right:3px;}
+.popUpWrap .prePaySelect .inputTxt {display:block; border-top:1px solid #ccc;}
+.popUpWrap .prePaySelect .inputTxt p {line-height:22px;}
+.popUpWrap .prePaySelect .inputTxt > p {padding-left:8px;}
+.popUpWrap .prePaySelect .inputTxt, .popUpWrap .prePaySelect .on.inputTxt {padding:7px 15px 5px 15px;}
+.popUpWrap .prePaySelect .inputTxt div p, .popUpWrap .prePaySelect .on.inputTxt div p {padding-left:0; font-size:13px; color:#000; background:none;}
+.popUpWrap .prePaySelect .inputTxt div strong, .popUpWrap .prePaySelect .on.inputTxt div strong {line-height:22px; font-size:15px; color:#000; font-family:'roboto'; font-weight:400;}
+.popUpWrap .prePaySelect .inputTxt div strong em, .popUpWrap .prePaySelect .on.inputTxt div strong em {margin-left:3px; font-family:'notokr';}
+.popUpWrap .checkTxt {margin-left:13px;}
+.popUpWrap .listBulletPay {padding:0 15px;}
+
+
+
+.popUpWrap .subTabWrap {border-bottom:0;}
+.popUpWrap .defaultSubTab {margin-top:0px;}
+.popUpWrap .defaultSubTab .subNum02 {width:auto; margin:0px; border-bottom:1px solid #ccc;}
+.popUpWrap .defaultSubTab .subNum02 li {}
+.popUpWrap .defaultSubTab .subNum02 li.active h3 {border:1px solid #ccc; font-size: 13px; font-weight:700; border-bottom:0; border-top:1px solid #ccc; border-left:0;}
+.popUpWrap .defaultSubTab .subNum02 li:first-child h3 {border-left:1px solid #ccc;}
+.popUpWrap .defaultSubTab .subNum02 li a {height:40px; border-bottom:1px solid #ccc;}
+.popUpWrap .listBullet02 {padding-left:0;}
+.popUpWrap .listBullet02 li {margin-top:5px; line-height:18px; background-position:0 6px;}
+.popUpWrap .listBullet02 li:first-child {margin-top:0;}
+.boardListView1 tbody tr.full td {padding:30px 0; text-align:center;}
+.popUpWrap .boardViewV3 tbody tr.full td {padding:35px 0;}
+.layer05 .sidePadding {position:relative; overflow:hidden; width:100%;}
+.layer05 .sidePadding .left {float:left; width:300px;}
+.layer05 .sidePadding .left .viewThumArea {position:relative; width:100%;}
+.layer05 .sidePadding .left .viewThumArea .proViewFrame {width:100%; height:300px; overflow: hidden; text-align: center;}
+.layer05 .sidePadding .left .viewThumArea .btnSlideArea {height:27px;}
+.layer05 .sidePadding .left .viewThumArea .proViewFrame img {width:300px; height:300px; margin:0 auto; text-align: center;}
+.layer05 .sidePadding .left .viewThumArea .btnSlideArea a {position:absolute; display:block; text-indent:-9999px; width:15px; height:27px; margin:0;}
+.layer05 .sidePadding .left .viewThumArea .btnSlideArea a.btnViewPrev {top:330px; left:0; width:15px;background:url('../images/cm/btn/btnPopproduct.gif') no-repeat 0px 0;}
+.layer05 .sidePadding .left .viewThumArea .btnSlideArea a.btnViewNext  {top:330px; right:0; background:url('../images/cm/btn/btnPopproduct.gif') no-repeat -15px 0;}
+.layer05 .sidePadding .right {float:right; width:316px;}
+.layer05 .sidePadding .right dl {width:100%; border:none; }
+.layer05 .sidePadding .right dt {font-size:18px; font-weight:700;border-bottom:1px solid #cccccc; padding-bottom:10px;}
+.layer05 .sidePadding .right dd {border-bottom:1px solid #cccccc; padding:10px;}
+.layer05 .sidePadding .right dd.goodsTxt {padding:20px 10px; min-height: 205px; max-height: 205px; overflow-y: scroll; overflow-x: hidden;word-break:break-all;}
+.layer05 .sidePadding .right dd:after {content: ''; display: block; clear: both; }
+.layer05 .sidePadding .right dd span {display: block;}
+.layer05 .sidePadding .right dd span.goodsName {font-size:12px; color:#999999; margin-bottom:11px;}
+.layer05 .sidePadding .right dd span.emptyStar {float:left;}
+.layer05 .sidePadding .right dd span.name {float:right;}
+.layer05 .sidePadding .right dd em.viewUserTxt {padding-right:10px;}
+.layer05 .sidePadding .right dd em.viewTimeTxt {padding-left:11px;background: url(../images/cm/bul_pl.gif) no-repeat 0 center;}
+.layer05 .btnAllSlideArea a {width:50px; height: 50px; text-indent: -9999px;}
+.layer05 .btnAllSlideArea a.btnViewPrev {position: absolute; top:50%; left:0; margin-top:-25px; background:url(../images/cm/btn/btnPopgoods1.png) no-repeat 0 0;}
+.layer05 .btnAllSlideArea a.btnViewNext {position: absolute; top:50%; right:0; margin-top:-25px;background:url(../images/cm/btn/btnPopgoods1.png) no-repeat -50px 0;}
+
+/*
+.layer05 .dealPopPro {overflow:hidden; height:322px;}
+.layer05 .dealPopPro .leftArea {float:left; width:368px; height:100%; overflow-y:auto; overflow-x:hidden; border:1px solid #d7d7d7;}
+.layer05 .dealPopPro .leftArea img {border:0;}
+.layer05 .dealPopPro .leftArea .btnDealSide {width:668px; margin-left:-21px;}
+.layer05 .dealPopPro .leftArea .btnDealSide .btnDealPrev, .layer05 .dealPopPro .leftArea .btnDealSide .btnDealNext {width:50px; height:50px; background:#ccc url('../images/cm/btn/btn_white_arrow.png') no-repeat 0 0; border:0; opacity:0.7;}
+.layer05 .dealPopPro .leftArea .btnDealSide .btnDealPrev {}	
+.layer05 .dealPopPro .leftArea .btnDealSide .btnDealNext {background-position:right 0;}
+.layer05 .dealPopPro .rightArea {float:right; width:242px; height:100%; overflow-y:auto; border-bottom:1px solid #d7d7d7;}
+.layer05 .dealPopPro .rightArea h4 {padding-bottom:10px; font-size:18px; color:#000; font-weight:700; letter-spacing:0;}
+.layer05 .dealPopPro .rightArea .popInputArea {padding-top:12px; border-top:1px solid #d7d7d7; color:#000; font-size:14px;}
+.layer05 .dealPopPro .rightArea .popInputArea select {padding-left:6px; border:1px solid #d7d7d7; font-size:12px;}
+.layer05 .dealPopPro .rightArea .popInputArea em.conTxt {font-weight:700 !important; vertical-align:middle; font-size:16px;}
+.layer05 .dealPopPro .rightArea .popInputArea .inputNumBox {margin-top:8px; padding:6px 0; background-color:#fff;}
+.layer05 .dealPopPro .rightArea .popInputArea .inputNumBox fieldset {position:relative; width:197px;}
+.layer05 .dealPopPro .rightArea .popInputArea .inputNumBox strong {width:128px; padding-right:10px; font-size:12px; font-weight:400; line-height:14px; word-break:keep-all; letter-spacing:0;}
+.layer05 .dealPopPro .rightArea .popInputArea .inputNumBox .btnFormClose {position:absolute; width:11px; height:11px; margin-top:-5px; top:50%; right:0; background:url('../images/cm/btn/btn_combo_close01.png') no-repeat 0 0; text-indent:-9999px;}
+.layer05 .dealPopPro .rightArea .boardSumTxt {font-size:27px;}
+.layer05 .dealPopPro .rightArea .btnSubFormArea {overflow:hidden;}
+.layer05 .dealPopPro .rightArea .btnSubFormArea .btnSubForm {float:left; width:32%; margin-left:2%; padding:8px 0 9px;}
+.layer05 .dealPopPro .rightArea .btnSubFormArea .btnSubForm:first-child {margin-left:0;}
+.layer05 .btnSubFormArea a {width:90px; height:44px; padding:12px 5px;}
+*/
+
+.layer05 .dealPopPro {overflow:hidden; height:322px;}
+.layer05 .dealPopPro .leftArea {float:left; width:368px; height:100%; overflow-y:auto; overflow-x:hidden; border:1px solid #d7d7d7;}
+.layer05 .dealPopPro .leftArea img {border:0;}
+.layer05 .dealPopPro .leftArea .btnDealSide {width:668px; margin-left:-21px;}
+.layer05 .dealPopPro .leftArea .btnDealSide .btnDealPrev, .layer05 .dealPopPro .leftArea .btnDealSide .btnDealNext {width:50px; height:50px; background:#ccc url('../images/cm/btn/btn_white_arrow.png') no-repeat 0 0; border:0; opacity:0.7;}
+.layer05 .dealPopPro .leftArea .btnDealSide .btnDealPrev {}	
+.layer05 .dealPopPro .leftArea .btnDealSide .btnDealNext {background-position:right 0;}
+.layerDetail .dealPopPro .rightArea {position:relative; float:right; width:298px; height:100%; padding:0 0 0 20px !important; border-bottom:1px solid #d7d7d7;}
+.layerDetail .dealPopPro .rightArea h4 {padding-bottom:12px; font-size:18px; color:#000; font-weight:700; letter-spacing:0;}
+.layerDetail .dealPopPro .rightArea .popInputArea {border-top:1px solid #d7d7d7; color:#000; font-size:14px; min-height:253px !important; height: 255px; overflow-y: auto !important;}
+.layerDetail .dealPopPro .rightArea .popInputArea select {margin-top:7px; padding-left:6px; border:1px solid #d7d7d7; font-size:12px;}
+.layerDetail .dealPopPro .rightArea .popInputArea em.conTxt {font-weight:700 !important; vertical-align:middle; font-size:16px;}
+.layerDetail .dealPopPro .rightArea .popInputArea .inputNumBox {overflow:hidden; border-top:1px solid #ccc; padding:7px 0 7px 10px; background-color:#f5f7fa;}
+.layerDetail .dealPopPro .rightArea .popInputArea .inputNumBox fieldset {position:relative; width:100%;}
+.layerDetail .dealPopPro .rightArea .popInputArea .inputNumBox strong {width:73%; padding-right:10px; font-size:12px; font-weight:400; line-height:14px; word-break:break-all; letter-spacing:0;}
+.layerDetail .dealPopPro .rightArea .popInputArea .inputNumBox .btnFormClose {position:absolute; width:18px; height:18px; margin-top:-6px; top:50%; right:3px; background:url('../images/cm/btn/btn_combo_close01.png') no-repeat 0 0; text-indent:-9999px;}
+.layerDetail .dealPopPro .rightArea .boardSumTxt {font-size:27px;}
+.layerDetail .dealPopPro .rightArea .btnSubFormArea {overflow:hidden;}
+.layerDetail .dealPopPro .rightArea .btnSubFormArea .btnSubForm {float:left; width:32%; margin-left:2%; padding:8px 0 9px;}
+.layerDetail .dealPopPro .rightArea .btnSubFormArea .btnSubForm:first-child {margin-left:0;}
+.layerDetail .btnSubFormArea a {width:90px; height:44px; padding:12px 5px;}
+
+.thumList {margin:20px 16px 0 15px; width:270px; overflow:hidden; }
+.thumList ul {width:1000%;}
+.thumList ul li {float:left; width:50px; height:50px; margin-right:5px;}
+.thumList ul li a {position:relative; display: block; width:100%;border:1px solid #e1e1e1;}
+.thumList ul li a img{width:48px;height:48px;}
+.thumList ul li a:hover , .thumList ul li a.active { border:1px solid #ee1c24;}
+
+/* 딜상품 상세 팝업 */
+.layerDetail {height:560px; padding-bottom:0 !important; overflow:hidden; padding:0 24px;}
+.layerDetail .leftArea {position:relative; width:638px; height:464px; float:left; overflow-y:auto; overflow-x:hidden; border:1px solid #ccc;}
+.layerDetail .leftArea img {display:block;width: 638px; height: auto;}
+.layerDetail .rightArea {width:323px; float:right; padding:0 0 0px 20px;}
+.layerDetail .rightArea h4 {padding-right:20px; line-height:24px; font-size:20px; font-weight:bold; color:#000; word-break:break-all;}
+.layerDetail .detailComboWrap {padding:10px 15px;}
+.layerDetail .detailComboWrap + .detailComboWrap {margin-top:-1px;}
+.layerDetail .detailComboWrap p:first-child {width:140px; padding-left:0;}
+.layerDetail .detailComboWrap p:first-child span:first-child:after {display:none;}
+.layerDetail .detailComboWrap .comboBox {}
+.layerDetail .detailComboWrap .comboBox .plus {top:3px;}
+.layerDetail .detailComboWrap .comboBox .minus {top:3px;}
+.layerDetail .detailComboWrap .comboClose {width:18px; height:18px; background:url('../images/cm/btn/btn_combo_close.png') no-repeat 0 0; right:10px;}
+.layerDetail .popInputArea {min-height:295px; border-top:1px solid #e2e2e2;}
+.layerDetail .sumArea { position: absolute; top: 380px; right: 0;margin-top:24px; text-align:right; height:25px; line-height:25px; }
+.layerDetail .sumArea span {font-size:14px; line-height:30px; vertical-align:top;}
+.layerDetail .sumArea strong {font-weight:bold; color:#ed1c24; font-size:27px; letter-spacing:-1px;}
+.layerDetail .sumArea strong  em {font-size:16px; color:#000; line-height:30px; vertical-align:top; letter-spacing:0px}
+.layerDetail .dealPopPro .rightArea .mt_15.alignC {position: absolute;right: 0;top: 403px; width:278px;}
+.layerDetail .dealPopPro .rightArea .mt_15.alignR {position: absolute;right: 0;top: 403px; width:278px;font-size:0px;}
+.layerDetail .dealPopPro .rightArea .mt_15.alignR > a {margin:0 1px 0 2px;}
+.layerDetail .dealPopPro .rightArea .mt_15.alignR > a:first-child {margin-left:0;}
+.popUpWrap.layerDetail .btnClose {right:20px;}
+.dealPopPro {overflow:hidden; width:100%; padding-top:15px;;}
+.layerDetail .btnDealSide {width:auto; height:50px; margin:0 -1px;}
+.layerDetail .btnDealSide .btnDealPrev {position:absolute; left:0;}
+.layerDetail .btnDealSide .btnDealNext {position:absolute; left:588px;}
+/* 딜상품 상세 팝업 END */
+
+/* 카드혜택 */
+.layerBanner {background: #fff; }
+.cardWrap {width:100%; height:auto; overflow: hidden; padding:5px 0px; margin-bottom: 30px;}
+.cardWrap h4 {font-size:14px; font-weight: 700; color:#111; margin-top:30px;}
+.cardWrap .cardbanner {width:460px; height: 70px; }
+.cardWrap .cardbanner img {width:100%;}
+.cardWrap .cardTbl {width:100%; border:1px solid #e1e1e1;border-left:none; border-right:none;color:#111111;}
+.cardWrap .cardTbl th {background: #f7f7f7; border-top:1px solid #e1e1e1; font-size:13px; vertical-align: middle; height:26px; text-align: center;font-weight: 400;}
+.cardWrap .cardTbl td { border-top:1px solid #e1e1e1; font-size:13px; font-weight: 400; height:45px; padding:0px 0;vertical-align: middle;}
+.cardWrap .cardTbl td:first-child{text-align:center;}
+.cardWrap .cardTbl td:first-child img{width:124px;height:34px;}
+.cardTxt {display:inline-block; width:100px; margin-left:5px; font-size:26px; color:#333333; line-height:28px}
+.cardWrap .cardTbl .tbr { border-bottom:2px solid #ccc;} /*2018-01-11 추가*/
+
+/* 본인인증 */
+.btnConfirmArea {overflow:hidden; padding:0 10px;}
+.btnConfirmArea button {float:right;}
+.btnConfirmArea button:first-child {float:left;}
+.btnConfirm01 {display:inline-block; width:160px; height:183px; padding-top:140px; color:#000000 !important; background:#f9fafb url(../images/cm/icon/icon_confirm01.png) no-repeat center 16px; text-align:center; border:1px solid #ccc; font-size:17px;}
+.btnConfirm01 strong {display:block; color:#fff; font-size:20px;}
+.btnConfirm02 {display:inline-block; width:160px; height:183px; padding-top:140px; color:#000000 !important; background:#f9fafb url(../images/cm/icon/icon_confirm02.png) no-repeat center 22px; text-align:center; border:1px solid #ccc; font-size:17px;}
+.btnConfirm02 strong {display:block; color:#464646; font-size:20px;}
+.noticeList01 {overflow:hidden;}
+.noticeList01 li {float:left; padding-left:15px; background:url('../images/cm/icon/icon_notice01.png') no-repeat 0 5px; font-size:13px;}
+.nextConfirm {width: 406px; margin: 30px -24px 0 -24px; padding:9px 38px; border-top:1px solid #ccc;}
+.btnNextConfirm {width:100%; padding:14px 0; font-size:16px; font-weight: 700; color:#fff; background: #555555;}
+
+/* table 스타일  */
+/*
+.popTbl01, .boardListView1 {width:100%; border-top:1px solid #e1e1e1; color:#111111; }
+.popTbl01 th, .boardListView1 th {background: #f7f7f7; font-size:13px; font-weight: 700; padding:7px; text-align: center; vertical-align: middle; border-bottom: 1px solid #e1e1e1;}
+.popTbl01 td, .boardListView1 td {font-size: 12px; padding:7px;  border-bottom: 1px solid #e1e1e1;  border-left: 1px solid #e1e1e1; vertical-align: middle;}
+.popTbl01 td:first-child, .boardListView1 td:first-child {border-left:none;}
+
+.boardListView1 {table-layout:fixed;}
+.boardListView1 td {text-align:center; border:0; border-bottom:1px solid #e1e1e1;}
+.boardListView1 td .fnum {font-size:13px;}
+.boardListView1 th, .boardListView1 td {padding:7px 12px; vertical-align:middle;}
+.boardListView1 tr.tall td {height:100px;}
+.boardListView1 tr.blue td {padding:7px 10px; background-color:#f7f7f7; border-top:1px solid #888; color:#000;}
+.boardListView1 td select {border:1px solid #a3a3a3; color:#a3a3a3;}
+.boardListView1 td select:disabled {color:#464646;}
+.boardListView1 td .boardSumTxt {font-size:18px;}
+*/
+
+.img80 { float:left; width:80px; height: 80px; border: 1px solid #e1e1e1;}
+.popUpWrap .cutTxtArea{float:left; width:150px; max-width:150px; margin-left: 10px;}
+.popUpWrap .cutTxtArea:after {content: ''; display: block; clear: both;}
+.popUpWrap .cutTxtArea2{float:left;  max-width:190px; margin-left: 10px; text-align: left}
+.subTxtg {font-size:12px; color:#bfbfbf;}
+.popTopTxt {font-size:12px; color:#111;}
+
+/*2018-02-20 추가*/
+.popUpWrap .cutTxtArea3{float:left;width: 142px !important;max-width:150px;margin-left: 10px;}
+.popUpWrap .cutTxtArea3 .byteLimit {font-size:14px; text-align:left;}
+.popUpWrap .cutTxtArea3 .optionTxt {color:#666; font-size:14px; text-align:left;}
+
+/* 우편번호 찾기 */
+.schTop {position:relative; border: 1px solid #e1e1e1; color:#111; background: #f7f7f7; padding:10px;}
+.schTop th, .schTop td {padding:3px;}
+.schTop th {font-size:13px; font-weight: bold;  vertical-align: middle;}
+.schTop td {font-size:12px; vertical-align: middle;}
+.schTop .pt_8 { padding-top:8px !important; }
+.schTop .schTopBtn {position: absolute; top:44px; right:10px;}
+
+.zipResult {position:relative; width:100%; max-height:510px;margin-bottom:24px; overflow-y: auto; overflow-x:hidden; border:none; } /* 2016-12-09 개발 */ 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.zipResult {margin-bottom:0;}
+}
+.zipResult table {width:100%; border-collapse:collapse; border:none; table-layout: fixed; background: #fff;}
+.zipResult .boardListView1 th {border-top:0 !important;border-bottom:0 !important;}
+.zipResult thead {margin:-1px 0 0 -1px; width:441px; border-width: 0px 0 1px; border-color:#e1e1e1 ; border-style: solid ;table-layout:fixed;background: #f7f7f7; z-index:1000;}
+.zipResult tbody {display:block; overflow-y: auto; max-height: 470px; width: 455px;border-bottom: 1px solid #dedede;}
+.zipResult tbody tr {width: 100%;}
+.zipResult tbody tr:first-child td{ /* padding-top:50px !important; */ background: #fff;} 
+.zipResult tbody tr td {width:300px; background: #fff;}
+.zipResult tbody tr td:first-child {width:120px; background: #fff;}
+
+
+.addWrapBox {border-width: 1px 0 1px; border-color:#e1e1e1 ; border-style: solid ; background: #f7f7f7;padding:10px 20px 20px;}
+.addWrapBox + div.btnPopArea {padding-bottom:10px;}
+.addWrapBox p  {font-size:13px;}
+.addWrapBox p input {font-size:12px;}
+.addWrapBox dl {overflow:hidden; padding:0 25px;}
+.addWrapBox dl dt {float:left; width:50%; text-align:left; margin-top:10px; font-size:13px; font-weight:700; color:#464646;}
+.addWrapBox dl dd {float:right; width:50%; text-align:right; margin-top:10px; font-size:14px;}
+.addWrapBox dl dd input[type="num"] {padding:0 5px; text-align:right;}
+
+.titnBtn {width:100%; position: relative;}
+.titnBtn:after {content: ''; display: block; clear:both; visibility: visible; zoom:1;}
+.couponIng {position:absolute; top:50px; right:0; width:188px; padding:16px 12px; border:1px solid #565a5c;background: #fff;}
+.couponIng h5 {font-size: 18px; font-weight: 400; background: #fff; color:#353535;}
+.couponIng table {width:100%;border-bottom:1px solid #ccc; border-top:1px solid #ccc; font-size:12px;color:#000000; }
+.couponIng table th, .couponIng table td {border-bottom:1px solid #e1e1e1; padding:10px 8px;vertical-align: top;}
+.couponIng table th {background: #f7f7f7; }
+.couponIng table td  {text-align: center}
+.btnMinTbl {position: absolute;top:15px; right: 12px; text-indent: -9999px; width:16px; height: 16px; background: url(../images/cm/btn/btn_mintblCls.png) no-repeat 0 0; }
+.couponIng2 {position:absolute; top:25px; right:0; width:244px; padding:24px; border:1px solid #565a5c;background: #fff;}
+.couponIng2 h5 {font-size: 20px; font-weight: 400;padding:0px 0px 0 20px 0 ;color:#353535;}
+.couponIng2 table {width:100%;border-top:1px solid #dedede; border-bottom:1px solid #dedede; font-size:12px;color:#000000; margin-top:20px; background: #fff;}
+.couponIng2 table th, .couponIng2 table td {border-bottom:1px solid #e1e1e1; padding:10px 8px;vertical-align: top;}
+.couponIng2 table th {background: #f7f7f7; padding-left:20px; }
+.couponIng2 table td  {text-align: center}
+.couponIng2  .btnClose { position: absolute; top: 20px; right: 24px; width: 19px; height: 19px; text-indent: -9999px; background: url(../images/cm/btn/btn_pop_close01.png) no-repeat 0 0;}
+
+/* 팝업 바로주문 버튼 */
+.popTit {padding:20px;}
+.popUpWrap .dealPopPro .btnDefault {display:inline-block; width:90px;text-align:center; font-size:16px; margin-right:0px; color:#fff !important;padding:15px 0; background:#ee1c24;}
+.popUpWrap .dealPopPro .btnSubDetail {display:inline-block;width:190px;}
+.popUpWrap .dealPopPro .btnSub {display:inline-block;width:90px; text-align:center; font-size:16px; padding:15px 0;}
+.popUpWrap .dealPopPro .btnZzim {display:inline-block;color:#fff !important;margin-bottom: 0px; /*margin-right:2px;*/}
+.popUpWrap .dealPopPro .btnTvAram {background: #fff; color:#333333; border:1px solid #cccccc; padding:14px 0;}
+.popUpWrap .dealPopPro p{text-align:center;}
+.baroorder img {width:100%;}
+.notSale{display: block;float: left;width:163px;height:46px;font-size: 16px;}
+.notSale > span{display:table-cell;width:163px;height:46px;vertical-align:middle;}
+
+/* 금색 팝업 */
+.popUpGold {position:relative; padding:10px; border:1px solid #eee3a6; background-color:#fffaca;}
+.popUpGold.middle {width:240px;}
+.popUpGold h3 {font-size:13px; line-height:14px; font-weight:700; color:#000;}
+.popUpGold .pInconts {margin-top:8px; border-top:1px solid #eee3a6;}
+/* 팝업안 COL테이블 */
+.popUpGold .pInconts table.col {margin-top:8px; width: 100%; border-top: 1px solid #dbd29d;border-bottom: 1px solid #dbd29d;}
+.popUpGold .pInconts table.col th {padding:0 8px; font-size:13px;border-bottom: 1px solid #dbd29d; line-height: 26px;text-align: center; font-weight:400; color:#111111; background: #eee3a6; vertical-align:middle;}
+.popUpGold .pInconts table.col td {padding:0 8px; font-size:13px; padding:5px 0;text-align: center;}
+.popUpGold .pInconts table.col td span {margin-top:0; line-height:18px;}
+/* 팝업안 COL테이블 */
+.popUpGold button.popClose {position:absolute; right:10px; top:10px; width:14px; height:14px; background:url('../images/cm/btn/btn_pop_close02.png') no-repeat 0 0; text-indent:-9999px;}
+/* 금색 팝업 */
+
+.borderBoxD7.brandMore {margin-top:15px; padding-top:0; padsding-bottom:10px; height:320px; overflow-y:auto;}
+.threeSetList {overflow:hidden;}
+.threeSetList li {float:left; width:33.3%; margin-top:6px; padding-left:10px;}
+.threeSetList li input[type="checkbox"] {}
+.threeSetList li label {margin-left:2px; cursor:pointer; line-height:19px; vertical-align:middle; font-size:12px;}
+
+.popUpWrap .btnSubFormArea {margin-top:14px;padding-bottom:30px;}
+.popUpWrap .btnDftFormArea {margin-top:14px;}
+
+.bullDl {padding:0px 0px 20px;}
+.bullDl dt {font-size:13px; font-weight: 700; margin-bottom:10px;}
+.bullDl dd {padding-left:8px; font-size: 12px; line-height: 20px; background: url(../images/cm/icon/list_bullet_table.png) no-repeat 0 9px;}
+
+.dealPopPro .priceArea {position: relative; border-top:1px solid #ccc; padding:13px 0; height:64px;}
+.dealPopPro .priceArea h5 {font-weight: 700; color: #ed2024; font-size: 13px; padding-top:22px; padding-right:15px;}
+.dealPopPro .priceArea > div {position: relative;}
+.dealPopPro .priceArea .rate {position: absolute; top:23px; right:0px; color: #ed2024;font-size:26px;font-family: 'Roboto';}
+.dealPopPro .priceArea .rate strong {font-size: 40px;font-weight: 400; }
+.dealPopPro .priceArea .original {position: absolute;top: -1px; font-size: 14px;  color:#464646;width:200px;}
+.dealPopPro .priceArea .price {position: absolute; top: 16px; width:200px; font-size:16px; font-weight:400; margin-top:3px;color:#000;}
+.dealPopPro .priceArea .price strong {font-weight: 700; font-size: 24px; color:#000;}
+
+.activeBtn button.active {background-color: #464646; border: 1px solid #000; color: #fff;}
+
+#pop_brandMore{position:absolute;z-index:2000000001;}
+.btn_pop_default.fin {background: #f7f7f7;padding: 4px 21px;}
+
+.boardViewV2 + p.blueTxt {padding-bottom:30px;}
+.popUpWrap .sidePadding .orderBoardWrap  > .boardWriteV2 {margin-bottom: 24px;}
+.popUpWrap .sidePadding > .bgyellowBox {margin-bottom:24px;}
+
+.pageload {position:relative; margin:0 auto; width:150px; height:150px; background: none; padding:0 !important; border: none;} 
+.pageload img {width:100%;}
+
+.mOrderInfo{margin:15px 0 10px 0;padding:40px 0;border:1px solid #ccc;border-left:none;border-right:none;text-align:center;}
+.mOrderInfo > .boldTxt{margin-bottom:10px;font-size:18px;line-height:22px;}
+
+/* IE8 핵 */
+@media \0screen { 
+.btnPopArea{padding-bottom:30px;}
+.listBUllettTable li{letter-spacing:-1.5px;}
+}
+
+/*2017-07-05 추가*/
+/*안심택배*/
+.layer07 {padding:0 0 20px}
+.layer07 .sidePadding { padding:0 20px;}
+.layer07 .lPopTit {padding:25px 20px 20px 65px; height:55px; color:#353535; font-size:20px; background:url(../images/cm/bg_popup.png) 15px 15px no-repeat; background-size:50px}
+.safePopUpWrap {position:relative;border:1px solid #d7d7d7; max-height:700px; overflow-y:auto; overflow-x:hidden;background: #fff;  }
+.safePopUpWrap .btnClose {position:absolute; top:24px; right:24px; width:19px; height:19px; text-indent:-9999px; background:url('../images/cm/btn/btn_pop_close01.png') no-repeat 0 0;}
+/*2017-07-05 추가*/
+
+
+/*2018-03-08 추가*/
+/*카드혜택 팝업*/
+.cardTbl_Interest li,.cardTbl_NoInterest li {border-top: 1px solid #e1e1e1; }
+.cardTbl_Interest li:first-child,.cardTbl_NoInterest li:first-child {border-top: 0; }
+.cardTbl_Interest li span,.cardTbl_NoInterest li span { display:inline-block; font-size: 13px; font-weight: 400; height: 45px; padding: 0px 0; vertical-align: middle;}
+.cardTbl_Interest li span:first-child,.cardTbl_NoInterest li span:first-child {width:38%; text-align:center; padding:4px 0;}
+.cardTbl_Interest li span:last-child,.cardTbl_NoInterest li span:last-child {width:62%; line-height:45px;}
+.cardTbl_Interest li span img,.cardTbl_NoInterest li span img { width: 124px; height: 34px; }
+.cardTbl_Interest .cardTbl_tit { background: #f7f7f7; border-top:0; font-size: 13px; vertical-align: middle; height: 26px; text-align: center; font-weight: 400; line-height:26px !important; padding:0 !important;}
+.cardTbl_NoInterest li span { color:#7f7f7f;}
+.wrap_popCont { height:auto; overflow-y:auto; max-height:500px; } /*2018-03-13 스크롤 영역 추가*/
+/*2018-03-08 추가*/
+
+/* 상품상세 오류신고 팝업 */
+.popUpWrap.pop-incorrect-info{padding:43px 50px 0 50px !important;}
+.pop-incorrect-info{position: absolute;left:50%;transform: translate(-50%, 0);width:720px;height:510px;border:1px solid #333;background: #fff;}
+.pop-incorrect-info h3{font-size:28px;color:#4a4a4a}
+.pop-incorrect-info .incorrect-content ul{ margin-top:22px}
+.pop-incorrect-info .incorrect-content ul > li{position: relative;font-size:14px;color: #818080;line-height:24px;padding-left:8px}
+.pop-incorrect-info .incorrect-content ul > li > strong{color: #ff0000;font-weight:normal}
+.pop-incorrect-info .incorrect-content ul > li:before {content:'';display: inline-block;width:4px;height:4px;position: absolute;left: 0;top:9px;background-color:#818080;vertical-align: middle;border-radius:100%;}
+.pop-incorrect-info .btnClose {position: absolute;top: 24px;right: 24px; width: 19px; height: 19px;text-indent: -9999px;}
+.pop-incorrect-info table{width: 100%;border-top:1px solid #e1e4e7;margin-top:22px}
+.pop-incorrect-info table th{font-weight: normal;color:#575757;font-size:16px;}
+.pop-incorrect-info table th>em{color:#ff0000;vertical-align: -2px;margin-right: 2px;}
+.pop-incorrect-info table th,
+.pop-incorrect-info table td{line-height:39px;padding-top: 8px;}
+.pop-incorrect-info table input{width:100%;height:39px;padding-left: 14px;border:1px solid #e1e4e7;font-size:15px;}
+.pop-incorrect-info table textarea{width:100%;height:168px;padding:14px 0 8px 14px;border:1px solid #e1e4e7;color:#000;font-size:15px;}
+.pop-incorrect-info .incorrect-content .btnDftFormArea{text-align: center}
+.pop-incorrect-info .incorrect-content .btnDftFormArea > a{width:160px;padding: 11px 22px;}
+.pop-incorrect-info .incorrect-content > p {margin:8px 0;;padding-top:8px; border-top:1px solid #e1e4e7;font-size:14px;color:#a5a5a5;text-align:right}
+.pop-incorrect-info .incorrect-content > p > em{color:#ff0000;vertical-align: -2px;margin-right: 2px;}
+
+.prod-incorrecect-link{position: relative;border: 1px solid #ccc;padding:14px 19px;}
+.prod-incorrecect-link ul li{position: relative;padding-left:28px;font-size: 14px;color:#959595;text-align: left;}
+.prod-incorrecect-link ul li:before{content:'';display: inline-block; width:20px;height:20px;position: absolute;left: 0;top:-3px;vertical-align: middle;background: url(../images/cm/icon/ico_incorrecect.gif) no-repeat 0 0;}
+.prod-incorrecect-link > a{position: absolute;top:6px;right:20px;width: 110px;font-family: 'notokr';padding: 7px 0;text-align: center;font-size: 14px;color: #a1a1a1 !important;background-color: #fff;border: 1px solid #cdcdcd;}
+.prod-incorrecect-link > a:hover{color: #fff !important;background-color: #545454;border: 1px solid #545454;}
+
+/* 2019.06 2차비밀번호 */
+.snsLoginWrap{padding: 48px 24px 30px 24px !important;}
+.snsLoginWrap .titArea{text-align: center; }
+.snsLoginWrap .titArea h3{font-size: 26px; font-weight: bold;color: #353535; margin-top: 15px;}
+.snsLoginWrap .sns_cont01{text-align: center; margin-top: 30px;color: #353535;line-height: 20px;}
+
+.snsLoginWrap .btnDftsns  {text-align: center;margin-top:50px;}
+.snsLoginWrap .btnDftsns a {display:inline-block; font-size: 16px; font-weight: 400; padding:20px; color:#fff; margin:0 2px;}
+.snsLoginWrap .btnDftsns .btnDefaultForm {min-width:111px; padding:9px 22px; background:#ee1c24; font-family:'notokr';text-align:center;font-size:16px; color:#fff; border:1px solid #ee1c24;line-height: 100%;}
+.snsLoginWrap .btnDftsns .btnSubForm1 {background: #fff;}
+.snsLoginWrap .btnDftsns .btnSubForm3 {background: #ee1c24;}
+.snsLoginWrap .btnDftsns .isDisabled{background: #565a5c; border: 1px solid #565a5c;}
+
+.snsLoginWrap .bx_snsCompl{width:408px;text-align: center;margin-top: 15px;}
+.snsLoginWrap .bx_snsCompl .text{font-size: 20px;}
+.snsLoginWrap .bx_snsCompl .btn_secTip{position: relative;display:block;width:218px;height:44px;border:1px solid #bcbcbc;background: #f4f4f4;color:#565555;font-size: 16px;text-align: center; padding: 15px 0; margin: 37px auto 63px auto;}
+.snsLoginWrap .check_bar{position: relative;padding-top: 9px;padding-bottom: 9px;overflow: hidden;border-top: 1px solid #ccc;}
+.snsLoginWrap .check_bar.type2{margin-top:20px}
+.snsLoginWrap .check_bar.type2 img{vertical-align: -3px;margin-right: 5px;}
+.snsLoginWrap .check_bar.type3{border-top:none;width: 348px;margin: 0 auto;}
+.snsLoginWrap .check_bar .chk_center{text-align: center;color:#666;}
+.snsLoginWrap .check_bar .chk_center label{font-size: 13px;color:#666;margin-left: 6px;}
+.snsLoginWrap .check_bar .chk_left{float: left;color:#666;}
+.snsLoginWrap .check_bar .chk_left label{font-size: 13px;color:#666;margin-left: 8px;}
+.snsLoginWrap .check_bar .btnInputForm{position: absolute;top:7px;right: 0px;}
+
+.snsLoginWrap table.inputTb{width:425px;margin:21px auto 0 auto;border-top: 1px solid #ccc}
+.snsLoginWrap table.inputTb tbody th,
+.snsLoginWrap table.inputTb tbody td{height: 87px;border-bottom: 1px solid #ccc}
+.snsLoginWrap table.inputTb tbody th{padding:0;background: #f7f7f7;text-align: center;font-size: 16px;vertical-align: middle;line-height: 20px;}
+.snsLoginWrap table.inputTb tbody th em{text-align: left;display: inline-block;}
+.snsLoginWrap table.inputTb tbody td{padding:17px 0 0 18px;}
+.snsLoginWrap table.inputTb.phone th{font-size: 13px}
+.snsLoginWrap table.inputTb.phone input::placeholder{color:#616161}
+.snsLoginWrap table.inputTb.phone input{border:1px solid #d7d7d7; padding: 0 8px;}
+.snsLoginWrap table.inputTb.phone span.remainTime{margin-left:12px;height: 31px;vertical-align: top;line-height: 31px;color:#9b9a9a}
+.snsLoginWrap table.inputTb.phone th,
+.snsLoginWrap table.inputTb.phone td{height:68px;}
+.snsLoginWrap table.inputTb.phone tbody td{padding:9px 0 0 18px;}
+.snsLoginWrap .erMsg{ color: red;font-size: 12px;margin: 8px 0 5px 0; }
+.snsLoginWrap .erMsg2{color: red;font-size: 12px;text-align:center;margin: 8px 0 5px 0;}
+.snsLoginWrap .snsPwdNumInput{margin:0 0 0px 0}
+.snsLoginWrap .snsPwdNumInput input{width:35px;height: 35px;text-align: center;padding:0;margin-left:4px;font-size:16px;border: 1px solid #979797; -webkit-text-security: disc;}
+.snsLoginWrap .snsPwdNumInput input#new_fst,
+.snsLoginWrap .snsPwdNumInput input#_new_fst,
+.snsLoginWrap .snsPwdNumInput input#now_fst{ margin-left:0;}
+.snsLoginWrap .snsPwdNumInput input { background-color: #fff;}
+.snsLoginWrap .snsPwdNumInput input:valid {border:1px solid #b52124; background-color: #ed2024;color:#fff}
+
+.joinArea .btn_secTip{position: relative;display:block;width:177px;border-bottom:1px solid #1b1b1b;color:#252525;font-size: 16px;text-align: center;padding: 7px 0 3px 0; margin: 25px auto 0 auto;}
+.joinArea .btn_secTip i {margin-left:2px;border: solid #000;border-width: 0 1px 1px 0;display: inline-block;padding: 4px;transform: rotate(-45deg);}
+.snsLoginWrap .inputTb_2{width:348px; height:100px;padding-top:23px; margin: 20px auto 0 auto;border-top:1px solid #ccc;border-bottom:1px solid #ccc;background: #f7f7f7}

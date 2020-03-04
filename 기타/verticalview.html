@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta content="true" name="HandheldFriendly">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="K쇼핑" name="keywords">
+	<meta content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." name="description">
+	<meta content="K쇼핑" property="og:title">
+	<meta content="K쇼핑" property="og:site_name">
+	<meta content="website" property="og:type">
+	<meta content="http://m.kshop.co.kr" property="og:url">
+	<meta content="생활의선물, K쇼핑" property="og:description">
+	<meta content="http://static.kshop.co.kr/mc/images/main/main_logo_share.png" property="og:image">
+	<title>편성표_K쇼핑</title><!-- style -->
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/mc.reset.min.css?20190329" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/jquery-ui.min.css" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/swiper.min.css" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/mc.common.min.css?20190329" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/display/css/mc.display.min.css?20190329" rel="stylesheet"><!-- script -->
+
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/lib/jquery-3.3.1.min.js">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/lib/jquery-ui.min.js">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/lib/swiper.min.js">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/mc.common.min.js?20190329">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/display/js/mc.display.min.js?20190329">
+	</script>
+	<script>
+
+		// 편성표 방송 날짜
+		MCFront.bcDateSwiper = function() {
+			var dateSwiper = new Swiper('.bcListDate', {
+				//initialSlide: stIdx,
+				slidesPerView: 'auto',
+				centeredSlides: true,
+				freeMode: true,
+				on: {
+					init: function() {
+						MCFront.swiperCenter(this);
+					},
+					resize: function() {
+						MCFront.swiperCenter(this);
+					}
+				}
+			});
+			MCFront.gb.dateSwiper = dateSwiper;
+			$('a', dateSwiper.slides).on('click', function() {
+				var $selectDate = $(this).parent();
+				if ($selectDate.hasClass('on')) return false;
+				var idx = $selectDate.index();
+				dateSwiper.slideTo(idx);
+				$selectDate.addClass('on').siblings().removeClass('on');
+				return false;
+			});
+		}
+		// 편성표 미니맵
+		MCFront.bcListMapSwiper = function() {
+			var bcListMapSwiper = new Swiper('.bcListMap', {
+				direction: 'vertical',
+				slidesPerView: 'auto',
+				freeMode: true,
+				spaceBetween: 12,
+			});
+			MCFront.gb.bcListMapSwiper = bcListMapSwiper;
+			var speed = 300;
+			$('a', bcListMapSwiper.slides).on('click', function() {
+				var $selectTime = $(this).parent(),
+					idx = $selectTime.index();
+				if ($('html, body').filter(':animated').length == 0) {
+					fn_bcTableMove(idx);
+				}
+				return false;
+			});
+		}
+		// 편성표 목록 offset top
+		MCFront.fnItemArrH = function() {
+			var itemArrH = [],
+				h = 0;
+			$('.mainCon .bcList .bcItem').each(function(i) {
+				if ($(this).parents('.swiper-slide-duplicate').length == 1) return false;
+				var offsetT = $(this).offset().top - $(this).parent('.bcList').offset().top;
+				itemArrH.push(offsetT);
+			});
+			console.log(itemArrH);
+			MCFront.gb.itemArrH = itemArrH;
+		}
+
+		function fn_scrollFunc(scrollT) {
+			if ($('html, body').filter(':animated').length == 0 && MCFront.gb.hash == '#1') { // 편성표
+				var itemNo;
+				for (var i in MCFront.gb.itemArrH) {
+					if (MCFront.gb.itemArrH[i] < scrollT + 80) itemNo = i;
+				}
+				fn_bcTableMove(itemNo, true);
+			}
+		}
+
+		function callBack(hash) {
+			console.log(hash);
+			if (hash == '#1') { // 편성표
+				var dateIdx = $('.bcListDate .swiper-slide.on').index();
+				MCFront.gb.dateSwiper.slideTo(dateIdx, 0);
+				MCFront.fnItemArrH();
+				fn_liveGo(true);
+			}
+		}
+
+
+		// Live 방송 바로가기
+		function fn_liveGo(init) {
+			var liveIdx = $('.bcListMap .cuLive').index();
+			if (init) {
+				$('.bcListDateW').removeClass('hidden');
+				MCFront.gb.bcListMapSwiper.slideTo(liveIdx, 0);
+				$(window).scrollTop(MCFront.gb.itemArrH[liveIdx] + 5);
+			} else {
+				fn_bcTableMove(liveIdx);
+			}
+			return false;
+		}
+
+		function fn_bcTableMove(idx, scroll) {
+			var speed = 300;
+			$('.bcListMap li').eq(idx).addClass('on').siblings().removeClass('on');
+			MCFront.gb.bcListMapSwiper.slideTo(idx, speed);
+			if (!scroll) $('html, body').stop().animate({
+				'scrollTop': MCFront.gb.itemArrH[idx] + 5
+			}, speed);
+		}
+		$(document).ready(function() {
+			MCFront.bcDateSwiper();
+			MCFront.bcListMapSwiper();
+			MCFront.mainSwiper(callBack, 0); // callback 함수(매개변수 : a태그 attr), 메인 초화면 IDX(null 일 경우 디폴트 0)
+			MCFront.init({
+				scroll: fn_scrollFunc
+			});
+		});
+
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<header class="main" id="header">
+			<section class="headerTop">
+				<h1><a href="../../index.html"><img alt="K쇼핑" src="../../common/img/logo.png"></a></h1>
+				<ul class="topBtn">
+					<li class="btnTopSch"><a href="../../html/display/ui_mc_11_01m.html">검색</a></li>
+					<li class="btnCart"><a href="../../html/custord/ui_mc_19_01m.html" title="장바구니 바로가기"><span class="icon">장바구니</span> <span class="num">5</span></a></li>
+					<li class="btnAllMenu"><a href="#allMenu" title="전체메뉴 열기">전체메뉴</a></li>
+				</ul>
+			</section>
+			<section class="schTop">
+				<form action="#">
+					<fieldset>
+						<dl>
+							<dt class="blind"><label for="schTopKeyword">검색어</label></dt>
+							<dd><input id="schTopKeyword" name="" placeholder="온수매트" type="text"></dd>
+						</dl>
+					</fieldset>
+					<p><input class="btnSubmit" type="submit" value="검색"></p>
+				</form>
+			</section>
+			<nav class="menuNav">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><a href="#1">TV편성표</a></li>
+					<li class="swiper-slide"><a href="#2">오늘의 추천</a></li>
+					<li class="swiper-slide str"><a href="#3">이벤트</a></li>
+					<li class="swiper-slide"><a href="#4">베스트</a></li>
+					<li class="swiper-slide"><a href="#5">기획전</a></li>
+					<li class="swiper-slide"><a href="#6">기타</a></li>
+				</ul><!-- //swiper-wrapper -->
+			</nav><!-- //menuSlide -->
+			<div class="dim"></div>
+			<section class="allMenu" id="allMenu">
+				<h2 style="margin-bottom:50px;font-size:20px">임시작성</h2>
+				<nav>
+					<ul>
+						<li><a href="">메뉴</a></li>
+					</ul>
+				</nav><button class="btnMenuClose" type="button">메뉴닫기</button>
+			</section>
+		</header><!-- //header -->
+		<main class="main" id="contents">
+			<!-- 편성표 상단영역 -->
+			<div class="broadCastTop">
+				<div class="bcListDateW">
+					<div class="bcListTop">
+						<nav class="bcListDate">
+							<ul class="swiper-wrapper">
+								<!-- D-4, 오늘, D+2-->
+								<li class="swiper-slide"><a href="#"><strong>03/29</strong>금</a></li>
+								<li class="swiper-slide"><a href="#"><strong>03/30</strong>토</a></li>
+								<li class="swiper-slide"><a href="#"><strong>03/31</strong>일</a></li>
+								<li class="swiper-slide"><a href="#"><strong>04/01</strong>월</a></li>
+								<li class="swiper-slide current on"><a href="#"><strong>04/02</strong>오늘</a></li>
+								<li class="swiper-slide"><a href="#"><strong>04/03</strong>수</a></li>
+								<li class="swiper-slide"><a href="#"><strong>04/04</strong>목</a></li>
+							</ul><!-- //swiper-wrapper -->
+						</nav><!-- //bcListDate -->
+						<div class="tltArea">
+							<h2>K쇼핑의 TV쇼핑 편성표</h2>
+							<ul>
+								<li class="on"><a href="#shoping">TV쇼핑</a></li>
+								<li><a href="#plus">TV플러스</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="bcListMapW">
+					<nav class="bcListMap">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+
+							<li class="swiper-slide nextDate"><a href="#">4월 3일</a></li>
+						</ul>
+					</nav>
+				</div>
+				<p class="btnLiveGo"><a href="#header"><span><strong>LIVE</strong> 방송</span>바로가기</a></p>
+			</div>
+			<div class="mainCon">
+				<div class="swiper-wrapper">
+					<!-- TV편성표 -->
+					<section class="con01 swiper-slide">
+						<section class="broadCastListW">
+							<div class="cloneDateNavW"></div>
+							<div class="cloneBcListMap"></div>
+							
+							<div class="bcList">
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="https://static-d.kshop.co.kr/d2/html/mc/display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								
+							
+								<p class="nextTable"><a class="btnSbasic" href="#">01/16 편성보기</a></p>
+							</div><!-- //bcList -->
+						</section>
+					</section><!-- 오늘의 추천 -->
+					<section class="con02 swiper-slide"></section><!-- 이벤트 -->
+					<section class="con03 swiper-slide"></section><!-- 베스트 -->
+					<section class="con04 swiper-slide"></section><!-- 기획전 -->
+					<section class="con05 swiper-slide"></section><!-- 기타 -->
+					<section class="con06 swiper-slide"></section>
+				</div><!-- //swiper-wrapper -->
+
+
+			</div><!-- //mainCon -->
+		</main><!-- //contents -->
+		<footer id="footer">
+			푸터
+		</footer><!-- //footer -->
+		<aside class="actionBar">
+			<nav>
+				<ul>
+					<li class="btnHome"><a href="../../html/display/ui_mc_01m.html">홈</a></li>
+					<li class="btnMy"><a href="../../html/custord/UI_MC_22m.html">마이페이지</a></li>
+					<li class="btnDelivery"><a href="../../html/custord/UI_MC_22_01T.html">주문/배송</a></li>
+					<li class="btnRecent"><a href="#">최근 본 상품</a></li>
+				</ul>
+			</nav>
+		</aside>
+	</div><!-- //wrap -->
+
+	<script>
+
+	function fn_noticeMore(obj) {
+
+	$(obj).parents('.popCon').toggleClass('open');
+
+	return false;
+
+	}
+
+	</script> <!-- 사은픔 선택 -->
+
+	<script>
+
+	function fn_giftSelectUI() {
+
+	// 사은품 셀렉트 박스
+
+	   var $selectGift = $('.giftChoiceBox .selectUI select');
+
+	   $selectGift.selectmenu({
+
+	       open: function() {
+
+	           var selectWrapTop = $(this).parents('.selectWrap').scrollTop();
+
+	           $(this).next().css('top', selectWrapTop);
+
+	           $(this).parent().addClass('selectFocus');
+
+	           $('.giftChoiceBox').addClass('selOpen');
+
+	       },
+
+	       close: function() {
+
+	           $(this).next().removeAttr('style');
+
+	           $(this).parent().removeClass('selectFocus');
+
+	           $('.giftChoiceBox').removeClass('selOpen');
+
+	       },
+
+	       change: fn_selectGift
+
+	   });
+
+
+
+	   // 사은품 섹렉트박스 리스트 DOM 위치 조정 : 기본 셀렉트박스
+
+	   $selectGift.each(function() {
+
+	       var $selectMenu = $(this).selectmenu('menuWidget').parent();
+
+	       $('.giftChoiceBox .giftCon').append($selectMenu);
+
+	   });
+
+	}
+
+	// 사은품 셀렉트박스 체인지 이벤트
+
+	function fn_selectGift(event, ui) {
+
+	   //console.log(event, ui);
+
+	   //console.log(ui.item.value); // value 값
+
+	}
+
+
+
+	// 사은품 선택하기
+
+	function fn_giftChoice() {
+
+	   $('.detailActionBar').addClass('giftOpen');
+
+	   MCFront.popup.open('#pop_giftChoiceBox');
+
+	   return false;
+
+	}
+
+
+
+	// 사은품 선택 취소
+
+	function fn_giftCancel() {
+
+	   console.log('사은품 선택 취소');
+
+	   $('.detailActionBar').removeClass('giftOpen');
+
+	   MCFront.popup.close('#pop_giftChoiceBox');
+
+	}
+
+
+
+	// 사은품 선택 완료
+
+	function fn_giftConfirm() {
+
+	   console.log('사은품 선택 완료');
+
+	   $('.detailActionBar').removeClass('giftOpen');
+
+	   MCFront.popup.close('#pop_giftChoiceBox');
+
+	}
+
+
+
+	fn_giftSelectUI();
+
+	</script>
+</body>
+</html>

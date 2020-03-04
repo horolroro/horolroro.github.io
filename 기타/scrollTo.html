@@ -1,0 +1,108 @@
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내."/>
+    <meta name="keywords" content="생활의 선물"/>
+	<title>생활의 선물 - K쇼핑</title>
+	<!--파비콘 추가 2016-12-05-->
+	<link rel="icon" href="https://static.kshop.co.kr/ec/images/cm/icon/favicon.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="https://static.kshop.co.kr/ec/images/cm/icon/favicon.ico" type="image/x-icon" />
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/ec/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/ec/css/slick-theme.css"/>
+	<link rel="stylesheet" type="text/css" class="maincss" href="https://static.kshop.co.kr/ec/css/main.css"/>
+	<link rel="stylesheet" type="text/css" class="comcss" href="https://static.kshop.co.kr/ec/css/common.css"/>
+	<!-- script -->
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/placeholders.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/common.js"></script>
+
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/slick.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-ui.js"></script>
+	<script src="./vue.js"></script>
+	<!--[if lt IE 9]>
+		<script src="https://static.kshop.co.kr/ec/js/html5shiv.js"></script>
+		<link rel="stylesheet" type="text/css" class="maincss" href="https://static.kshop.co.kr/ec/css/ie8_font.css"/>
+	<![endif]-->
+	
+	<style type="text/css">
+		.nav{position: fixed; top: 35%; right: 20%;}
+		.nav li {padding: 10px;border: 1px solid red;}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+	  {{ message }}
+	  
+	  <my-component></my-component>
+	</div>
+	
+	<script>
+		// 등록
+		Vue.component('my-component', {
+			template: `
+			<div>
+					<div><img src="http://imgsdev.kshop.co.kr/emcms/181005/1538708950772.jpg" alt=""></div>
+					<div>ㅁㅁㅁㅁ</div>
+			</div>
+		`
+		})
+
+		var vm = new Vue({
+		  el: '#app',
+		  data: {
+			message: 'Hello Vue.js!'
+		  }
+		})
+		
+		
+	  </script>
+
+	<!-- example of a fixed nav menu -->
+	<ul class="nav">
+		<li>
+		<a href="#section-1" class="nav-item js-scroll-to">Item 1</a>
+		</li>
+		<li>
+		<a href="#section-2" class="nav-item js-scroll-to">Item 2</a>
+		</li>
+		<li>
+		<a href="#section-3" class="nav-item js-scroll-to">Item 3</a>
+		</li>
+	</ul>
+
+	<div id="section-1">
+		<img alt="" src="http://imgs.kshop.co.kr/htmleditor/531/LA%EA%B0%88%EB%B9%84%20%EA%B8%B0%EC%88%A0%EC%84%9C1546589602596.jpg">
+	</div>
+
+	<div id="section-2">
+		<img alt="" src="http://imgs.kshop.co.kr/htmleditor/531/LA%EA%B0%88%EB%B9%84%20%EA%B8%B0%EC%88%A0%EC%84%9C1546589602596.jpg">
+	</div>
+
+	<div id="section-3">
+		<img alt="" src="http://imgs.kshop.co.kr/htmleditor/531/LA%EA%B0%88%EB%B9%84%20%EA%B8%B0%EC%88%A0%EC%84%9C1546589602596.jpg">
+	</div>
+
+
+	<script>	
+		$(function() {
+		$(".js-scroll-to").click(function(e) {
+
+			var destination = $(this).attr('href');
+			e.preventDefault();
+
+			$('html, body').animate({
+			scrollTop: $(destination).offset().top
+			}, 500);
+		});
+		});
+	</script>
+	<!-------------------------------------------- 템플릿 내용 END ----------------------------------------------------------->
+
+
+</body>
+</html>
