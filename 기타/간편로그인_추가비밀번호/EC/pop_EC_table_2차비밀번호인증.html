@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content=" K쇼핑" />
+	<meta name="keywords" content="생활의 선물" />
+	<title>생활의 선물 - K쇼핑</title>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/ec/css/common.css" />
+	<!-- script -->
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/placeholders.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/common.js"></script>
+
+	<link href="https://ecdev2.kshop.co.kr/static/ec/css/contents.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/ec/css/layout.css?201906031409">
+	
+	<link href="https://ecdev2.kshop.co.kr/static/ec/css/popup.css" rel="stylesheet" type="text/css">
+	<!--
+	<link href="./popup.css" rel="stylesheet" type="text/css">
+	-->
+
+</head>
+
+<body>
+	<div class="dim">
+		<div class="popUpWrap layer01 snsLoginWrap">
+			<div class="titArea">
+				<h3 class="fs20">2차비밀번호 인증</h3>
+			</div>
+			<div class="sns_cont01">
+				소중한 고객정보 보안을 위해 고객님의 2차비밀번호를 확인합니다.<br/>
+				등록하신 숫자 6자리를 입력해주세요.
+			</div>
+
+			<form id="" method="post" action="">
+				<div class="inputTb_2">
+					<div id="newLoginNm" class="snsPwdNumInput" tabindex="-1" style="text-align: center">
+						<input type="password" id="new_fst"  data-index="0" min="0" max="9" maxlength="1" required="">
+						<input type="password" id="new_sec" data-index="1" min="0" max="9" maxlength="1" required="">
+						<input type="password" id="new_thd" data-index="2" min="0" max="9" maxlength="1" required="">
+						<input type="password" id="new_fou" data-index="3" min="0" max="9" maxlength="1" required="">
+						<input type="password" id="new_fiv" data-index="4" min="0" max="9" maxlength="1" required="">
+						<input type="password" id="new_six" data-index="5" min="0" max="9" maxlength="1" required="">
+					</div>
+					<p class="erMsg2" id="errorMsgLnNew">숫자 6자리를 입력해주세요.</p>
+				</div>
+				<div class="check_bar type3">
+					<div class="chk_center">
+						<input type="checkbox" id="authentication"><label for="authentication">다음부터 확인안하기</label>
+					</div>
+				</div>
+
+			</form>
+
+			<br />
+
+			<div class="btnDftsns" style="margin-top:30px">
+				<a href="javascript: ;" class="btnDefaultForm btnWhite mr_5">취소</a>
+				<a href="javascript: ;" class="btnDefaultForm">확인</a>
+			</div>
+
+			<div class="check_bar type2">
+				<div class="chk_left">
+					<img src="https://static.kshop.co.kr/ec/images/cm/icon/icon_info.gif" alt="info">
+					2차비밀번호 6자리가 기억나지 않으세요?
+				</div>
+				<a href="javascript:;" class="btnInputForm">2차비밀번호 찾기</a>
+			</div>
+
+			<button type="button" class="btnClose">닫기</button>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta content="K 쇼핑" name="description">
+	<meta content="K 쇼핑" name="keywords">
+	<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="telephone=no" name="format-detection"><!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+	<title>K 쇼핑</title><!-- css -->
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/common.css" rel="stylesheet" type="text/css">
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/main.css" rel="stylesheet" type="text/css">
+
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/contents.css" rel="stylesheet" type="text/css">
+	
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/popup.css" rel="stylesheet" type="text/css">
+	
+	<!-- script -->
+
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-1.12.0.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.bxslider.min.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.mobile.custom.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-ui.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/common.js" type="text/javascript"></script>
+
+	<style type="text/css">
+		
+	</style>
+
+</head>
+
+
+<body>
+
+	<div class="noneGnb3" style="min-height: 650px;">
+		
+		<div id="header" style="position: relative;">
+			<div class="normalTitle" style="position: relative;">
+				<a href="javascript: goBack();" class="btnBack noneText">뒤로</a>
+				<h1>K SHOPPING 로그인</h1>
+			</div>
+		</div>
+
+		<div id="content" style="margin-top: 0px;">
+			<div class="loginWrap" style="min-height: 650px;">
+				
+				<div class="inWrap">
+					<h1>간편 로그인</h1>
+
+					<form name="loginForm" id="loginForm" method="post" onsubmit="javascript: return false;">
+
+						<ul class="sns-login-area">
+							<li><a href="javascript: snsLogin('naver');" class="naver-login" title="새창열림"><span></span>네이버</a></li>
+							<li><a href="javascript: snsLogin('kakao');" class="kakao-login" title="새창열림"><span></span>카카오톡</a></li>
+							<li><a href="javascript: snsLogin('facebook');" class="face-login" title="새창열림"><span></span>페이스북</a></li>
+							
+						</ul>
+
+						<div class="inputWrap">
+							<div class="input phL" title="아이디"><input type="text" class="submit_login" name="memId" id="memId" placeholder="아이디"><label for="memId" class="dN">아이디</label></div>
+							<div class="inputPw phL" title="비밀번호"><input type="password" class="submit_login" name="password" id="password" placeholder="비밀번호"><label for="password" class="dN">비밀번호</label></div>
+						</div>
+
+						<p class="check">
+							<input id="checkSaveId" type="checkbox" checked=""><label for="checkSaveId">아이디저장</label>
+							<input id="autoLogin" type="checkbox" checked=""><label for="autoLogin">자동로그인</label>
+							<input id="autoLoginVal" name="autoLogin" type="hidden">
+						</p>
+
+						<p class="cRed2 fs12 taC fwBold mt10 mb10" id="errorMsg"></p>
+						<a class="btn_login afterClear dB mt15" id="submitLogin">로그인</a>
+
+						<div class="notLogin">
+							<p class="txtBtn">
+								<a id="findIdButton">아이디 찾기</a>
+								<a id="findPasswdButton">비밀번호 찾기</a>
+							</p>
+						</div>
+					</form>
+				</div>
+				<!-- //inWrap-->
+
+				<span class="bg_bar"></span>
+				
+				<div class="inWrap">
+					<p><a class="btnRedLine mb10" href="https://mdev.kshop.co.kr/customer/customermc/join">회원가입</a></p>
+					<div class="btnArea">
+						<a href="javascript: ;" class="btnHalfLeft btnLine1">비회원 주문하기</a>
+						<a href="javascript: ;" class="btnHalfRight btnGray1">비회원 배송조회</a>
+					</div>
+				</div>
+				<!-- //inWrap-->
+				
+
+						
+
+						
+					
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

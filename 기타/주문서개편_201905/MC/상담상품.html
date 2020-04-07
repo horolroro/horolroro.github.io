@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="K 쇼핑"/>
+    <meta name="keywords" content="K 쇼핑"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+    <title>K 쇼핑</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/mc/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/mc/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/mc/css/textsizeup.css?201905151143">
+    
+	<!-- script -->
+	
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-1.12.0.js"></script>
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.mobile.custom.js"></script>
+    <script type="text/javascript" src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-ui.js"></script>
+	
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/mc/css/contents.css"/>
+
+</head>
+<body>
+
+
+	<div class="noneGnb3" id="wrapper">
+		
+		<!-- S:header -->
+        <div id="header">
+            
+            <!-- S:제목영역 -->
+            <div class="normalTitle" style="position: relative;">
+                <a href="javascript:goBack();" class="btnBack noneText">뒤로</a>
+                <h1>주문서 작성/결제</h1>
+            </div>
+            <!-- E:제목영역 -->
+    	</div>
+        <!-- E:header -->
+
+
+		<div id="content" >
+
+            <!-- S:: 주문서 개편  -->
+            
+            <!-- 하단 주문하실 상품 -->
+			<section class="order_sheet">
+                <div class="tit orderProWrap line">
+                    <h2 class="">주문하실 상품</h2>
+                    <a href="javascript:;" class="btn_sheet btn_orderProW">상품보기</a>
+
+                    <div class="depth_orderProW" style="display: block;">
+                        <div class="d1">
+                            <span class="prodName">코지마 안마의자 오딧세이</span>
+                        </div>
+                        <div class="d2">
+                            <span class="prodFigure">수량 1개</span>
+                            <span class="size">대형</span>
+                        </div>
+                        <div class="d3">
+                            <span class="pres">사은품 : 코지마 자동 전자 혈압계 _CBP110A</span> 
+                        </div>
+
+                        <a href="javascript:;" class="btn_etc">외 1건</a>
+                    </div>
+
+                    <!-- 기존 주문서 -->
+                    <div class="orderProW_content">
+                        주문하실 상품
+                    </div>
+                    <!-- //기존 주문서 -->
+                </div>
+            </section>
+
+            <!-- 상담신청 버튼 -->
+            <div class="mt10 p15">
+                <a href="javascript:;" id="btnOrderGo" class="btnOrderC red" style="width:100%;">상담신청</a>
+            </div>
+            <!-- E:: //주문서 개편 -->
+            
+
+            <!-- 스크립트 -->
+            <script>
+
+                //주문자/배송정보
+                $(document).on("click",".boardOrderWrite > h2 , .btn_boardOrderWrite",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.depth_delivery').hide();
+                        $('.boardOrderWrite').addClass('active');
+                        $('.btn_boardOrderWrite').text('닫기');
+                    }else{
+                        $(this).removeClass('close');
+                        $('.boardOrderWrite').removeClass('active')
+                        $('.depth_delivery').show();
+                        $('.btn_boardOrderWrite').text('배송지 변경');
+                    }
+                });
+
+                //주문하실 상품
+                $(document).on("click",".orderProWrap > h2 , .btn_orderProW",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.orderProWrap').addClass('active');
+                        $('.depth_orderProW').hide();
+                        $('.btn_orderProW').text('닫기');
+                        
+                    }else{
+                        $(this).removeClass('close');
+                        $('.orderProWrap').removeClass('active');
+                        $('.depth_orderProW').show();
+                        $('.btn_orderProW').text('상품보기');
+                    }
+                });
+
+                //할인받기
+                $(document).on("click",".boardOrderView > h2 , .btn_boardOrderView",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.boardOrderView').addClass('active');
+                        $('.btn_boardOrderView').text('닫기');
+                        
+                    }else{
+                        $(this).removeClass('close');
+                        $('.boardOrderView').removeClass('active');
+                        $('.btn_boardOrderView').text('정보보기');
+                    }
+                });
+
+                //결제하기
+                $(document).on("click",".boardPay > h2 , .btn_pay",function() {
+                    if(!$(this).hasClass('close')){//열때
+                        $(this).addClass('close');
+                        $('.boardPay').addClass('active');
+                        $('.btn_pay').text('닫기');
+                        
+                    }else{
+                        $(this).removeClass('close');
+                        $('.boardPay').removeClass('active');
+                        $('.btn_pay').text('결제수단변경');
+                    }
+                });
+
+                //툴팁 
+                function showTooltip_2(toolName, toolBtn){
+                    var toolBox = $("#" + toolName);
+                    $(".toolTip_2").not("#" + toolName).hide();
+
+                    setTimeout(function(){
+                        toolBox
+                            .fadeIn(100)
+                            .find(".tipClose")
+                            .on("click",function(){
+                            toolBox.fadeOut(100);
+                            return false;
+                        });
+                        return false;
+                    },500);
+                    
+                }
+
+            </script>
+		</div>
+	</div>
+		
+
+		
+		
+		
+
+
+</body>
+</html>

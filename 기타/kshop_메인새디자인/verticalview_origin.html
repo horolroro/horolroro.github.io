@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta content="true" name="HandheldFriendly">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="K쇼핑" name="keywords">
+	<meta content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." name="description">
+	<meta content="K쇼핑" property="og:title">
+	<meta content="K쇼핑" property="og:site_name">
+	<meta content="website" property="og:type">
+	<meta content="http://m.kshop.co.kr" property="og:url">
+	<meta content="생활의선물, K쇼핑" property="og:description">
+	<meta content="http://static.kshop.co.kr/mc/images/main/main_logo_share.png" property="og:image">
+	<title>편성표_K쇼핑</title><!-- style -->
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/mc.reset.min.css?20190329" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/jquery-ui.min.css" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/swiper.min.css" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/common/css/mc.common.min.css?20190329" rel="stylesheet">
+	<link href="https://static-d.kshop.co.kr/d2/html/mc/display/css/mc.display.min.css?20190329" rel="stylesheet"><!-- script -->
+
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/lib/jquery-3.3.1.min.js">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/lib/jquery-ui.min.js">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/lib/swiper.min.js">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/common/js/mc.common.min.js?20190329">
+	</script>
+	<script src="https://static-d.kshop.co.kr/d2/html/mc/display/js/mc.display.min.js?20190329">
+	</script>
+	<script>
+
+		// 편성표 방송 날짜
+		MCFront.bcDateSwiper = function() {
+			var dateSwiper = new Swiper('.bcListDate', {
+				//initialSlide: stIdx,
+				slidesPerView: 'auto',
+				centeredSlides: true,
+				freeMode: true,
+				on: {
+					init: function() {
+						MCFront.swiperCenter(this);
+					},
+					resize: function() {
+						MCFront.swiperCenter(this);
+					}
+				}
+			});
+			MCFront.gb.dateSwiper = dateSwiper;
+			$('a', dateSwiper.slides).on('click', function() {
+				var $selectDate = $(this).parent();
+				if ($selectDate.hasClass('on')) return false;
+				var idx = $selectDate.index();
+				dateSwiper.slideTo(idx);
+				$selectDate.addClass('on').siblings().removeClass('on');
+				return false;
+			});
+		}
+		// 편성표 미니맵
+		MCFront.bcListMapSwiper = function() {
+			var bcListMapSwiper = new Swiper('.bcListMap', {
+				direction: 'vertical',
+				slidesPerView: 'auto',
+				freeMode: true,
+				spaceBetween: 12,
+			});
+			MCFront.gb.bcListMapSwiper = bcListMapSwiper;
+			var speed = 300;
+			$('a', bcListMapSwiper.slides).on('click', function() {
+				var $selectTime = $(this).parent(),
+					idx = $selectTime.index();
+				if ($('html, body').filter(':animated').length == 0) {
+					fn_bcTableMove(idx);
+				}
+				return false;
+			});
+		}
+		// 편성표 목록 offset top
+		MCFront.fnItemArrH = function() {
+			var itemArrH = [],
+				h = 0;
+			$('.mainCon .bcList .bcItem').each(function(i) {
+				if ($(this).parents('.swiper-slide-duplicate').length == 1) return false;
+				var offsetT = $(this).offset().top - $(this).parent('.bcList').offset().top;
+				itemArrH.push(offsetT);
+			});
+			console.log(itemArrH);
+			MCFront.gb.itemArrH = itemArrH;
+		}
+
+		function fn_scrollFunc(scrollT) {
+			if ($('html, body').filter(':animated').length == 0 && MCFront.gb.hash == '#1') { // 편성표
+				var itemNo;
+				for (var i in MCFront.gb.itemArrH) {
+					if (MCFront.gb.itemArrH[i] < scrollT + 80) itemNo = i;
+				}
+				fn_bcTableMove(itemNo, true);
+			}
+		}
+
+		function callBack(hash) {
+			console.log(hash);
+			if (hash == '#1') { // 편성표
+				var dateIdx = $('.bcListDate .swiper-slide.on').index();
+				MCFront.gb.dateSwiper.slideTo(dateIdx, 0);
+				MCFront.fnItemArrH();
+				fn_liveGo(true);
+			}
+		}
+		/***** 편성표 *****/
+		// 비디오버튼 클릭
+		function fn_vodLayer(obj) {
+			$('.broadCastArea').toggleClass('vodOn');
+			return false;
+		}
+		// 영상재생
+		function fn_vodPlay(obj) {
+			$('.videoArea').removeClass('vodOn');
+			alert('영상재생');
+			return false;
+		}
+		// 방송알람 신청
+		function fn_bcAlarm(obj) {
+			$(obj).toggleClass('on');
+			if ($(obj).hasClass('on')) MCFront.popup.open('#pop_bcAlarmReg', null, fn_alarmAgree);
+		}
+
+		function fn_alarmAgree() {
+			if ($('.popBcAlarm input[name=achk]:checked').val() == 'N') {
+				$('.popBcAlarm .helpBoxW').fadeIn();
+			} else {
+				MCFront.popup.close('#pop_bcAlarmReg');
+			}
+		}
+		// 방송종류 선택
+		function fn_bcType(obj, type) {
+			$(obj).parent().addClass('on').siblings().removeClass('on');
+			var $tlt = $(obj).parents('.tltArea').find('h2');
+			if (type == 'shoping') { //TV쇼핑
+				$tlt.text('K쇼핑의 TV쇼핑 편성표');
+			} else { //TV플러스
+				$tlt.text('K쇼핑의 TV플러스 편성표');
+			}
+			return false;
+		}
+		// 방송상품 더보기
+		function fn_bcProdMore(obj) {
+			$(obj).parents('.bcProdMore').toggleClass('open');
+			MCFront.gb.conSwiper.update();
+			MCFront.fnItemArrH();
+		}
+		// Live 방송 바로가기
+		function fn_liveGo(init) {
+			var liveIdx = $('.bcListMap .cuLive').index();
+			if (init) {
+				$('.bcListDateW').removeClass('hidden');
+				MCFront.gb.bcListMapSwiper.slideTo(liveIdx, 0);
+				$(window).scrollTop(MCFront.gb.itemArrH[liveIdx] + 5);
+			} else {
+				fn_bcTableMove(liveIdx);
+			}
+			return false;
+		}
+
+		function fn_bcTableMove(idx, scroll) {
+			var speed = 300;
+			$('.bcListMap li').eq(idx).addClass('on').siblings().removeClass('on');
+			MCFront.gb.bcListMapSwiper.slideTo(idx, speed);
+			if (!scroll) $('html, body').stop().animate({
+				'scrollTop': MCFront.gb.itemArrH[idx] + 5
+			}, speed);
+		}
+		$(document).ready(function() {
+			MCFront.bcDateSwiper();
+			MCFront.bcListMapSwiper();
+			MCFront.mainSwiper(callBack, 0); // callback 함수(매개변수 : a태그 attr), 메인 초화면 IDX(null 일 경우 디폴트 0)
+			MCFront.init({
+				scroll: fn_scrollFunc
+			});
+		});
+		// 바로구매 액션박
+		$(document).ready(function() {
+			// 액션바 높이 조절 및 이벤트
+			var $actionBtn = $('.detailActionBar .btnAction');
+			MCFront.optAreaEvt($actionBtn, $('.actionCon'), 80); // 이벤트 대상, 이벤트 Wrap, 최소 height
+			$('.btnAction').on('click', function() {
+				$('.detailActionBar').removeClass('open');
+			});
+			fn_selectUi();
+		});
+		// 액션바 이벤트
+		function fn_order(obj) {
+			$('.detailActionBar').addClass('open');
+			return false;
+		}
+		// 디자인 셀렉트박스
+		function fn_selectUi() {
+			var selOpts = {
+				open: function() {
+					var innerTop = $(this).parents('.inner').scrollTop();
+					$(this).next().css('top', innerTop);
+					$(this).parent().addClass('selectFocus');
+					$('.actionCon').addClass('selOpen');
+				},
+				close: function() {
+					$(this).next().removeAttr('style');
+					$(this).parent().removeClass('selectFocus');
+					$('.actionCon').removeClass('selOpen');
+				},
+				change: fn_select
+			}
+			// 기본
+			var $select = $('.actionCon .selectUI select').not('.imgSelect');
+			$select.selectmenu(selOpts);
+			// 이미지
+			var $imgSelect = $('.actionCon .imgSelect').imgSelectmenu(selOpts); // 2019-03-20 수정
+			// 액션바 섹렉트박스 리스트 DOM 위치 조정 : 이미지 셀렉트박스
+			$imgSelect.imgSelectmenu("menuWidget").addClass('imgSelectList'); // 2019-03-20 수정
+			$('.actionCon').append($imgSelect.imgSelectmenu("menuWidget").parent()); // 2019-03-20 수정
+			// 액션바 섹렉트박스 리스트 DOM 위치 조정 : 기본 셀렉트박스
+			$select.each(function() {
+				var $selectMenu = $(this).selectmenu('menuWidget').parent();
+				$('.actionCon').append($selectMenu);
+			});
+			// 사은품 셀렉트 박스
+			var $selectGift = $('.giftChoiceBox .selectUI select');
+			$selectGift.selectmenu({
+				open: function() {
+					var selectWrapTop = $(this).parents('.selectWrap').scrollTop();
+					$(this).next().css('top', selectWrapTop);
+					$(this).parent().addClass('selectFocus');
+					$('.giftChoiceBox').addClass('selOpen');
+				},
+				close: function() {
+					$(this).next().removeAttr('style');
+					$(this).parent().removeClass('selectFocus');
+					$('.giftChoiceBox').removeClass('selOpen');
+				},
+				change: fn_selectGift
+			});
+			// 사은품 섹렉트박스 리스트 DOM 위치 조정 : 기본 셀렉트박스
+			$selectGift.each(function() {
+				var $selectMenu = $(this).selectmenu('menuWidget').parent();
+				$('.giftChoiceBox .giftCon').append($selectMenu);
+			});
+		}
+		var setSelectH = true;
+		var selectCnt = 0;
+
+		function fn_select(event, ui) {
+			//console.log(event, ui);
+			//console.log(ui.item.value); // value 값
+			// 임시 작성 : 헬프박스
+			selectCnt++;
+			console.log("셀렉트박스 선택 : " + selectCnt);
+			if (selectCnt == 2) {
+				fn_actionHelpbox();
+			}
+			fn_actionHeight(); // 무조건 실행 : 리스트가 들어갈 경우 실행해 주세요.
+		}
+		var setSelectH = true;
+		// 상품 선택 후 높이값 셋팅. (상품마다 셀렉트박스 갯수에 따른 높이값 상이함.)
+		function fn_actionHeight() {
+			// 최초 1회 높이값 셋팅 : 리스트가 들어올 경우
+			if ($('.actionProdList li').length == 1 && setSelectH) {
+				$('.actionCon').removeAttr('style');
+				$('.actionCon').height($('.actionCon').height());
+				setSelectH = false;
+			}
+			// 상품 선택이 없을 경우 height auto
+			if ($('.actionProdList li').length == 0) $('.actionCon').removeAttr('style');
+			//if ($('.actionProdList li').length == 2) $('.helpBoxW').show();
+			fn_actionProdTlt(); // 상품명이 2줄이상 될 경우 말줄임 실행
+		}
+
+		function fn_actionProdTlt() {
+			$('.actionCon .prodTlt').each(function() {
+				if ($(this).height() > 40) $(this).addClass('ellips2');
+			});
+		}
+		// 액션바 도움말
+		function fn_actionHelpbox() {
+			$('.helpBoxW').fadeIn().delay(2000).fadeOut();
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<header class="main" id="header">
+			<section class="headerTop">
+				<h1><a href="../../index.html"><img alt="K쇼핑" src="../../common/img/logo.png"></a></h1>
+				<ul class="topBtn">
+					<li class="btnTopSch"><a href="../../html/display/ui_mc_11_01m.html">검색</a></li>
+					<li class="btnCart"><a href="../../html/custord/ui_mc_19_01m.html" title="장바구니 바로가기"><span class="icon">장바구니</span> <span class="num">5</span></a></li>
+					<li class="btnAllMenu"><a href="#allMenu" title="전체메뉴 열기">전체메뉴</a></li>
+				</ul>
+			</section>
+			<section class="schTop">
+				<form action="#">
+					<fieldset>
+						<dl>
+							<dt class="blind"><label for="schTopKeyword">검색어</label></dt>
+							<dd><input id="schTopKeyword" name="" placeholder="온수매트" type="text"></dd>
+						</dl>
+					</fieldset>
+					<p><input class="btnSubmit" type="submit" value="검색"></p>
+				</form>
+			</section>
+			<nav class="menuNav">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><a href="#1">TV편성표</a></li>
+					<li class="swiper-slide"><a href="#2">오늘의 추천</a></li>
+					<li class="swiper-slide str"><a href="#3">이벤트</a></li>
+					<li class="swiper-slide"><a href="#4">베스트</a></li>
+					<li class="swiper-slide"><a href="#5">기획전</a></li>
+					<li class="swiper-slide"><a href="#6">기타</a></li>
+				</ul><!-- //swiper-wrapper -->
+			</nav><!-- //menuSlide -->
+			<div class="dim"></div>
+			<section class="allMenu" id="allMenu">
+				<h2 style="margin-bottom:50px;font-size:20px">임시작성</h2>
+				<nav>
+					<ul>
+						<li><a href="">메뉴</a></li>
+					</ul>
+				</nav><button class="btnMenuClose" type="button">메뉴닫기</button>
+			</section>
+		</header><!-- //header -->
+		<main class="main" id="contents">
+			<!-- 편성표 상단영역 -->
+			<div class="broadCastTop">
+				<div class="bcListDateW">
+					<div class="bcListTop">
+						<nav class="bcListDate">
+							<ul class="swiper-wrapper">
+								<!-- D-4, 오늘, D+2-->
+								<li class="swiper-slide"><a href="#"><strong>03/29</strong>금</a></li>
+								<li class="swiper-slide"><a href="#"><strong>03/30</strong>토</a></li>
+								<li class="swiper-slide"><a href="#"><strong>03/31</strong>일</a></li>
+								<li class="swiper-slide"><a href="#"><strong>04/01</strong>월</a></li>
+								<li class="swiper-slide current on"><a href="#"><strong>04/02</strong>오늘</a></li>
+								<li class="swiper-slide"><a href="#"><strong>04/03</strong>수</a></li>
+								<li class="swiper-slide"><a href="#"><strong>04/04</strong>목</a></li>
+							</ul><!-- //swiper-wrapper -->
+						</nav><!-- //bcListDate -->
+						<div class="tltArea">
+							<h2>K쇼핑의 TV쇼핑 편성표</h2>
+							<ul>
+								<li class="on"><a href="#shoping">TV쇼핑</a></li>
+								<li><a href="#plus">TV플러스</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="bcListMapW">
+					<nav class="bcListMap">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">12:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide cuLive on">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList01.jpg"></div><span class="live">Live</span>
+								<div class="info">
+									<p class="time">13:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+								<div class="info">
+									<p class="time">14:35</p>
+									<p class="tlt">스피커</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList02.jpg"></div>
+								<div class="info">
+									<p class="time">15:05</p>
+									<p class="tlt">위니아딤채 냉장고</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList02.jpg"></div>
+								<div class="info">
+									<p class="time">15:40</p>
+									<p class="tlt">위니아딤채 냉장고</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList02.jpg"></div>
+								<div class="info">
+									<p class="time">16:35</p>
+									<p class="tlt">루시앙여성</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList02.jpg"></div>
+								<div class="info">
+									<p class="time">17:35</p>
+									<p class="tlt">위니아딤채 냉장고</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList02.jpg"></div>
+								<div class="info">
+									<p class="time">18:35</p>
+									<p class="tlt">위니아딤채 냉장고</p>
+								</div>
+							</li>
+							<li class="swiper-slide">
+								<a href="#"></a>
+								<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_mapList02.jpg"></div>
+								<div class="info">
+									<p class="time">19:35</p>
+									<p class="tlt">위니아딤채 냉장고</p>
+								</div>
+							</li>
+							<li class="swiper-slide nextDate"><a href="#">4월 3일</a></li>
+						</ul>
+					</nav>
+				</div>
+				<p class="btnLiveGo"><a href="#header"><span><strong>LIVE</strong> 방송</span>바로가기</a></p>
+			</div>
+			<div class="mainCon">
+				<div class="swiper-wrapper">
+					<!-- TV편성표 -->
+					<section class="con01 swiper-slide">
+						<section class="broadCastListW">
+							<div class="cloneDateNavW"></div>
+							<div class="cloneBcListMap"></div>
+							<div class="bcList">
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+								<div class="bcItem">
+									<div class="time">
+										<p>15:05 ~ 15:40</p><button class="btnBcAlram" type="button">방송알림 신청</button>
+									</div><a class="prodLink" href="../../html/display/ui_mc_12_01m.html" title="상세화면 바로가기"></a>
+									<div class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_bcList10.jpg"></div>
+									<div class="txt">
+										<div class="prodBenefit">
+											<ul>
+												<li>적립 5%</li>
+												<li>카드 5%</li>
+												<li>무료배송</li>
+											</ul>
+										</div>
+										<div class="prodTlt">
+											사이드 스트라이프 원사 양모 스웨트 팬츠/터틀렉
+										</div>
+										<div class="prodPrice">
+											<dl>
+												<dt class="blind">할인률</dt>
+												<dd class="dc"><strong>30</strong>%</dd>
+												<dt class="blind">K딜가</dt>
+												<dd class="kPrice"><strong>28,000</strong>원</dd>
+												<dt class="blind">정상가</dt>
+												<dd class="basePrice">
+													<del>36,000원</del>
+												</dd>
+											</dl>
+										</div>
+									</div>
+									<div class="sticker">
+										<strong>8</strong>% <span>쿠폰포함</span>
+									</div>
+									<p class="btnOrder"><button class="btnMcolor" type="button">바로구매</button></p>
+									<div class="bcProdMore">
+										<!-- LIVE 방송일 경우 열림 상태로 있어야 합니다. class="open" -->
+										<ul>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+											<li class="bcProd">
+												<div class="prodInfo">
+													<a href="#"></a>
+													<dl class="prod">
+														<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+														<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 2줄 노출 후 말줄임 합니다.</dd>
+														<dd class="price"><strong>99,000</strong>원~</dd>
+													</dl><button class="btnBcAlram" type="button">방송알림 신청</button>
+												</div>
+											</li>
+										</ul>
+										<p class="btnMore"><button type="button"><span class="basicTxt">방송상품 더보기</span><span class="openTxt">닫기</span></button></p>
+									</div><a class="btnPlay" href="#" title="영상보기">영상보기</a>
+								</div><!-- //bcItem -->
+							
+								<p class="nextTable"><a class="btnSbasic" href="#">01/16 편성보기</a></p>
+							</div><!-- //bcList -->
+						</section>
+					</section><!-- 오늘의 추천 -->
+					<section class="con02 swiper-slide"></section><!-- 이벤트 -->
+					<section class="con03 swiper-slide"></section><!-- 베스트 -->
+					<section class="con04 swiper-slide"></section><!-- 기획전 -->
+					<section class="con05 swiper-slide"></section><!-- 기타 -->
+					<section class="con06 swiper-slide"></section>
+				</div><!-- //swiper-wrapper -->
+				<div class="videoArea">
+					<div class="vodArea">
+						<div class="noticeBox">
+							<div class="inner">
+								<p class="txt">무선네트워크(3G/LTE)로 접속하시면,<br>
+								가입하신 요금제에 따라 별도 요금이<br>
+								부과될 수 있습니다.</p>
+								<div class="btn">
+									<button class="btnXSbasic" type="button">취소</button><button class="btnXScolor" type="button">확인</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- //videoArea -->
+				<aside class="detailActionBar">
+					<section class="actionBox">
+						<div class="actionCon">
+							<!-- 헬프박스는 리스트가 2개 이상이 되면 나타납니다. -->
+							<div class="helpBoxW">
+								<div class="helpBox">
+									<p>눌러서 아래위로 당겨보세요.<br>
+									좀 더 큰 화면으로 선택하실 수 있어요.</p>
+								</div>
+							</div>
+							<p><button class="btnAction" type="button">크기조절</button></p><!-- 1. 수량만 선택 -->
+							<!-- <div class="inner">
+
+                        <div class="actionBoxItem">
+
+                            <div class="qtyPrice">
+
+                                <div class="prodQty">
+
+                                    <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                    <button type="button" class="btnMinus">수량감소</button>
+
+                                    <button type="button" class="btnPlus">수량증가</button>
+
+                                </div>
+
+                                <p class="price"><strong>2,149,200</strong>원</p>
+
+                            </div>
+
+                        </div>
+
+                    </div> -->
+							<!-- 2. 단품 선택 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="상품선택">
+
+                                    <option value="">상품을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt">아디다스 울트라 부스트 이큅먼트 10운동화</p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 3. 옵션 선택 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션A 선택">
+
+                                    <option value="">옵션A를 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션B 선택">
+
+                                    <option value="">옵션B를 선택해주세요.</option>
+
+                                    <option value="1">옵션1</option>
+
+                                    <option value="2">옵션2</option>
+
+                                    <option value="3">옵션3</option>
+
+                                    <option value="4">옵션4</option>
+
+                                    <option value="5">옵션5</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt">옵션1/옵션2</p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                            <li>
+
+                                <p class="tlt">옵션1/옵션2</p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 4. 사은품 선택 -->
+							<div class="inner">
+								<div class="selectWrap">
+									<div class="selectUI">
+										<select id="" name="" title="상품선택">
+											<option value="">
+												상품을 선택해주세요.
+											</option>
+											<option value="11">
+												상품1
+											</option>
+											<option value="22">
+												상품2
+											</option>
+											<option disabled value="33">
+												상품3
+											</option>
+											<option value="44">
+												상품4
+											</option>
+											<option value="55">
+												상품5
+											</option>
+										</select>
+									</div>
+								</div>
+								<ul class="actionProdList">
+									<li>
+										<p class="tlt">아디다스 울트라 부스트 이큅먼트 10운동화<br>
+										화이트/레드 DA9375</p>
+										<div class="qtyPrice">
+											<div class="prodQty">
+												<input class="qtyNum" id="" name="" title="수량입력" type="tel" value="1"> <button class="btnMinus" type="button">수량감소</button> <button class="btnPlus" type="button">수량증가</button>
+											</div>
+											<p class="price"><strong>2,149,200</strong>원</p>
+										</div>
+										<p><a class="btnChoiceGift" href="#">사은품 선택하기</a></p>
+										<ul class="giftList">
+											<li>운동화 화이트/레드 DA9375</li>
+											<li>운동화 화이트/레드 DA9375</li>
+										</ul><button class="btnDel" type="button">삭제</button>
+									</li>
+								</ul>
+							</div><!-- 5. 매진된 상품 : 매진된 상품은 하단 div.btnW 에 soldout class 추가 해주시면 됩니다. -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="상품선택">
+
+                                    <option value="">상품을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt">아디다스 울트라 부스트 이큅먼트 10운동화<br>화이트/레드 DA9375</p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <ul class="giftList soldout">
+
+                                    <li>사은품1 [매진]</li>
+
+                                </ul>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 6. 단품지정 패키지형 -->
+							<!-- <div class="inner">
+
+                        <div class="actionBoxItem">
+
+                            <p class="tlt">아디다스 울트라 부스트 이큅먼트 10운동화</p>
+
+                            <div class="qtyPrice">
+
+                                <div class="prodQty">
+
+                                    <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                    <button type="button" class="btnMinus">수량감소</button>
+
+                                    <button type="button" class="btnPlus">수량증가</button>
+
+                                </div>
+
+                                <p class="price"><strong>2,149,200</strong>원</p>
+
+                            </div>
+
+                            <button type="button" class="btnDel">삭제</button>
+
+                        </div>
+
+                    </div> -->
+							<!-- 7. 단품선택 패키지형 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <h3>A상품명 2줄</h3>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션선택">
+
+                                    <option value="">옵션을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                            <h3>B상품명 2줄</h3>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션선택" disabled>
+
+                                    <option value="">옵션을 선택해주세요.</option>
+
+                                    <option value="1">옵션1</option>
+
+                                    <option value="2">옵션2</option>
+
+                                    <option value="3">옵션3</option>
+
+                                    <option value="4">옵션4</option>
+
+                                    <option value="5">옵션5</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="actionBoxItem">
+
+                            <p class="tlt"><span class="prodTlt">A상품명 최대 2줄까지 노출 </span><span class="slash">/</span><span class="opt">선택 단품명 모두 노출 선택 단품명 모두 노출</span></p>
+
+                            <p class="tlt"><span class="prodTlt">B상품명 최대 2줄까지 노출 B상품명 최대 2줄까지 노출B상품명 최대 2줄까지 노출 B상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 단품명 모두 노출 선택 단품명 모두 노출노출</span></p>
+
+ 
+
+                            <div class="qtyPrice">
+
+                                <div class="prodQty">
+
+                                    <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                    <button type="button" class="btnMinus">수량감소</button>
+
+                                    <button type="button" class="btnPlus">수량증가</button>
+
+                                </div>
+
+                                <p class="price"><strong>2,149,200</strong>원</p>
+
+                            </div>
+
+                            <button type="button" class="btnDel">삭제</button>
+
+                        </div>
+
+                    </div> -->
+							<!-- 8. 필수구매 딜상품형 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="필수상품 선택">
+
+                                    <option value="">필수상품을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" class="imgSelect" title="추가구매 선택">
+
+                                    <option value="">추가로 구매할 수 있는 상품입니다.</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택01)">컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택02)">컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택03)">컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택04)">컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt"><span class="prodTlt">필수상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 옵션명 모두 노출</span></p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 9. 필수구매 딜상품형2 : 추가상품 선택 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="필수상품 선택">
+
+                                    <option value="">필수상품을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" class="imgSelect" title="추가구매 선택">
+
+                                    <option value="">추가로 구매할 수 있는 상품입니다.</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택01)">1컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택02)">2컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택03)">3컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택04)">4컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택05)">5컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택06)">6컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt"><span class="prodTlt">필수상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 옵션명 모두 노출</span></p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                        <ul class="actionProdList addProdList">
+
+                            <li class="actionBoxItem addBox">
+
+                                <p class="tlt"><span class="prodTlt"><strong>[추가]</strong> 선택01) A상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 옵션명 모두 노출</span></p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 10. 선택구매 딜상품형 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" class="imgSelect" title="상품 선택">
+
+                                    <option value="">상품을 선택해 주세요.</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택01)">1컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택02)">2컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택03)">3컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택04)">4컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택05)">5컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택06)">6컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션 선택">
+
+                                    <option value="">옵션을 선택해주세요.</option>
+
+                                    <option value="">블랙 / 55</option>
+
+                                    <option value="">챠콜 / 55</option>
+
+                                    <option value="" disabled>멜라그린 / 55 (매진)</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt"><span class="prodTlt">선택02) 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 옵션명 모두 노출</span></p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 11. 패키지형 + 사은품 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <h3>A상품명 2줄</h3>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션선택">
+
+                                    <option value="">옵션을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                            <h3>B상품명 2줄</h3>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="옵션선택" disabled>
+
+                                    <option value="">옵션을 선택해주세요.</option>
+
+                                    <option value="1">옵션1</option>
+
+                                    <option value="2">옵션2</option>
+
+                                    <option value="3">옵션3</option>
+
+                                    <option value="4">옵션4</option>
+
+                                    <option value="5">옵션5</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt"><span class="prodTlt">A상품명 최대 2줄까지 노출 </span><span class="slash">/</span><span class="opt">선택 단품명 모두 노출 선택 단품명 모두 노출</span></p>
+
+ 
+
+                                <p class="tlt"><span class="prodTlt">B상품명 최대 2줄까지 노출 B상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 단품명 모두 노출 선택 단품명 모두 노출노출</span></p>
+
+ 
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <p><a href="#" class="btnChoiceGift" >사은품 선택하기</a></p>
+
+                                <ul class="giftList">
+
+                                    <li>운동화 화이트/레드 DA9375</li>
+
+                                    <li>운동화 화이트/레드 DA9375</li>
+
+                                </ul>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<!-- 12. 딜상품형 + 사은품 -->
+							<!-- <div class="inner">
+
+                        <div class="selectWrap">
+
+                            <div class="selectUI">
+
+                                <select name="" id="" title="필수상품 선택">
+
+                                    <option value="">필수상품을 선택해주세요.</option>
+
+                                    <option value="11">상품1</option>
+
+                                    <option value="22">상품2</option>
+
+                                    <option value="33" disabled>상품3</option>
+
+                                    <option value="44">상품4</option>
+
+                                    <option value="55">상품5</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="selectUI">
+
+                                <select name="" id="" class="imgSelect" title="추가구매 선택">
+
+                                    <option value="">추가로 구매할 수 있는 상품입니다.</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택01)">1컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택02)">2컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택03)">3컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택04)">4컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택05)">5컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                    <option value="1" data-img="../../display/img/tmp/@tmp_prod02.jpg" data-price="99,000" data-numTxt="선택06)">6컨버스 앤더슨 테일러 그리드 화이트 나이키 나이키 우먼스 에</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="actionProdList">
+
+                            <li>
+
+                                <p class="tlt"><span class="prodTlt">필수상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 옵션명 모두 노출</span></p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <p><a href="#" class="btnChoiceGift" >사은품 선택하기</a></p>
+
+                                <ul class="giftList">
+
+                                    <li>운동화 화이트/레드 DA9375</li>
+
+                                    <li>운동화 화이트/레드 DA9375</li>
+
+                                </ul>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+ 
+
+                        <ul class="actionProdList addProdList">
+
+                            <li class="actionBoxItem addBox">
+
+                                <p class="tlt"><span class="prodTlt"><strong>[추가]</strong> 선택01) A상품명 최대 2줄까지 노출</span><span class="slash">/</span><span class="opt">선택 옵션명 모두 노출</span></p>
+
+                                <div class="qtyPrice">
+
+                                    <div class="prodQty">
+
+                                        <input type="tel" id="" name="" class="qtyNum" title="수량입력" value="1">
+
+                                        <button type="button" class="btnMinus">수량감소</button>
+
+                                        <button type="button" class="btnPlus">수량증가</button>
+
+                                    </div>
+
+                                    <p class="price"><strong>2,149,200</strong>원</p>
+
+                                </div>
+
+                                <p><a href="#" class="btnChoiceGift" >사은품 선택하기</a></p>
+
+                                <ul class="giftList">
+
+                                    <li>운동화 화이트/레드 DA9375</li>
+
+                                    <li>운동화 화이트/레드 DA9375</li>
+
+                                </ul>
+
+                                <button type="button" class="btnDel">삭제</button>
+
+                            </li>
+
+                        </ul>
+
+                    </div> -->
+							<dl class="totPrice">
+								<dt>총합계</dt>
+								<dd><strong>2,149,200</strong>원</dd>
+							</dl>
+						</div>
+						<div class="btnW">
+							<!-- 매진된 상품일 경우 class soldout 추가  <div class="btnW soldout"> -->
+							<div class="default">
+								<a class="btnOrder" href="#">바로구매</a>
+							</div>
+							<div class="action">
+								<a class="btnCart" href="#">장바구니</a> <a class="btnOrder" href="#">바로구매</a>
+							</div>
+							<p class="soldoutTxt"><strong>매진</strong> 된 상품입니다</p>
+						</div>
+					</section>
+				</aside>
+			</div><!-- //mainCon -->
+		</main><!-- //contents -->
+		<footer id="footer">
+			푸터
+		</footer><!-- //footer -->
+		<aside class="actionBar">
+			<nav>
+				<ul>
+					<li class="btnHome"><a href="../../html/display/ui_mc_01m.html">홈</a></li>
+					<li class="btnMy"><a href="../../html/custord/UI_MC_22m.html">마이페이지</a></li>
+					<li class="btnDelivery"><a href="../../html/custord/UI_MC_22_01T.html">주문/배송</a></li>
+					<li class="btnRecent"><a href="#">최근 본 상품</a></li>
+				</ul>
+			</nav>
+		</aside>
+	</div><!-- //wrap -->
+	<!-- 방송알림 등록 팝업 -->
+	<article class="popWrap popBcAlarm" data-effect="fade" id="pop_bcAlarmReg" style="display:none">
+		<div class="inner confirm">
+			<header class="popHeader">
+				<h1>방송알림 등록</h1><button class="popClose" type="button">닫기</button>
+			</header>
+			<section class="popCon">
+				<ul class="noticeList">
+					<li>편성에 따라 방송 알림은 상품과 구성이 변경될 수 있으며, 방송시작 30분전 발송됩니다.</li>
+					<li>심야/새벽(20시~익일 8시)에 편성된 상품의 경우 20시 이전에 사전 발송됩니다.</li>
+					<li>해당 방송알림을 받기 위해서는 <span>SMS수신동의</span>를 하셔야 합니다.</li>
+					<li>현재 고객님의 광고성 SMS수신동의 여부가 표시되었으며 수정 시, 회원정보 &gt; SMS수신동의 설정이 변경됩니다.</li>
+					<li>수신동의 시 K 쇼핑에서 제공하는 이벤트, 쿠폰, 기획전 등 다양한 혜택을 받으실 수 있습니다.</li>
+				</ul>
+				<p class="btnMoreNotice"><a href="#"><span class="closeTxt">더보기</span><span class="openTxt">감추기</span></a></p>
+				<div class="prodInfoBg">
+					<div class="prodInfo">
+						<dl class="prod">
+							<dt class="img"><img alt="상품명" src="../../display/img/tmp/@tmp_prod01.jpg"></dt>
+							<dd class="tlt">상품명1 영역입니다. 상품명1 영역입니다. 너무 너무 너무 길어질 경우 3줄 노출 후 말줄임 합니다.</dd>
+						</dl>
+					</div>
+				</div>
+				<dl class="radList">
+					<dt>수신기간</dt>
+					<dd>
+						<ul>
+							<li><input class="btnRadM" id="pchk01" name="pchk" type="radio"><label for="pchk01">1개월</label></li>
+							<li><input class="btnRadM" id="pchk02" name="pchk" type="radio"><label for="pchk02">2개월</label></li>
+							<li><input class="btnRadM" id="pchk03" name="pchk" type="radio"><label for="pchk03">3개월</label></li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="radList">
+					<dt>수신횟수</dt>
+					<dd>
+						<ul>
+							<li><input class="btnRadM" id="cchk01" name="cchk" type="radio"><label for="cchk01">1회</label></li>
+							<li><input class="btnRadM" id="cchk02" name="cchk" type="radio"><label for="cchk02">3회</label></li>
+							<li><input class="btnRadM" id="cchk03" name="cchk" type="radio"><label for="cchk03">매번</label></li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="phone">
+					<dt>핸드폰 번호</dt>
+					<dd>010-1234-5678</dd>
+				</dl>
+				<div class="noticeBox">
+					<p>마이페이지&gt;개인정보수정에서 변경 가능합니다.</p>
+				</div>
+				<dl class="radList radList02">
+					<dt>광고성정보 SMS수신동의</dt>
+					<dd>
+						<ul>
+							<li><input class="btnRadM" id="achk01" name="achk" type="radio" value="Y"><label for="achk01">동의</label></li>
+							<li><input checked class="btnRadM" id="achk02" name="achk" type="radio" value="N"><label for="achk02">미동의</label></li>
+						</ul>
+					</dd>
+					<dd>
+						<div class="helpBoxW">
+							<div class="helpBox">
+								<p>광고성 정보 <strong>SMS 수신 동의</strong>시에만<br>
+								알림이 등록됩니다.</p>
+							</div>
+						</div>
+					</dd>
+				</dl>
+			</section>
+			<p class="btnW"><button class="popClose btnCancel" type="button">취소</button><button class="btnConfirm" type="button">등록</button></p>
+		</div>
+	</article>
+	<script>
+
+	function fn_noticeMore(obj) {
+
+	$(obj).parents('.popCon').toggleClass('open');
+
+	return false;
+
+	}
+
+	</script> <!-- 사은픔 선택 -->
+	<section class="giftChoiceBox" id="pop_giftChoiceBox" style="display:none">
+		<div class="giftCon">
+			<!-- 패키지 사은품 -->
+			<!-- <div class="giftInner">
+
+            <p class="topTxt">사은품을 <span class="cnt">4</span>개 선택해주세요.</p>
+
+            <div class="selectWrap">
+
+                <div class="box">
+
+                    <h3>팩상품명 2줄</h3>
+
+                    <div class="selectUI">
+
+                        <select name="" id="" title="사은품 선택">
+
+                            <option value="">사은품 선택</option>
+
+                            <option value="11">상품1</option>
+
+                            <option value="22">상품2</option>
+
+                            <option value="33">상품3</option>
+
+                            <option value="44">상품4</option>
+
+                            <option value="55">상품5</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="selectUI">
+
+                        <select name="" id="" title="사은품 선택">
+
+                            <option value="">사은품 선택</option>
+
+                            <option value="11">상품1</option>
+
+                            <option value="22">상품2</option>
+
+                            <option value="33">상품3</option>
+
+                            <option value="44">상품4</option>
+
+                            <option value="55">상품5</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="box">
+
+                    <h3>A팩상품명 2줄</h3>
+
+                    <div class="selectUI">
+
+                        <select name="" id="" title="추가구매 선택">
+
+                            <option value="">사은품 옵션</option>
+
+                            <option value="1">옵션1</option>
+
+                            <option value="2">옵션2</option>
+
+                            <option value="3">옵션3</option>
+
+                            <option value="4">옵션4</option>
+
+                            <option value="5">옵션5</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div> -->
+			<!-- 사은품 -->
+			<div class="giftInner">
+				<p class="topTxt">사은품을 <span class="cnt">2</span>개 선택해주세요.</p>
+				<div class="selectWrap">
+					<div class="box">
+						<div class="selectUI">
+							<select id="" name="" title="사은품 선택">
+								<option value="">
+									사은품을 선택하세요.
+								</option>
+								<option value="11">
+									사은품1
+								</option>
+								<option value="22">
+									사은품2
+								</option>
+								<option value="33">
+									사은품3
+								</option>
+								<option value="44">
+									사은품4
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+							</select>
+						</div>
+						<div class="selectUI">
+							<select id="" name="" title="옵션 선택">
+								<option value="">
+									옵션을 선택하세요.
+								</option>
+								<option value="11">
+									옵션1
+								</option>
+								<option value="22">
+									옵션2
+								</option>
+								<option value="33">
+									옵션3
+								</option>
+								<option value="44">
+									옵션4
+								</option>
+								<option value="55">
+									옵션5
+								</option>
+							</select>
+						</div>
+					</div>
+					<div class="box">
+						<div class="selectUI">
+							<select id="" name="" title="사은품 선택">
+								<option value="">
+									사은품을 선택하세요.
+								</option>
+								<option value="11">
+									사은품1
+								</option>
+								<option value="22">
+									사은품2
+								</option>
+								<option value="33">
+									사은품3
+								</option>
+								<option value="44">
+									사은품4
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+								<option value="55">
+									사은품5
+								</option>
+							</select>
+						</div>
+						<div class="selectUI">
+							<select id="" name="" title="옵션 선택">
+								<option value="">
+									옵션을 선택하세요.
+								</option>
+								<option value="11">
+									옵션1
+								</option>
+								<option value="22">
+									옵션2
+								</option>
+								<option value="33">
+									옵션3
+								</option>
+								<option value="44">
+									옵션4
+								</option>
+								<option value="55">
+									옵션5
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="btnGiftW">
+					<button class="btnLbasic btnCancel" type="button">취소</button> <button class="btnLcolorSh btnChoice" type="button">선택완료</button> <!-- 선택전에는 속성 disabled -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<script>
+
+	function fn_giftSelectUI() {
+
+	// 사은품 셀렉트 박스
+
+	   var $selectGift = $('.giftChoiceBox .selectUI select');
+
+	   $selectGift.selectmenu({
+
+	       open: function() {
+
+	           var selectWrapTop = $(this).parents('.selectWrap').scrollTop();
+
+	           $(this).next().css('top', selectWrapTop);
+
+	           $(this).parent().addClass('selectFocus');
+
+	           $('.giftChoiceBox').addClass('selOpen');
+
+	       },
+
+	       close: function() {
+
+	           $(this).next().removeAttr('style');
+
+	           $(this).parent().removeClass('selectFocus');
+
+	           $('.giftChoiceBox').removeClass('selOpen');
+
+	       },
+
+	       change: fn_selectGift
+
+	   });
+
+
+
+	   // 사은품 섹렉트박스 리스트 DOM 위치 조정 : 기본 셀렉트박스
+
+	   $selectGift.each(function() {
+
+	       var $selectMenu = $(this).selectmenu('menuWidget').parent();
+
+	       $('.giftChoiceBox .giftCon').append($selectMenu);
+
+	   });
+
+	}
+
+	// 사은품 셀렉트박스 체인지 이벤트
+
+	function fn_selectGift(event, ui) {
+
+	   //console.log(event, ui);
+
+	   //console.log(ui.item.value); // value 값
+
+	}
+
+
+
+	// 사은품 선택하기
+
+	function fn_giftChoice() {
+
+	   $('.detailActionBar').addClass('giftOpen');
+
+	   MCFront.popup.open('#pop_giftChoiceBox');
+
+	   return false;
+
+	}
+
+
+
+	// 사은품 선택 취소
+
+	function fn_giftCancel() {
+
+	   console.log('사은품 선택 취소');
+
+	   $('.detailActionBar').removeClass('giftOpen');
+
+	   MCFront.popup.close('#pop_giftChoiceBox');
+
+	}
+
+
+
+	// 사은품 선택 완료
+
+	function fn_giftConfirm() {
+
+	   console.log('사은품 선택 완료');
+
+	   $('.detailActionBar').removeClass('giftOpen');
+
+	   MCFront.popup.close('#pop_giftChoiceBox');
+
+	}
+
+
+
+	fn_giftSelectUI();
+
+	</script>
+</body>
+</html>

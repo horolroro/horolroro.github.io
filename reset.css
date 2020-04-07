@@ -1,0 +1,71 @@
+*{margin:0;padding:0;}
+*, *:before, *:after{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+/* reset */
+/* 안드로이드 탑으로 가기 안되는현상 수정 16~17줄 */
+html, body{width:100%;height:auto;background:transparent;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body {overflow-y: scroll !important;line-height:100%;color:#000;background-color:#e9ecef;width:100%;min-width:320px;-webkit-font-smoothing:antialiased;/* Fix for webkit rendering */-webkit-text-size-adjust:none;*word-break:break-all;margin:0 auto;min-width:320px;/*font-weight:600 */}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, del, dfn, em, img, ins, kbd, q, samp, small, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section, input, select {margin:0;padding:0;/*border:0;*/border-radius:0;/* for iOS */outline:0;font-size:100%;}
+h1, h2, h3, h4, h5, h6{margin:0;font-size:1rem;}
+ol, ul, li{list-style:none;}
+img, fieldset, iframe{border:0;}
+img, input, select{vertical-align:middle;}
+button{background:none;border:none;}
+textarea{resize:none;}
+a { color: inherit;} 
+p{word-break:break-word; word-wrap:break-word;}
+
+em{font-style:normal;}
+
+img{width:100%;text-indent:-99999px;}
+
+button{cursor:pointer;}
+
+table{border-collapse:separate;border-spacing:0;border-collapse:collapse;}
+caption{display:none;}
+th, td{padding:0;vertical-align:top;text-align:left;}
+hr, legend, caption{display:none;}
+
+input[type="text"], input[type="tel"], input[type="number"], input[type="password"], select{ width: 100%; padding: 10px; border: 1px solid #ddd; line-height: 100%; font-size: 14px; color: #000; height: 40px !important;-webkit-appearance: none;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;}
+
+/* placeholder */
+::-webkit-input-placeholder{color: #a3a3a3; padding-top:2px; font-size: 12px;} /* 웹킷 전용 속성 */
+textarea:-moz-placeholder, input:-moz-placeholder{color: #a3a3a3; padding-top:2px; font-size: 12px;} /* 파이어폭스 전용 속성 */
+input::-webkit-input-placeholder{color: #a3a3a3; font-size: 12px;}
+::-webkit-input-placeholder { color:#a3a3a3;}
+:-moz-placeholder { color:#a3a3a3;}
+::-moz-placeholder { color:#a3a3a3;}
+:-ms-input-placeholder { color:#a3a3a3;}
+
+/* 아이폰 대응 */
+select{ 
+	height: 40px;
+	-webkit-border-radius:0; -moz-border-radius:0; -o-border-radius:0; border-radius:0;
+	-webkit-appearance: none;
+	background-color: #fff;
+    background-image: url("../images/cm/icon/ico_barrow.png");
+    background-position : right center;
+    background-repeat: no-repeat;
+    background-size: 22px;
+    padding-right: 1.5em;
+    line-height: 100%;
+	font-size: 12px;
+}
+input[type="text"], input[type="tel"], input[type="password"], input[type="search"], textarea{
+	-webkit-appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+a, img{border:none;outline:none;padding:0;margin:0;}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover, a:focus{text-decoration:none;}
+a:active{text-decoration:none;}
+
+input:focus{position:relative;border:1px solid red;z-index:10000;} /* 2016-11-08 전체 input:text 포커싱 효과 */

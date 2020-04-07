@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<script type="text/javascript" src="https://static.kshop.co.kr/d2/emc/ec/common/js/lib/jquery-3.3.1.min.js"></script>
+ </head>
+
+ <body>
+  
+<style type="text/css">
+	body { padding-top: 40px;height: 500vh; }
+	header { position: fixed; top: 0; left: 0; width: 100%; height: 40px; background: #f5b335; transition: all 0.5s ease-in-out }
+	header[data-direction='nav-up']{transform: translateY(0%);}
+	header[data-direction='nav-down']{transform: translateY(-100%);}
+
+	.name-job {font-size: 30px;
+	display: inline-block;
+	background-color: #111;
+	vertical-align: top;
+	height: 1em;
+	overflow: hidden;
+	padding-right: 0.5em;
+	position: relative;
+	color: white;
+	}
+
+	.name-job::after {
+		content: ' ';
+		position: absolute;
+		left: 0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin-left: -1em;
+		box-shadow: inset 0 0 10px 10px #111;
+	}
+
+
+
+	.name-job-list {
+
+		animation: rolling 5s infinite reverse
+	}
+
+	@keyframes rolling {
+		0% {
+			transform: translateY(0);
+		}
+		25% {
+			transform: translateY(-20%);
+		}
+		50% {
+			transform: translateY(-40%);
+		}
+		75% {
+			transform: translateY(-60%);
+		}
+		100% {
+			transform: translateY(-80%);
+		}
+	}
+
+</style>
+<div style="background:red">
+	<div class="name-job">
+		<ul class="name-job-list">
+			<li>Computer Scientist</li>
+			<li>Programmer</li>
+			<li>Tutor</li>
+			<li>Developer</li>
+			<li>Computer Scientist</li>
+		</ul>
+	</div>
+</div>
+
+<header data-direction="nav-up">헤더</header>
+<main>메인</main>
+<footer>푸터</footer>
+
+
+<script>
+	(function(){
+		var didScroll,
+		lastScrollTop = 0,
+		minimumScrollSize = 500,
+		header = $('header');
+
+		$(document).on("scroll", function(){
+			didScroll = true;
+		});
+		
+		setInterval(function(){
+			if(didScroll){
+				hasScroll();
+				didScroll = false;
+			}
+		},200)
+
+		function hasScroll(){
+			let scrollPos = $(document).scrollTop();
+			 console.log('scrollPos==='+scrollPos)
+			 console.log('lastScrollTop==='+lastScrollTop)
+			if(scrollPos <= minimumScrollSize) return;
+			if(lastScrollTop >= scrollPos){
+				header.attr('data-direction','nav-up')
+				console.log('nav-up!!')
+			}else{
+				header.attr('data-direction','nav-down')
+			}
+			lastScrollTop = scrollPos;
+		}	
+			
+	
+	})()
+
+</script>
+
+ </body>
+</html>

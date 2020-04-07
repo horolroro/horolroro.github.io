@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content=" K쇼핑" />
+	<meta name="keywords" content="생활의 선물" />
+	<title>생활의 선물 - K쇼핑</title>
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/ec/css/common.css" />
+	<!-- script -->
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/placeholders.js"></script>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/common.js"></script>
+
+	<link href="https://ecdev2.kshop.co.kr/static/ec/css/contents.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="https://ecdev2.kshop.co.kr/static/ec/css/layout.css?201906031409">
+	
+	<link href="https://ecdev2.kshop.co.kr/static/ec/css/popup.css" rel="stylesheet" type="text/css">
+	<!--
+	<link href="./popup.css" rel="stylesheet" type="text/css">
+	-->
+
+</head>
+
+<body>
+	<div class="dim">
+		<div class="popUpWrap layer01 snsLoginWrap">
+			<div class="titArea">
+				<h3 class="fs20">휴대폰 인증</h3>
+			</div>
+			<div class="sns_cont01">
+				이름과 휴대폰번호 입력 후 인증 요청을 해주세요.
+			</div>
+
+			<form id="" method="post" action="">
+				<table class="inputTb phone">
+					<caption>휴대폰 인증</caption>
+					<colgroup>
+                        <col style="width:100px">
+                        <col style="width:auto">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>이름</th>
+							<td>
+								<input type="text" class="onlyCharSpace" id="memName" title="이름을 입력해 주세요" maxlength="50" style="width:135px; height:31px;">
+							
+								<p class="erMsg">이름을 입력해주세요.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>휴대폰번호</th>
+							<td>
+								<select title="통신사번호를 선택해 주세요." id="hpSelectNum" style="height:31px;">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="018">018</option>
+									<option value="019">019</option>
+								</select>
+								<span class="at">-</span>
+								<input type="num" id="hpNum" maxlength="9" class="byteLimit telSplit" placeholder="- 없이 입력" style="width:130px; height:31px; text-align:center;">
+								<button type="button" class="btnInputForm ml_5" id="certHp" onclick="javascript: requestPhoneAuthKey();">인증번호 요청</button>
+								<p class="erMsg" style="color:#3776b3">인증번호가 전송되었습니다.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>인증번호</th>
+							<td>
+								<input type="num" id="smsAuthKey" placeholder="인증번호 6자리" title="인증번호를 입력해 주세요" maxlength="6" style="width:135px; height:31px;">
+								<button type="button" class="btnInputForm ml_5" onclick="javascript: requestPhoneAuthKeyCheck();">확인</button>
+								<span class="remainTime">02:10 남음</span>
+							
+								<p class="erMsg">입력하신 인증 정보가 일치하지 않습니다. 확인 후 다시 입력해주세요.</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+
+			<br />
+
+			<div class="btnDftsns" style="margin-top:30px">
+				<a href="javascript: ;" class="btnDefaultForm btnWhite mr_5">취소</a>
+				<a href="javascript: ;" class="btnDefaultForm">확인</a>
+			</div>
+
+			<button type="button" class="btnClose">닫기</button>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>MouseWheel</title>
+    <style type="text/css">
+        html,body{ margin:0; padding:0; width:100%; height:100%;}
+        .box{ width:100%; height:100%; position:relative; color:#ffffff; font-size:24pt;}
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript">
+		function getElementIndex(element, range) {
+		  // 추가
+		  if (!!range) return [].indexOf.call(element, range);
+		  return [].indexOf.call(element.parentNode.children, element);
+		}
+
+
+        window.onload = function () {
+            // ex)
+			[].forEach.call(document.querySelectorAll('#wrapper div'), function(el) {
+				el.addEventListener('click', function() {
+					console.log(
+						getElementIndex(document.querySelectorAll('#wrapper div'), el)
+					);
+				});
+			});
+
+			// ex)
+			[].forEach.call(document.querySelectorAll('#wrapper div'), function(el) {
+			  el.addEventListener('click', function() {
+				console.log(
+					getElementIndex(document.querySelectorAll('.ss'), el)
+				);
+			  });
+			});
+        }
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+		<div class="ss">p1</div>
+		<div>p2</div>
+		<p>444</p>
+		<div class="ss">p3</div>
+		<div>p4</div>
+		<div class="ss">p5</div>
+	</div>
+</body>
+</html>
