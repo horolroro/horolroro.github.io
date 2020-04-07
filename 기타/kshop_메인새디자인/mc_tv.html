@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta content="K 쇼핑" name="description">
+	<meta content="K 쇼핑" name="keywords">
+	<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="telephone=no" name="format-detection"><!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+	<title>K 쇼핑</title><!-- css -->
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/common.css" rel="stylesheet" type="text/css">
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/main.css" rel="stylesheet" type="text/css">
+
+	<link href="https://ecdev2.kshop.co.kr/static/mc/css/contents.css" rel="stylesheet" type="text/css">
+
+	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/mc/css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/mc/css/slick-theme.css">
+	
+	<!-- 신규 -->
+	
+	<link href="./tvsch.css" rel="stylesheet" type="text/css">
+
+	
+	<!-- script -->
+
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-1.12.0.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.bxslider.min.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.mobile.custom.js" type="text/javascript"></script>
+	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-ui.js" type="text/javascript"></script>
+	<!--script src="https://ecdev2.kshop.co.kr/static/mc/js/common.js" type="text/javascript"></script-->
+	<script src="./swiper4.min.js" type="text/javascript"></script>
+	
+	
+
+
+</head>
+
+
+<body>
+	<div class="header" style="position: fixed;top:0;width:100%;height: 83px;border:1px solid red;background: red;z-index: 9999; ">
+		헤더
+	</div>
+	<div class="tv_sch">
+		<div class="daypick">
+			<!-- 편성표 날짜 -->
+			<div class="dayList">
+				<ul>
+					<li>
+						<a href="#">
+							<p>16</p>
+							<p>토</p>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p>17</p>
+							<p>일</p>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p>18</p>
+							<p>월</p>
+						</a>
+					</li>
+					<li class="active">
+						<a href="#">
+							<p>19</p>
+							<p>오늘</p>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p>20</p>
+							<p>수</p>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p>21</p>
+							<p>목</p>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<p>22</p>
+							<p>금</p>
+						</a>
+					</li>
+	
+				</ul>
+			</div>
+					
+			<!-- 편성표 상태 TV쇼핑/TV플러스  -->
+			<div class="schStatus">
+				<em>K SHOPPING TV쇼핑</em> 편성표입니다.
+				
+				<!-- 이부분 이미지로 교체해야 할것같습니다-->
+				<div class="prodTime ">
+					<a href="#"><span class="timer">TV플러스</span</a>
+					<a href="#"><span class="timeRemain">TV쇼핑</span></a>
+				</div>
+				<!-- //이부분 이미지로 교체해야 할것같습니다-->
+			</div>
+		</div>
+		
+		
+		<div class="schContent">
+			<!-----------------좌측 썸네일 메뉴 ----------------------------------->
+			<div class="tvScheduleCntLeft"> 
+				<div class="tvshop_nav">	
+					<div class="swiper-container tvSchedule-nav-list">
+						<ul class="swiper-wrapper">
+							<!-- LOOP-->
+							<li class="swiper-slide" id="scrollBarLi_1">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item onair">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">02:00</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+								</div>
+							</li>
+							<!-- LOOP-->
+							<li class="swiper-slide" id="scrollBarLi_2">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_3">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_4">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_5">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_6">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_7">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_8">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_9">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_10">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_11">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_12">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_13">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+							<li class="swiper-slide" id="scrollBarLi_14">
+								<div class="product_date">
+									<span>3.12<em class="week">화</em></span>
+								</div>
+								<!-- 온에어일경우 CLASS:onair 추가-->
+								<div class="product_item">
+									<div class="product_Img"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지"></div>
+									<div class="product_Name">
+										<dfn class="label">방송시간</dfn>
+										<time class="time">14:40</time>
+										<dfn class="label">상품명</dfn>
+										<span class="name">더퍼스트 유기농 노니 4박스</span>
+									</div>
+
+								</div>
+							</li>
+
+
+						</ul>
+
+
+					</div>
+				</div>
+			</div>
+			<!-----------------//좌측 썸네일 메뉴 ----------------------------------->
+
+			<!--------------------- 오른쪽 상품-------------------------------------->
+			<div class="tvSchRight">
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_1">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_2">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+
+				<!--------------- TV 플러스 영역 --------------->
+				<div class="tv-plus grid" id="prd_3">
+					<!-- 할인표식,할인율 표시 포함 아이템-->
+					<div class="prod-item">
+						<ul class="prod">
+							<li class="thumb">
+								<!-- 상품썸네일 -->
+								<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지">
+
+								<!-- 비디오버튼 -->
+								<a class="play" href="javascript:;">동영상재생</a>
+							</li>
+							<!-- 상품설명 -->
+							<li class="product_info"> 
+								<a href="#">
+									<p class="infoTxt ellipsis2"><em>[방송]</em> 
+										<span class="">[최대 80과/12kg] 엠파크 캘리포이나 자몽</span>
+									</p>
+
+									<!-- 할인 표식-->
+									<span class="flag_set">
+										<div class="flag">5</div>
+										<span class="txt">5%적립</span>
+									</span>
+
+									<span class="flag_set">
+										<div class="flag_2">5</div>
+										<span class="txt">5%쿠폰</span>
+									</span>
+
+									<!-- 가격정보 -->
+									<div class="productPrice">
+										<span class="discountRate">
+											50<span class="unit">%</span>
+										</span>
+										<span class="priceDetail">
+											<p class="basePrice"><del>99,000</del><span>원</span></p>
+											<p class="infoPrice"><strong>84,150</strong><span>원</span></p>
+											
+										</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //할인표식,할인율 표시 포함 아이템-->
+
+
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				
+			
+				<!-- 함께 방송중인 상품 더보기-->
+				<div class="onairProd">
+					<a href="javascript;" class="btn">
+						<span>함께 방송중인 상품 더보기</span><em>(1개)</em> <i class="down"></i>
+					</a>
+					<div class="onairSubProd">
+						들어올상품위치 <br/><br/><br/><br/><br/>
+						들어올상품위치 <br/><br/><br/><br/><br/>
+						들어올상품위치 <br/><br/><br/><br/><br/>
+						들어올상품위치 <br/><br/><br/><br/><br/>
+					</div>
+				</div>
+				<!--------------- //TV 플러스 영역 --------------->
+
+				<!--------------- TV 플러스 영역 --------------->
+				<div class="tv-plus grid" id="prd_4"> 
+					<!-- 할인표식,할인율 표시 포함 아이템-->
+					<div class="prod-item">
+						<ul class="prod">
+							<li class="thumb">
+								<!-- 상품썸네일 -->
+								<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/@sample_01.png" alt="상품이미지">
+
+								<!-- 비디오버튼 -->
+								<a class="play" href="javascript:;">동영상재생</a>
+							</li>
+							<!-- 상품설명 -->
+							<li class="product_info"> 
+								<a href="#">
+									<p class="infoTxt ellipsis2"><em>[방송]</em> 
+										<span class="">[최대 80과/12kg] 엠파크 캘리포이나 자몽</span>
+									</p>
+
+									<!-- 할인 표식-->
+									<span class="flag_set">
+										<div class="flag">5</div>
+										<span class="txt">5%적립</span>
+									</span>
+
+									<span class="flag_set">
+										<div class="flag_2">5</div>
+										<span class="txt">5%쿠폰</span>
+									</span>
+
+									<!-- 가격정보 -->
+									<div class="productPrice">
+										<span class="discountRate">
+											50<span class="unit">%</span>
+										</span>
+										<span class="priceDetail">
+											<p class="basePrice"><del>99,000</del><span>원</span></p>
+											<p class="infoPrice"><strong>84,150</strong><span>원</span></p>
+											
+										</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //할인표식,할인율 표시 포함 아이템-->
+
+
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+
+				<!-- 함께 방송중인 상품 더보기-->
+				<div class="onairProd">
+					<a href="javascript;" class="btn">
+						<span>함께 방송중인 상품 더보기</span><em>(1개)</em> <i class="down"></i>
+					</a>
+					<div class="onairSubProd">
+						들어올상품위치 <br/><br/><br/><br/><br/>
+						들어올상품위치 <br/><br/><br/><br/><br/>
+						들어올상품위치 <br/><br/><br/><br/><br/>
+						들어올상품위치 <br/><br/><br/><br/><br/>
+					</div>
+				</div>
+				<!--------------- //TV 플러스 영역 --------------->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_5">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_6">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_7">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_8">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_9">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_10">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_11">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_12">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_13">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+
+				<!-- TV SHOP-->
+				<div class="tvshop grid" id="prd_14">
+					<!-- 방송시간 -->
+					<div class="onAirTime">16:40</div>
+					
+					<!-- 상품 이미지,링크영역-->
+					<div class="product_thumb">
+						<!-- 할인표시 -->
+						<div class="flagPos">
+							<div class="flag">5%<br/>적립</div>
+							<div class="flag_2">200,000원<br/>할인</div>
+						</div>
+
+						<!-- 상품 링크 -->
+						<a class="prodLink" href="javascript:;" id="vod"><img src="http://ecdev2.kshop.co.kr/static/mc/images/main/tvsch/tvs_banner.jpg" alt="상품이미지"></a>
+		
+						<!-- 비디오버튼 -->
+						<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">
+							<span class="playTime">00:27:52</span>
+						</a>
+						
+						<div class="player" id="playerTvtvMovieMain">
+							<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
+								<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
+							</video>
+							<div class="videoControl">
+								<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
+								<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
+								<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
+								<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
+							</div>
+							<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
+								<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
+							</a>
+						</div>
+					</div>
+		
+					<!-- 상품정보영역 -->
+					<div class="product_info">
+						<a href="#">
+							<!-- 가격 -->
+							<div class="priceWrap">
+								<span class="price">8,888,000<em>원</em></span>
+								<span class="priceReal">9,990,000<em></em>원</em></span>
+							</div>
+							<!-- 상품설명 -->
+							<p class="infoTxt ellipsis">
+								<span><em>[방송]</em> HC 엑스퍼트 기초세트 더블구성 DPRM 더블구성 더블 엑스퍼트 기초세트 더블더블구성 더블</span>
+							</p>
+		
+							
+						</a>
+					</div>
+		
+					<!-- 버튼:TV편성표,바로주문-->
+					<ul class="tvnorder">
+						<li><a href="#"><span>방송알림</span></a></li>
+						<li><a href="#">바로주문</a></li>
+					</ul>
+				</div>
+				<!-- TV SHOP-->
+			</div>
+			<!--------------------- //오른쪽 상품-------------------------------------->
+			
+		</div><!-- //schContent -->
+		
+
+		<script>
+			
+			$(document).ready(function() {
+				var moveToClickedNumber = function(swiper){swiper.swipeTo(swiper.clickedSlideIndex)}
+				var targetNav = $('.tvSchedule-nav-list');
+				var tvRightDiv = $('.tvSchRight>div');
+				var totalSlides = $('.swiper-slide:not(.swiper-slide-duplicate)').length;
+				var product_item = $('.tvshop_nav .product_item');
+				var movePosY = 0
+				var headerH = $(".header").height();
+				var scrollTimeout = null;
+				var winH = window.innerHeight;
+
+				$('.tvScheduleCntLeft').css({height:winH})
+			
+				var navSwiper = new Swiper('.swiper-container', {
+					direction: 'vertical',
+					slidesPerView: "auto",
+					initialSlide: 0,
+					freeMode: false,
+					calculateHeight: true,
+					loop: false,
+					autoplay: false,
+					resizeReInit: false,
+					autoResize: false,
+					speed: 500,
+					clickable: true,
+					slideToClickedSlide : true,
+					stopOnLastSlide: true,
+					on: {
+						init: function () {
+							$('.swiper-slide-active').addClass("on");
+						},
+						click:function(index){
+							var idx = $(navSwiper.clickedSlide).index()+1;
+							var offset = $("#prd_"+ idx).offset().top;
+							var movePosY = Number($(".daypick").height() + headerH);
+							$( 'html, body' ).animate( { scrollTop : offset - movePosY},100);
+							//$("body").scrollTop($("#prd_" + idx).offset().top - movePosY - 10);
+							console.log(offset = $("#prd_"+ idx).offset().top)
+							console.log(idx)
+
+							//$(swiper.slides).removeClass("on");
+							//$(swiper.clickedSlide).addClass("on");
+
+							return false;
+						}
+					}
+				});
+				
+
+
+
+			})
+
+			//스크롤 이동
+			
+			$(window).scroll(function(){
+				scrollBarOn();
+			});
+
+			function scrollBarOn(){
+				var scrollList = jQuery('.grid');
+				var dayPick = $(".daypick").height();
+				var headerH = $(".header").height();
+				
+				scrollList.each(function(idx){
+					var cateNum = idx+1;
+
+					if(jQuery(window).scrollTop() > jQuery('#prd_' + cateNum).offset().top - dayPick - headerH -76){
+						
+						$('.swiper-slide').removeClass('on')
+						$('#scrollBarLi_' + cateNum).addClass('on');
+					}
+				});
+			}
+
+			$(function() {
+				//함께 방송중인 상품 더보기
+				$('.onairProd .btn').on('click',function(e){
+					var onairProd = $(this).parent();
+					
+					e.preventDefault()
+					$(this).parent().toggleClass('active')
+
+					if(onairProd.hasClass('active')){
+						onairProd.find('.btn>span').text('닫기')
+						$(this).find('em').hide();
+					}else{
+						onairProd.find('.btn>span').text('함께 방송중인 상품 더보기')
+						$(this).find('em').show();
+					}
+					
+				});
+			});
+
+			
+
+			
+
+		</script>
+		
+
+</body>
+</html>

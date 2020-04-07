@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content=" K쇼핑"/>
+    <meta name="keywords" content="생활의 선물"/>
+	<title>생활의 선물 - K쇼핑</title>
+	<!-- css -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    <!-- script -->
+    <script type="text/javascript" src="../js/jquery-1.12.0.js"></script>
+	<script type="text/javascript" src="../js/placeholders.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+
+	
+</head>
+<body>
+	<style type="text/css">
+		.popUpWrap.pop-incorrect-info{padding:43px 50px 0 50px !important;}
+		.pop-incorrect-info{position: fixed;left:50%;transform: translate(-50%, 0);width:720px;height:510px;border:1px solid #333;background: #fff;}
+		.pop-incorrect-info > h3{font-size:28px;color:#4a4a4a}
+		.pop-incorrect-info .incorrect-content ul{ margin-top:22px}
+		.pop-incorrect-info .incorrect-content ul > li{position: relative;font-size:14px;color: #818080;line-height:24px;padding-left:8px}
+		.pop-incorrect-info .incorrect-content ul > li > strong{color: #ff0000;font-weight:normal}
+		.pop-incorrect-info .incorrect-content ul > li:before {content:'';display: inline-block;width:4px;height:4px;position: absolute;left: 0;top:9px;background-color:#818080;vertical-align: middle;border-radius:100%;}
+		.pop-incorrect-info .btnClose {position: absolute;top: 24px;right: 24px; width: 19px; height: 19px;text-indent: -9999px;}
+		.pop-incorrect-info table{width: 100%;border-top:1px solid #e1e4e7;margin-top:22px}
+		.pop-incorrect-info table th{font-weight: normal;color:#575757;font-size:16px;padding-left:19px;}
+		.pop-incorrect-info table th>em{color:#ff0000;vertical-align: -2px;margin-right: 2px;}
+		.pop-incorrect-info table th,
+		.pop-incorrect-info table td{line-height:39px;padding-top: 8px;}
+		.pop-incorrect-info table input{width:100%;height:39px;padding-left: 14px;border:1px solid #e1e4e7;font-size:15px;}
+		.pop-incorrect-info table textarea{width:100%;height:168px;padding:14px 0 8px 14px;border:1px solid #e1e4e7;color:#c3c3c3;font-size:15px}
+		.pop-incorrect-info .incorrect-content .btnDftFormArea{text-align: center}
+		.pop-incorrect-info .incorrect-content .btnDftFormArea > a{width:160px;padding: 11px 22px;}
+		.pop-incorrect-info .incorrect-content > p {margin:8px 0;;padding-top:8px; border-top:1px solid #e1e4e7;font-size:14px;color:#a5a5a5;text-align:right}
+		.pop-incorrect-info .incorrect-content > p > em{color:#ff0000;vertical-align: -2px;margin-right: 2px;}
+
+		.prod-incorrecect-link{position: relative;border: 1px solid #ccc;padding:14px 19px;}
+		.prod-incorrecect-link ul li{position: relative;padding-left:28px;font-size: 14px;color:#959595;text-align: left;}
+		.prod-incorrecect-link ul li:before{content:'';display: inline-block; width:20px;height:20px;position: absolute;left: 0;top:-3px;vertical-align: middle;background: url(../images/cm/icon/ico_incorrecect.gif) no-repeat 0 0;}
+		.prod-incorrecect-link > a{position: absolute;top:6px;right:20px;width: 110px;font-family: 'notokr';padding: 7px 0;text-align: center;font-size: 14px;color: #a1a1a1;background-color: #fff;border: 1px solid #cdcdcd;}
+		.prod-incorrecect-link > a:hover{color: #fff;background-color: #545454;border: 1px solid #545454;}
+	</style>
+	<script> 
+		$(document).ready(function(){
+			$(".prod-incorrecect-link a").click(function(){
+				$(".dim.pop-incorrect").css("display", "block");
+				return false;
+			});
+			$(".pop-incorrect .btn_close").click(function(){
+				$(".dim.pop-incorrect").css("display", "none");
+				return false;
+			});
+		});
+	</script>
+	<div id="contentWrap" class="bodyWrap">
+
+
+		<!-- 2018-11 오류신고 추가 -->
+		<div class="prod-incorrecect-link">
+			<ul>
+				<li>상품 정보에 문제가 있나요?</li>
+			</ul>
+			<a href="#none">신고하기 > </a>
+		</div>
+		<!-- //2018-11 오류신고 추가 -->
+
+
+	</div>
+
+	<!-- S:: 상품정보 오류신고 팝업 -->
+	<div class="dim pop-incorrect" style="display:none">
+		<div class="popUpWrap pop-incorrect-info">
+			<h3>상품정보 오류 신고</h3>
+			<div class="incorrect-content">
+				<ul>
+					<li>상품정보에 문제가 있다면 신고해주세요.</li>
+					<li>이곳에 남겨진 문의에는 답변이 제공되지 않습니다.</li>
+					<li>상품 문의는 <strong>상품 문의하기</strong>, 주문 및 그 외 문의는 <strong>1:1 문의하기</strong>를 이용해주세요.</li>
+				</ul>
+
+				<table>
+					<caption>상품정보 오류 입력,제목,내용</caption>
+					<colgroup>
+						<col style="width:73px">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row"><em>*</em>제목</th>
+							<td>
+								<input type="text" id="inputTxt03" placeholder="30자 이내로 입력해 주세요.">
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><em>*</em>내용</th>
+							<td>
+								<textarea title="오류신고내용입력" maxlength="500" placeholder="500자 이내로 입력해 주세요.&#13;&#10;&#13;&#10;오류가 있는 부분(상품이미지/브랜드/상품명/카테고리/구매옵션/상품상세 등)을&#13;&#10;&#13;&#10;상세하게 적어주실 경우 더욱 신속한 처리가 가능합니다."></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p><em>*</em>필수 입력 항목</p>
+				<div class="btnDftFormArea">
+					<a href="#none" class="btnDefaultForm">등록하기</a>
+				</div>
+			</div>
+
+			<button type="button" class="btnClose">닫기</button>
+		</div>
+	</div>
+	<!-- E:: //상품정보 오류신고 팝업 -->
+</body>
+</html>

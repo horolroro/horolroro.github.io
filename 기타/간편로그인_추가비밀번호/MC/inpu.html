@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내."/>
+<meta name="keywords" content="K 쇼핑"/>
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+<meta property="og:title" content="K쇼핑" />
+<meta property="og:site_name" content="K쇼핑" />
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://wwwstg.kshop.co.kr"  />
+<meta property="og:description" content="생활의선물,  K쇼핑" />
+<meta property="og:image" content="http://static.kshop.co.kr/mc/images/main/main_logo_share.png" />
+<title>K 쇼핑</title>
+
+<script type="text/javascript" src="http://ecdev2.kshop.co.kr/static/mc/js/statisticmc.js"></script> 
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="../basic.css?201904021332"/>
+<link rel="stylesheet" type="text/css" href="../common.css?201904021332"/>
+<link rel="stylesheet" type="text/css" href="../main.css?201904021332"/>
+
+<link rel="stylesheet" type="text/css" href="../contents.css?201904021332"/>
+
+
+
+<!-- script -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<!--
+<link rel="stylesheet" type="text/css" href="./contents.css"/>
+-->
+<link rel="stylesheet" type="text/css" href="http://ecdev2.kshop.co.kr/static/mc/css/textsizeup.css?201904051628">
+
+</head>
+<body>
+    <div class="noneGnb3">
+        <div id="header" style="position: relative;">
+            <div class="normalTitle" style="position: relative;">
+				<a href="javascript: goBack();" class="btnBack noneText">뒤로</a>
+				<h1>2차비밀번호 해제</h1>
+			</div>
+        </div>
+    
+        <div id="content">
+
+
+            <!-- START :2차 비밀번호 해제-->
+            <div class="sl_wrap snsLoginWrap">
+
+                <div class="sl_loginWrap">
+                    <div class="inWrap">
+                        <div class="customer-info">
+                            <p>
+                                2차비밀번호를 해제하시면,<br/>
+                                SNS 로그인 시, 더 이상 2차비밀번호를<br/>
+                                묻지 않습니다.
+                                <br/><br/>
+                                해제를 위해 등록하신 숫자 6자리를<br/>입력해주세요.
+                            </p>
+                        </div>
+
+                        <form id="loginNumberloginForm">
+                            <input type="hidden" id="custNo" name="custNo" value="201903814821"/>
+                            <input type="hidden" id="newLoginNumber" name="loginNumber" value="" />
+                            <input type="hidden" id="mobLoginYn" name="mobLoginYn" value="Y" />
+                            <input type="hidden" id="loginNumberAuthYn" name="loginNumberAuthYn" value="" />
+                            <input type="hidden" id="mode" name="mode" value="" />
+                            <input type="hidden" name="forwardUrl" id="forwardUrl" value="/" />
+                            <input type="hidden" name="type" id="type" value="login" />
+                            <input type="hidden" name="orderTmpSeq" id="orderTmpSeq" value="" />
+                            
+                            <fieldset id="newLoginNm" class="snsPwdNumFieldset">
+                                <legend>2차 비밀번호 입력</legend>
+                                <div id="newLoginNm" class="snsPwdNumInput" tabindex="-1">
+                                    <input type="number" id="new_fst" tabindex="1" data-index="0" min="0" max="9" maxlength="1" required  autofocus />
+                                    <input type="number" id="new_sec" tabindex="2" data-index="1" min="0" max="9" maxlength="1" required  />
+                                    <input type="number" id="new_thd" tabindex="3" data-index="2" min="0" max="9" maxlength="1" required  />
+                                    <input type="number" id="new_fou" tabindex="4" data-index="3" min="0" max="9" maxlength="1" required  >
+                                    <input type="number" id="new_fiv" tabindex="5" data-index="4" min="0" max="9" maxlength="1" required  />
+                                    <input type="number" id="new_six" tabindex="6" data-index="5" min="0" max="9" maxlength="1" required  />
+                                </div>
+                                <p class="erMsg" id="errorMsgLnNew">경고문고</p>
+
+                            </fieldset>
+                            
+                        </form>
+
+                        <ul class="twobtn">
+                            <li><a href="javascript:;"><span>취소</span></a></li>
+                            <li><a href="javascript:;"><span>확인</span></a></li>
+                        </ul>
+
+                        <div class="bx_findPassword">
+                            <p>2차비밀번호 6자리가 기억나지 않으세요?</p>
+                            <a href="javascript:;">2차비밀번호찾기</a>
+                        </div>
+                    </div>
+                    <!-- END::inWrap-->
+                </div>
+            </div>
+            <!-- END :sl_wrap-->
+
+			<!-- 알림창 -->
+			<div class="darken popupDim" style="display: none;">
+
+				<div class="snsMsgLayer sns_guide">
+					자동 로그인을 선택하시면<br/>
+					로그인번호 6자리 입력 없이<br/>
+					서비스를 이용할 수 있습니다.
+					<ul>
+						<li><a href="#" class="layer_close">안 할래요</a></li>
+						<li><a href="#">네 할게요</a></li>
+					</ul>
+				</div>
+			
+			</div>
+
+			<script>
+				$(".layer_close").click(function(){
+					$(".popupDim").css("display", "none");
+					return false;
+				});
+			</script>
+        </div>
+        <!-- END:#content-->
+        
+        <footer>
+            <div class="footer">
+                <div class="utilMenu">
+                    <a href="javascript:goSchem('sub1','https://mdev.kshop.co.kr/customer/custCentermc/termsList');">이용약관</a>
+                    <a class="privacy_title" href="javascript:goSchem('sub1','https://mdev.kshop.co.kr/customer/custCentermc/privacy');">개인정보처리방침</a>
+                    <a href="javascript:goSchem('sub1','https://mdev.kshop.co.kr/customer/custCentermc/main');">고객센터</a>
+                    <a href="javascript:goSchem('sub1','https://mdev.kshop.co.kr/customer/customermc/employeeInfo');">임직원인증</a>
+                </div>
+                <dl class="address">
+                    <dt>케이티하이텔(주) 대표이사 김철수</dt>
+                    <dd>07071 서울시 동작구 보라매로5길 23 삼성보라매 옴니타워</dd>
+                    <dd>사업자등록번호 : 211-81-79649</dd>
+                    <dd>통신판매업신고 : 04-680-179호</dd>
+                    <dd>개인정보보호책임자 : 정훈 | 호스팅 서비스 : 케이티하이텔(주)</dd>
+                    <dd><span class="health">건강기능 : 제1151호</span> 의료기기 : 제896호</dd>
+                    <dd class="webPhone" style="">고객센터 : <a href="tel:18992211"> <strong onclick="goTel();">1899-2211</strong></a> | 기타문의 : kshop@kt.com</dd>
+                    <dd class="appPhone" style="display:none">고객센터 : <strong onclick="goTel();">1899-2211</strong> | 기타문의 : kshop@kt.com</dd>
+                </dl> 
+            <div id="cookieZone">
+            </div>
+                <div class="companyInfo">
+                    <a href="javascript:openOtherSite('http://www.ftc.go.kr/info/bizinfo/communicationView.jsp?apv_perm_no=2004319009930200684&amp;area1=&amp;area2=&amp;currpage=1&amp;searchKey=04&amp;searchVal=2118179649&amp;stdate=&amp;enddate=');">사업자정보확인</a>
+                    <a href="javascript:openOtherSite('http://imgs.kshop.co.kr/warrant/pic_warranty_20160422.jpg');">신한은행채무지급보증</a>
+                </div>
+                        <div class="copyright">ⓒ K 쇼핑</div>
+                <div class="sns">
+                    <a href="javascript:openOtherSite('http://blog.naver.com/kthcorp');" class="btnSns1"></a>
+                    <a href="javascript:openOtherSite('https://www.facebook.com/kt.kshopping/');" class="btnSns2"></a>
+                    <a href="javascript:openOtherSite('http://post.naver.com/kthcorp');" class="btnSns3"></a>
+                </div>
+            </div>
+        </footer>
+    </div><!-- END:noneGnb3-->
+    
+
+
+</body>
+        
+
+</html>

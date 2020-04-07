@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	/* RESET */
+
+	.cate ul{display: flex; justify-content: space-between;; align-items: center;white-space: nowrap;overflow-x: auto;}
+	.cate ul li a{padding: 10px; font-size: 13px; display: inline-block;}
+	.cate ul li.active a{background: #000;color: #fff;}
+
+ 	.nav{position: relative;}
+	.tab{margin-top:50px}
+	.tab .nav ul {display: flex;overflow-x: scroll; overflow-y: hidden;flex-wrap: nowrap !important;align-items: center;margin-left: -10px;}
+	/* 스크롤가림*/
+	.cate ul::-webkit-scrollbar,
+	.tab .nav ul::-webkit-scrollbar {display: none;}
+	.tab .nav ul > li a{display: block;border-bottom: 1px solid #000;font-size: 14px;}
+	.tab .nav ul > li a.active{font-weight: bold;}
+	.tab .nav ul > li{padding:0 10px}
+	.tab .nav ul > li:first-child{border-right: 1px solid red;}
+	.tab .nav > li a.active{display: block;}
+	.tab .nav > li a:hover {
+		text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+	}
+	.tab-content{position: relative;}
+	.tab-content .tab_cont{ opacity:0; position:absolute;top:20px;width: 270px;transition: 0.5s;}
+	.tab-content .tab_cont.active{opacity:1;z-index: 9;}
+	.tab-content .tab_cont li em{font-weight: bold; width: 26px; border: 1px solid red; display: inline-block; text-align: center; margin-right: 5px;}
+	.tab-content .tab_cont li:hover{background: #104138; color: #fff;}
+
+</style>
+
+<body>
+	<div class="cate">
+		<ul>
+			<li class="active"><a href="#">전체</a></li>
+			<li><a href="#">스킨케어</a></li>
+			<li><a href="#">팩/마스크</a></li>
+			<li><a href="#">페이스<br>메이크업</a></li>
+			<li><a href="#">컬러 메이크업</a></li>
+			<li><a href="#">클렌징</a></li>
+			<li><a href="#">바디</a></li>
+			<li><a href="#">네일</a></li>
+			<li><a href="#">헤어</a></li>
+			<li><a href="#">방향</a></li>
+			<li><a href="#">남성</a></li>
+			<li><a href="#">기획세트</a></li>
+		</ul>
+	</div>
+	<div class="tab">
+		<div class="nav">
+			<ul class="tab-menu">
+				<li><a href="#tab-1" class="active">실시간온라인판매랭킹</a></li>
+				<li><a href="#tab-2">실시간VIEW랭킹</a></li>
+			</ul>
+		</div>
+
+		<div class="tab-content">
+			<div id="tab-1" class="tab_cont active">
+				<ul>
+					<li><a href="#"><em>1</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>2</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>3</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>4</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>5</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>6</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>7</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>8</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>9</em>브라이트닝 포어세럼</a></li>
+					<li><a href="#"><em>10</em>브라이트닝 포어세럼</a></li>
+				</ul>
+			</div>
+			<div id="tab-2" class="tab_cont">
+				e.preventDefault();
+				var target = this;
+				var targetLeft = this.offsetLeft;
+				var targetWidth = this.offsetWidth ;
+				var oriHref = e.target.getAttribute('href');
+				var targetHref = oriHref.replace('#','');
+				//console.log('targetHref = '+ targetHref)
+				//console.log(this)
+				console.log(targetWidth)
+				high.style.width = targetWidth + 'px';
+				high.style.left = targetLeft + 'px';
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+<script>
+	$(function(){
+		function tabMenu(elm){
+			elm.on('click', function(){
+				var targetHash = $(this).attr('href');
+				$('.tab-menu a').removeClass('active');
+				$('.tab-content > div').removeClass('active');
+				$(this).addClass('active')
+				$(targetHash).addClass('active')
+			});
+		}
+		tabMenu($('.tab-menu a'))
+
+		$('.cate ul li').on('click', function(){
+			$('.cate ul li').removeClass('active');
+			$(this).addClass('active')
+		});
+	});
+</script>
+
+ 
+</html>

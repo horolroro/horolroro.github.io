@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+ </head>
+
+ <body>
+  
+<style type="text/css">
+	img{max-width: 100%;}
+	.menu{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid #eee;
+		border-radius: 5px;
+		background: #eee;
+		padding: 20px;
+	}
+	.menu-btn{
+		display: inline-flex;
+		align-items: center;
+	
+		margin: 0 0.5em;
+		padding: 0.5em 1em 0.5em 1em;
+		border: 5px solid #fff;
+		border-radius: 10px;
+		font: 900 1.2rem NotoSans;
+		background: yellow;
+	}
+	.btn-label{margin-left: 10px;}
+	.icon{width:30%}
+</style>
+
+<div class="menu">
+	<!-- <button class="menu-btn" data-id="1">
+		<img src="./images/ilbuni.gif" class="icon" >
+		<span class="btn-label">일분이 1</span> 
+	</button>
+	<button class="menu-btn" data-id="2">
+		<img src="./images/ilbuni.gif" class="icon" >
+		<span class="btn-label">일분이 2</span> 
+	</button>
+	<button class="menu-btn" data-id="3">
+		<img src="./images/ilbuni.gif" class="icon" >
+		<span class="btn-label">일분이 3</span> 
+	</button> -->
+
+</div>
+
+<script>
+	//이벤트 위임
+	//const btns = document.querySelectorAll('.menu-btn');
+
+	/* 권장하지 않음
+	function clickHandler(){
+		console.log(this)
+	}
+
+	for(let i=0; i < btns.length; i++){
+		btns[i].addEventListener('click', clickHandler)
+	}
+	*/
+
+	//이벤트 위임 리스너방법//
+	//장점:동적으로 생성될때도 작동가능
+	
+	//1.CSS = > .icon{pointer-events: none} 단점은.많이 복잡한경우 안됨
+	//2.script
+	const menu = document.querySelector('.menu');//각기 버튼의 상의 div
+
+	function clickHandler(event){
+		//console.log(event.currentTarget)//this 와 같음
+		
+		//커스텀 data~~ 얻는방법 2가지 => dataset
+		//console.log(event.target.getAttribute('data-id'))
+		//console.log(event.target.dataset.id)
+
+		let elem = event.target;
+
+		// menu-btn을 가지고 있지 않을경우,
+		// while 쓰는 이유는  menu-btn 이 나타낼때까지 체크하기 위해서
+		while(!elem.classList.contains('menu-btn')){
+			elem = elem.parentNode //부모노드 할당 갖고 있으면 while 빠져나옴
+			//바깥영역 눌렀을때 처리
+			if(elem.nodeName == 'BODY'){
+				elem = null;
+				return;//return 함수종료
+
+			}
+		}
+
+		console.log(elem.dataset.id)
+	}
+
+
+	menu.addEventListener('click' , clickHandler)
+
+	window.addEventListener('click', () =>{
+		const htmlStr = `
+		<button class="menu-btn" data-id="1">
+			<img src="./images/ilbuni.gif" class="icon" >
+			<span class="btn-label">일분이 1</span> 
+		</button>
+		<button class="menu-btn" data-id="2">
+			<img src="./images/ilbuni.gif" class="icon" >
+			<span class="btn-label">일분이 2</span> 
+		</button>
+		<button class="menu-btn" data-id="3">
+			<img src="./images/ilbuni.gif" class="icon" >
+			<span class="btn-label">일분이 3</span> 
+		</button>
+		`
+		menu.innerHTML = htmlStr;
+	})
+
+</script>
+ </body>
+</html>

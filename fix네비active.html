@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<script type="text/javascript" src="https://static.kshop.co.kr/d2/emc/ec/common/js/lib/jquery-3.3.1.min.js"></script>
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+ </head>
+
+ <body>
+
+<style type="text/css">
+	body, html {margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+	}
+	.menu {
+		width: 100%;
+		height: 75px;
+		background-color: rgba(0, 0, 0, 1);
+		position: fixed;
+		background-color:rgba(4, 180, 49, 0.6);
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+		z-index: 100;
+	}
+	.light-menu {
+		width: 100%;
+		height: 75px;
+		background-color: rgba(255, 255, 255, 1);
+		position: fixed;
+		background-color:rgba(4, 180, 49, 0.6);
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+		z-index: 100;
+		
+	}
+	#menu-center {
+		width: 980px;
+		height: 75px;
+		margin: 0 auto;
+	}
+	#menu-center ul {
+		margin: 15px 0 0 0;
+	}
+	#menu-center ul li {
+		list-style: none;
+		margin: 0 30px 0 0;
+		display: inline;
+	}
+	.active {
+		font-family:'Droid Sans', serif;
+		font-size: 14px;
+		color: #fff;
+		text-decoration: none;
+		line-height: 50px;
+	}
+	a {
+		font-family:'Droid Sans', serif;
+		font-size: 14px;
+		color: black;
+		text-decoration: none;
+		line-height: 50px;
+	}
+	#home {
+		background-color: grey;
+		height: 50%;
+		width: 100%;
+		overflow: hidden;
+		background-image: url(images/home-bg2.png);
+	}
+	#portfolio {
+		position: relative;
+		background-image: url(images/portfolio-bg.png);
+		height: 100%;
+		width: 100%;
+	}
+	#about {
+		background-color: blue;
+		height: 50%;
+		width: 100%;
+	}
+	#contact {
+		background-color: red;
+		height: 100%;
+		width: 100%;
+	}
+</style>
+
+<div class="m1 light-menu">
+    <div id="menu-center">
+        <ul>
+            <li><a class="active" href="#home">Home</a>
+
+            </li>
+            <li><a href="#portfolio">Portfolio</a>
+
+            </li>
+            <li><a href="#about">About</a>
+
+            </li>
+            <li><a href="#contact">Contact</a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="home" class="page-section"></div>
+<div id="portfolio" class="page-section"></div>
+<div id="about" class="page-section" style="position: relative;" >
+	<div class="portfolio_child" style="width:100px;height:100px;position: absolute;top:100px;border:1px solid red">a</div>
+</div>
+<div id="contact" class="page-section"></div>
+
+<script>
+	$(document).ready(function () {
+		$(document).on("scroll", onScroll);
+
+		// console.log($('#contact').position().top)
+		//smoothscroll
+		$('a[href^="#"]').on('click', function (e) {
+			
+			e.preventDefault();
+			$(document).off("scroll");
+			
+			$('a').each(function () {
+				$('a').removeClass('active');
+			})
+			$(this).addClass('active');
+		
+			var target = this.hash,
+			//또는
+			//var target = $(this).attr("href");
+			$target = $(target);
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top
+			}, 500, 'swing', function () {
+				window.location.hash = target;
+				$(document).on("scroll", onScroll);
+			});
+		});
+	});
+
+	//네비메뉴에 엑티스 클래스추가
+	function onScroll(event){
+		var scrollPos = $(document).scrollTop();
+
+		// ##1번방법##
+		// $('#menu-center a').each(function () {
+		// 	var currLink = $(this);
+		// 	console.log(currLink)
+		// 	var refElement = $(currLink.attr("href"));
+		// 	console.log('refElement.position().top=='+refElement.position().top,'   scrollPos=='+scrollPos)
+		// 	//console.log(currLink.attr("href"))
+		// 	// if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+		// 	if (refElement.position().top <= scrollPos) {
+		// 		 console.log('1===refElement.position().top'+refElement.position().top)
+		// 		// console.log('2===scrollPos'+scrollPos)
+		// 		// console.log('3===refElement.height() '+ refElement.height())
+		// 		$('#menu-center ul li a').removeClass("active");
+		// 		currLink.addClass("active");
+		// 	}
+		// 	else{
+		// 		currLink.removeClass("active");
+		// 	}
+		// });
+
+		//##2번 방법##
+		$('.page-section').each(function(i){
+			if($(this).position().top <= scrollPos){
+				$('#menu-center a.active').removeClass('active');
+				$('#menu-center a').eq(i).addClass('active')
+			}
+
+
+		})
+	}
+
+</script>
+
+ </body>
+</html>

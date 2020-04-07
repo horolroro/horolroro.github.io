@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	/* RESET */
+
+	body{height: 300vh;}
+
+	.wrap{position: relative; max-width: 1280px; min-width: 1024px; margin: 0 auto;}
+
+	.floatingBanner {position: absolute;top: 80px; right: 50px;z-index: 2;}
+	.floatingBanner .bnr_off {
+		display: block;
+		width: 168px; height: 168px;
+		box-shadow: 5px 5px 10px 5px rgba(0,0,0,.2);
+		border: 2px solid #104138;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	.floatingBanner .bnr_off img {width: 170px; height: 170px;}
+	.floatingBanner .bnr_off{position: absolute;top:0; right: 0; }
+	.floatingBanner .bnr_on{position: absolute; top: 0; right: 0; opacity: 0; transform: scale(0);transform-origin: 100% 0%;}
+	.floatingBanner:hover .bnr_on{opacity: 1; transform: scale(1);transition: 0.6s;transition-timing-function: cubic-bezier(.25,.75,.5,1.25) }
+
+	/*  프로그래스바 */
+	.progress-bar-con{
+		position: fixed;
+		left: 0;
+		top:0;
+		width: 100vw;
+		height: 5px;
+		background: #555;
+		z-index: 100
+	}
+	.progress-bar{
+		width:0;
+		height:100%;
+		background: #00a8ff
+	}
+</style>
+
+<body>
+	<div class="progress-bar-con">
+		<div class="progress-bar"></div>
+	</div>
+	<div class="wrap">
+		<div class="imgWrap">
+			<img src="https://images.innisfree.co.kr/upload/mainMng/BM03_62_left_pc.jpg" alt="" onerror="this.src='/kr/ko/resources/error/img/1280X640.jpg'">
+		</div>
+		<div class="floatingBanner">
+			<div class="bnr_off">
+					<img src="https://images.innisfree.co.kr/upload/banner/R06_35_0.jpg" alt="APP페스타 쇼핑지원금 5천원" width="101" height="129">
+			</div>
+
+			<div class="bnr_on">
+				<a href="https://www.innisfree.com/kr/ko/EventView.do?eventSeq=1316&procStat=2">
+					<img src="https://img.1300k.com/screen/0003/121/scr_121_254431.png" width="840" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+<script>
+	$(function(){
+		$('.bnr_off').on('mouseenter', function(){
+			let bnr_on_width = $('.bnr_on').find('img').attr('width');
+			$('.bnr_on').css({width: bnr_on_width + 'px'})
+		}) 
+	})
+
+	$(function(){
+		let maxScrollValue;
+
+		$(document).on("scroll", function(){
+			scroller();
+		})
+
+		function scroller(){
+			let st = $(window).scrollTop();
+
+			maxScrollValue = document.body.offsetHeight - window.innerHeight;
+
+			const scrollPer = st / maxScrollValue;
+
+			 $('.progress-bar').css({width: scrollPer * 100 +'%'});
+
+		}
+	});
+</script>
+
+ 
+</html>
