@@ -22,28 +22,46 @@
 	.cate ul li.active a{background: #000;color: #fff;}
 
  	.nav{position: relative;}
-	.tab{margin-top:50px}
-	.tab .nav ul {display: flex;overflow-x: scroll; overflow-y: hidden;flex-wrap: nowrap !important;align-items: center;margin-left: -10px;}
+	.tab{margin-top:50px;}
+	.nav{margin:10px}
+	.nav ul {display: inline-flex;overflow-x: scroll; overflow-y: hidden;flex-wrap: nowrap !important;align-items: center;margin-left: -10px;}
+	.nav h3{display: inline;}
+	.nav ul > li a{display: block;border-bottom: 1px solid #000;font-size: 14px;}
+	.nav ul > li a.active{font-weight: bold;}
+	.nav ul > li{padding:0 10px}
+	.nav ul > li:first-child{border-right: 1px solid red;}
+	.nav > li a.active{display: block;}
 	/* 스크롤가림*/
-	.cate ul::-webkit-scrollbar,
-	.tab .nav ul::-webkit-scrollbar {display: none;}
-	.tab .nav ul > li a{display: block;border-bottom: 1px solid #000;font-size: 14px;}
-	.tab .nav ul > li a.active{font-weight: bold;}
-	.tab .nav ul > li{padding:0 10px}
-	.tab .nav ul > li:first-child{border-right: 1px solid red;}
-	.tab .nav > li a.active{display: block;}
-	.tab .nav > li a:hover {
-		text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
-	}
+	.cate ul::-webkit-scrollbar,.nav ul::-webkit-scrollbar {display: none;}
 	.tab-content{position: relative;}
-	.tab-content .tab_cont{ opacity:0; position:absolute;top:20px;width: 270px;transition: 0.5s;}
-	.tab-content .tab_cont.active{opacity:1;z-index: 9;}
+	.tab-content .tab_cont{display: none; width: 270px;transition: 0.5s;}
+	.tab-content .tab_cont.active{display: block;z-index: 9;}
 	.tab-content .tab_cont li em{font-weight: bold; width: 26px; border: 1px solid red; display: inline-block; text-align: center; margin-right: 5px;}
 	.tab-content .tab_cont li:hover{background: #104138; color: #fff;}
 
+	.onlineRank{display: flex;flex-wrap: wrap;border: 1px solid red;width: 100%;}
+	.onlineRank .side{width: 300px;border: 1px solid red;}
+	.onlineRank .prodListWrap{display: flex; justify-content: center; width: 71%; }
+
+	.onlineRank .prodListWrap ul.card-list{display: flex;flex-flow:row wrap;justify-content: flex-start; width: 100%;margin-left: -10px;transition: 0.5s;}
+	.onlineRank .prodListWrap ul.card-list li {margin: 0 0px 31px 10px;width: auto;}
+	.onlineRank .prodListWrap ul.card-list li img{width: 100%;}
+	/* .onlineRank .prodListWrap ul.card-list::after{content: '';flex: auto;} */
+
+	@media (max-width: 1200px) {
+		.onlineRank .prodListWrap{display: flex; justify-content: center; width: 100%; }
+	}
 </style>
 
 <body>
+	<div class="nav">
+		<h3>온라인 실시간</h3>
+		<ul class="tab-menu">
+			<li><a href="#tab-1" class="active">실시간온라인판매랭킹</a></li>
+			<li><a href="#tab-2">실시간VIEW랭킹</a></li>
+		</ul>
+	</div>
+
 	<div class="cate">
 		<ul>
 			<li class="active"><a href="#">전체</a></li>
@@ -60,59 +78,89 @@
 			<li><a href="#">기획세트</a></li>
 		</ul>
 	</div>
-	<div class="tab">
-		<div class="nav">
-			<ul class="tab-menu">
-				<li><a href="#tab-1" class="active">실시간온라인판매랭킹</a></li>
-				<li><a href="#tab-2">실시간VIEW랭킹</a></li>
+
+	<div class="onlineRank">
+		<div class="side">
+			<div class="tab-content">
+				<div id="tab-1" class="tab_cont active">
+					<ul>
+						<li><a href="#"><em>1</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>2</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>3</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>4</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>5</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>6</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>7</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>8</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>9</em>브라이트닝 포어세럼</a></li>
+						<li><a href="#"><em>10</em>브라이트닝 포어세럼</a></li>
+					</ul>
+				</div>
+				<div id="tab-2" class="tab_cont">
+					e.preventDefault();
+					var target = this;
+					var targetLeft = this.offsetLeft;
+					var targetWidth = this.offsetWidth ;
+					var oriHref = e.target.getAttribute('href');
+					var targetHref = oriHref.replace('#','');
+					//console.log('targetHref = '+ targetHref)
+					//console.log(this)
+					console.log(targetWidth)
+					high.style.width = targetWidth + 'px';
+					high.style.left = targetLeft + 'px';
+				</div>
+			</div>
+		</div>
+		<div class="prodListWrap">
+			<ul class="card-list">
+				<li class="card-item">
+					<a href="sub.html">
+						<figure class="card_image">
+							<img src="./images/card_01.jpg" alt="">
+						</figure>
+					</a>
+				</li>
+				<li class="card-item">
+					<a href="sub.html">
+						<figure class="card_image">
+							<img src="./images/card_02.jpg" alt="">
+						</figure>
+					</a>
+				</li>
+				<li class="card-item">
+					<a href="sub.html">
+						<figure class="card_image">
+							<img src="./images/card_03.jpg" alt="">
+						</figure>
+					</a>
+				</li>
+				<li class="card-item">
+					<figure class="card_image">
+						<img src="./images/card_04.jpg" alt="">
+					</figure>
+				</li>
+				<li class="card-item">
+					<figure class="card_image">
+						<img src="./images/card_05.jpg" alt="">
+					</figure>
+				</li>
 			</ul>
 		</div>
-
-		<div class="tab-content">
-			<div id="tab-1" class="tab_cont active">
-				<ul>
-					<li><a href="#"><em>1</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>2</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>3</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>4</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>5</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>6</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>7</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>8</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>9</em>브라이트닝 포어세럼</a></li>
-					<li><a href="#"><em>10</em>브라이트닝 포어세럼</a></li>
-				</ul>
-			</div>
-			<div id="tab-2" class="tab_cont">
-				e.preventDefault();
-				var target = this;
-				var targetLeft = this.offsetLeft;
-				var targetWidth = this.offsetWidth ;
-				var oriHref = e.target.getAttribute('href');
-				var targetHref = oriHref.replace('#','');
-				//console.log('targetHref = '+ targetHref)
-				//console.log(this)
-				console.log(targetWidth)
-				high.style.width = targetWidth + 'px';
-				high.style.left = targetLeft + 'px';
-			</div>
-		</div>
-		
 	</div>
+
+	
 </body>
 
 <script>
 	$(function(){
-		function tabMenu(elm){
-			elm.on('click', function(){
-				var targetHash = $(this).attr('href');
-				$('.tab-menu a').removeClass('active');
-				$('.tab-content > div').removeClass('active');
-				$(this).addClass('active')
-				$(targetHash).addClass('active')
-			});
-		}
-		tabMenu($('.tab-menu a'))
+		$('.tab-menu a').on('click', function(e){
+			e.preventDefault();
+			var targetHash = $(this).attr('href');
+			$('.tab-menu a').removeClass('active');
+			$('.tab-content .tab_cont').removeClass('active');
+			$(this).addClass('active')
+			$(targetHash).addClass('active')
+		});
 
 		$('.cate ul li').on('click', function(){
 			$('.cate ul li').removeClass('active');

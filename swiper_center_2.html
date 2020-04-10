@@ -137,7 +137,6 @@ body {
 				swiper1.slides.each(function(index){
 					var ele=$(this);
 					ele.on("click",function(){
-						//console.log(ele.text())
 						mainSlide.setCurrentSlide(ele);
 						swiper1.slideTo(index-2, 500, false);
 						swiper2.slideTo(index+1, 500, false);
