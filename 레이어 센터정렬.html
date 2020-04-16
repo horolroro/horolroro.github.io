@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	html{font-size: 14px;}
+
+	/* RESET */
+	.layerPop{position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0,0,0,.7);
+		z-index: 1000;
+		font-size: 0;
+		text-align: center;
+		overflow: auto;
+	}
+	.layerPop .layerWrap{
+		position: relative;
+		display: inline-block;
+		margin: 20px 0;
+		text-align: left;
+		vertical-align: middle;
+		background: #fff;
+		font-size: 16px;
+	}
+	.layerPop .layerTitle{
+		padding: 50px 32px 10px;
+		font: 26px/1.2 'notoM';
+		color: #222;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.layerPop .layerContents{    padding: 32px 32px 48px;}
+	.layerPop .btnLayerClose {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		width: 26px;
+		height: 27px;
+		background: url(../images/common/btn_layer_close.png) no-repeat;
+		font-size: 0;
+		border: 1px solid red;
+	}
+	.mainPopup:after, .layerPop:after {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	/* MC pop */
+	.popWrap .popHead h3{
+		height: 4rem;
+		font-size: 1.7rem;
+		line-height: 4rem;
+		font-family: 'notoM';
+		text-align: left;
+	}
+
+	.layPop{
+		   position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		overflow: hidden;
+		overflow-y: auto;
+		z-index: 1001;
+	}
+	.layPop::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #000;
+		opacity: .7;
+		z-index: 1;
+	}
+	.layPop .wrapModal {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		position: relative;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		color: #222;
+		z-index: 2;
+	}
+	.layPop .wrapModal .inner {
+		width: 400px;
+		height: 90vh;
+		overflow: hidden;
+		position: relative;
+		top: 0;
+		left: 0;
+		bottom: 0;
+
+		overflow-y: auto;
+		background: #fff;
+		text-align: center;
+		z-index: 3;
+	}
+	.popWrap .popHead {
+		margin-top: 2rem;
+		padding-left: 2rem;
+		border-bottom: 0.1rem solid #dcdcdc;
+	}
+	.popWrap .popBody {
+		padding: 2rem;
+		overflow-y: auto;
+		box-sizing: border-box;
+	}
+	.layPop .wrapModal .inner .mvClose {
+		position: absolute;
+		top: 1.6rem;
+		right: 1.6rem;
+		width: 1.3rem;
+		height: 1.3rem;
+		background: url(../images/common/icon_pop_close.png) no-repeat left top;
+		background-size: 100%;
+		font-size: 0;
+		border: 1px solid red;
+	}
+	.dotList > li {
+		position: relative;
+		margin-top: 0.5rem;
+		padding-left: 0.6rem;
+		color: #999;
+		font-size: 1.2rem;
+		line-height: 1.6rem;
+		text-align: left;
+	}
+	.dotList > li::before {
+		content: '';
+		position: absolute;
+		top: 0.7rem;
+		left: 0;
+		display: inline-block;
+		width: 0.2rem;
+		height: 0.2rem;
+		background: #999;
+		border-radius: 100%;
+	}
+	.customerEventLayer .subTit_2 {
+		font-size: 1.5rem;
+		font-family: 'notoM';
+		margin: 24px 0 8px;
+	}
+	.customerEventLayer .txtBx_1{
+		border-top: 1px solid #000;
+		border-bottom: 1px solid #a7a7a7;
+		padding: 15px 0;
+		font-size: 14px;
+		margin-top: 20px;
+	}
+	.customerEventLayer .txtBx_2{
+		padding: 10px 12px;
+		background: #f3f3f3;
+		font-family: 'notoM';
+		margin-bottom: 21px;
+	}
+	.btnBk {
+		width: 100%;
+		height: 4rem;
+		background: #222 !important;
+		color: #fff;
+		display: block;
+		line-height: 3.8rem;
+		text-align: center;
+		box-sizing: border-box;
+		border: 0.1rem solid #222;
+	}
+</style>
+
+<body>
+	<!-- WEB -->
+	<div class="layerPop" id="connectPromotion" style="display: block;">
+		<section class="layerWrap" style="width:560px;">
+			<h3 class="layerTitle">연계구매 프로모션 제품 리스트</h3>
+			<div class="layerContents layerConnetPdt">
+				<button type="button" class="btnLayerClose" onclick="layerClose();">레이어 팝업 닫기</button>
+			</div>
+		</section>
+	</div>
+
+	<!-- MC -->
+	<div class="layPop size560" id="aa" style="display: block">
+		<div class="wrapModal">
+			<div class="inner" style="height: 90vh;">
+				<div class="popWrap">
+					<div class="popHead">
+						<h3>신청완료</h3>
+					</div>
+					<div class="popBody">
+						<div class="layerContents customerEventLayer">
+							<!-- 완료 메시지 6개-->
+							<div class="completeTxt" style="display:none">
+								<em>신청 완료되었습니다.</em>
+								<p>수령기간<span>2019-09-01 ~ 2019-09-30</span></p>
+							</div>
+							<div style="display: block;">
+								<div class="eventTable_3">
+									<table>
+										<caption>고객명,신청제품,등급,수령매장</caption>
+										<colgroup>
+											<col style="width: 25%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">신청제품</th>
+												<td>
+													제주 왕벚꽃미스트 120mL
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+	
+							</div>
+							
+							<div class="txtBx_1">
+								+_+! 정말 갖고 싶었던 제품입니다~!! 평생 없어서는 안될 저의 핫잇템! 
+								드디어 이벤트로 통해서 진행을 하는군요! 정말 필요했었는데…<br>
+								건조한 사무실에서 내 얼굴에 즉각적인 수분을 채워 건조할틈 없이 <br>
+								촉촉하고 화사한 피부로 가꿔주는 수분 아이
+							</div>
+							<ul class="dotList" style="display: block;">
+								<li>매장 수령 기간은 신청일과 별도이니 수령기간을 반드시 확인해 주시기 바랍니다.</li>
+								<li>문의사항은 이니스프리 고객센터 (080-380-0114)로 문의주시기 바랍니다.</li>
+							</ul>
+			
+			
+							<!-- 확인 -->
+							<div class="btnWrap">
+								<button type="button" class="btnBk btn">확인</button>
+							</div>
+			
+							<!-- 버튼 수정하기/확인하기 -->
+							<div class="btnWrap row2" style="display: none;">
+								<span><button type="button" class="btnWt">수정하기</button></span>
+								<span><button type="button" class="btnBk">확인</button></span>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+<script>
+
+
+	//MC
+
+	$(document).on("click",".layPop .mvClose",function(e){
+		var $this = $(this);
+		$this.closest(".layPop").hide();
+	});
+
+	$(document).on("click",".btnLayerClose",function(e){
+		var $this = $(this);
+		$this.closest(".layerPop").hide();
+	});
+</script>
+
+ 
+</html>

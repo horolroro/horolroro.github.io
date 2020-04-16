@@ -17,6 +17,8 @@
  <style type="text/css">
 	/* RESET */
 
+	body{background: #fff;}
+
 	.cate ul{display: flex; justify-content: space-between;; align-items: center;white-space: nowrap;overflow-x: auto;}
 	.cate ul li a{padding: 10px; font-size: 13px; display: inline-block;}
 	.cate ul li.active a{background: #000;color: #fff;}
@@ -34,22 +36,84 @@
 	/* 스크롤가림*/
 	.cate ul::-webkit-scrollbar,.nav ul::-webkit-scrollbar {display: none;}
 	.tab-content{position: relative;}
-	.tab-content .tab_cont{display: none; width: 270px;transition: 0.5s;}
+	.tab-content .tab_cont{display: none; transition: 0.5s;}
 	.tab-content .tab_cont.active{display: block;z-index: 9;}
-	.tab-content .tab_cont li em{font-weight: bold; width: 26px; border: 1px solid red; display: inline-block; text-align: center; margin-right: 5px;}
-	.tab-content .tab_cont li:hover{background: #104138; color: #fff;}
+	/* .tab-content .tab_cont li em{font-weight: bold; width: 26px; border: 1px solid red; display: inline-block; text-align: center; margin-right: 5px;}
+	.tab-content .tab_cont li:hover{background: #104138; color: #fff;} */
 
-	.onlineRank{display: flex;flex-wrap: wrap;border: 1px solid red;width: 100%;}
-	.onlineRank .side{width: 300px;border: 1px solid red;}
-	.onlineRank .prodListWrap{display: flex; justify-content: center; width: 71%; }
+	.onlineRank{display: flex;border: 1px solid red;width: 100%;}
+	.onlineRank .side{width: 350px;border: 1px solid red;}
+	.onlineRank .prodListWrap{display: flex; justify-content: center; padding: 30px; }
 
-	.onlineRank .prodListWrap ul.card-list{display: flex;flex-flow:row wrap;justify-content: flex-start; width: 100%;margin-left: -10px;transition: 0.5s;}
-	.onlineRank .prodListWrap ul.card-list li {margin: 0 0px 31px 10px;width: auto;}
+	.onlineRank .prodListWrap ul.card-list{display: flex;flex-flow:row wrap;justify-content: flex-start;margin-left: -10px;transition: 0.5s;}
+	.onlineRank .prodListWrap ul.card-list li {display: flex;margin: 0 0px 31px 10px;width: 250px; background: #fff;}
 	.onlineRank .prodListWrap ul.card-list li img{width: 100%;}
 	/* .onlineRank .prodListWrap ul.card-list::after{content: '';flex: auto;} */
 
+	.realTimeRanking .rankingList {margin-left: 22px;}
+	.realTimeRanking .rankingList ul {background: #fff;}
+	.realTimeRanking .rankingList.active {display: block;}
+
+	.realTimeRanking .rankingList li {color: #222;}
+	.realTimeRanking .rankingList li.active .rank:after {opacity: 1;}
+	.realTimeRanking .rankingList .rank {
+		position: relative;
+		z-index: 3;
+		display: block;
+		padding-left: 68px;
+		color: #222;
+		font: 20px/40px 'notoL';
+	}
+	.realTimeRanking .rankingList .rank .txt {
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.realTimeRanking .rankingList li.active .rank {
+		background: #104138;
+		color: #fff;
+		font: 22px/48px 'notoM';
+	}
+	.realTimeRanking .rankingList .rank:after {
+		content: "";
+		position: absolute;
+		top: 0; left: -24px;
+		border: 24px solid transparent;
+		border-right: 24px solid #104138;
+		border-left: 0;
+		opacity: 0;
+	}
+	.realTimeRanking .rankingList .rank .num {
+		position: absolute;
+		top: 0; left: 25px;
+		width: 45px;
+		text-align: center;
+		font-size: 20px;
+		font-family: 'roboM';
+	}
+	.realTimeRanking .rankingList .rank .people {
+		display: inline-block;
+		width: 46px; line-height: 22px;
+		margin-right: 6px;
+		background: #167a68;
+		border: 1px solid #167a68;
+		border-radius: 22px;
+		font: 12px/22px 'notoL';
+		color: #fff;
+		text-align: center;
+		vertical-align: 2px;
+	}
+	.realTimeRanking .rankingList li:nth-of-type(5) ~ li .rank .people {
+		background: #fff;
+		color: #167a68;
+	}
+	.realTimeRanking .rankingList .rank .people span {font: 14px/1 'roboR';}
+	.desc{background-color: #167a68;flex:1}
+	.card-item a{display: flex;flex-direction: column;}
+
 	@media (max-width: 1200px) {
-		.onlineRank .prodListWrap{display: flex; justify-content: center; width: 100%; }
+		.onlineRank .prodListWrap{display: flex; justify-content: center; }
 	}
 </style>
 
@@ -79,35 +143,178 @@
 		</ul>
 	</div>
 
-	<div class="onlineRank">
+	<div class="onlineRank realTimeRanking">
 		<div class="side">
-			<div class="tab-content">
+			<div class="rankingList tab-content">
 				<div id="tab-1" class="tab_cont active">
 					<ul>
-						<li><a href="#"><em>1</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>2</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>3</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>4</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>5</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>6</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>7</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>8</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>9</em>브라이트닝 포어세럼</a></li>
-						<li><a href="#"><em>10</em>브라이트닝 포어세럼</a></li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">1</span>
+									<span class="txt">실시간 온라인 판매 랭킹</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">2</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">3</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">4</span>
+									<span class="txt">트루케어 논나노 논코메도.트루케어트루케어 논나노 논코메도.트루케어</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">5</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">6</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">7</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">8</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">9</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="rank">
+									<span class="num">10</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<div id="tab-2" class="tab_cont">
-					e.preventDefault();
-					var target = this;
-					var targetLeft = this.offsetLeft;
-					var targetWidth = this.offsetWidth ;
-					var oriHref = e.target.getAttribute('href');
-					var targetHref = oriHref.replace('#','');
-					//console.log('targetHref = '+ targetHref)
-					//console.log(this)
-					console.log(targetWidth)
-					high.style.width = targetWidth + 'px';
-					high.style.left = targetLeft + 'px';
+					<ul>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">2</span>
+									<span class="txt">실시간 온라인 판매 랭킹</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">2</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">3</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">4</span>
+									<span class="txt">트루케어 논나노 논코메도.트루케어트루케어 논나노 논코메도.트루케어</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">5</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">6</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">7</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">8</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a href="#">
+								<span class="rank">
+									<span class="num">9</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+						<li class="active">
+							<a href="#">
+								<span class="rank">
+									<span class="num">10</span>
+									<span class="txt">용암해수 쿨링 팩</span>
+								</span>
+							</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -115,35 +322,91 @@
 			<ul class="card-list">
 				<li class="card-item">
 					<a href="sub.html">
-						<figure class="card_image">
-							<img src="./images/card_01.jpg" alt="">
-						</figure>
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+						</div>
 					</a>
 				</li>
 				<li class="card-item">
 					<a href="sub.html">
-						<figure class="card_image">
-							<img src="./images/card_02.jpg" alt="">
-						</figure>
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+							//console.log('targetHref = '+ targetHref)
+							//console.log(this)
+							console.log(targetWidth)
+							high.style.width = targetWidth + 'px';
+							high.style.left = targetLeft + 'px';
+						</div>
 					</a>
 				</li>
 				<li class="card-item">
 					<a href="sub.html">
-						<figure class="card_image">
-							<img src="./images/card_03.jpg" alt="">
-						</figure>
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+							//console.log('targetHref = '+ targetHref)
+							//console.log(this)
+							console.log(targetWidth)
+							high.style.width = targetWidth + 'px';
+							high.style.left = targetLeft + 'px';
+						</div>
 					</a>
 				</li>
 				<li class="card-item">
-					<figure class="card_image">
-						<img src="./images/card_04.jpg" alt="">
-					</figure>
+					<a href="sub.html">
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+							//console.log('targetHref = '+ targetHref)
+							//console.log(this)
+							console.log(targetWidth)
+							high.style.width = targetWidth + 'px';
+							high.style.left = targetLeft + 'px';
+						</div>
+					</a>
 				</li>
 				<li class="card-item">
-					<figure class="card_image">
-						<img src="./images/card_05.jpg" alt="">
-					</figure>
+					<a href="sub.html">
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+							//console.log('targetHref = '+ targetHref)
+							//console.log(this)
+							console.log(targetWidth)
+							high.style.width = targetWidth + 'px';
+							high.style.left = targetLeft + 'px';
+						</div>
+					</a>
 				</li>
+				<li class="card-item">
+					<a href="sub.html">
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+							//console.log('targetHref = '+ targetHref)
+							//console.log(this)
+							console.log(targetWidth)
+							high.style.width = targetWidth + 'px';
+							high.style.left = targetLeft + 'px';
+						</div>
+					</a>
+				</li>
+				<li class="card-item">
+					<a href="sub.html">
+						<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+						<div class="desc">
+							var targetHref = oriHref.replace('#','');
+							//console.log('targetHref = '+ targetHref)
+							//console.log(this)
+							console.log(targetWidth)
+							high.style.width = targetWidth + 'px';
+							high.style.left = targetLeft + 'px';
+						</div>
+					</a>
+				</li>
+
 			</ul>
 		</div>
 	</div>
@@ -165,6 +428,21 @@
 		$('.cate ul li').on('click', function(){
 			$('.cate ul li').removeClass('active');
 			$(this).addClass('active')
+		});
+
+
+		var list = $('.rankingList').find('li');
+
+		list.on({
+			'mouseenter' : function(){
+				console.log('a')
+				var $this = $(this);
+				$this.addClass('active').siblings().removeClass('active');
+				
+			},
+			'mouseleave' : function(){
+				
+			}
 		});
 	});
 </script>
