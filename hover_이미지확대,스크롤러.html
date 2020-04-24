@@ -92,13 +92,10 @@
 
 		function scroller(){
 			let st = $(window).scrollTop();
-
 			maxScrollValue = document.body.offsetHeight - window.innerHeight;
-
 			const scrollPer = st / maxScrollValue;
 
 			 $('.progress-bar').css({width: scrollPer * 100 +'%'});
-
 		}
 	});
 </script>

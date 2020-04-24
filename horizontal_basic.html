@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	body{background: #fff;}
+	.slide{
+		width: 100vw;
+		height: 100vh;
+	}
+	.wrapper{
+		display:flex;
+		flex-direction: row;
+		width: 400vw;
+		transform: rotate(90deg) translateY(-100vh);;
+		transform-origin: top left;
+	}
+	.one{
+		background: #75e9f5;
+	}
+	.two{
+		background: url(./images/Game_backgrounds.jpg) no-repeat left top/cover
+	}
+	.three{
+		background: #75e9f5;
+	}
+	.four{
+		background: #ff7322;
+	}
+	.outer-wrapper{
+		width: 100vh;
+		height: 100vw;
+		transform: rotate(-90deg) translateX(-100vh);
+		transform-origin: top left;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		position: absolute;
+		scrollbar-width: none;
+		-ms-ovflow-style:none;
+	}
+	::-webkit-scrollbar{
+		display: none;
+	}
+	.foo{width: 100px;height: 100px;border: 1px solid red;background: red;position: fixed; top:50%;left: 50%;z-index: 100;transform: rotate(-90deg) }
+</style>
+
+<body>
+	<div class="foo">
+
+	</div>
+	<div class="outer-wrapper">
+		
+		<div class="wrapper">
+			
+			<div class="slide one"></div>
+			<div class="slide two"></div>
+			<div class="slide three"></div>
+			<div class="slide four"></div>
+		</div>
+	</div>
+	
+</body>
+
+
+ 
+</html>
