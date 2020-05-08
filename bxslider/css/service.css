@@ -1,0 +1,337 @@
+@charset "UTF-8";
+@import url('service2.css'); /* 박지민 */
+/* bx-slide animation */
+@keyframes ani-move{
+    from {opacity: 0;margin-top: 60px}
+    to {opacity: 1;margin-top: 0}
+}
+/* 사업소개 - 서브메인 */
+.title-area {color:#fff;letter-spacing:-0.25px;text-align:center;}
+.title-area a {display:block;color:#fff;}
+.title-area .arrow-title {font-size:25px;padding-top:25px;font-family:"KTL";}
+.title-area .arrow-title i {display:inline-block;width:12px;height:20px;background:url(../images/info/bg-arrow-right.png) no-repeat 0 0;background-size:12px auto;margin:0 0 -1px 6px;}
+.title-area p {line-height:17px;padding-top:13px;}
+.title-area.black {color:#222;}
+.title-area.black a {color:#222;}
+.title-area.black .arrow-title i {background-position:0 -20px;}
+.submain .flatform {margin-top:7px;}
+.submain .flatform .flatform-menu a { position: absolute; z-index: 1000; width: 40px; height: 40px; text-indent: -10000px; font-size: 1px;}
+.submain .flatform .flatform-menu a.menu1 { top: 106px; left: 236px;}
+.submain .flatform .flatform-menu a.menu2 { top: 181px; left: 333px;}
+.submain .flatform .flatform-menu a.menu3 { top: 289px; left: 296px;}
+.submain .flatform .flatform-menu a.menu4 { top: 289px; left: 174px;}
+.submain .flatform .flatform-menu a.menu5 { top: 181px; left: 139px;}
+.submain .flatform .bx-slider {position:relative;}
+.submain .flatform .bx-slider .nav .btn{display:inline-block;width:32px;height:32px;text-indent:-9999px;text-align:center;overflow:hidden;vertical-align:top;box-sizing:border-box;background-image: url(../images/cs/bg-btn-direction.png);background-repeat:no-repeat;background-size:64px;}
+.submain .flatform .bx-slider .nav .btn.circle {border-radius:100%;}
+.submain .flatform .bx-slider .nav .btn.prev-icon {background-position: 0 0;}
+.submain .flatform .bx-slider .nav .btn.next-icon {background-position: -32px 0;}
+.submain .flatform .bx-slider .nav button {position:absolute;z-index:15;top:50%;margin-top:-32px;background-color:transparent;}
+.submain .flatform .bx-slider .nav button.prev {left:15px;}
+.submain .flatform .bx-slider .nav button.next {right:15px;}
+.submain .flatform .bx-slider .controls {position:absolute;left:50%;bottom:17px;height:15px;margin:0 auto;z-index:15;transform:translate(-50%, 0);-webkit-transform:translate(-50%, 0);}
+.submain .flatform .bx-slider .controls .controls-wrap {display:inline-block;padding:0;}
+.submain .flatform .bx-slider .controls .auto {display:inline-block;}
+.submain .flatform .bx-slider .controls .auto button {width:12px;height:12px;vertical-align:top;margin-top:1px;}
+.submain .flatform .bx-slider .controls .auto button.stop {background:url(../images/service/btn-pause.png) no-repeat;background-size:100% 100%;}
+.submain .flatform .bx-slider .controls .auto button.play {background:url(../images/service/btn-play.png) no-repeat;background-size:100% 100%;}
+.submain .flatform .bx-slider .controls .pager {display:inline-block;margin-left:9px;}
+.submain .flatform .bx-slider .controls .pager button {width:12px;height:12px;border:1px solid #fff;box-sizing:border-box;border-radius:9px;background-color:transparent;vertical-align:top;margin:1px;}
+.submain .flatform .bx-slider .controls .pager button.active {background-color:#fff;}
+.submain .flatform .bxslider .item {height:461px;background-size:100%;background-repeat:no-repeat;}
+.submain .flatform .bxslider .item.type1{background-image:url(../images/service/img-slide-01.jpg);}
+.submain .flatform .bxslider .item.type2{background-image:url(../images/service/img-slide-02.jpg);}
+.submain .flatform .bxslider .item.type3{background-image:url(../images/service/img-slide-03.jpg);}
+.submain .flatform .bxslider .item.type4{background-image:url(../images/service/img-slide-04.jpg);}
+.submain .flatform .bxslider .item.type5{background-image:url(../images/service/img-slide-05.jpg);}
+.submain .flatform .bxslider .descriptions {padding:0 15px;}
+.submain .flatform .bxslider .descriptions .title-area {color:#fff;letter-spacing:-0.25px;text-align:center;}
+.submain .flatform .bxslider .descriptions .ico-menu-area {position:relative;margin-top:25px;color:#fff;letter-spacing:-0.25px;}
+.submain .flatform .bxslider .descriptions .ico-menu-area a { position: relative; left: -40px; padding-left: 40px; color: #fff;}
+.submain .flatform .bxslider .descriptions .ico-menu-area .menu-line {position:absolute;top:8px;left:0;width:8px;height:155px;background:url(../images/service/ico-menu-line.png) 7px top repeat-y;z-index:1;}
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dt,
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dd{position:relative;font-size:14px;margin-top:22px;padding-left:34px;}
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dt.active,
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dd.active {font-weight:bold;font-size:16px;}
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dt.active:before,
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dd.active:before {content:initial;}
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dt.active:after,
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dd.active:after {content:"";position:absolute;top:0;left:-1px;width:100%;height:100%;background:url(../images/service/ico-menu-selected.png) 0 0 no-repeat;background-size:18px;border:0;z-index:2;}
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dt:before,
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dd:before {content: "";position: absolute;top: 50%;left: 5px;width: 5px;height: 5px;background-color: #fff;border-radius: 100%;-webkit-border-radius: 100%;transform: translate(0, -50%);}
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dt:first-child,
+.submain .flatform .bxslider .descriptions .ico-menu-area dl dd:first-child {padding-top:0;}
+.submain .flatform .bxslider .descriptions .text-area {display:inline-block;float:right;color:#fff;letter-spacing:-0.25px;text-align:right;margin-top:-2px;opacity: 0;}
+.submain .flatform .bxslider li.active .descriptions .text-area {animation: ani-move 0.7s 0.5s ease-out forwards;-webkit-animation: ani-move 0.7s 0.5s ease-out forwards;}
+.submain .flatform .bxslider .descriptions .text-area .sub-title {position:relative;font-size:22px;}
+.submain .flatform .bxslider .descriptions .text-area .sub-title:before {content:"";position:absolute;bottom:-20px;right:0;width:25px;height:1px;background-color:#fff;}
+.submain .flatform .bxslider .descriptions .text-area p {font-size:14px;line-height:19px;padding-top:38px;}
+.submain .flatform .bx-controls-direction a { top: 95%;}
+.submain .img-link {position:relative;margin-top:7px;}
+.submain .img-link .title-area {position: absolute;top: 0;left: 0;width: 100%;}
+.submain .img-link .desc {position: absolute;left: 0;bottom: 0;width: 100%;line-height: 36px;text-align: center;color: #fff;letter-spacing: -0.25px;}
+.submain .img-link .desc span {font-size:14px;display:block;background-color:rgba(0, 0, 0, 0.8);}
+/* 글로벌사업*/
+.global-service-contents{padding:15px 0 0 0;}
+.global-service-contents p{padding:0 15px 9px;color:#454545;font-size:13px;}
+.global-service-contents .sub-title{padding:31px 15px 15px;font-size:14px;}
+.global-service-contents .accordions{margin-top:17px;border-color:#ccc;}
+.global-service-contents .accordions .accordion-contents {padding:35px 15px;}
+.global-service-contents .accordions .accordion-trigger{padding-left:83px;}
+.global-service-contents .accordions .accordion-trigger.asia{background:#ebebeb url(../images/service/bg-accordions-asia.png) no-repeat 15px 6px;background-size:54px;}
+.global-service-contents .accordions .accordion-trigger.africa{background:#ebebeb url(../images/service/bg-accordions-africa.png) no-repeat 15px 7px;background-size:54px;}
+.global-service-contents .accordions .accordion-trigger.america{background:#ebebeb url(../images/service/bg-accordions-america.png) no-repeat 20px 8px;background-size:auto 50px;}
+.global-map-area{position:relative;width:100%;min-height:203px;margin-bottom:20px;}
+.global-map-area .bg-map{display:block;width:100%;height:auto;box-sizing:border-box;}
+/*.global-map-area .country-area{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;min-height:220px;}
+.global-map-area .country-area li {position:absolute;min-width:25px;background:none;border:none;z-index:1;}
+.global-map-area .country-area li span{display:block;padding-top:19px;background:url(../images/info/ico-map-point.png) no-repeat center top;background-size:25px 100px;font-size:12px;color:#222;}
+.global-map-area .country-area button.active{z-index:2;}
+.global-map-area .country-area button.active span{padding-top:24px;background-position:center -76px;text-indent:0;}
+.global-map-area .country-area .flag{display:none;position:absolute;left:120%;top:-12%;width:110px;padding:5px;background:#fff;z-index:3;box-sizing:border-box;}
+.global-map-area .country-area .flag.active{display:block;}
+.global-map-area .country-area .flag img{position:absolute;left:5px;top:50%;width:41px;height:auto;margin-top:-12px;}
+.global-map-area .country-area .flag p{display:table-cell;padding-left:47px;text-align:left;}*/
+    /* 아시아 */
+/*.global-map-area .country-area #japan{right:3%;top:27%;}
+.global-map-area .country-area #japan.active{top:24%;}
+.global-map-area .country-area #japan .flag{left:auto;right:115%;}
+.global-map-area .country-area #china{right:24%;top:24%;}
+.global-map-area .country-area #china.active{top:23%;}
+.global-map-area .country-area #china .flag{left:auto;right:115%;}
+.global-map-area .country-area #uzbek{left:23%;top:17%;}
+.global-map-area .country-area #uzbek.active{top:16%;}
+.global-map-area .country-area #uzbek .flag{width:144px;}
+.global-map-area .country-area #mongol{left:52%;top:12%;}
+.global-map-area .country-area #mongol.active{top:11%;}
+.global-map-area .country-area #hongkong{left:67%;bottom:36%;}
+.global-map-area .country-area #hongkong.active{bottom:35%;}
+.global-map-area .country-area #hongkong .flag{left:auto;right:115%;}
+.global-map-area .country-area #bangladesh{left:28%;bottom:43%;}
+.global-map-area .country-area #bangladesh.active{bottom:42%;}
+.global-map-area .country-area #bangladesh span{padding:3px 23px 2px 0;background-position:right 3px;}
+.global-map-area .country-area #bangladesh.active span{padding:6px 23px 7px 0;background-position:right -75px;}
+.global-map-area .country-area #bangladesh .flag{width:130px;}
+.global-map-area .country-area #vietnam{left:58%;bottom:30%;}
+.global-map-area .country-area #vietnam.active{bottom:29%;}
+.global-map-area .country-area #vietnam .flag{left:auto;right:115%;width:130px;}
+.global-map-area .country-area #myanmar{left:42%;bottom:36%;}
+.global-map-area .country-area #myanmar.active{bottom:35%;}
+.global-map-area .country-area #myanmar span{padding:3px 23px 2px 0;background-position:right 3px;}
+.global-map-area .country-area #myanmar.active span{padding:6px 23px 7px 0;background-position:right -75px;}
+.global-map-area .country-area #myanmar .flag{left:auto;right:115%;width:130px;}*/
+    /* 아프리카/유럽 */
+/*.global-map-area .country-area #poland{left:24%;top:4%;}
+.global-map-area .country-area #poland.active{top:3.8%;}
+.global-map-area .country-area #alger{left:18%;top:25%;}
+.global-map-area .country-area #alger.active{top:30.8%;}
+.global-map-area .country-area #rwanda{left:37%;bottom:42%;}
+.global-map-area .country-area #rwanda.active{bottom:41%;}
+.global-map-area .country-area #rwanda span{padding:3px 0 2px 21px;background-position:left 3px;}
+.global-map-area .country-area #rwanda.active span{padding:8px 0 7px 23px;background-position:left -75px;}
+.global-map-area .country-area #angola{left:17.5%;bottom:33%;}
+.global-map-area .country-area #angola.active{left:20.5%;bottom:32%;}
+.global-map-area .country-area #angola span{padding:3px 20px 2px 0;background-position:right 3px;}
+.global-map-area .country-area #angola.active span{padding:6px 23px 7px 0;background-position:right -75px;}
+.global-map-area .country-area #tanzania{left:43%;bottom:26%;}
+.global-map-area .country-area #tanzania span{padding:3px 0 2px 21px;background-position:left 3px;}
+.global-map-area .country-area #tanzania.active span{padding:6px 0 7px 23px;background-position:left -75px;}
+.global-map-area .country-area #botswana{left:34%;bottom:8%;}
+.global-map-area .country-area #botswana.active{bottom:12%;}
+.global-map-area .country-area #botswana span{padding:3px 0 2px 21px;background-position:left 3px;}
+.global-map-area .country-area #botswana.active span{padding:6px 0 7px 23px;background-position:left -75px;}*/
+    /* 아메리카 */
+/*.global-map-area .country-area #usa{left:15%;top:31%;}
+.global-map-area .country-area #usa.active{top:29%;}
+.global-map-area .country-area #usa span{background-position:left 3px;}
+.global-map-area .country-area #usa.active span{background-position:left -75px;}*/
+.country-info table.country colgroup col:nth-child(1){width:33%;}
+.country-info table.country colgroup col:nth-child(2){width:auto;}
+.country-info table.country tbody th{padding:0 10px;}
+/* 글로벌ICT사업 */
+.ict-service-area.global-conts-area{margin:25px 0 40px;padding:0 15px;}
+.ict-service-area.global-conts-area .conts-top{width:144px;margin:24px auto 0;background:url(../images/service/bg-ict-poly-1.png) no-repeat;background-size:144px auto;font-size:15px;color:#31384b;text-align:center;}
+.ict-service-area.global-conts-area .conts-top.head1{margin-top:0;}
+.ict-service-area.global-conts-area .conts-top.head2{background:url(../images/service/bg-ict-poly-2.png) no-repeat;background-size:144px auto;}
+.ict-service-area.global-conts-area .conts-top.head3{background:url(../images/service/bg-ict-poly-3.png) no-repeat;background-size:144px auto;}
+.ict-service-area.global-conts-area .conts-top span{display:inline-block;padding:82px 0 32px 0;}
+.ict-service-area.global-conts-area .conts-top.head2 span{display:inline-block;padding:89px 0 43px 0;}
+.ict-service-area.global-conts-area .conts-top.head1 span{background:url(../images/service/bg-ict-icon-1.png) no-repeat center 33px;background-size:36px auto;}
+.ict-service-area.global-conts-area .conts-top.head2 span{background:url(../images/service/bg-ict-icon-2.png) no-repeat center 42px;background-size:36px auto;}
+.ict-service-area.global-conts-area .conts-top.head3 span{background:url(../images/service/bg-ict-icon-3.png) no-repeat center 36px;background-size:37px auto;}
+.ict-service-area.global-conts-area .conts-inner{position:relative;margin-top:9px;padding:12px 0 12px 63px;}
+.ict-service-area.global-conts-area .conts-inner:before{top:-9px;width:1px;height:9px;}
+.global-map-area.ict .country-area p{position:absolute;min-width:25px;background:none;border:none;z-index:1;}
+.global-map-area.ict .country-area p span{display:block;padding-top:19px;background:url(../images/info/ico-map-point.png) no-repeat center top;background-size:25px 100px;font-size:12px;color:#222;}
+.global-service-contents .accordions .img-area{margin-bottom:20px;}
+    /* 아시아 */
+.global-map-area .country-area #qatar{left:3%;top:46%;}
+.global-map-area .country-area #qatar.active{top:45%;}
+.global-map-area.ict .country-area #bangladesh{left:53%;top:31%;}
+.global-map-area.ict .country-area #bangladesh span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area.ict .country-area #bangladesh.active{top:26%;}
+.global-map-area.ict .country-area #bangladesh.active span{padding:9px 0 0 23px;background-position:left bottom;}
+.global-map-area .country-area #singapore{left:49%;bottom:12%;}
+.global-map-area .country-area #singapore.active{left:53.5%;bottom:13%;}
+.global-map-area .country-area #brunei{right:7%;bottom:11%;}
+.global-map-area .country-area #brunei span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area .country-area #brunei.active span{padding:9px 0 0 23px;background-position:left bottom;}
+.global-map-area .country-area #indo{right:7%;bottom:4%;}
+.global-map-area .country-area #indo span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area .country-area #indo.active span{padding:9px 0 0 23px;background-position:left bottom;}
+.global-map-area .country-area #turkey{left:1%;top:29%;}
+.global-map-area .country-area #turkey.active{top:25%;}
+.global-map-area .country-area #turkey span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area .country-area #turkey.active span{padding:9px 0 0 23px;background-position:left bottom;}
+.global-map-area .country-area #iran{left:9%;top:44%;}
+.global-map-area .country-area #iran.active{top:41%;}
+.global-map-area .country-area #iran span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area .country-area #iran.active span{padding:9px 0 0 23px;background-position:left bottom;}
+.global-map-area .country-area #arab{left:17%;top:56%;}
+.global-map-area .country-area #arab.active{top:52%;}
+.global-map-area .country-area #arab span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area .country-area #arab.active span{padding:9px 0 0 23px;background-position:left bottom;}
+.global-map-area.ict .country-area #japan{right:0%;top:27%;}
+.global-map-area.ict .country-area #vietnam{left:59%;top:42%;}
+.global-map-area.ict .country-area #vietnam.active{top:38%;}
+.global-map-area.ict .country-area #vietnam span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area.ict .country-area #vietnam.active span{padding:9px 0 0 23px;background-position:left bottom;}
+    /* 아프리카 */
+.global-map-area.ict .country-area #angola{left:19%;top:64%;}
+.global-map-area.ict .country-area #angola.active{top:62%;}
+.global-map-area.ict .country-area #angola span{padding:3px 23px 2px 0;background-position:right top;}
+.global-map-area.ict .country-area #angola.active span{padding:3px 23px 5px 0;background-position:right bottom;}
+.global-map-area.ict .country-area #rwanda{left:38%;top:56%;}
+.global-map-area.ict .country-area #rwanda.active{top:52%;}
+.global-map-area.ict .country-area #rwanda span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area.ict .country-area #rwanda.active span{padding:6px 0 2px 23px;background-position:left bottom;}
+.global-map-area.ict .country-area #botswana{left:20%;top:74%;bottom:auto;}
+.global-map-area.ict .country-area #botswana.active{top:62%;}
+.global-map-area.ict .country-area #botswana span{padding:3px 23px 2px 0;background-position:right top;}
+.global-map-area.ict .country-area #botswana.active span{padding:6px 23px 2px 0;background-position:right bottom;}
+.global-map-area.ict .country-area #tanzania{left:37.5%;top:65%;}
+.global-map-area.ict .country-area #tanzania.active{top:62%;}
+.global-map-area.ict .country-area #tanzania span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area.ict .country-area #tanzania.active span{padding:6px 0 2px 23px;background-position:left bottom;}
+.global-map-area.ict .country-area #ukraine{left:36%;top:3%;}
+.global-map-area.ict .country-area #ukraine.active{top:1%;}
+.global-map-area.ict .country-area #ukraine span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area.ict .country-area #ukraine.active span{padding:5px 0 3px 23px;background-position:left bottom;}
+.global-map-area.ict .country-area #mozambique{left:35%;top:81%;}
+.global-map-area.ict .country-area #mozambique.active{top:75%;}
+.global-map-area.ict .country-area #mozambique span{padding:3px 0 2px 23px;background-position:left top;}
+.global-map-area.ict .country-area #mozambique.active span{padding:5px 0 3px 23px;background-position:left bottom;}
+    /* 아메리카 */
+.global-map-area.ict .country-area #usa{left:45%;top:12%;}
+.global-map-area.ict .country-area #usa.active{top:10%;}
+.global-map-area.ict .country-area #peru{left:68%;top:57%;}
+.global-map-area.ict .country-area #peru.active{top:55%;}
+/* m_ir_6BCC00 글로벌데이터 서비스*/
+.global-area {padding:0 15px;}
+.global-area .sub-tit-part {display:block;padding:30px 0 21px;font-size:15px;font-weight:bold;color:#31384b;text-align:center;}
+.global-area .tit-hgroup-part {padding:20px 0 15px;font-size:15px;color:#222;}
+.global-area .sub-txt-part {font-size:14px;font-weight:bold;color:#222;text-align:center;}
+.global-area .sub-txt-part02 {padding-top:20px;}
+.global-area table col:nth-child(1) {width:33%;}
+.global-area table.board.dir-horizontal tbody th {padding-left:10px;text-align:left;}
+/* m_ir_6BCD00 트래픽 홀세일 */
+.global-conts-area {position:relative;}
+.global-conts-area .conts-top {width:125px;margin:32px auto 0;background: url(../images/service/bg-global-feature.png) no-repeat center;background-size:100%;text-align:center;}
+.global-conts-area .conts-top span {display:inline-block;padding:78px 0 35px 0;font-size:15px;font-weight:bold;color:#31384b;background:url(../images/service/icon-global-feature.png) no-repeat center 40px;background-size:50%;}
+.global-conts-area .conts-top.type-service {width:125px;margin:32px auto 0;background:url(../images/service/bg-global-service.png) no-repeat center;background-size:100%;}
+.global-conts-area .conts-top.type-service span {display:inline-block;padding:78px 0 35px 0;background:url(../images/service/icon-global-service.png) no-repeat center 25px;background-size:40%;}
+.global-conts-area .conts-inner {margin-top:12px;padding:20px 20px;background: #f7f7f7;}
+.global-conts-area .conts-inner:before {content:'';display:inline-block;position:absolute;left:50%;top:130px;width:1px;height:13px;background:#cdc4c0;}
+.global-conts-area .conts-inner.service-inner:before {content:'';position:absolute;left:50%;top:409px;background:#e2e3eb;}
+/* m_ir_ 6BCE00 투자사업 */
+.global-area.global-invest  h4 {font-size:22px;color:#222;text-align:center;}
+.image-full.img-area-type01 {margin-top:15px;padding-right:15px;}
+.image-full.img-area-type02 {padding-left:15px;}
+.img-area-type03 {padding-top:15px;}
+.global-area .tit-hgroup-part02 {padding-top:30px;}
+/* m_ir_6BBA00 5g 비전 */
+.media-script {padding:20px 15px;background:#f7f7f7;}
+.media-script .script-inner {overflow:auto;height:125px;padding-right:17px;-webkit-overflow-scrolling: touch;}
+.sub-tit-part02 {display:block;font-size:20px;font-weight:bold;color:#d71826;text-align:center;}
+.sub-tit-part.part03 {padding-bottom:11px;}
+.sub-txt-part03 {padding-top:23px;text-align:center;}
+.tit-hgroup-part.center {text-align:center;}
+.btn-wrap.btn-wide {padding:0;margin-top:20px;}
+.btn-wrap.btn-wide a {font-size:15px;font-weight: bold;}
+.section-vision .media-area {padding-top:20px;}
+.sub-txt-part04 {padding-top:15px;font-size:15px;font-weight:bold;text-align:center;}
+.giga-conts-wrap {padding-bottom:85px;background:url(../images/service/icon-service-5g.png) no-repeat center bottom;}
+.image-side-wrap {padding:0 15px;margin-top:30px;}
+/* 5G-DF */
+.photo-area { margin: 0 -15px;}
+.photo-area.inside { margin: 0}
+.photo-desc { margin-bottom: 30px;}
+.photo-desc strong { display: block; margin: 18px 0; color: #222; text-align: center; font-size: 15px;}
+.photo-desc p { color: #454545; font-size: 13px; line-height: 1.4;}
+.photo-desc p ~ p { margin-top: 10px;}
+.df-5g-link {background: #fafafa;}
+.df-5g-link strong { display: block; margin: 12px 0; color: #454545; line-height: 1.4;text-align:center;}
+.link-box li a { position: relative; display: block; margin-bottom: 10px; padding:15px 15px; width: 100%; border: 1px solid #d7dfe7; border-radius: 4px; }
+.df-5g-contribution { }
+.df-5g-contribution strong { display: block; margin-bottom: 20px; color: #333; text-align: center; font-size: 15px;}
+.down-box li { position: relative; display: block; margin-bottom: 10px; padding: 12px 60px 12px 15px; width: 100%; border: 1px solid #94acc5; border-radius: 4px; background: url(../images/service/ico-down.png) no-repeat right 12px top 50%; background-size: 20px 26px;}
+.down-box li em { display: block; margin-bottom: 4px; color: #333; font-weight: bold; font-size: 15px;}
+.down-box li span { color: #454545; font-size: 13px; line-height: 1.3;}
+.down-box li a { position: absolute; top: 0; right: 0; overflow: hidden; width: 44px; height: 100%; color: transparent; font-size: 1px;}
+/* 5G 시범서비스 */
+.roadmap-5g { padding-bottom: 35px; background: #fafafa;}
+.roadmap-5g h4 { margin: 30px 0 20px; color: #31384b; text-align: center; font-size: 15px;}
+.title-img { margin: 10px 0 20px; text-align: center;}
+.title-img span { color: #454545; font-size: 13px;}
+.title-img strong { display: block; margin-top: 6px; color: #454545; font-weight: bold; font-size: 14px;}
+.photo-area figcaption { margin: 20px 0 10px; color: #454545;}
+.roadmap-5g .bx-slider { margin: auto; max-width: 440px; width: 100%;}
+.roadmap-5g .bx-slider .bx-top { position: relative; height: 46px; text-align: center;}
+.roadmap-5g .bx-slider .bx-top:after { position: absolute; top: 16px; left: 0; padding: 0 24px; width: 100%; height: 1px; background: #f00; content: '';}
+.roadmap-5g .bx-slider .bx-top button { position: absolute; top: 4px; z-index: 20; margin-bottom: -4px; width: 24px; height: 24px; background-size: 48px auto !important; color: transparent; font-size: 1px;}
+.roadmap-5g .bx-slider .bx-top .prev { left: 0; background: #fff url(../images/service/btn-side.png) no-repeat 0 0;}
+.roadmap-5g .bx-slider .bx-top .next { right: 0; background: #fff url(../images/service/btn-side.png) no-repeat -24px 0;}
+.roadmap-5g .bx-slider .bx-top .years { position: absolute; right: 0; left: 0; z-index: 30; margin: auto; padding-top: 7px; width: 87px; height: 32px; background: url(../images/service/bg-year.png) no-repeat 50% 0; background-size: 87px auto; color: #fff; font-weight: bold;}
+.roadmap-5g .bx-slider .bx-top .years:after { position: absolute; right: 0; bottom: -14px; left: 0; margin: auto; width: 1px; height: 14px; background: #cecece; content: '';}
+.roadmap-5g .bxslider li { padding: 0 24px; background: #fafafa;}
+.roadmap-5g .bxslider .top-txt { padding: 8px 0 10px; color: #454545; text-align: center; font-weight: bold; font-size: 14px;}
+.roadmap-5g .bxslider figure { position: relative;}
+.roadmap-5g .bxslider figure ~ figure { padding-top: 20px;}
+.roadmap-5g .bxslider figure ~ figure:after { position: absolute; top: 0; right: 0; left: 0; margin: auto; width: 1px; height: 20px; background: #cecece; content: '';}
+.roadmap-5g .bxslider figure figcaption { position: absolute; bottom: 0; left: 0; padding-top: 10px; width: 100%; height: 37px; background: #191919; color: #fff; text-align: center; font-size: 13px; opacity: 0.7;}
+.txt-tit-trial {font-weight:bold;}
+.photo-area-trial {padding:20px 0;}
+.video-txt {padding: 15px;margin:15px 15px 0;border: 1px solid #e0e0e0;color: #454545;font-size: 13px;line-height: 1.5;}
+.video-txt .pre {overflow-y: auto;height: 155px;white-space: pre-line;}
+.conts-video-area {margin-top:15px;}
+
+/* 2017-12-08 접근성 수정 */
+.df-5g-area .slider .bx-wrapper{padding: 0; margin: 0; border: none; box-shadow: none;}
+.df-5g-area .slider {position:relative;}
+.df-5g-area .bx-controls{position:relative;}
+.df-5g-area .bx-controls.bx-has-pager .bx-pager{display: inline-block;}
+.df-5g-area .bx-controls.bx-has-pager .bx-pager.bx-default-pager{left:0}
+.df-5g-area .bx-controls.bx-has-pager .bx-pager.bx-default-pager a{color: transparent;overflow: hidden;font-size: 1px;width: 15px;height: 15px;line-height:15px;border-radius: 15px;border-color: #fff;background: transparent;text-indent: 0;}
+.df-5g-area .bx-controls.bx-has-pager .bx-pager.bx-default-pager a.active{background:#fff;}
+.df-5g-area .bx-controls.bx-has-pager{position: absolute; bottom: 80px; text-align: center; width: 100%;margin-left:-40px}
+.df-5g-area .bx-controls.bx-has-pager .bx-pager-item {display: inline-block;vertical-align: middle;}
+.df-5g-area .bx-controls.bx-has-pager .bx-pager.bx-default-pager{left:40px;top:105px}
+.df-5g-area .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager.bx-default-pager{left:auto;top:auto}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto-item,
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto {position:relative; display: inline;top:15px;right:auto;bottom:auto;vertical-align: middle;width:20px !important;}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto a {z-index: 1;display: inline-block;width: 12px;height: 16px;margin: 0 5px 0 0;background-image: url(../images/main/btn_bxslide_controls.png);background-repeat: no-repeat;border: none;color:transparent;font-size: 1px;text-indent: 0;}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto-item {display: inline-block;width: 12px;height: 16px;margin: 0 0px 0 0;border: none;color:transparent;font-size: 1px;text-indent: 0;}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto .bx-stop { position: absolute;right: 0px; background-position: 0% 1px !important;}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto .bx-start {position: absolute;right: -20px;background-position:100% 1px !important;}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto .bx-stop.active,
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-auto .bx-start.active {display: inline-block;}
+.df-5g-area .bx-controls.bx-has-controls-direction .bx-controls-direction a{top:-90px;}
+.df-5g-area .bx-controls.bx-has-controls-direction.bx-has-controls-auto .bx-controls-direction a{top:-30px;}
+.df-5g-area .bx-controls.bx-has-controls-direction.bx-has-pager{bottom: 200px;}
+.df-5g-area .bx-controls.bx-has-controls-direction.bx-has-controls-auto.bx-has-pager{bottom:50px}
+.df-5g-area .bx-controls .bx-prev{left: 50px;background: url(../images/main/btn_prev_type.png) 0 0 no-repeat;background-size: 16px 29px}
+.df-5g-area .bx-controls .bx-next{right:-30px;background: url(../images/main/btn_next_type.png) 0 0 no-repeat;background-size: 16px 29px;}
+.df-5g-area .bx-controls .bx-next:focus,
+.df-5g-area .bx-controls .bx-next:hover{background-position: 0 0;}
+.df-5g-area .bx-wrapper .bx-controls-direction a{display: inline-block;color: transparent; border-color: #fff;text-indent: 0;width: 16px;height: 29px;line-height:15px}
+/* //2017-12-08 접근성 수정 */

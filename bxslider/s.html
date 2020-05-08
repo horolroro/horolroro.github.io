@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+  <meta name="format-detection" content="telephone=no,address=no,email=no"> 
+  <meta name="Keywords" content="kt, 케이티, kt.com, kt닷컴, 케이티닷컴, olleh, 올레, kt기업. kt 기업"> 
+  <meta name="Description" content="[회사소개] 메인 - 국민의 편익을 도모하는 최고의 국민기업 KT"> 
+  <title>회사소개 | 글로벌 No.1 KT</title> 
+  <!-- 1101 파비콘 경로 수정 --> 
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"> 
+  <!--  아이폰 --> 
+  <link rel="apple-touch-icon-precomposed" href="/icon-normal.png"> 
+  <!--  안드로이드 --> 
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> 
+  <!-- //1101 파비콘 경로 수정 --> 
+  <link rel="stylesheet" type="text/css" href="./css/jquery.bxslider.min.css"> 
+  <!--<link rel="stylesheet" type="text/css" href="https://m.corp.kt.com/js/plugin/jquery.bxslider/jquery.bxslider.min.css">-->
+
+
+  <link rel="stylesheet" type="text/css" href="https://m.kt.com/css/vendor/ir-kt.css?version=201711232040">
+<link rel="stylesheet" type="text/css" href="https://m.kt.com/css/ir-common.css?version=201711232040">
+
+  <link rel="stylesheet" type="text/css" href="./css/main.css"> 
+  <script type="text/javascript">
+		s.pageName="^m^www^KT-회사소개^메인";
+		
+	</script> 
+ </head> 
+ <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"> 
+  <div id="ktMainYn"></div> 
+  <div id="mCfmIrWrapper"> 
+   <!-- header --> 
+
+   <!-- /header --> 
+   <!-- mCfmIrContainer --> 
+   <div id="mCfmIrContainer"> 
+    <!--메인 슬라이드--> 
+
+     <section id="section0" class="key-visual" >
+	<div class="bx-slider-wrap">
+		<ul id="section0-contents-container" class="key-bxslider">
+			<li class="item type1 default" style="background-image: url(https://m.corp.kt.com/images/area/A000000100/C000001451v24h2177.jpg?2017113022);">
+			<div class="descriptions">
+				11
+			</div>
+			</li>
+			<li class="item type2 default" style="background-image: url(https://m.corp.kt.com/images/area/A000000100/C000001799v24h2178.jpg?2017113022);">
+			<div class="descriptions" style="padding-top:120px;">
+				<h3 class="arrow-title" style="padding-top:0;">오직 사람을위한<br>
+				 혁신 기술</h3>
+			</div>
+			</li>
+			<li class="item type3 default" style="background-image: url(https://m.corp.kt.com/images/area/A000000100/C000001453v24h2180.jpg?2017113022);">
+			<div class="descriptions">
+				222
+			</div>
+			</li>
+			<li class="item type4 default" style="background-image: url(https://m.corp.kt.com/images/area/A000000100/C000001798v24h2181.jpg?2017113022);">
+			<div class="descriptions">
+				333
+			</div>
+			</li>
+		</ul>
+	</div>
+
+	</section>
+	 
+   </div> 
+   <!-- /mCfmIrContainer --> 
+
+  </div> 
+  <!-- script --> 
+  <script type="text/javascript" src="https://corp.kt.com/js/vendor/jquery-3.2.1.min.js"></script> 
+  <script type="text/javascript" src="https://corp.kt.com/js/vendor/jquery.easing.1.3.js"></script> 
+  <script type="text/javascript" src="https://corp.kt.com/js/plugin/jquery.scrollTo.min.js"></script> 
+  <script type="text/javascript" src="https://corp.kt.com/js/plugin/jquery.bxslider/jquery.bxslider.min.js"></script>
+
+<script>
+var $j = jQuery.noConflict();
+	var keyRollingYn = true;
+	if ($j('#section1').data('rolling') == "N" ){
+		keyRollingYn = false;
+	}
+
+	var $slider = $j('.key-visual .key-bxslider');
+    $slider.bxSlider({
+        mode: 'fade',
+        speed: 1000,
+        auto: keyRollingYn,//1206
+        pause: 3000,
+        pager: true,
+        oneToOneTouch: false,
+		ariaLive: false,
+        controls: true,
+        autoControls: true,
+		oneToOneTouch: false,
+		onSlideAfter: function () {
+			if (keyRollingYn) {
+				//$slider.startAuto();
+			}
+		}// 2017-11-23 접근성
+    });
+	// 2017-11-23 접근성개선
+	$j('.key-visual .bx-controls-auto').find('.bx-start').hide();
+	$j('.key-visual .bx-controls-direction').find('.bx-prev').text('이전');
+	$j('.key-visual .bx-controls-direction').find('.bx-next').text('다음');
+	$j('.key-visual .bx-controls-auto').find('.bx-stop').text('정지');
+	$j('.key-visual .bx-controls-auto').find('.bx-start').text('시작');
+
+
+    $j(".key-visual .bx-controls-auto .bx-stop").on('click', function () {
+        $j('.key-visual .bx-controls').find('.bx-stop').hide();
+        $j('.key-visual .bx-controls').find('.bx-start').show().focus();
+    });
+    $j(".key-visual .bx-controls-auto .bx-start").on('click', function () {
+
+        $j('.key-visual .bx-controls').find('.bx-start').hide();
+        $j('.key-visual .bx-controls').find('.bx-stop').show().focus();
+    });
+
+/* 2017_1206삭제
+	var $btnPager = $j('.key-visual .bx-controls .bx-pager-link');
+	$btnPager.each(function(index){
+		$btnPager.eq(index).on('click', function(){
+			$slider.stopAuto();
+			$j('.key-visual .bx-controls').find('.bx-stop').hide();
+			$j('.key-visual .bx-controls').find('.bx-start').show();
+			slider.goToSlide(index);
+		});
+	});
+*/
+</script>
+
+<style>
+
+</style>
+ </body>
+</html>
