@@ -1,0 +1,273 @@
+var $j = jQuery.noConflict();
+$j(function(){
+	//info/m_ir_6a0000.html - ceo 경력 더보기
+	if($j('.ceo-profile').length){
+		var theMore, theLess;
+		if ($j('.ceo-hi .more-btn').text() == 'more') {
+			theMore = 'more';
+			theLess = 'less';
+		} else {
+			theMore = '더보기';
+			theLess = '접기';
+		}
+
+		$j('a[href="#accordions6-2"]').one('click', function(e){
+			var showHeight = $j('.career ul').height();
+			$j('.career li:gt(4)').hide();
+			var hideHeight = $j('.career ul').height();
+			$j('.career ul').height(hideHeight);
+			$j('.career li').show();
+			$j('.ceo-profile').next('.more-btn').on('click', function(e){
+				e.preventDefault();
+				$j(this).toggleClass('open');
+				if($j(this).hasClass('open')){
+					$j('.career ul').animate({height: showHeight});
+					$j(this).text(theLess);
+				}else{
+					$j('.career ul').animate({height: hideHeight});
+					$j(this).text(theMore);
+				}
+			});
+		});
+	}
+	
+	//info/m_ir_5AAAA0.html - 연혁
+	if($j('#btn-history').length){
+		var size = $j('.tab-list').find('li').length;
+		$j('#btn-history').find('#prev').on('click', function(e){
+			e.preventDefault();
+			var idx = $j('.tab-list').find('.active').closest('li').index();
+			if(idx > 0){
+				$j('.tab-list').find('.active').removeClass('active').closest('li').prev().find('a').addClass('active');
+				$j('.tab-list').scrollTo('a.active', 300);
+				$j('.tab-contents').find('.active').removeClass('active').prev().addClass('active');
+			}
+		});
+		$j('#btn-history').find('#next').on('click', function(e){
+			e.preventDefault();
+			var idx = $j('.tab-list').find('.active').closest('li').index() + 1;
+			if(idx < size){
+				$j('.tab-list').find('.active').removeClass('active').closest('li').next().find('a').addClass('active');
+				$j('.tab-list').scrollTo('a.active', 300);
+				$j('.tab-contents').find('.active').removeClass('active').next().addClass('active');
+			}			
+		});
+	}
+	
+	//invest/m_ir_6eac00.html - 셀렉트
+	if($j('.restoration #dropdown').length){
+		$j('.restoration #dropdown').on('change', function(){
+			var value = $j(this).val();
+			$j('.year-tbl').hide();
+			$j('#'+value).show();
+		});
+	}
+	
+	//invest/m_ir_6ecc00.html - input 삭제 버튼 추가
+	$j('.search-area input[type="text"]').on('keyup', function(){
+		if($j(this).val().length){
+			$j(this).next('.btn-search.delete').show();
+		}else{
+			$j(this).next('.btn-search.delete').hide();
+		}
+	});
+	$j('.btn-search.delete').on('click', function(){
+		$j(this).hide().siblings('.search-text').val('').focus();
+	});
+	// 2017-11-23 : 접근성 개선
+	if($j('.hash-tags').hasClass('active')){
+		$j(this).attr('title','선택');
+	}
+	//promotion/m_ir_6daa00.html - 해쉬태그
+	if($j('.hash-tags').length){
+
+		$j('.hash-tags').on('click', 'button', function(){
+			$j('.btn-hash').removeClass('active').attr('title',''); // 2017-11-23 : 접근성
+			$j(this).addClass('active').attr('title','선택'); // 2017-11-23 : 접근성
+		});
+		//hash-tags 더보기
+		var btnHeight = $j('.hash-tags button').outerHeight()+10; //margin-bottom: 10px		
+		var lastOffsetTop = $j('.hash-tags button').last().offset().top;
+		$j('.hash-tags').next('.detail').on('click', 'button', function(){			
+			var tagsHeight = $j('.hash-tags').innerHeight();
+			var hashArea = $j('.hash-tags').offset().top + tagsHeight;
+			if((lastOffsetTop - hashArea) >= btnHeight){
+				$j('.hash-tags').animate({height:tagsHeight + (btnHeight*2)});
+				if((lastOffsetTop - hashArea) == btnHeight){
+					$j('.hash-tags').next('.detail').fadeOut(500);
+				}
+			}else{
+				$j('.hash-tags').animate({height:tagsHeight + btnHeight});
+				if(hashArea = lastOffsetTop){
+					$j('.hash-tags').next('.detail').fadeOut(500);
+				}
+			}				
+		});
+	}
+	
+	//promotion/m_ir_6dac00.html
+	if($j('.date-list').length){
+		$j('.date-list').on('click focus', 'li', function(){
+			$j('.date-list li').removeClass('active');
+			$j(this).addClass('active');
+		});
+	}
+	
+	//promotion/m_ir_6dcb00.html
+	if($j('.history-search-slider').length){
+		var configHistorySearch = {
+			speed: 500,
+			auto: false,
+			pause: 3000,
+			autoHover: true,
+			autoControls: false,
+			controls: false,
+			pager: true,
+			oneToOneTouch: false,
+			ariaLive : false // 2017-11-23 접근성
+		};
+		var sliderHistorySearch = new Array();
+		$j('.history-search-slider .bxslider').each(function(i, slider) {
+			sliderHistorySearch[i] = $j(slider).bxSlider();
+		});
+		
+		$j('.accordions').find('a[href*="#accordions"]').on('click', function(){
+			$j.each(sliderHistorySearch, function(i, slider){ 
+				slider.reloadSlider(configHistorySearch);
+			});
+		});
+	}
+
+	//promotion/m_ir_6d0000.html	
+	var sliderCulture = $j('.submain-culture-area .bxslider');
+	if(sliderCulture.length){
+		sliderCulture.bxSlider({
+			mode: 'horizontal',
+			speed: 500,
+			auto: false,
+			pause: 3000,
+			autoHover: false,
+			autoControls: false,
+			controls: false,
+			pager: true,
+			oneToOneTouch: false,
+			adaptiveHeight: true
+		});
+	}
+	
+	//promotion/m_ir_6d0000.html - sns 정렬
+	// if($j('#grid').length){
+	// 	$j('#grid').shapeshift({
+	// 		enableDrag: false,
+	// 		enableCrossDrop: false,
+	// 		enableResize: true,
+	// 		columns: 2,
+	// 		gutterX: 9,
+	// 		gutterY: 9,
+	// 		paddingX: 9,
+    // 	paddingY: 9
+	// 	});
+	// 	$j(window).resize(function(){
+	// 		location.reload();
+	// 	});
+	// }
+
+
+	/* 지속가능성 start */
+	// 윤리경영 ir_5CBB00.html
+	var preIdx = null;
+	$j('.tarms-tab-list a').on('click', function(e){
+		var m = $j(this).closest('li').index();
+		var n = $j(this).closest('ul').index();
+		var idx = 3*n + m;
+
+		if( idx == preIdx ){
+			$j(this).parent().toggleClass('active');
+		} else {
+			$j(this).closest('.tarms-tab-list').find('li').removeClass('active');
+			$j(this).parent().addClass('active');
+		}
+
+		$j('.accordions > li').eq(idx).find('a').trigger('click');
+		preIdx = idx;
+
+		e.stopPropagation();
+	});
+
+	//통합보고서 8개씩 더보기 m_ir_6cac00.html
+	var cnt = 1;
+	var theOffset;
+
+	$j('.list-archive').next('.btn-more').on('click', function () {
+		if ($j('.list-archive li:hidden').length) {
+			for (var i = 0; i < 8; i++) {
+				// 8개 더보기
+				$j('.list-archive li').eq(8 * cnt + i).fadeIn();
+
+				// 스크롤
+				if (i == 0) {
+					theOffset = $j('.list-archive li').eq(8 * cnt + i).offset();
+					$j('html, body').animate({scrollTop: theOffset.top}, 400);
+				}
+			}
+
+			if (!$j('.list-archive li:hidden').length) {
+				$j(this).hide();
+			}
+		}
+
+		cnt++;
+	});
+
+	/* 지속가능성 end */
+
+	/* 사업소개 start */
+	//bx-slider - service/m_ir_6bbc00.html
+	var $slider5Gdf = $j('.slider .bxslider');
+	if($slider5Gdf.length){
+		$slider5Gdf.bxSlider({
+			mode: 'horizontal',
+			speed: 500,
+			auto: true,
+			pause: 3000,
+			autoHover: false,
+			autoControls: true,
+			controls: true,// 2017-12-06 : 접근성수정
+			pager: true, 
+			oneToOneTouch: false,
+			ariaLive : false,
+			onSlideAfter: function () {// 2017-12-06 : 접근성수정
+				$slider5Gdf.startAuto();
+			}
+		});
+	}
+	// 2017-11-23 : 접근성개선 추가
+	$j('.df-5g-area .slider').find('.bx-start').hide();
+	$j(".df-5g-area .slider .bx-stop").on('click', function () {
+		$j('.df-5g-area .slider').find('.bx-stop').hide();
+		$j('.df-5g-area .slider').find('.bx-start').show().focus();// 2017-12-06 : 접근성수정
+	});
+	$j(".df-5g-area .slider .bx-start").on('click', function () {
+		$j('.df-5g-area .slider').find('.bx-start').hide();
+		$j('.df-5g-area .slider').find('.bx-stop').show().focus();// 2017-12-06 : 접근성수정
+	});
+
+	/* 사업소개 end */
+
+	/* 홍보센터 start */
+	//스포츠 년도선텍
+	$j('#changeYear').change(function(){
+		$j('#changeYear option:selected').each(function () {
+			$j('[id*="year-"]').hide().eq($j('#changeYear').prop('selectedIndex')).show();
+		});
+	});
+
+	/* 홍보센터 end */
+
+	if($j('.pop-close').length) {
+		$j('.pop-close').on('click', function() {
+			window.open('', '_self');
+			window.close();
+		});
+	}
+});
