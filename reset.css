@@ -4,8 +4,7 @@
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
 }
-/* reset *//* reset *//* reset */
-/* 안드로이드 탑으로 가기 안되는현상 수정 16~17줄 */
+/* reset */
 /* 안드로이드 탑으로 가기 안되는현상 수정 16~17줄 */
 html, body{width:100%;height:auto;background:transparent;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
 body {overflow-y: scroll !important;line-height:100%;color:#000;background-color:#e9ecef;width:100%;min-width:320px;-webkit-font-smoothing:antialiased;/* Fix for webkit rendering */-webkit-text-size-adjust:none;*word-break:break-all;margin:0 auto;min-width:320px;/*font-weight:600 */}
