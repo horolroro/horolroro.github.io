@@ -6,6 +6,7 @@
 }
 /* reset */
 /* 안드로이드 탑으로 가기 안되는현상 수정 16~17줄 */
+/* 안드로이드 탑으로 가기 안되는현상 수정 16~17줄 */
 html, body{width:100%;height:auto;background:transparent;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
 body {overflow-y: scroll !important;line-height:100%;color:#000;background-color:#e9ecef;width:100%;min-width:320px;-webkit-font-smoothing:antialiased;/* Fix for webkit rendering */-webkit-text-size-adjust:none;*word-break:break-all;margin:0 auto;min-width:320px;/*font-weight:600 */}
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, del, dfn, em, img, ins, kbd, q, samp, small, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section, input, select {margin:0;padding:0;/*border:0;*/border-radius:0;/* for iOS */outline:0;font-size:100%;}
