@@ -155,6 +155,8 @@ body {
 					on : {
 						init : function(){
 							mainSlide.afterSlide();
+							var conIndex = $('.swiper2 .swiper-slide-active').attr('data-swiper-slide-index');
+							console.log(conIndex)
 						},
 						slideChangeTransitionEnd: function(){
 							mainSlide.afterSlide();

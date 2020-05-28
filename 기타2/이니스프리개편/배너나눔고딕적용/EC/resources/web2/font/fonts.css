@@ -1,0 +1,75 @@
+@font-face {
+font-family: 'notoL';
+font-style: normal;
+font-weight: 300;
+src:url(NotoSans-Light.woff2) format('woff2'),
+	url(NotoSans-Light.woff) format('woff'),
+	url(NotoSans-Light.otf) format('opentype');
+}
+@font-face {
+font-family: 'notoR';
+font-style: normal;
+font-weight: 400;
+src:url(NotoSans-Regular.woff2) format('woff2'),
+	url(NotoSans-Regular.woff) format('woff'),
+	url(NotoSans-Regular.otf) format('opentype');
+}
+@font-face {
+font-family: 'notoM';
+font-style: normal;
+font-weight: 500;
+src:url(NotoSans-Medium.woff2) format('woff2'),
+	url(NotoSans-Medium.woff) format('woff'),
+	url(NotoSans-Medium.otf) format('opentype');
+}
+@font-face {
+font-family: 'roboR';
+font-style: normal;
+font-weight: 400;
+src:url(Roboto-Regular.woff2) format('woff2'),
+	url(Roboto-Regular.woff) format('woff'),
+	url(Roboto-Regular.otf) format('opentype');
+}
+@font-face {
+font-family: 'roboM';
+font-style: normal;
+font-weight: 500;
+src:url(Roboto-Medium.woff2) format('woff2'),
+	url(Roboto-Medium.woff) format('woff'),
+	url(Roboto-Medium.otf) format('opentype');
+}
+
+@font-face {
+font-family: 'inni';
+font-style: normal;
+font-weight: 400;
+src:url(NotoSans-Regular.woff2) format('woff2'),
+	url(NotoSans-Regular.woff) format('woff'),
+	url(NotoSans-Regular.otf) format('opentype');
+}
+@font-face {
+font-family: 'inniB';
+font-style: normal;
+font-weight: 500;
+src:url(NotoSans-Medium.woff2) format('woff2'),
+	url(NotoSans-Medium.woff) format('woff'),
+	url(NotoSans-Medium.otf) format('opentype');
+}
+
+@font-face{
+font-family:'ng';
+font-style: normal;
+font-weight: 400;
+src:url(NotoSans-Regular.woff2) format('woff2'),
+	url(NotoSans-Regular.woff) format('woff'),
+	url(NotoSans-Regular.otf) format('opentype');
+}
+
+@font-face{
+font-family:'ngB';
+font-style: normal;
+font-weight: 500;
+src:url(NotoSans-Medium.woff2) format('woff2'),
+	url(NotoSans-Medium.woff) format('woff'),
+	url(NotoSans-Medium.otf) format('opentype');
+}
