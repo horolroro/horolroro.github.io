@@ -294,8 +294,21 @@
 		<br /><br /><br /><br /><br />
 
 		<!-- 팝 -->
-		<div class="popupDim popup01" style="display: none;">
+		<div class="popupDim popup01" style="">
 			<div class="layerPop_event">
+				<img src="./images/pop_01.png" usemap="#image-map">
+
+				<map name="image-map">
+					<area target="_self" alt="클릭시 엑셀 다운로드 기능" href="" coords="39,412,386,510" shape="rect">
+					<area target="_self" alt="클릭시 기획전으로 이동" href="" coords="410,415,760,514" shape="rect">
+				</map>
+
+				<a href="javascript:;" class="btn_close">닫기</a>
+			</div>
+		</div>
+
+		<div class="popupDim popup02" >
+			<div class="layerPop_event" style="border:2px solid red">
 				<img src="./images/pop_01.png" usemap="#image-map">
 
 				<map name="image-map">
@@ -372,6 +385,7 @@
 			}
 
 			pop($('.pop_01'),'01');
+			pop($('.pop_02'),'02');
 		});
 
 		

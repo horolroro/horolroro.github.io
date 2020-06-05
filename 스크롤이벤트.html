@@ -18,8 +18,8 @@
 		img{width: 100%;}
 		.posinfo {position: fixed; background: dodgerblue; font-size: 26px;line-height: 30px; padding:15px 20px 15px 0;color: #fff;}
 		.container{}
-		.ilbuni{width: 100px; margin:0 auto;transition: 1s;}
-		.ilbuni.active{transform: scale(2);}
+		.ilbuni{width: 100px; margin:0 auto 20px auto; transition: 1s;opacity: 0;}
+		.ilbuni.active{ opacity: 1; margin-top:-20px}
 	</style>
 
 <body>
@@ -140,6 +140,26 @@
 	// })()
 
 	// -------JQUERY----개선후-setinterval로 부하를 줄여줌--
+
+	//다른예
+	// function fnScrollfade(){
+	// 	$('.scrollfade').each( function(i){
+	// 		var bottomObject = $(this).offset().top;
+	// 		var bottomWindow = $(window).scrollTop() + $(window).height() / 1.5;
+			
+	// 		if( bottomWindow >= bottomObject ){
+	// 			$(this).addClass('fadeInUp');
+	// 		};
+	// 	});
+	// };
+
+	// $(document).ready(function() {
+	// 	fnScrollfade();
+		
+	// 	$(window).scroll(function(){
+	// 		fnScrollfade();
+	// 	});
+	// });
 
 	(function(){
 
