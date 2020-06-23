@@ -1,0 +1,164 @@
+<html lang="en" class="">
+<head>
+<meta charset="UTF-8">
+<title>CodePen Demo</title>
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+<style type="text/css">
+
+    * {margin: 0;padding: 0;}
+    img {width:100%;}
+    body {position: relative; height: 100%;}
+   /* .swiper-container-h {height:100vh;} 
+    .swiper-container-h > .swiper-wrapper {height:100vh;} 
+    .swiper-container-h > .swiper-wrapper > .swiper-slide {height:100vh;} */
+
+    .height {height: 2001px !important;}
+
+    .swiper-slide-active {z-index: 3; }
+
+    .cta {padding: 12% 0; }
+    .cta__slider-wrapper {position: relative; width: 100%; float: left; /*height: 100vh; */}
+    .cta__slider-wrapper .block {position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 0; }
+    .cta__slider {min-height: 50vh; }
+    .cta__slider .swiper-slide {overflow: hidden; }
+    .cta__slider-arrows {display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
+    .cta__slider-arrow {position: absolute; top: 0; width: 50%; height: 100%; }
+    .cta__slider-arrow.cta__slider-arrow--previous {left: 0; } 
+    .cta__slider-arrow.cta__slider-arrow--next {left: 50%; }
+    .cta__slider-item {position: relative; }
+    .cta__slider-item .media-wrapper {position: absolute; width: 100%; height: 100%; left: 0; top: 0; }
+    .cta__slider-item img {width: 100%; height: 100%; object-fit: cover; position: absolute;top:0;left: 0;}
+    .cta__slider-counter {width: 100%; position: absolute; top: 0; left: 0; z-index: 3; padding: 20px 40px; color: #ffffff; }
+    .cta__cta {padding-top: 12%; max-width: 480px; }
+</style>
+
+</head>
+
+<body>
+    <div class="swiper-container swiper-container-h">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<!-- 주석 -->
+				<div class="cta__slider-wrapper swiper-container" id="js-cta-slider">
+					<div class="cta__slider swiper-wrapper">
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner"><img src="./images/mlb_1.jpg"></div>
+						</div>
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner"><img src="./images/mlb_2.jpg"></div>
+						</div>
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner height"><img src="./images/mlb_3.jpg"></div>
+						</div>
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner"><img src="./images/mlb_2.jpg"></div>
+						</div>
+                    </div>
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="cta__slider-wrapper swiper-container" id="js-cta-slider2">
+					<div class="cta__slider swiper-wrapper">
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner"><img src="./images/mlb_1.jpg"></div>
+						</div>
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner"><img src="./images/mlb_2.jpg"></div>
+						</div>
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner height"><img src="./images/mlb_3.jpg"></div>
+						</div>
+						<div class="cta__slider-item swiper-slide">
+							<div class="media-wrapper slide-inner"><img src="./images/mlb_2.jpg"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+    //Horizen Slider
+    var swiperH = new Swiper('.swiper-container-h', {
+        // pagination: {
+        // el: '.cta__slider-wrapper',
+        //     clickable: true,
+        // },
+    });
+</script>
+
+<script>
+    //Vertical slider
+    const slider = document.getElementById("js-cta-slider");
+    const slider2 = document.getElementById("js-cta-slider2");
+    const sliderCounter = document.getElementById("js-cta-slider-counter");
+    const sliderNext = document.getElementById("js-cta-slider-next");
+    const sliderPrevious = document.getElementById("js-cta-slider-previous");
+
+    const interleaveOffset = 0.75;
+
+    var option = {
+        loop: false,
+        direction: "vertical",
+        calculateHeight:true,
+        speed: 800,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        mousewheelControl: true,
+        mousewheel: true,
+        pagination: {
+            el: sliderCounter,
+            type: "custom",
+            renderCustom: function(swiper, current, total) {
+            let i = current ? current : 0;
+            return `${("0" + i).slice(-2)} / ${("0" + total).slice(-2)}`;
+            }
+        },
+        navigation: {
+            nextEl: sliderNext,
+            prevEl: sliderPrevious
+        },
+        on: {
+            progress: function() {
+                let swiper = this;
+
+                for (let i = 0; i < swiper.slides.length; i++) {
+                    let slideProgress = swiper.slides[i].progress;
+                    let innerOffset = swiper.height * interleaveOffset;
+                    let innerTranslate = slideProgress * innerOffset;
+
+                    // TweenMax.set(swiper.slides[i], {
+                    // skewY: `${innerTranslate*0.025}deg`,
+                    // });
+                    TweenMax.set(swiper.slides[i].querySelector(".slide-inner"), {
+                        y: innerTranslate,
+                    });
+                }
+            },
+            touchStart: function() {
+                let swiper = this;
+                for (let i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = "";
+                }
+            },
+            setTransition: function(speed) {
+                let swiper = this;
+                for (let i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = speed + "ms";
+                    swiper.slides[i].querySelector(".slide-inner").style.transition =
+                    speed + "ms";
+                }
+            }
+        }
+    }
+    //init slide
+    const swiper = new Swiper(slider , option)
+    const swiper2 = new Swiper(slider2 , option)
+   
+</script>
+</html>
