@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	body{background: #fff;}
+
+	/* select */
+	.selectArea {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.selectArea .selTit {
+		width: 100%;
+		height: 40px;
+		padding: 0 38px 0 8px;
+		background: url('../images/common/arw_select.png') no-repeat 100% 50%;
+		border: 1px solid #a7a7a7;
+		text-align: left;
+		color: #222;
+		vertical-align: top;
+	}
+	.selectArea .selTit:disabled {color: #999;}
+	.selectArea .selList {
+		display: none;
+		position: absolute;
+		left: 0; right: 0;
+		z-index: 10;
+		max-height: 170px;
+		overflow: auto;
+		margin: -1px 0 0;
+		background: #fff;
+		border: 1px solid #a7a7a7;
+	}
+	.selectArea .selList li {
+		position: relative;
+	}
+	.selectArea .selList input[type="radio"] {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+	}
+	.selectArea .selList label {
+		display: block;
+		padding: 5px 8px;
+		cursor: pointer;
+	}
+	.selectArea .selList input[type="radio"]:checked + label {background: #f3f3f3;}
+	.selectArea .selList input[type="radio"]:disabled + label {color: #999;}
+
+</style>
+
+<body>
+	<div class="selectArea" style="width: 146px;">
+		<button class="selTit" type="button" id="yyyyView" onclick="selActive();">1911년</button>
+		<ul class="selList" style="display: none;">
+			<li><input type="radio" id="year1950" name="year" value="1950" onclick="fnSetYYYY('1950');"><label for="year1950">1950년</label></li>
+		</ul>
+	</div>
+	
+</body>
+
+<script>
+
+	var selActive = function() {
+		var target = event.currentTarget || event.srcElement;
+		var $this = $(target);
+		var selWrap = $this.closest('.selectArea');
+		var selList = $this.next('.selList');
+		var input = selList.find('input[type="radio"]');
+		var option = selList.find('li label');
+
+		var selChk = function(txt){
+			$this.removeClass('open').html(txt);
+			selList.slideUp(200);
+		}
+
+		$this.addClass('open');
+		selList.slideDown(200).find('li:first-child input').focus();
+
+		input.on('keydown', function(){
+			if(event.keyCode == 13) {
+				var txt = $(this).next('label').html();
+				selChk(txt);
+			}
+		})
+		option.off().on('click', function(){
+			if(!$(this).parent().find('input').is(":disabled")) {
+				var txt = $(this).html();
+				selChk(txt);
+			}
+		});
+
+		// selWrap.off().on('mouseleave', function(){
+		// 	selChk();
+		// });
+	}
+
+
+
+</script>
+
+ 
+</html>

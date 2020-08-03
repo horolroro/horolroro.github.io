@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.evBody .evtjoin{display: block;width: 70%;height: 40px;font-size: 19px;line-height: 40px;color: #fff;background: #000;border-radius: 3px;text-align: center;margin: 30px auto;}
+
+.customerEventArea .pdtName{font-family: 'notoM';}
+.customerEventArea .replyList h4{border-bottom: 1px solid #eeeeee; padding: 4rem 2rem 1.5rem;  font-family: 'notoM';}
+
+.customerEventLayer{color: #222;text-align: left;}
+.customerEventLayer .txt_1{text-align: left;}
+.customerEventLayer .btnWrap{margin-right: 0;margin-left: 0;}
+.customerEventLayer .eventTable {padding: 10px 0px;color: #000; font-family: 'notoL';}
+.customerEventLayer .eventTable th {font-family: 'notoM';font-weight: normal;}
+.customerEventLayer .eventTable td{padding: 5px 0;}
+
+.customerEventLayer .phone{position:relative;display: flex;justify-content: space-between;}
+.customerEventLayer .phone .selectBox {width: 29.9%;margin: 0;}
+.customerEventLayer .phone .selectBox select {height: 3.8rem;color: #999;}
+.customerEventLayer .phone .inputTxt {width: 31.5%;}
+.customerEventLayer .inputAlt{display:none; font-size: 1rem; text-align: left; color: #bd1e31; margin: 0.3rem 0 0.6rem;}
+
+.customerEventLayer .eventTable_2 {color: #000;text-align: left; font-family: 'notoL';}
+
+.customerEventLayer .eventTable_3 {margin:18px 0 14px; padding: 10px 12px;color: #000;text-align: left; font-family: 'notoL';background: #f3f3f3;}
+.customerEventLayer .eventTable_3 th {font-family: 'notoM';color: #777;vertical-align: top;font-weight: normal;}
+
+.customerEventLayer .subTit_1{font-size: 1.5rem; font-family: 'notoM'; margin-bottom: 12px;}
+.customerEventLayer .subTit_2{font-size: 1.5rem;  font-family: 'notoM'; margin:24px 0 8px;}
+.customerEventLayer textarea{margin:14px 0 15px}
+.customerEventLayer .txtBx_1{border-top: 1px solid #000; border-bottom: 1px solid #a7a7a7; padding: 15px 0; font-size: 14px;margin-top: 20px;}
+.customerEventLayer .txtBx_2{padding: 10px 12px;background: #f3f3f3;font-family: 'notoM';margin-bottom: 21px;}
+.customerEventLayer .txtBx_2 p{line-height: 1.4;}
+.customerEventLayer .profileRegTerms{border-top: 0;margin-top:0}
+.customerEventLayer .profileRegTerms .terms{ margin: 13px 0 0;height: 151px;font-size: 1.1rem;padding: 8px; overflow-y: scroll;border: 1px solid #dcdcdc; color: #777;}
+.customerEventLayer .profileRegTerms label{font-family: 'notoM';}
+.customerEventLayer .completeTxt{text-align: center;padding-top: 3px;}
+.customerEventLayer .completeTxt em{display: block; font-family: 'notoM';font-size: 1.8rem}
+.customerEventLayer .completeTxt span{font-family: 'notoM';margin-left:10px}
+.customerEventLayer .txtBx_1 + .bulListType2{margin-top: 21px;}
+.customerEventLayer.mbs{height: 61vh;}
+.customerEventLayer.mbs .btnWrap{margin-bottom: 2rem;}
+.customerEventLayer.mbs .kitTxt{color:#000}
+.customerEventLayer.mbs .kitList{overflow-x: hidden;margin-top: 2rem;}
+.customerEventLayer .dotList > li{font-size: 1rem;}
+.customerEventLayer .kitList .kit strong{overflow: hidden; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;width: 79%;}

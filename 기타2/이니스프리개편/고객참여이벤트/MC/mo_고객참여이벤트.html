@@ -1,0 +1,1574 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+	
+	
+	
+
+
+<title>이니스프리 | Natural benefits from Jeju, innisfree</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
+<meta name="Author" content="innisfree.co.kr">
+<meta name="title" content="innisfree">
+<meta name="keywords" content="화장품 쇼핑몰, 스킨케어, 메이크업, 마스크팩, 바디, 헤어, 남성화장품, 맨스토어, 마이쿠션, 추천제품,기획전, 이벤트">
+<meta name="description" content="피부에 휴식을 주는 섬 자연주의 화장품 브랜드 이니스프리의 온라인 화장품 쇼핑몰입니다.">
+<meta name="format-detection" content="telephone=no">
+<link href="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" href="http://d2veos.innisfree.com:8401/resources/fonts/fonts.css">
+<link rel="stylesheet" href="http://d2veos.innisfree.com:8401/resources/mobile2/css/common.css">
+<link rel="stylesheet" href="http://d2veos.innisfree.com:8401/resources/mobile2/css/ui.css">
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/common/js/jquery.util.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/swiper.min.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/ui.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/jquery.infinitescroll.min.js"></script>
+</head>
+<body>
+    <link rel="stylesheet" href="./event_customerEvent.css">
+
+	<!-- 신청 정보 입력 레이어 -->
+	<div class="layPop size560" id="" style="display: none">
+		<div class="wrapModal">
+			<div class="inner">
+				<div class="popWrap">
+					<div class="popHead">
+						<h3>신청 정보 입력</h3>
+					</div>
+					<div class="popBody">
+						<div class="customerEventLayer">
+							<p class="txt_1">
+								이벤트 참여를 위해 아래의 정보를 정확하게 입력해주세요.
+							</p>
+							<div class="eventTable">
+								<table>
+									<caption>정보입력</caption>
+									<colgroup>
+										<col style="width: 30%;">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">이름</th>
+											<td>
+												<input type="text" id="" name="" value="" class="inputTxt" style="width:100%;">
+												<p class="inputAlt" id="">
+													이름을 입력해 주세요.
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">휴대폰번호</th>
+											<td>
+												<div class="phone">
+													<div class="selectBox">
+														<select name="mobileNo1">
+															<option value="010" selected="selected">010</option>
+															<option value="011">011</option>
+															<option value="016">016</option>
+															<option value="017">017</option>
+															<option value="018">018</option>
+															<option value="019">019</option>
+                                                        </select>
+													</div>
+													<input type="text" class="inputTxt">
+													<input type="text" class="inputTxt">
+												</div>
+												<p class="inputAlt">휴대폰번호를 입력해주세요.</p>
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">이메일</th>
+											<td>
+												<input type="text" id="email" name="email" value="" class="inputTxt" style="width:100%;">
+												<p class="inputAlt">정확한 이메일을 입력해 주세요.</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<ul class="dotList">
+								<li>잘못된 정보 기재 시 이벤트 대상에서 제외될 수 있습니다.</li>
+							</ul>
+			
+							<div class="btnWrap">
+                                <button type="button" class="btnBk btn">확인</button>
+                            </div>
+						</div>
+					</div>
+					<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 이벤트 신청 레이어 -->
+	<div class="layPop size560" id="" style="display: none">
+		<div class="wrapModal">
+			<div class="inner">
+				<div class="popWrap">
+					<div class="popHead">
+						<h3>이벤트 신청</h3>
+					</div>
+					<div class="popBody">
+						<div class="customerEventLayer">
+							<p class="txt_1">
+								신청 내용은 한 번 등록된 경우 수정이 불가하니 신중하게 입력해주세요.
+							</p>
+							
+							<textarea id="cnt" name="cnt" onkeydown="checkleng(this);" placeholder="내용을 입력해주세요." style="width: 100%; height: 20vh;"></textarea>
+							
+							<ul class="dotList">
+								<li>잘못된 정보 기재 시 이벤트 대상에서 제외될 수 있습니다.</li>
+							</ul>
+			
+							<div class="btnWrap">
+                                <button type="button" class="btnBk btn">확인</button>
+                            </div>
+						</div>
+					</div>
+					<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 신청제품선택 -->
+	<div class="layPop size560" id="" style="display: none">
+		<div class="wrapModal">
+			<div class="inner">
+				<div class="popWrap">
+					<div class="popHead">
+						<h3>신청제품선택</h3>
+					</div>
+					<div class="popBody">
+						<div class="customerEventLayer mbs">
+							<p class="kitTxt">
+								신청한 제품은 변경이 불가능합니다. 단, 신청기간 내 매장 및 배송지 변경은 가능합니다.
+							</p>
+							<ul class="kitList">
+								<li>
+									<label class="inputRadio">
+										<input type="radio" checked="">
+										<span><img src="/resources/mobile2/images/membership/kit_img01.png" alt=""></span>
+										<div class="kit">
+											<strong>프라임 키트 1</strong>
+											<p>(잔여수량 : 999)</p>
+										</div>
+									</label>
+								</li>
+								<li>
+									<label class="inputRadio">
+										<input type="radio">
+										<span><img src="/resources/mobile2/images/membership/kit_img02.png" alt=""></span>
+										<div class="kit">
+											<strong>프라임 키트 1</strong>
+											<p>(잔여수량 : 999)</p>
+										</div>
+									</label>
+								</li>
+								<li>
+									<label class="inputRadio">
+										<input type="radio">
+										<span><img src="/resources/mobile2/images/membership/kit_img03.png" alt=""></span>
+										<div class="kit">
+											<strong>프라임 키트 1</strong>
+											<p>(잔여수량 : 999)</p>
+										</div>
+									</label>
+								</li>
+								<li>
+									<label class="inputRadio">
+										<input type="radio">
+										<span><img src="/resources/mobile2/images/membership/kit_img04.png" alt=""></span>
+										<div class="kit">
+											<strong>프라임 키트 4</strong>
+											<p>(잔여수량 : 999)</p>
+										</div>
+									</label>
+								</li>
+								<li>
+									<label class="inputRadio">
+										<input type="radio">
+										<span><img src="/resources/mobile2/images/membership/kit_img04.png" alt=""></span>
+										<div class="kit">
+											<strong>프라임 키트 4</strong>
+											<p>(잔여수량 : 999)</p>
+										</div>
+									</label>
+								</li>
+								<li>
+									<label class="inputRadio">
+										<input type="radio">
+										<span><img src="/resources/mobile2/images/membership/kit_img04.png" alt=""></span>
+										<div class="kit">
+											<strong>프라임 키트 4</strong>
+											<p>(잔여수량 : 999)</p>
+										</div>
+									</label>
+								</li>
+							</ul>
+							<div class="btnWrap">
+								<button type="button" class="btnBk">확인</button>
+							</div>
+						</div>
+
+
+					</div>
+					<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 신청확인 1,2,3 -->
+	<div class="layPop size560" id="" style="display: none">
+		<div class="wrapModal">
+			<div class="inner" style="height: 90vh;">
+				<div class="popWrap">
+					<div class="popHead">
+						<h3>신청확인</h3>
+					</div>
+					<div class="popBody">
+						<div class="layerContents customerEventLayer">
+							<h4 class="subTit_1">3월 고객신청 이벤트</h4>
+							<div class="eventTable_2">
+								<table>
+									<caption>신청기간,수령기간</caption>
+									<colgroup>
+										<col style="width: 25%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">신청기간</th>
+											<td>
+												2019-09-01 ~ 2019-09-30
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">수령기간</th>
+											<td>
+												2019-09-01 ~ 2019-09-30
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+			
+							<div class="eventTable_3">
+								<table>
+									<caption>고객명,신청제품,등급,수령매장</caption>
+									<colgroup>
+										<col style="width: 30%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">고객명</th>
+											<td>
+												홍길동
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">신청제품</th>
+											<td>
+												제주 왕벚꽃미스트 120mL
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">등급</th>
+											<td>
+												WELCOME
+											</td>
+										</tr>
+										<tr>
+											<th scope="row">수령매장</th>
+											<td>
+												명동점 (N011)
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+			
+							<ul class="dotList">
+								<li>수령매장은 신청기간 내 변경이 가능합니다.</li>
+							</ul>
+			
+							<div class="txtBx_1">
+								+_+! 정말 갖고 싶었던 제품입니다~!! 평생 없어서는 안될 저의 핫잇템! 
+								드디어 이벤트로 통해서 진행을 하는군요! 정말 필요했었는데…<br/>
+								건조한 사무실에서 내 얼굴에 즉각적인 수분을 채워 건조할틈 없이 <br/>
+								촉촉하고 화사한 피부로 가꿔주는 수분 아이
+							</div>
+			
+							<!-- 배송지인 경우 추가 -->
+							<div class="onoffbx_1" style="display: block;">
+								<h4 class="subTit_2">수령배송지</h4>
+								<div class="txtBx_2">
+									<p>
+										홍길동 010-1234-5678
+									</p>
+									<p>
+										서울 용산구 한강대로 100 아모레퍼시픽
+									</p>
+								</div>
+			
+								<ul class="dotList">
+									<li>배송지는 신청기간 내 변경이 가능합니다.</li>
+								</ul>
+							</div>
+			
+							<div class="btnWrap">
+								<button type="button" class="btnBk btn">신청하기</button>
+							</div>
+			
+							<!-- 제3자 제공 노출 설정한 경우 추가-->
+							<div class="onoffbx_2" style="display: block;">
+								<div class="profileRegTerms">
+									<div class="box">
+										<label class="inputChk"><input type="checkbox" id="eventJoinAgr"> <span>제 3자 제공 동의(필수)</span></label>
+										<div class="terms">
+											1. 목적: 이벤트 응모로 인한 상품 및 경품(서비스), 배송(전송), 고객상담 등 정보통신서비스제공 계약 및 전자상거래(통신판매)계약의 이행을 위해 필요한 업무의 처리<br/>
+											2. 항목 : ID, 성명, 휴대폰번호, 배송지 주소, 이메일주소
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 신청완료 -->
+	<div class="layPop size560" id="" style="display: block">
+		<div class="wrapModal">
+			<div class="inner" style="height: 90vh;">
+				<div class="popWrap">
+					<div class="popHead">
+						<h3>신청완료</h3>
+					</div>
+					<div class="popBody">
+						<div class="layerContents customerEventLayer">
+							<!-- 완료 메시지 6개-->
+							<div class="completeTxt" style="display:none">
+								<em>신청 완료되었습니다.</em>
+								<p>수령기간<span>2019-09-01 ~ 2019-09-30</span></p>
+							</div>
+							<div class="completeTxt" style="display:none">
+								<em>신청 완료되었습니다.</em>
+								<p>발송예정일<span>2020-04-01</span></p>
+							</div>   
+							<div class="completeTxt" style="display:none">
+								<em>신청 완료되었습니다.</em>
+								<p>지급기간<span>2020-04-01</span></p>
+							</div>
+							<div class="completeTxt" style="display:none">
+								<em>고객님은 이미 신청되었습니다.</em>
+								<p>신청일자<span>2020-04-01</span></p>
+								<p>수령기간<span>2019-09-01 ~ 2019-09-30</span></p>
+							</div>
+							<div class="completeTxt" style="display:none">
+								<em>고객님은 이미 신청되었습니다.</em>
+								<p>신청일자<span>2020-04-01</span></p>
+								<p>발송예정일<span>2020-04-01</span></p>
+							</div>
+							<div class="completeTxt" style="display: block">
+								<em>고객님은 이미 신청되었습니다.</em>
+								<p>신청일자<span>2020-04-01</span></p>
+								<p>지급기간<span>2020-04-01</span></p>
+							</div>
+			
+							<div style="display: block;">
+								<div class="eventTable_3">
+									<table>
+										<caption>고객명,신청제품,등급,수령매장</caption>
+										<colgroup>
+											<col style="width: 25%">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">신청제품</th>
+												<td>
+													제주 왕벚꽃미스트 120mL
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">수령매장</th>
+												<td>
+													명동점 (N011)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+				
+								<ul class="dotList">
+									<li>수령매장은 신청기간 내 변경 가능합니다.</li>
+								</ul>
+							</div>
+							
+							<div class="txtBx_1">
+								+_+! 정말 갖고 싶었던 제품입니다~!! 평생 없어서는 안될 저의 핫잇템! 
+								드디어 이벤트로 통해서 진행을 하는군요! 정말 필요했었는데…<br/>
+								건조한 사무실에서 내 얼굴에 즉각적인 수분을 채워 건조할틈 없이 <br/>
+								촉촉하고 화사한 피부로 가꿔주는 수분 아이
+							</div>
+							<ul class="dotList" style="display: block;">
+								<li>매장 수령 기간은 신청일과 별도이니 수령기간을 반드시 확인해 주시기 바랍니다.</li>
+								<li>문의사항은 이니스프리 고객센터 (080-380-0114)로 문의주시기 바랍니다.</li>
+							</ul>
+			
+							<!-- 배송지인 경우 추가 -->
+							<div class="onoffbx_1" style="display: block;">
+								<h4 class="subTit_2">수령배송지</h4>
+								<div class="txtBx_2">
+									<p>
+										홍길동 010-1234-5678
+									</p>
+									<p>
+										서울 용산구 한강대로 100 아모레퍼시픽
+									</p>
+								</div>
+			
+								<ul class="dotList">
+									<li>배송지는 신청기간 내 변경 가능합니다.</li>
+									<li>수령 배송지 정보가 잘못 되었을 경우 발송 진행이 어려울 수 있습니다.</li>
+									<li>문의사항은 이니스프리 고객센터(080-380-0114)로 문의주시기 바랍니다.</li>
+								</ul>
+							</div>
+			
+							<!-- 확인 -->
+							<div class="btnWrap">
+								<button type="button" class="btnBk btn">확인</button>
+							</div>
+			
+							<!-- 버튼 수정하기/확인하기 -->
+							<div class="btnWrap row2" style="display: none;">
+								<span><button type="button" class="btnWt">수정하기</button></span>
+								<span><button type="button" class="btnBk">확인</button></span>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+    <div id="container">
+        <!-- header -->
+		<header class="sub null">
+			<div class="headerWrap">
+				<div class="headerInner">
+					<div class="headerAside">
+						<h1 class="headerTitle">이벤트</h1>
+						<div class="backBtn">
+							<a href="javascript:;" onclick="window.history.back();" class="backPage">이전 페이지로 이동</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- //header -->
+		<!-- body -->
+		<div class="subWrap">
+			<div class="event">
+				<div class="eventView">
+					<div class="evHead">
+						<p class="title">이니스프리 카카오톡 플러스 친구에게 쇼핑지원금 1만원 쏜다!</p>
+						<p class="date">2019-07-22 ~ 2019-07-31</p>
+						<div class="shar">
+							<button type="button" onclick="layerOpen('share');">공유하기</button>
+						</div>
+					</div>
+					<div class="evBody">
+						<div class="evCoupon">
+							<a href="javascript:void(0);" onclick="eventLink();"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/event/event_coupon.jpg" alt="이벤트"></a>
+							<p class="hide">8월1일,단 하루<br />이니스프리 카카오톡 플러스 친구에게</p>
+							<h2 class="hide">쇼핑지원금 1만원 쏜다!</h2>
+							<p class="hide">열받은 피부 진정은?&lt;NEW 제주 용암해수&gt;<br />열받은 마음 진정은?&lt;쇼핑지원금 1만원&gt;쏜다</p>
+							<p class="hide">쇼핑지원금 10,000원 수량 종료</p>
+							<p class="hide">이니스프리 쇼핑몰 전용<br />(2만5천원 이상 구매 시 사용가능)</p>
+							<ul class="hide">
+								<li>쿠폰 발급을 위해서는 로그인이 필요합니다</li>
+								<li>사이트 내 동시에 많은 고객이 접속하여 쿠폰 발급이 지연될 수 있습니다.</li>
+							</ul>
+							
+							<a href="#" class="evtjoin">신청하기</a>
+						</div>
+
+						<!-- 쿠폰이벤트 : S -->
+						<!-- 쿠폰이벤트가 아닌 경우 해당 소스 전체 노출 안되게 해주세요. -->
+						
+
+		<link rel="stylesheet" href="https://d2veos.innisfree.com:8901/kr/ko/resources/web2/css/event_coupon.css">
+
+		<!-- 쿠폰영역 : S -->
+		<div id="evtCpArea" class="evtCpArea">
+		<div class="evtCoupon" style="background-color:#024137;"><!-- 배경컬러선택시 -->
+		<!-- div class="evtCoupon" style="background-image:url();" --><!-- 배경url선택시 -->
+		<div class="evtCouponIn">
+			<div class="couponTop">
+				<h3 class="tit" style="color:#fff">스무살 이니 절친 당신을 위한 쿠폰</h3><!-- 쿠폰타이틀 -->
+				<p class="subtit" style="color:#fff">20주년 이니스프리 기념으로 동갑내기 절친들에게 쿠폰을 드립니다.</p><!-- 부가설명 -->
+			</div>
+			<div class="couponBox">
+				<ul class="cpList even"><!-- 쿠폰개수에 따라 홀수는 odd, 짝수는 even 클래스명 분기처리 -->
+					<li class="coupon7"><!-- 앱쿠폰(매장전용) -->
+						<span class="flag">회원한정</span><!-- 딱지 -->
+						<div class="box">
+							<span class="cate">매장전용</span>
+							<span class="price"><span class="num">30</span>%</span>
+							<span class="name">그린프라임마이멤버십데이</span>
+							<!-- <button type="button" class="btn" onclick="layerOpen('couponInfo');">쿠폰 정보</button>
+							<span class="period">
+								~ 2019.12.21
+							</span> -->
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p><!-- 쿠폰설명 -->
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a><!-- 버튼명 -->
+						</div>
+					</li>
+					<li class="coupon8"><!-- 카테고리쿠폰200403 -->
+						<span class="flag">한정수량</span>
+						<div class="box">
+							<span class="cate">카테고리</span>
+							<span class="price"><span class="num">30</span>%</span>
+							<span class="name">특정카테고리만 할인</span>
+						</div>
+						<div class="info">
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+					<li class="coupon1">
+						<span class="flag">회원한정</span><!-- 딱지 -->
+						<div class="box">
+							<span class="cate">멤버십</span>
+							<span class="price"><span class="num">10</span>%</span>
+							<span class="name">멤버십 대상 10% 할인 쿠폰</span>
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p>
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+					<li class="coupon2">
+						<span class="flag">한정수량</span>
+						<div class="box">
+							<span class="cate">제품할인</span>
+							<span class="price"><span class="num">4,000</span>원</span>
+							<span class="name">[MY SHOP] 온라인 첫 구매 딜 쿠폰</span>
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p>
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+					<li class="coupon3">
+						<span class="flag">사용없음</span>
+						<div class="box">
+							<span class="cate">장바구니 할인</span>
+							<span class="price"><span class="num">10</span>%</span>
+							<span class="name">[MY SHOP] 5천원 할인 쿠폰</span>
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p>
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+					<li class="coupon4">
+						<div class="box">
+							<span class="cate">배송비할인</span>
+							<span class="price"><span class="num">무료배송</span></span>
+							<span class="name">[MY SHOP 등록선물] 온라인 무료배송</span>
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p>
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+					<li class="coupon5">
+						<div class="box">
+							<span class="cate">사은품 쿠폰</span>
+							<span class="price"><span class="num">사은품</span></span>
+							<span class="name">사은품 교환 쿠폰(온라인 쿠폰)</span>
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p>
+							<a href="#" class="cpBtn">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+					<li class="coupon6">
+						<div class="box">
+							<span class="cate">더블쿠폰</span>
+							<span class="price"><span class="num">4,500</span>원</span>
+							<span class="name">더플 할인 쿠폰</span>
+						</div>
+						<div class="info">
+							<p class="cpName">20살 동갑회원 쿠폰</p>
+							<a href="#" class="cpBtn" onclick="evtCouponPop('cpDownLimit', this);return false;">동갑절친 쿠폰 받기</a>
+						</div>
+					</li>
+				</ul>
+				<!-- 일괄다운로드버튼200403. background-color:#버튼컬러, color:#버튼명컬러 -->
+				<a href="#" class="btn_cpAll" style="background-color:#000;color:#fff;" onclick="evtCouponPop('cpEvtOk',this);return false;">전체 쿠폰 받기</a>
+				
+				<!-- 쿠폰유의사항200403 : S -->
+				<div class="popEvtCp">
+					<button class="btn_popEvtCp" onclick="cpLayerOpen('popEvtCpInfo');">※ 유의사항 보기</button>
+				</div>
+				<!-- 쿠폰유의사항 : E -->
+			</div>
+		</div>
+		</div>
+		</div>
+		<!-- 쿠폰영역 : E -->
+
+		<!-- 쿠폰유의사항팝업200403 : S -->
+		<div id="popEvtCpInfo" class="popEvtCpInfo">
+		<section class="popEvtCpInfoWrap">
+		<h3 class="EvtCpTit">유의사항</h3>
+		<div class="EvtCpTitContents">
+			<div class="EvtCpTitContent scrollWrap">
+				<!-- 관리자입력내용 -->				
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;"><font color="#666"><b>★ 앱페스타 공통 ★</b></font></p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#666">1. 본 이벤트는 이니스프리&nbsp;<u><b>공식 온라인몰에 로그인 한 통합 회원</b></u>을 대상으로 합니다.<br>&nbsp; &nbsp;</font>
+					<font color="#ffaa00">(뷰티포인트 통합 회원이 아닌 경우 또는 SNS회원으로 로그인 시 혜택에 제한이 있습니다.)</font><br>
+					<font color="#666">2.&nbsp;</font>
+					<span style="color:#666; font-size: 10pt;">이벤트 기한 종료 후, 사용하지 않은 혜택은 소멸되며, 환불 / 반품 등으로 인한 재 구매 시, 동일 혜택을 적용받으실 수 없습니다.&nbsp;</span>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#666">
+						<span style="font-size: 10pt;">3. 당사의 사정으로 인해 사전 예고 없이 비슷한 혹은 더 나은 수준의 혜택으로 이벤트 내용이 변경될 수 있습니다.&nbsp;</span>
+						<span style="font-size: 10pt;">&nbsp;&nbsp;</span>
+					</font>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#666"><br><b>[쇼핑지원금 2종]</b><br>1. 4/1~4/9 기간내&nbsp;
+						<span style="font-size: 10pt;">오프라인 매장,&nbsp;</span>
+						<span style="font-size: 10pt;">이니스프리 공식 앱에서 각각 1회씩 사용할 수 있는 쇼핑지원금 쿠폰 총 2종을 다운받으실 수&nbsp;있습니다.&nbsp;</span>
+					</font>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#666">2. 발급된 쿠폰은 이니스프리&nbsp;<u><b>공식 앱에서만 확인하실 수 있으며,&nbsp;</b></u>
+						<span style="font-weight: bold;"><u>마이페이지 &gt; 내 쿠폰</u> 에서 확인</span>하실 수 있습니다.
+					</font>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<span style="font-size: 13.3333px; color:#666; background-color: rgb(142, 142, 142);"><span style="background-color: rgb(142, 142, 142); color:#666;">&nbsp; &nbsp;</span>매장에서 사용시</span><span style="font-size: 13.3333px; color:#666; background-color: rgb(142, 142, 142);">&nbsp;</span><span style="font-size: 10pt; color:#666; background-color: rgb(142, 142, 142);">꼭 알아두세요!&nbsp; &nbsp;</span>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#ffaa00">&nbsp;'매장전용' 쇼핑 지원금 쿠폰 내 <b><u>'쿠폰 정보'</u></b> 버튼을 터치하면 고객님께 발급된 10자리 쿠폰 번호를 확인하실 수 있습니다.</font>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<span style="font-size: 10pt;"><font color="#ffaa00">&nbsp; 쿠폰 번호를 확인할 수 없는 경우 쿠폰 적용이 불가할 수 있습니다. (예시 : 쿠폰 이미지를 캡처하는 경우)</font>
+					</span>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#666">3. 발급된 쿠폰은 양도할 수 없습니다.</font>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+					<font color="#666">4. 정상가 기준 최소 20,000원 이상 결제시 5,000원을 할인 받으실 수 있습니다.<br>
+						5. 일부 비할인 품목은 쿠폰을 적용하실 수 없으며, 타 프로모션 중복 적용 불가합니다.<br>
+						6. 쿠폰은 2020년 4월 9일까지 사용하실 수 있습니다.<br>
+						7. 쿠폰 사용 방법<br>&nbsp; &nbsp; ⓛ 공식 온라인몰 : 공식 앱 결제 단계에서 쿠폰 적용&nbsp;<br>
+						&nbsp; &nbsp; ② 오프라인 매장 : 결제시 공식 앱에 있는 쿠폰의 ‘쿠폰 정보‘ 화면 제시 (화면 내 10자리 쿠폰 번호)
+					</font>
+				</p>
+				<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;"><font color="#666"><br></font></p>
+			</div>
+			<div class="btnWrap">
+				<a href="javascript:void(0);" class="btn" onclick="cpLayerClose();">확인</a>
+			</div>
+		</div>
+		<button type="button" class="popClose" onclick="cpLayerClose();">레이어팝업 닫기</button>
+		</section>
+		</div>
+		<!-- 쿠폰유의사항팝업 : E -->
+
+		<!-- 쿠폰팝업 S -->
+		<!--
+		1. 알림미동의시 evtCouponPop('cpPushApp', this); return false;
+		2. 이벤트대상이아닌경우 evtCouponPop('cpEvtChk', this); return false;
+		3. 이벤트기간이아닌경우 evtCouponPop('cpEvtChkDay', this); return false;
+		4. 이미발급받은쿠폰이있는경우 evtCouponPop('cpEvtCom'), this);return false;
+		5. 쿠폰수량종료시 evtCouponPop('cpEvtEnd', this); return false;
+		6. 이벤트기간종료시 evtCouponPop('cpEvtChkDayEnd', this); return false;
+		7. 쿠폰발급완료 evtCouponPop('cpEvtOk', this); return false;
+		8. 모든쿠폰발급완료 evtCouponPop('cpEvtAllOk', this); return false;
+		9. 다운로드수제한시200403 evtCouponPop('cpDownLimit', this); return false;
+		-->
+		<div class="evtCouponPop">
+		<div class="evtCouponPopWrap" id="cpPushApp">
+		<div class="popCnt">
+			<p class="title">APP PUSH <br>수신 동의해주세요!</p>
+		</div> 
+		<div class="popBtn popBtn2">
+			<a href="javascript:void(0);" class="type2" onclick="">알림설정하기</a>
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">취소</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtChk">
+		<div class="popCnt">
+			<h3 class="title">특정 고객만 다운로드 가능합니다.<br>유의사항을 다시 확인해주세요.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtChkDay">
+		<div class="popCnt">
+			<h3 class="title">지금은 다운로드 가능한 기간이 아닙니다.<br>유의사항을 다시 확인해주세요.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtCom">
+		<div class="popCnt">
+			<h3 class="title">이미 다운로드 받은 쿠폰입니다.<br>내 쿠폰 페이지 또는 주문 상세정보를<br>확인해주세요.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtEnd">
+		<div class="popCnt">
+			<h3 class="title">쿠폰을 다운로드하실 수 없습니다.<br>준비된 쿠폰이 모두 소진되었습니다.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtChkDayEnd">
+		<div class="popCnt">
+			<h3 class="title">이벤트가 <br>종료되었습니다.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtOk">
+		<div class="popCnt">
+			<h3 class="title">쿠폰이 성공적으로 발급되었습니다.<br>내 쿠폰 페이지에서 확인해주세요.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" class="type2" onclick="goCoupon();">내 쿠폰에서 확인하기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpEvtAllOk">
+		<div class="popCnt">
+			<h3 class="title">쿠폰이 성공적으로 발급되었습니다.<br>내 쿠폰 페이지에서 확인해주세요.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" class="type2" onclick="goCoupon();">내 쿠폰에서 확인하기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="loginChk">
+		<div class="popCnt">
+			<p class="title">로그인 하시면,<br>쿠폰을 다운로드 하실 수 있습니다.</p>
+		</div> 
+		<div class="popBtn popBtn2">
+			<a href="javascript:void(0);" class="type2" onclick="goLogin();">로그인 하러가기</a>
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		<div class="evtCouponPopWrap" id="cpDownLimit">
+		<div class="popCnt">
+			<h3 class="title">다운로드 가능한 <br> 수량을 초과하였습니다. <br>유의사항을 다시 확인해주세요.</h3>
+		</div>
+		<div class="popBtn">
+			<a href="javascript:void(0);" onclick="evtCouponPopClose();">확인</a>
+		</div>
+		<div class="popClose"><a href="javascript:void(0);" onclick="evtCouponPopClose();">닫기</a></div>
+		</div>
+
+		</div>
+		<!-- 쿠폰팝업 : E -->
+
+		<script>
+		_Device={};_Device.smartphone=false;_Device.tablet=false;_Device.type=0;_Device.os=0;function checkDevice(){if(navigator.userAgent.match(/Android/)!=null){if(navigator.userAgent.match(/mobile|Mobile/)!=null){_Device.type=2}else{_Device.type=1}_Device.os=0}else{var minSiteWidth=480;var maxSiteWidth=1024;var w=($(window).width()<window.screen.width)?$(window).width():window.screen.width;if(navigator.userAgent.match(/iPhone|iPad|iPod/)!=null){_Device.os=1}else{_Device.os=2}if(navigator.userAgent.match(/webOS|iPhone|iPad|iPod|BlackBerry/)!=null){if(w<=minSiteWidth||(navigator.userAgent.match(/iPhone|iPod|BlackBerry/)!=null&&navigator.platform.match(/iPad/)==null)){_Device.type=2}else{_Device.type=1}}else{_Device.type=0}}if(_Device.type==2){_Device.tablet=false;_Device.smartphone=true}else if(_Device.type==1){_Device.tablet=true;_Device.smartphone=false}else{_Device.smartphone=_Device.tablet=false}}_Browser={};function browserDetect(){_Browser.ie6=false;_Browser.ie7=false;_Browser.ie8=false;_Browser.ie9=false;_Browser.ie10=false;_Browser.ie11_over=false;_Browser.msie=false;_Browser.mozilla=false;_Browser.safari=false;_Browser.chrome=false;_Browser.version=0;_Browser.name="etc";var objappVersion=navigator.appVersion;var objAgent=navigator.userAgent;var objbrowserName=navigator.appName;var objfullVersion=''+parseFloat(navigator.appVersion);var objBrMajorVersion=parseInt(navigator.appVersion,10);var objOffsetName,objOffsetVersion,ix;var iev=0;var ieold=(/MSIE (\d+\.\d+);/.test(navigator.userAgent));var trident=!!navigator.userAgent.match(/Trident\/7.0/);var rv=navigator.userAgent.indexOf("rv:11.0");if(ieold)iev=new Number(RegExp.$1);if(navigator.appVersion.indexOf("MSIE 10")!=-1)iev=10;if(trident&&rv!=-1)iev=11;if(iev!=0||(objOffsetVersion=objAgent.indexOf("MSIE"))!=-1){_Browser.name="Microsoft Internet Explorer";_Browser.msie=true;_Browser.version=iev;if(_Browser.version<7){_Browser.ie6=true}else if(_Browser.version<8){_Browser.ie7=true}else if(_Browser.version<9){_Browser.ie8=true}else if(_Browser.version<10){_Browser.ie9=true}else if(_Browser.version<11){_Browser.ie10=true}else{_Browser.ie11_over=true}}else{if((objOffsetVersion=objAgent.indexOf("Chrome"))!=-1){_Browser.chrome=true;objbrowserName="Chrome";objfullVersion=objAgent.substring(objOffsetVersion+7)}else if((objOffsetVersion=objAgent.indexOf("Firefox"))!=-1){_Browser.mozilla=true;objbrowserName="Firefox"}else if((objOffsetVersion=objAgent.indexOf("Safari"))!=-1){_Browser.safari=true;objbrowserName="Safari";objfullVersion=objAgent.substring(objOffsetVersion+7);if((objOffsetVersion=objAgent.indexOf("Version"))!=-1)objfullVersion=objAgent.substring(objOffsetVersion+8)}else if((objOffsetName=objAgent.lastIndexOf(' ')+1)<(objOffsetVersion=objAgent.lastIndexOf('/'))){objbrowserName=objAgent.substring(objOffsetName,objOffsetVersion);objfullVersion=objAgent.substring(objOffsetVersion+1);if(objbrowserName.toLowerCase()==objbrowserName.toUpperCase()){objbrowserName=navigator.appName}}if((ix=objfullVersion.indexOf(";"))!=-1)objfullVersion=objfullVersion.substring(0,ix);if((ix=objfullVersion.indexOf(" "))!=-1)objfullVersion=objfullVersion.substring(0,ix);objBrMajorVersion=parseInt(''+objfullVersion,10);if(isNaN(objBrMajorVersion)){objfullVersion=''+parseFloat(navigator.appVersion);objBrMajorVersion=parseInt(navigator.appVersion,10)}_Browser.name=objbrowserName;_Browser.version=objBrMajorVersion}}checkDevice();browserDetect();
+
+		var open_target;
+		var open_pos = 0;
+		var showPopupLen;
+		var hdH = $('.headerWrap').height();
+		$(window).resize(function(){
+		hdH = $('.headerWrap').height();
+		});
+
+		// 쿠폰유의사항팝업스크립트200403	
+		var scrollState2 = 0;
+		function scrollLock2(state) {
+		var html = $('html');
+		var wrap = $('#wrap');
+
+		if(state == 'on') {
+			scrollState2 = $(window).scrollTop();
+			html.addClass('layerOn');
+			wrap.css('margin-top','-'+scrollState2+'px');
+		} else if(state == 'off') {
+			if(html.hasClass('layerOn')) {
+				html.removeClass('layerOn');
+				wrap.removeAttr('style');
+				$(window).scrollTop(scrollState2);
+				scrollState2 = 0;
+			}
+		}
+		}
+		function cpLayerOpen(popID) {	
+		var layerWrap = $('#'+popID);
+		var layer = layerWrap.find('.popEvtCpInfoWrap');
+
+		if (_Device.type == 0) {
+			if (layerWrap.length) scrollLock2('on');
+			layerWrap.show();
+
+			if(layerWrap.find('.scrollWrap').length) {
+				layerWrap.find('.scrollWrap').niceScroll({cursorcolor:"#b2b2b2", cursorwidth:2, cursorborder:'none', horizrailenabled: false});
+			}
+			layer.off().on('click', function(){event.stopPropagation();});
+		} else {
+			$('body').addClass('overHeight');
+			layerWrap.show();
+		}
+
+		}		
+		function cpLayerClose(id) {		
+		var layerWrap = $('.popEvtCpInfo');
+		if (_Device.type == 0) {
+			scrollLock2('off');
+		} else {			
+			$('body').removeClass('overHeight');
+		}
+		layerWrap.hide();		
+		}
+
+		function evtCouponPop(popID, target){
+		open_target = target;
+		showPopupLen = $('body').find(".evtCouponPopWrap:visible").length;
+		//console.log(showPopupLen);
+
+		$('.evtCouponPop').show();
+		$('.evtCouponPopWrap ').hide();
+		$('#'+popID).show();
+		if (showPopupLen == 0){
+			open_pos = $(window).scrollTop();
+		}
+		if (_Device.type == 0) {
+			// $('#'+popID).css('top',open_pos - hdH - 220);
+			$('#'+popID).css('top',open_pos - hdH);
+		}else{
+			// $('#'+popID).css('top',open_pos - hdH - 20);
+			$('#'+popID).css('top',open_pos - hdH);
+		}
+		//$('html, body').stop().animate({scrollTop : 0}, 100);
+		}
+
+		function evtCouponPopClose(){
+		showPopupLen = $('body').find(".evtCouponPopWrap:visible").length;
+
+		if (showPopupLen === 0){
+			if (open_target === document) {
+				return false;
+			} else {
+				open_target.focus();
+			}
+		} else if (showPopupLen > 1) {
+			open_target.focus();
+		}
+		$('.evtCouponPop').hide();
+		$('.evtCouponPopWrap').hide();
+		showPopupLen = 0;
+		//$('html, body').stop().animate({scrollTop : open_pos}, 200);
+		}
+
+		</script>
+
+		<!-- 쿠폰이벤트 : E -->
+
+		<!-- 전체유의사항 : S -->
+		<!-- 전체유의사항 입력값이 없을 경우 해당 소스 전체 노출 안되게 해주세요. -->
+		<link rel="stylesheet" href="https://d2veos.innisfree.com:8901/kr/ko/resources/web2/css/event_note.css">
+		<div id="evtNote" class="evtNote">
+		<div class="evtNoteIn">
+		<h4 class="evtNoteTit">유의사항</h4><!-- 관리자_유의사항상단입력  -->
+		<div class="evtNoteCon">
+			<!-- 관리자에디터영역 -->
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;"><font color="#fff"><b>★ 앱페스타 공통 ★</b></font></p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#fff">1. 본 이벤트는 이니스프리&nbsp;<u><b>공식 온라인몰에 로그인 한 통합 회원</b></u>을 대상으로 합니다.<br>&nbsp; &nbsp;</font>
+				<font color="#ffaa00">(뷰티포인트 통합 회원이 아닌 경우 또는 SNS회원으로 로그인 시 혜택에 제한이 있습니다.)</font><br>
+				<font color="#fff">2.&nbsp;</font>
+				<span style="color:#666; font-size: 10pt;">이벤트 기한 종료 후, 사용하지 않은 혜택은 소멸되며, 환불 / 반품 등으로 인한 재 구매 시, 동일 혜택을 적용받으실 수 없습니다.&nbsp;</span>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#fff">
+					<span style="font-size: 10pt;">3. 당사의 사정으로 인해 사전 예고 없이 비슷한 혹은 더 나은 수준의 혜택으로 이벤트 내용이 변경될 수 있습니다.&nbsp;</span>
+					<span style="font-size: 10pt;">&nbsp;&nbsp;</span>
+				</font>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#fff"><br><b>[쇼핑지원금 2종]</b><br>1. 4/1~4/9 기간내&nbsp;
+					<span style="font-size: 10pt;">오프라인 매장,&nbsp;</span>
+					<span style="font-size: 10pt;">이니스프리 공식 앱에서 각각 1회씩 사용할 수 있는 쇼핑지원금 쿠폰 총 2종을 다운받으실 수&nbsp;있습니다.&nbsp;</span>
+				</font>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#fff">2. 발급된 쿠폰은 이니스프리&nbsp;<u><b>공식 앱에서만 확인하실 수 있으며,&nbsp;</b></u>
+					<span style="font-weight: bold;"><u>마이페이지 &gt; 내 쿠폰</u> 에서 확인</span>하실 수 있습니다.
+				</font>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<span style="font-size: 13.3333px; color:#666; background-color: rgb(142, 142, 142);"><span style="background-color: rgb(142, 142, 142); color:#666;">&nbsp; &nbsp;</span>매장에서 사용시</span><span style="font-size: 13.3333px; color:#666; background-color: rgb(142, 142, 142);">&nbsp;</span><span style="font-size: 10pt; color:#666; background-color: rgb(142, 142, 142);">꼭 알아두세요!&nbsp; &nbsp;</span>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#ffaa00">&nbsp;'매장전용' 쇼핑 지원금 쿠폰 내 <b><u>'쿠폰 정보'</u></b> 버튼을 터치하면 고객님께 발급된 10자리 쿠폰 번호를 확인하실 수 있습니다.</font>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<span style="font-size: 10pt;"><font color="#ffaa00">&nbsp; 쿠폰 번호를 확인할 수 없는 경우 쿠폰 적용이 불가할 수 있습니다. (예시 : 쿠폰 이미지를 캡처하는 경우)</font>
+				</span>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#fff">3. 발급된 쿠폰은 양도할 수 없습니다.</font>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;">
+				<font color="#fff">4. 정상가 기준 최소 20,000원 이상 결제시 5,000원을 할인 받으실 수 있습니다.<br>
+					5. 일부 비할인 품목은 쿠폰을 적용하실 수 없으며, 타 프로모션 중복 적용 불가합니다.<br>
+					6. 쿠폰은 2020년 4월 9일까지 사용하실 수 있습니다.<br>
+					7. 쿠폰 사용 방법<br>&nbsp; &nbsp; ⓛ 공식 온라인몰 : 공식 앱 결제 단계에서 쿠폰 적용&nbsp;<br>
+					&nbsp; &nbsp; ② 오프라인 매장 : 결제시 공식 앱에 있는 쿠폰의 ‘쿠폰 정보‘ 화면 제시 (화면 내 10자리 쿠폰 번호)
+				</font>
+			</p>
+			<p style="font-size: 10pt; font-family:'malgun gothic','맑은 고딕'; line-height:1.5;"><font color="#fff"><br></font></p>
+		</div>
+		</div>
+		</div>
+		<!-- 전체유의사항 : E -->
+
+
+						<!-- 20200408 고객신청이벤트 추가 -->
+						
+
+		<div class="customerEventArea">
+					
+		<div class="eventReply">
+		<h3 class="hidden">댓글</h3>
+
+		<div class="replyList">
+			<p class="nodate">등록된 댓글이 없습니다.</p>
+			<h4>이벤트참여</h4>
+			<ul class="cmtList" id="cmtList">
+				<li>
+					<div class="info">
+						<span class="rating icoG">그린회원</span>
+						<!-- <span class="rating icoW">웰컴회원</span>
+						<span class="rating icoP">그린프라임회원</span> -->
+						<span class="user">
+							abc*****
+						</span>
+						<span class="date">2019-08-12 09:08</span>
+					</div>
+
+					<div class="replyCon">
+						<div class="pdtName">제주 왕벚꽃미스트 120mL</div>
+						<div class="desc">한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요.  상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="info">
+						<span class="rating icoG">그린회원</span>
+						<!-- <span class="rating icoW">웰컴회원</span>
+						<span class="rating icoP">그린프라임회원</span> -->
+						<span class="user">
+							abc*****
+						</span>
+						<span class="date">2019-08-12 09:08</span>
+					</div>
+
+					<div class="replyCon">
+						<div class="pdtName">제주 왕벚꽃미스트 120mL</div>
+						<div class="desc">한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요.  상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!</div>
+					</div>
+				</li>
+
+
+			</ul>
+		</div>
+		</div>
+
+		<div class="paging">
+		<span class="pageNav prev2"><a href="#">처음 목록</a></span>
+		<span class="pageNav prev"><a href="#">이전 목록</a></span>
+		<span class="num on"><a href="#">1</a></span>
+		<span class="num"><a href="#">2</a></span>
+		<span class="num"><a href="#">3</a></span>
+		<span class="num"><a href="#">4</a></span>
+		<span class="num"><a href="#">5</a></span>
+		<span class="pageNav next"><a href="#">다음 목록</a></span>
+		<span class="pageNav next2"><a href="#">마지막 목록</a></span>
+		</div>
+
+		</div>
+
+						<!-- //20200408 고객신청이벤트 추가 -->
+
+						<div class="eventReply">
+							<fieldset class="replyWrite">
+								<legend>댓글 작성 폼</legend>
+								<h3>댓글작성</h3>
+								<div class="area">
+									<textarea cols="10" rows="3"></textarea>
+									<button type="button" class="btnWrite">등록</button>
+								</div>
+								<p>
+									<label class="inputChk"><input type="checkbox">
+										<span>[필수] 개인정보 수집 및 이용에 동의합니다.</span>
+									</label>
+								</p>
+								<ul class="dotList">
+									<li>해당 이벤트는 개인정보 활용에 동의하셔야 참여 가능합니다.</li>
+									<li>댓글 작성 후 등록 버튼을 누르시면 이벤트 참여가 완료됩니다.</li>
+									<li>이벤트와 관련 없는 댓글은 임의로 삭제될 수 있습니다.</li>
+								</ul>
+								<ul class="dotList">
+									<li>댓글 작성 후 등록 버튼을 누르시면 이벤트 참여가 완료됩니다.</li>
+									<li>이벤트와 관련 없는 댓글은 임의로 삭제될 수 있습니다.</li>
+								</ul>
+							</fieldset>
+
+							<div class="replyList">
+								<p class="nodate">등록된 댓글이 없습니다.</p>
+								<ul class="cmtList" id="cmtList">
+									<li>
+										<div class="info">
+											<span class="rating icoG">그린회원</span>
+											<!-- <span class="rating icoW">웰컴회원</span>
+											<span class="rating icoP">그린프라임회원</span> -->
+											<span class="user">
+												abc*****
+											</span>
+											<span class="date">2019-08-12 09:08</span>
+										</div>
+
+										<div class="replyCon">
+											<div class="desc">한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요.  상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!</div>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.click(this);">수정</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="replyDelete();">삭제</button></span>
+											</div>
+										</div>
+										<fieldset class="replyModify">
+											<legend>댓글 수정</legend>
+											<textarea cols="10" rows="3" placeholder="한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요. 상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!"></textarea>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editComment();">저장</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.cancel(this);">취소</button></span>
+											</div>
+										</fieldset>
+									</li>
+
+									<li>
+										<div class="info">
+											<span class="rating icoG">그린회원</span>
+											<!-- <span class="rating icoW">웰컴회원</span>
+											<span class="rating icoP">그린프라임회원</span> -->
+											<span class="user">
+												abc*****
+											</span>
+											<span class="date">2019-08-12 09:08</span>
+										</div>
+
+										<div class="replyCon">
+											<div class="desc">한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요.  상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!</div>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.click(this);">수정</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="replyDelete();">삭제</button></span>
+											</div>
+										</div>
+										<fieldset class="replyModify">
+											<legend>댓글 수정</legend>
+											<textarea cols="10" rows="3" placeholder="한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요. 상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!"></textarea>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editComment();">저장</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.cancel(this);">취소</button></span>
+											</div>
+										</fieldset>
+									</li>
+
+									
+									<li>
+										<div class="info">
+											<!-- <span class="rating icoG">그린회원</span> -->
+											<span class="rating icoW">웰컴회원</span>
+											<!--<span class="rating icoP">그린프라임회원</span> -->
+											<span class="user">
+												abc*****
+											</span>
+											<span class="date">2019-08-12 09:08</span>
+										</div>
+
+										<div class="replyCon" style="display: none;">
+											<div class="desc">한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요.  상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!</div>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.click(this);">수정</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="replyDelete();">삭제</button></span>
+											</div>
+										</div>
+										<fieldset class="replyModify" style="display: block;">
+											<legend>댓글 수정</legend>
+											<textarea cols="10" rows="3" placeholder="한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요. 상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!"></textarea>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editComment();">저장</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.cancel(this);">취소</button></span>
+											</div>
+										</fieldset>
+									</li>
+
+									<li>
+										<div class="info">
+											<span class="rating icoG">그린회원</span>
+											<!-- <span class="rating icoW">웰컴회원</span>
+											<span class="rating icoP">그린프라임회원</span> -->
+											<span class="user">
+												abc*****
+											</span>
+											<span class="date">2019-08-12 09:08</span>
+										</div>
+
+										<div class="replyCon">
+											<div class="desc">한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요.  상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!</div>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.click(this);">수정</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="replyDelete();">삭제</button></span>
+											</div>
+										</div>
+										<fieldset class="replyModify">
+											<legend>댓글 수정</legend>
+											<textarea cols="10" rows="3" placeholder="한란 인리치드 크림 너무 좋아요. 건성 피부라서 사계절 내내 건조했는데 이젠 촉촉해요. 같이 배송된 토이스토리 케이스 상자도 샘플 보관하기 딱 좋아요. 상자도 샘플 보관하기 딱 좋아요. 앞으로도 이런 구성이 많이 나오면 좋겠어요!!"></textarea>
+											<div class="btn row2">
+												<span><button type="button" class="btnA7b size32" onclick="editComment();">저장</button></span>
+												<span><button type="button" class="btnA7b size32" onclick="editCmtBtn.cancel(this);">취소</button></span>
+											</div>
+										</fieldset>
+									</li>
+
+								</ul>
+							</div>
+							<div class="btnWrap">
+								<button type="button" class="btnWt"><span class="arrMore">이전 댓글 더 보기</span></button>
+							</div>
+							<div class="newProduct">
+								<h2>NEW 수퍼 화산송이 라인</h2>
+								<div class="productTypeThumb">
+									<ul>
+										<li>
+											<div class="itemThumb">
+												<div class="stateWrap">
+													<p class="stateR"><strong>50</strong><em class="per">%</em></p>
+												</div>
+												<a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/temp/product_img01.png" alt="제품명"></a>
+												<div class="rk">
+													<span class="rkIcon"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/icon_rk1.png" alt="수상마크"></span>
+													<span class="rkIcon"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/icon_rk2.png" alt="수상마크"></span>
+													<span class="rkIcon"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/icon_rk3.png" alt="수상마크"></span>
+												</div>
+											</div>
+											<div class="itemInfor">
+												<p class="tpDesc">20가지 스킨케어 솔루션</p>
+												<p class="tpName"><a href="#">퍼스널 원크림</a></p>
+												<p class="tPrice"><strong class="cost">28,000</strong><strong class="tUnit">39,000</strong>원<span class="tSock">일시품절</span></p> 
+												<div class="productStyle">
+												<span class="pNew">NEW</span>
+												<span class="pGift">GIFT</span>
+												<span class="pSale">SALE</span>
+												<span class="pLimit">한정수량</span>
+												<span class="pMeasure">대용량</span>
+												<span class="pShip">정기배송</span>
+											</div>
+											</div>
+											<div class="way">
+												<button type="button" class="hart" onclick="wishSel();">찜</button>
+												<button type="button" class="cart">장바구니</button>
+												<button type="button" class="card">바로구매</button>
+											</div>
+										</li>
+										<li>
+											<div class="itemThumb"><a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/temp/product_img02.png" alt="제품명"></a></div>
+											<div class="itemInfor">
+												<p class="tpDesc">2개 구매 시 반값 결제</p>
+												<p class="tpName"><a href="#">제주 용암해수 크림 마스크<br />60mL</a></p>
+												<p class="tPrice"><strong class="cost">28,000</strong><strong class="tUnit">23,000</strong>원</p> 
+											</div>
+											<div class="way">
+												<button type="button" class="hart" onclick="wishSel();">찜</button>
+												<button type="button" class="cart">장바구니</button>
+												<button type="button" class="card">바로구매</button>
+											</div>
+										</li>
+										<li>
+											<div class="itemThumb">
+												<a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/temp/product_img01.png" alt="제품명"></a>
+											</div>
+											<div class="itemInfor">
+												<p class="tpDesc">20가지 스킨케어 솔루션</p>
+												<p class="tpName"><a href="#">퍼스널 원크림</a></p>
+												<p class="tPrice"><strong class="cost">28,000</strong><strong class="tUnit">39,000</strong>원<span class="tSock">일시품절</span></p> 
+											</div>
+											<div class="way">
+												<button type="button" class="hart" onclick="wishSel();">찜</button>
+												<button type="button" class="cart">장바구니</button>
+												<button type="button" class="card">바로구매</button>
+											</div>
+										</li>
+										<li>
+											<div class="itemThumb"><a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/temp/product_img02.png" alt="제품명"></a></div>
+											<div class="itemInfor">
+												<p class="tpDesc">2개 구매 시 반값 결제</p>
+												<p class="tpName"><a href="#">제주 용암해수 크림 마스크<br />60mL60mL60mL60mL60mL60mL</a></p>
+												<p class="tPrice"><strong class="cost">28,000</strong><strong class="tUnit">23,000</strong>원</p> 
+											</div>
+											<div class="way">
+												<button type="button" class="hart" onclick="wishSel();">찜</button>
+												<button type="button" class="cart">장바구니</button>
+												<button type="button" class="card">바로구매</button>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="differentEvent">
+								<h2>다른 진행중인 이벤트</h2>
+								<div class="horizScroll">
+									<ul class="eventList">
+										<li>
+											<div class="eImg"><a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/event/event_img01.jpg" alt="제품명"></a></div>
+											<p class="date">2019-07-22~2019-07-31</p>
+											<p class="name"><a href="#">#홈캉스키트 수령 안내</a></p>
+											<div class="eventType">
+												<span>쇼핑몰</span>
+											</div>
+										</li>
+										<!--<li>
+											<div class="eImg"><a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/event/event_img02.jpg" alt="제품명"></a></div>
+											<p class="date">2019-07-22~2019-07-31</p>
+											<p class="name"><a href="#">슈퍼푸드 비건 라인 온라인 선런칭</a></p>
+											<div class="eventType">
+												<span>쇼핑몰</span>
+											</div>
+										</li>-->
+										<li><a href="#" class="productMore"><span>제품 더보기</span></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //body -->
+		<!-- 공유하기 -->
+		<div class="layPop size560" id="share">
+			<div class="wrapModal">
+				<div class="inner">
+					<div class="popWrap">
+						<div class="popHead">
+							<h3>공유하기</h3>
+						</div>
+						<div class="popBody">
+							<ul class="share">
+								<li><a href="#" class="face">페이스 북</a></li>
+								<li><a href="#" class="kakao">카카오톡</a></li>
+								<li><a href="#" class="story">카카오스토리</a></li>
+								<li><a href="#" class="url">url</a></li>
+							</ul>
+						</div>
+						<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+				
+
+		<div class="fixedBtn">
+			<div class="chatBtn"><a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/icon_chat.png" alt="상담하기"></a></div>
+			<div class="topBtn"><a href="#"><img src="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/icon_top.png" alt="맨위"></a></div>
+		</div>
+
+		<footer>
+			<div class="footBoardWrap">
+				<strong>공지사항</strong>
+				<ul class="rolTxt">
+					<li><a href="#"><span class="date">2019-11-27</span>이니스프리 쇼핑몰 이용 불편 관련</a></li>
+				</ul>
+			</div>
+			<div class="footerWrap">
+				<div class="fTel">
+					<a href="tel:0803800114"><span>고객센터 <strong class="num">080-380-0114</strong> (수신자 요금 부담)</span></a>
+				</div>
+				<ul class="footQuick">
+					<li class="sta"><a href="#" onclick="termsOpen('이용약관', 'termsService'); return false;">이용약관</a></li>
+					<li><a href="#" onclick="termsOpen('개인정보처리방침', 'terms17'); return false;">개인정보처리방침</a></li>
+					<li><a href="#" onclick="termsOpen('영상기기관리방침', 'terms20'); return false;">영상기기관리방침</a></li>
+				</ul>
+				<div class="btnWrap row2">
+					<span><a href="https://www.ftc.go.kr/www/bizCommView.do?key=232&amp;apv_perm_no=2018302015030200014&amp;pageUnit=10&amp;searchCnd=bup_nm&amp;searchKrwd=%EC%9D%B4%EB%8B%88%EC%8A%A4%ED%94%84%EB%A6%AC&amp;pageIndex=1" target="_blank" class="btnA7b size24">사업자 정보 확인</a></span>
+					<span><button type="button" class="btnA7b size24" onclick="layerOpen('showProv')">약관 및 법적 고지 확인</button></span>
+				</div>
+				<div class="layPop resize" id="showProv">
+					<div class="wrapModal">
+						<div class="inner">
+							<div class="resizeHead">
+								<h3>약관 및 법적 고지</h3>
+							</div>
+							<div class="resizeBody">
+								<p class="ftColor2">㈜이니스프리</p>
+								<div>
+									<p class="ftColor77">서울특별시 용산구 한강대로 100(한강로2가) 7층<br />이니스프리<br />대표이사 김영목     사업자등록번호 106-86-68127<br />통신판매신고번호 2018-서울용산-0014<br />제품문의: 080-380-0114    FAX: 02-709-5739<br />이메일 주소 innisfree@innisfree.com</p>
+									<button type="button" class="emailDisa">이메일 주소 무단 수집 거부</button>
+									<div class="emailTxt">
+										<p class="txt">주식회사 이니스프리(이하 ‘회사’)는 본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 금지하며, 이를 위반할 경우 정보통신망 이용촉진 및 정보보호 등에 관한 법률 관련규정에 의해 형사 처벌될 수 있습니다.</p>
+										<strong class="tit">정보통신망 이용촉진 및 정보보호 등에 관한 법률</strong>
+										<p class="etit">제 50 조 (영리목적의 광고성 정보 전송 제한)</p>
+										<p class="etxt">⑤ 전자적 전송 매체를 이용하여 영리목적의 광고성정보를 전송하는 자는 다음 각 호의 어느 하나에 해당하는 조치를 하여서는 아니 된다. <span class="eNum">3. 영리목적의 광고성 정보를 전송할 목적으로 전화번호 또는 전자우편주소를 자동으로 등록하는 조치</span></p>
+										<p class="etit">제 74 조 (벌칙)</p>
+										<p class="etxt">① 다음 각 호의 어느 하나에 해당하는 자는 1년이하의 징역 또는 1천만원 이하의 벌금에 처한다. <span class="eNum">4. 제50조 제5항을 위반하여 조치를 한 자</span></p>
+									</div>
+									<p class="ftColor77">개인정보 관리 책임자 이성환 <br />호스팅 서비스 제공자 ㈜이니스프리</p>
+								</div>
+								<p class="ftColor2 mgt25">㈜ LG U+의 에스크로 서비스 가입</p>
+								<p class="ftColor77">저희 쇼핑몰은 고객님의 안전한 거래를 위해 무통장입금 거래에 대해 구매안전서비스를 적용하고 있습니다.</p>
+								<div class="btnWrap">
+									<a href="https://pgweb.uplus.co.kr/pg/wmp/mertadmin/jsp/mertservice/s_escrowYn.jsp?mertid=innisfree" target="_blank" class="btnA7b">LG U+ 구매안전 서비스 가입 확인</a>
+								</div>
+							</div>
+							<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+						</div>
+					</div>
+				</div>
+				<ul class="snsIcon">
+					<li><a href="#" class="snsYou">유투브</a></li>
+					<li><a href="#" class="snsInsta">인스타그램</a></li>
+					<li><a href="#" class="snsFace">페이스북</a></li>
+					<li><a href="#" class="snstwitter">트위터</a></li>
+					<li><a href="#" class="app">APP 다운로드</a></li>
+					<li><a href="#" class="pc">pc버전로 이동</a></li>
+				</ul>
+				<small class="copyright">Copyright © 2019 이니스프리. All Rights Reserved.</small>
+			</div>
+		</footer>
+        <!-- //footer -->
+    </div>
+</body>
+</html>
+
+
+
+<div class="swiper-container swiper3">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<div class="pdtListType pdtListSub">
+				<span class="pdtOver">
+					<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtImg" tabindex="0">
+						<span class="stikerWrap">
+							<!-- 1등 상품에 붙는 아이콘 -->
+							<img class="ic_bestCrown" src="resources/web2/images/icon_crown.png" alt="1위상품">
+							<strong class="stikerType_1">1</strong>
+						</span>
+						<span class="labelWrap"></span>
+						<img src="https://images.innisfree.co.kr/upload/product/26518_l_S_250.png?202004290207" alt="비비드 슬림핏 틴트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" class="over" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+					</a>
+					<span class="pdtUtil">
+						<a href="/kr/ko/ProductView.do?prdSeq=24876" class="iconOpen" target="_blank" tabindex="0">새 창</a>
+						<button type="button" class="iconZzim " onclick="$.jhead.fnChkLoginPagePopAlert();" tabindex="0">찜</button>
+						<button type="button" class="iconCart" onclick="javascript:openPreview('24876', 'POPCART');" tabindex="0">장바구니</button>
+						<button type="button" class="iconBuy" onclick="javascript:openPreview('24876', 'ORDER');" tabindex="0">바로구매</button>
+					</span>
+				</span>
+				<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtCont" tabindex="0">
+					<span class="name">모이스트윈터베리어 선스크린 SPF50+ PA++++</span>
+					<span class="price"><span class="num">9,000</span>원</span>
+					<span class="pdtStatus"></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="swiper-slide">
+			<div class="pdtListType pdtListSub">
+				<span class="pdtOver">
+					<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtImg" tabindex="0">
+						<span class="stikerWrap">
+							<!-- 1등 상품에 붙는 아이콘 -->
+							<img class="ic_bestCrown" src="resources/web2/images/icon_crown.png" alt="1위상품">
+							<strong class="stikerType_1">2</strong>
+						</span>
+						<span class="labelWrap"></span>
+						<img src="https://images.innisfree.co.kr/upload/product/26676_l_S_250.png?202004290207" alt="비비드 슬림핏 틴트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" class="over" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+					</a>
+					<span class="pdtUtil">
+						<a href="/kr/ko/ProductView.do?prdSeq=24876" class="iconOpen" target="_blank" tabindex="0">새 창</a>
+						<button type="button" class="iconZzim " onclick="$.jhead.fnChkLoginPagePopAlert();" tabindex="0">찜</button>
+						<button type="button" class="iconCart" onclick="javascript:openPreview('24876', 'POPCART');" tabindex="0">장바구니</button>
+						<button type="button" class="iconBuy" onclick="javascript:openPreview('24876', 'ORDER');" tabindex="0">바로구매</button>
+					</span>
+				</span>
+				<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtCont" tabindex="0">
+					<span class="name">모이스트윈터베리어 선스크린 SPF50+ PA++++</span>
+					<span class="price"><span class="num">9,000</span>원</span>
+					<span class="pdtStatus"></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="swiper-slide">
+			<div class="pdtListType pdtListSub">
+				<span class="pdtOver">
+					<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtImg" tabindex="0">
+						<span class="stikerWrap">
+							<img class="ic_bestCrown" src="resources/web2/images/icon_crown.png" alt="1위상품">
+							<strong class="stikerType_1">3</strong>
+						</span>
+						<span class="labelWrap"></span>
+						<img src="https://images.innisfree.co.kr/upload/product/20864_l_S_250.png?202004290207" alt="비비드 슬림핏 틴트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" class="over" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+					</a>
+					<span class="pdtUtil">
+						<a href="/kr/ko/ProductView.do?prdSeq=24876" class="iconOpen" target="_blank" tabindex="0">새 창</a>
+						<button type="button" class="iconZzim " onclick="$.jhead.fnChkLoginPagePopAlert();" tabindex="0">찜</button>
+						<button type="button" class="iconCart" onclick="javascript:openPreview('24876', 'POPCART');" tabindex="0">장바구니</button>
+						<button type="button" class="iconBuy" onclick="javascript:openPreview('24876', 'ORDER');" tabindex="0">바로구매</button>
+					</span>
+				</span>
+				<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtCont" tabindex="0">
+					<span class="name">모이스트윈터베리어 선스크린 SPF50+ PA++++</span>
+					<span class="price"><span class="num">9,000</span>원</span>
+					<span class="pdtStatus"></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="swiper-slide">
+			<div class="pdtListType pdtListSub">
+				<span class="pdtOver">
+					<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtImg" tabindex="0">
+						<span class="stikerWrap">
+							<strong class="stikerType_1">4</strong>
+						</span>
+						<span class="labelWrap"></span>
+						<img src="https://images.innisfree.co.kr/upload/product/26116_l_S_250.png?202004290207" alt="비비드 슬림핏 틴트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" class="over" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+					</a>
+					<span class="pdtUtil">
+						<a href="/kr/ko/ProductView.do?prdSeq=24876" class="iconOpen" target="_blank" tabindex="0">새 창</a>
+						<button type="button" class="iconZzim " onclick="$.jhead.fnChkLoginPagePopAlert();" tabindex="0">찜</button>
+						<button type="button" class="iconCart" onclick="javascript:openPreview('24876', 'POPCART');" tabindex="0">장바구니</button>
+						<button type="button" class="iconBuy" onclick="javascript:openPreview('24876', 'ORDER');" tabindex="0">바로구매</button>
+					</span>
+				</span>
+				<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtCont" tabindex="0">
+					<span class="name">모이스트윈터베리어 선스크린 SPF50+ PA++++</span>
+					<span class="price"><span class="num">9,000</span>원</span>
+					<span class="pdtStatus"></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="swiper-slide">
+			<div class="pdtListType pdtListSub">
+				<span class="pdtOver">
+					<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtImg" tabindex="0">
+						<span class="stikerWrap">
+							<strong class="stikerType_1">5</strong>
+						</span>
+						<span class="labelWrap"></span>
+						<img src="https://images.innisfree.co.kr/upload/product/26458_l_S_250.png?202004290207" alt="비비드 슬림핏 틴트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" class="over" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+					</a>
+					<span class="pdtUtil">
+						<a href="/kr/ko/ProductView.do?prdSeq=24876" class="iconOpen" target="_blank" tabindex="0">새 창</a>
+						<button type="button" class="iconZzim " onclick="$.jhead.fnChkLoginPagePopAlert();" tabindex="0">찜</button>
+						<button type="button" class="iconCart" onclick="javascript:openPreview('24876', 'POPCART');" tabindex="0">장바구니</button>
+						<button type="button" class="iconBuy" onclick="javascript:openPreview('24876', 'ORDER');" tabindex="0">바로구매</button>
+					</span>
+				</span>
+				<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtCont" tabindex="0">
+					<span class="name">모이스트윈터베리어 선스크린 SPF50+ PA++++</span>
+					<span class="price"><span class="num">9,000</span>원</span>
+					<span class="pdtStatus"></span>
+				</a>
+			</div>
+		</div>
+
+		<div class="swiper-slide">
+			<div class="pdtListType pdtListSub">
+				<span class="pdtOver">
+					<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtImg" tabindex="0">
+						<span class="stikerWrap">
+							<strong class="stikerType_1">6</strong>
+						</span>
+						<span class="labelWrap"></span>
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" alt="비비드 슬림핏 틴트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+						<img src="https://images.innisfree.co.kr/upload/product/24876_l_S_320.png?202004290100" class="over" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+					</a>
+					<span class="pdtUtil">
+						<a href="/kr/ko/ProductView.do?prdSeq=24876" class="iconOpen" target="_blank" tabindex="0">새 창</a>
+						<button type="button" class="iconZzim " onclick="$.jhead.fnChkLoginPagePopAlert();" tabindex="0">찜</button>
+						<button type="button" class="iconCart" onclick="javascript:openPreview('24876', 'POPCART');" tabindex="0">장바구니</button>
+						<button type="button" class="iconBuy" onclick="javascript:openPreview('24876', 'ORDER');" tabindex="0">바로구매</button>
+					</span>
+				</span>
+				<a href="/kr/ko/ProductView.do?prdSeq=24876" class="pdtCont" tabindex="0">
+					<span class="name">모이스트윈터베리어 선스크린 SPF50+ PA++++</span>
+					<span class="price"><span class="num">9,000</span>원</span>
+					<span class="pdtStatus"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- navi -->
+	<div class="slide_control">
+		<div class="swiper-button-prev">이전 제품</div>
+		<div class="swiper-button-next">다음 제품</div>
+		<button class="btn_autoplay">자동제어버튼</button>
+	</div>
+
+</div>

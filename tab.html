@@ -107,10 +107,11 @@
 	var tabContDiv = document.querySelectorAll('.tab-content>div');
 	
 
-	for(i=0; i < tabLink.length; i++){
+	// for(i=0; i < tabLink.length; i++){
 
+	// 	tabLink[i].addEventListener('click', function(e){
+	for(let i in tabLink){
 		tabLink[i].addEventListener('click', function(e){
-			
 			e.preventDefault();
 			var target = this;
 			var targetLeft = this.offsetLeft;

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	/* RESET */
+
+	.instaSction [class*="rollingList"] {overflow: hidden;}
+	.instaSction [class*="rollingList"] ul {
+		position: relative;
+		display: table;
+	}
+	.instaSction [class*="rollingList"] li {
+		display: table-cell;
+		width: 300px;
+	}
+	.instaSction [class*="rollingList"] img {width: 300px; height: 300px;}
+	
+</style>
+
+<body>
+	<div style="padding: 0 1%;">
+		<div class="instaSction">
+			<div class="rollingList1">
+				<ul>
+					<li><a href=""><img src="./images/a-1.jpg"></a></li>
+					<li><a href=""><img src="./images/a-2.jpg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+
+</body>
+
+<script>
+	/* 롤링 */
+
+	
+	
+var rollingSlide = function(obj, dir) {
+	// var dir = '1' ? 'left' : 'right';
+
+	var wrap = $(obj);
+	var relWrap = wrap.find('> ul');
+	var item = relWrap.find('> li');
+	var itemW = item.width();
+	var resetNum = item.length * itemW;
+	var cloneHtml = relWrap.html();
+	var pos = 0;
+	var timer;
+	var style = {};
+
+	relWrap.prepend(cloneHtml + cloneHtml).append(cloneHtml + cloneHtml);
+	relWrap.css('margin-left', '-' + resetNum + 'px');
+
+	wrap.active = function(){
+		timer = setInterval(function(){
+			
+			pos--;
+			if('-' + resetNum == pos) {
+				style[dir] = 0;
+				pos = 0;
+			} else {
+				style[dir] = pos + 'px';
+			}
+			relWrap.css(style);
+		},45);
+	}
+	wrap.active();
+
+	relWrap.on({
+		'mouseenter': function(){
+			clearInterval(timer);
+		},
+		'mouseleave': function(){
+			wrap.active();
+		}
+	});
+}
+
+rollingSlide('.rollingList1', '1')
+</script>
+
+ 
+</html>

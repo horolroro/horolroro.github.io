@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative; overflow: hidden;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.com_tit01 {font-family: 'NotoB'; font-size:60px; color:#fff; text-align: center;}
+.com_txt01 {max-width:70%; margin:0 auto; font-family: 'NotoR'; font-size:24px; color:#fff; text-align: center;;}
+.header_wrap {position: fixed; left:0; top:0; z-index:100; width:100%; height:70px; border-bottom:1px solid rgba(255,255,255,.2);}
+.header_wrap .logo {margin-top:15px; padding-left:20px; font-size:24px; color:#fff;;}
+.footer {position:relative; height:300px; background: #111}
+.footer .text_area {position: relative; z-index: 20; padding:20px;}
+.footer .text_area p {color:#fff; font-size:34px;}
+.tb_row {display: table; width:100%; height: 100%;}
+.tb_row .tb_cell {display: table-cell; vertical-align: middle;}
+
+/* 오늘 날짜 카운트 */
+.section_today {overflow:hidden; position:relative; height:100vh; background: #000; text-align:center;}
+.section_today .date_box {height: 100%;}
+
+.section_today .date_box .t_date {position: absolute; left:20px; top:400px; z-index:100; font-size:300px; color:#fff; opacity: .1; transform:translateX(-100%); -webkit-transform:translateX(-100%); -moz-transform:translateX(-100%); -o-transform:translateX(-100%); -ms-transform:translateX(-100%); -webkit-text-fill-color:transparent; -webkit-text-stroke:2px #fff; transition:transform 1s;}
+.section_today.active .date_box .t_date {transform:translateX(0%); -webkit-transform:translateX(0%); -moz-transform:translateX(0%); -o-transform:translateX(0%); -ms-transform:translateX(0%);}
+
+.section_today .date_box .date_count {overflow:hidden; position: relative; display:inline-block; height: 200px; opacity: 0; transition:opacity .5s 1s;}
+.section_today.active .date_box .date_count {opacity: 1;}
+
+.section_today .date_box .date_count:after {clear:both; display:block; content:'';}
+.section_today .date_box .date_count .count_box { float: left;  animation: count_date 2.8s 1 ease-out both paused;}
+.section_today .date_box .date_count .count_box.active { animation-play-state: running;}
+.section_today .date_box .date_count .count_box span {display:block; height:200px; color:#fff; font-size:200px; line-height: 1; text-align: center; -webkit-text-fill-color:transparent; -webkit-text-stroke:6px #fff;}
+
+
+@keyframes count_date {
+    0%{
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-4800px); /* 높이 x 롤링될 개수로 구한값 */
+    }
+}
+
+</style>
+<body>
+    <div class="wrap">
+        <header class="header_wrap">
+            <div class="logo">GGANG CODING</div>
+        </header>
+        <section class="section_today">
+			<article class="date_box">
+	            <div class="tb_row">
+	                <div class="tb_cell">
+	                	<strong class="t_date">TODAY</strong>
+						<div class="date_count"></div> <!-- 롤링될 날짜가 추가될 엘리먼트 -->
+	                </div>
+	            </div>
+			</article>
+        </section>
+        <footer class="footer">
+            <div class="text_area">
+                <p>
+                    2020 GGANG CODING. 당신의 열정을 응원합니다. :)
+                </p>
+            </div>
+        </footer>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+
+$(function(){
+
+	/* 날짜 카운트*/
+    function countDate(){
+
+        var el = $('.date_count');
+        var date = new Date();
+        var todayDate = String(date.getFullYear()) + String(date.getMonth() + 1) + String(date.getDate()); //오늘의 날짜를 구함
+        var rolling = 24; //롤링될 개수
+        var resultArray = [];
+            resultArray = todayDate.split(''); //롱링할 오늘날짜를 나눠서 배열에 담음
+            // console.log(resultArray);
+        $.each(resultArray, function(idx, val) {
+			var conuntBox = $('<div class="count_box" />');
+			var numberArray = []; //쪼갠 날짜를 담을 배열 선언
+			var number = Number(val);
+
+            for(var i = 0; i <= rolling; i++){ //롤링될 숫자만큼 값을 생성해 배열에 담음
+                var sum = number + i;
+                var num = sum >= 10 ? Number(String(sum).split('')[1]) : sum; //값이 10보다커질경우 첫번째 자릿수를 버리도록 함
+                numberArray[i] = num;
+            };
+
+            numberArray.reverse(); //롤링방향 때문에 배열을 뒤집어줍니다.
+
+            numberArray.forEach(function(val){ //날짜를 담은 span엘리먼트를 coutBox에 어펜드
+
+               var countValue = $('<span/>', {
+                    text: val
+				});
+
+               countValue.appendTo(conuntBox)
+
+            });
+            // console.log(idx * 300);
+			conuntBox //최종 엘리먼트에 추가함. 딜레이와 큐를 이용해 롤링 타이밍을 처리합니.
+			.appendTo(el)
+			.delay(idx * 300)
+			.queue(function(){
+				$(this).addClass('active');
+			});
+        });
+
+    };
+    countDate();
+});
+
+setTimeout(function(){
+	$('section').addClass('active');
+},200);
+
+</script>
+</body>
+</html>

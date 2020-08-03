@@ -1,0 +1,107 @@
+<html lang="en" class="">
+<head>
+<meta charset="UTF-8">
+<title>CodePen Demo</title>
+
+
+
+<script type="text/javascript" src="https://static.kshop.co.kr/d2/emc/ec/common/js/lib/jquery-3.3.1.min.js"></script>
+
+<link rel="stylesheet" type="text/css" class="comcss" href="./plugin/reset.css">
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+<script type="text/javascript" src="./plugin/jquery.touchSwipe.min.js"></script>
+
+<style type="text/css">
+    img{width: 100%;}
+
+    .bx{position: absolute;top:100%;left: 0; width: 100%; height: 100%;transition: 1s; }
+    .bx.bx1{top:0;left: 0;z-index: 0;}
+
+    /* .bx.bx3 img{top:100%;width: 100%; height: 100%; object-fit: cover;  }
+*/
+
+
+</style>
+
+</head>
+
+<body>
+    <div class="swiper-container swiper-container-h">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="bx bx1">
+                    <img src="./images/mlb_1.jpg">
+                </div>
+                
+                <div class="bx bx2">
+                    <img src="./images/mlb_2.jpg">
+                </div>
+                
+                <div class="bx bx3">
+                    <img src="./images/mlb_3.jpg">
+                </div>
+                <div class="bx bx4">
+                    <img src="./images/mlb_4.jpg">
+                </div>
+			</div>
+			<div class="swiper-slide">
+				<div class="bx bx1">
+                    <img src="./images/mlb_1.jpg">
+                </div>
+                
+                <div class="bx bx2">
+                    <img src="./images/mlb_2.jpg">
+                </div>
+                
+                <div class="bx bx3">
+                    <img src="./images/mlb_3.jpg">
+                </div>
+                <div class="bx bx4">
+                    <img src="./images/mlb_4.jpg">
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+    //Horizen Slider
+    var swiperH = new Swiper('.swiper-container-h', {
+        // pagination: {
+        // el: '.cta__slider-wrapper',
+        //     clickable: true,
+        // },
+    });
+</script>
+<script>
+    $(document).ready(function() {
+		
+		$('.bx').swipe( {
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+				var $el = $(this);
+
+				if (direction == 'up') {
+					console.log('swipeup');
+					$el.next().css('transform', `translate3d(0px,-100%, 0px)`);
+	
+				}
+				if (direction == 'down') {
+					console.log('swipedown');
+					$el.css('transform', `translate3d(0px,0px, 0px)`);
+				}
+			},
+			threshold:90
+		});
+
+
+
+	});
+
+
+</script>
+
+</html>

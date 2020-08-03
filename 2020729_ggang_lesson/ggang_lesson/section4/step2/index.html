@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* 스크롤 배경 만들기 */
+.motion_area {position:relative; width:100%; height:6000px; background-color:#000;}
+.motion_area .bg {position: absolute; left:0; top:0; width: 100%; height: 100%; opacity:0; transition:opacity .5s;}
+.motion_area .bg.one {background-image:url('../images/motion_sky1.gif');} /* 아침 */
+.motion_area .bg.two {background-image:url('../images/motion_sky2.gif');} /* 점심 */
+.motion_area .bg.three {background-image:url('../images/motion_sky3.gif');} /* 이른저녁 */
+.motion_area .bg.four {background-image:url('../images/motion_sky4.gif');} /* 밤 */
+.motion_area .bg.active {opacity: 1;}
+.motion_area .motion_rope {position: fixed; left:10%; top:0; z-index:20; width:20px; height: 100%; background-image:url('../images/motion_rope.png'); background-repeat: repeat-y; background-position: 50% 0; background-size: 20px;}
+.motion_area .motion_moon {visibility:hidden; position:fixed; right:100px; top:100px; z-index:20; width:200px; opacity: 0; transform:translateY(-100px); -webkit-transform:translateY(-100px); -moz-transform:translateY(-100px); -o-transform:translateY(-100px); -ms-transform:translateY(-100px); transition:1s;}
+.motion_area .motion_moon.active {visibility:visible; opacity:1; transform:translateY(0px); -webkit-transform:translateY(0px); -moz-transform:translateY(0px); -o-transform:translateY(0px); -ms-transform:translateY(0px);}
+
+</style>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<body>
+    <div class="wrap">
+        <div class="motion_area">
+        	<div class="bg one active"></div>
+        	<div class="bg two"></div>
+        	<div class="bg three"></div>
+        	<div class="bg four"></div>
+            <div class="motion_rope"></div>
+            <figure class="motion_moon active">
+                <img src="../images/motion_moon.png" >
+            </figure>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

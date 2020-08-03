@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.com_tit01 {font-family: 'NotoB'; font-size:120px; color:#fff; text-align: center;}
+.com_txt01 {max-width:70%; margin:0 auto; font-family: 'NotoR'; font-size:32px; color:#fff; text-align: center;;}
+
+/* main */
+.ggang_box {position:relative; height:500px; background-color:#080808;}
+.ggang_box h2 {position: absolute; left:0; top:50%; width: 100%; color:#333; font-size:80px; line-height:1; text-align: center;}
+
+.fix_motion {background:#080808;}
+.fix_motion .fix_wrap {position:relative;}
+.fix_motion .fix_wrap:after {clear:both; display:block; content:'';}
+.fix_motion .fix_wrap .tit {position:relative; z-index:50; margin-bottom:170px; font-size:200px; color:#333; text-align: center;}
+.fix_motion .fix_wrap .text_box {float:left; width:50%; padding-top:300px;}
+.fix_motion .fix_wrap .text_box p {max-width:80%; font-size:36px; font-family: 'NotoM'; color:#333; transition:color .5s;}
+.fix_motion .fix_wrap .text_box p.active {color:#fff;}
+.fix_motion .fix_wrap .text_box p.txt02 {margin-top:300px;}
+.fix_motion .fix_wrap .text_box p.txt03 {margin-top:300px;}
+.fix_motion .fix_wrap .text_box p.txt04 {margin-top:300px; margin-bottom:500px;}
+
+.fix_motion .fix_wrap .device_fix {position: sticky; position: -webkit-sticky; top:calc(50vh - 204px); left: 0; z-index: 40; float:left; width:50%;}
+.fix_motion .fix_wrap .device_fix .watch_img {position:relative; width: 240px; height:409px; margin:0 auto; }
+.fix_motion .fix_wrap .device_fix .watch_img .img_device {position:absolute; left:0; top:0; right:0; bottom:0; z-index:20;}
+.fix_motion .fix_wrap .device_fix .watch_img .slide_wrap {overflow:hidden; position: absolute; left:15px; top:89px; z-index:10; width:195px; height:237px;}
+.fix_motion .fix_wrap .device_fix .watch_img .slide_wrap .slide {width: 780px; height: 100%; transition:transform .5s;}
+.fix_motion .fix_wrap .device_fix .watch_img .slide_wrap .slide figure {float:left; width:195px;}
+</style>
+<body>
+    <div class="wrap">
+        <section class="ggang_box">
+        	<h2>FIXED CONTENT</h2>
+        </section>
+        <section class="fix_motion">
+            <article class="fix_wrap inner">
+                <h2 class="tit">watchOS</h2>
+                <div class="text_box">
+                    <p class="txt01">
+                        여러분 드디어 수업이 막바지에 이르렀습니다 :)
+                    </p>
+                    <p class="txt02">
+                        2편에서는 더 고급스럽고
+                        난이도 있는 인터렉션을 만들 예정입니다
+                    </p>
+                    <p class="txt03">
+                        1편에서 기초를 탄탄하게
+                        다져야 2편이 수월해집니다
+                    </p>
+                    <p class="txt04">
+                        이 수업이 여러분에게
+                        많은 도움이 되었다면 좋겠습니다
+                    </p>
+                </div>
+                <div class="device_fix">
+                    <div class="watch_img">
+                        <figure class="img_device">
+                            <img src="../images/bg_device.png" alt="">
+                        </figure>
+                        <div class="slide_wrap">
+                            <div class="slide">
+                                <figure>
+                                    <img src="../images/1.jpg">
+                                </figure>
+                                <figure>
+                                    <img src="../images/2.jpg">
+                                </figure>
+                                <figure>
+                                    <img src="../images/3.jpg">
+                                </figure>
+                                <figure>
+                                    <img src="../images/4.jpg">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="ggang_box"></section>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+
+    var scrollBody = $('.fix_motion .fix_wrap'); //부모 스크롤 엘리먼트
+
+    var scrollHeight; // 스크롤 높이
+    var sectionOffsetTop; //섹션의 오프셋 탑 변수
+    var sectionScrolTop; //섹션의 스크롤 탑 변수
+    var scrollRealHeight; //실제로 스크롤해야될 높이를 담을 변수를 선업합니다
+    var winScrollTop; // 스크롤바의 높이를 담을 변수를 선업합니다
+    var scrollPerecnt // 스크롤 / 스크롤 길이로 구한 비율 값
+    var percent; // 스크롤 백분율값을 담을 변수를 선업합니다
+
+    function scrollFunc(){ //스크롤할때 실행될 함수
+
+        setProperty(); //스크롤할때 변할 값들을 셋팅해주는 함수
+        contentIn(); //배경이미지와 텍스트를 처리하는 함수
+
+    };
+
+    function setProperty(){ //스크롤할때 변할 값들을 셋팅해주는 함수
+
+        scrollHeight = scrollBody.height(); // 스크롤 높이
+        sectionOffsetTop = scrollBody.offset().top; //섹션의 오프셋 탑 변수
+
+        scrollRealHeight = (scrollHeight - $(window).height()); //실제로 스크롤해야될 높이값을 구합니다
+        winScrollTop = $(window).scrollTop(); //스크롤바의 현재 위치를 구합니다
+        sectionScrolTop = winScrollTop - sectionOffsetTop
+
+        scrollPerecnt =  sectionScrolTop / scrollRealHeight; // 스크롤 / 스크롤 길이로 비율을 구합니다
+        percent = scrollPerecnt * 100 ; //백분율을 구합니다
+
+    };
+
+    function contentIn(){ //섹션 진입후 처리될 기능정의
+
+        var deviceImg = $('.device_fix .slide_wrap figure'); //슬라이더 안에 이미지 요소를 찾음
+        var imgWidth = deviceImg.width(); //이미지요소의 넓이
+
+        if(percent >= 12 && percent < 43){
+
+            imageChange(imgWidth * 0); //(이미지넓이 x 이미지 인덱스) 이미지가 이동할 값을 넘겨줍니다
+            $('.fix_motion .text_box .txt01').addClass('active');
+
+        }
+
+        if(percent >= 43 && percent < 75) {
+
+            imageChange(imgWidth * 1); //(이미지넓이 x 이미지 인덱스) 이미지가 이동할 값을 넘겨줍니다
+            $('.fix_motion .text_box .txt02').addClass('active');
+
+        }
+
+        if(percent >= 75 && percent < 107) {
+
+            imageChange(imgWidth * 2); //(이미지넓이 x 이미지 인덱스) 이미지가 이동할 값을 넘겨줍니다
+            $('.fix_motion .text_box .txt03').addClass('active');
+
+        }
+
+        if(percent >= 107) {
+
+            imageChange(imgWidth * 3); //(이미지넓이 x 이미지 인덱스) 이미지가 이동할 값을 넘겨줍니다
+            $('.fix_motion .text_box .txt04').addClass('active');
+
+        }
+
+        if(percent < 12 ){
+            $('.fix_motion .text_box .txt01').removeClass('active');
+            $('.fix_motion .text_box .txt02').removeClass('active');
+            $('.fix_motion .text_box .txt03').removeClass('active');
+            $('.fix_motion .text_box .txt04').removeClass('active');
+        }
+
+    };
+
+    function imageChange(moveX){ //시계안 이미지 변경을 처리하는 함수
+
+        var img = $('.fix_motion .slide_wrap .slide');
+
+        img.css({
+            'transform':'translateX('+ -moveX +'px)'
+        });
+
+    };
+
+    function init(){ // 초기화
+
+        scrollFunc(); //스크롤할때 변할 값들을 셋팅해주는 함수
+
+    };
+
+    $(window).scroll(function(){
+
+        scrollFunc(); //스크롤할때 실행될 함수
+
+    });
+
+    init(); //start
+});
+</script>
+</body>
+</html>

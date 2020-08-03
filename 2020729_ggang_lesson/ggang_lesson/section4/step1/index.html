@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* 깡 캐릭터 모션 그래픽 */
+.motion_ggang {position: relative; width:300px;}
+.motion_ggang img {width: 100%;}
+.motion_ggang figure {position: absolute; top:0; left:50%; margin-left:-150px; width:300px; font-size:0;}
+.motion_ggang .ch_body {z-index:20;}
+.motion_ggang .ch_hand_right {z-index:10; transform-origin: 199px 163px;  -webkit-transform-origin: 199px 163px; -moz-transform-origin: 199px 163px; -o-transform-origin: 199px 163px; -ms-transform-origin: 199px 163px;}
+.motion_ggang .ch_hand_right {
+animation-name: hand_move;
+animation-duration: .8s; /*한번 재생걸리는시간*/
+animation-delay: 0s; /*애니메이션 지연*/
+animation-direction: alternate; /* 애니메이션 재생방향 alternate :순방향, reverse: 역방향*/
+animation-iteration-count: infinite; /* 애니메이션 재생횟수 infinite 무한*/
+animation-play-state: running; /* 애니메이션 재생여부  running :재생 (기본값), paused(애니메이션정지)*/
+animation-timing-function: linear; /*애니메이션 가속도 설정 linear, ease, ease-in, ease-out, custom 등*/
+animation-fill-mode: both;
+}
+
+@keyframes hand_move {
+    0%{
+        transform:rotate(-140deg);
+    }
+    100%{
+        transform:rotate(4deg);
+    }
+}
+
+</style>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<body>
+    <div class="wrap">
+        <div class="motion_ggang">
+            <figure class="ch_body">
+                <img src="../images/motion_body2.png" />
+            </figure>
+            <figure class="ch_hand_right">
+                <img src="../images/motion_hand_right.png" />
+            </figure>
+        </div>
+    </div>
+</body>
+</html>

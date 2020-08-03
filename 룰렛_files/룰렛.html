@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://yamah.co.kr/example/rullet/index.html -->
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="룰렛 플러그인">
+	<meta name="author" content="유제원">
+	<title>룰렛</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery-1.10.2.min.js"></script>
+	<script src="jquery.easing.js"></script>
+	<script src="jQueryRotate.js"></script>
+	<script src="rullet.js"></script>
+</head>
+<body>
+
+
+<div class="wrap">
+	<div class="rullet">
+		<ul class="piebox" id="pie">
+
+		</ul>
+		<button class="btn" id="play" type="button"><span>시작</span></button>
+		<div class="result">
+			꽝!꽝!
+		</div>
+	</div><!-- //rullet -->
+</div>
+<script type="text/javascript">
+var lucky = $('#pie').rullet({
+	value : ['컴퓨터','추가','컴퓨터', '핸드폰', '청소기', '노트북', '자전거', '마우스', '선풍기', '꽝!꽝!'],
+	winPercent : [0.5,0.1, 0.2, 0.3, 0.1, 0.3, 1, 3, 95],
+	repeat : 10,
+	speed : 6000
+});
+
+$('#play').on('click', function(){
+	lucky.go();
+})
+
+</script>
+
+
+</body></html>

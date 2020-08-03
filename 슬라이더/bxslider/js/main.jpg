@@ -1,0 +1,207 @@
+var $j = jQuery.noConflict();
+$j(function () {
+    //section point
+    var moveTime = 700;
+    var offSet = -100;
+    var viewScrollTop;
+    var keyVisualTop;
+    var sectionTop1, sectionTop2, sectionTop3, sectionTop4, sectionTop5, sectionTop6, sectionTop7, sectionTop8;
+    var titleTop1, titleTop2, titleTop3, titleTop4, titleTop5, titleTop7, titleTop8;
+    var boardTop1, boardTop2, boardTop3;
+    var betterTop1, betterTop2, betterTop3;
+    var theLanguage;
+    var global1, global2;
+
+    var navSensor = function () {
+        viewScrollTop = $j(window).scrollTop();
+        theLanguage = $j('html').attr('lang');
+
+        // 국문,영문 분기처리
+        if (theLanguage.indexOf('ko') >= 0) {
+            sectionTop1 = $j(".section1").offset().top + offSet;
+            sectionTop2 = $j(".section2").offset().top + offSet;
+            sectionTop3 = $j(".section3").offset().top + offSet;
+            sectionTop4 = $j(".section4").offset().top + offSet;
+            sectionTop5 = $j(".section5").offset().top + offSet;
+            sectionTop6 = $j(".section6").offset().top + offSet;
+
+            titleTop1 = $j('.section1 h3').offset().top - screen.height;
+            titleTop2 = $j('.section2 h3').offset().top - screen.height;
+            titleTop3 = $j('.section3 h3').offset().top - screen.height;
+            titleTop4 = $j('.section4 h3').offset().top - screen.height;
+            titleTop5 = $j('.section5 h3').offset().top - screen.height;
+
+            if (viewScrollTop > titleTop1) $j('.section1 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop2) $j('.section2 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop3) $j('.section3 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop4) $j('.section4 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop5) $j('.section5 h3').animate({top: 0}, moveTime);
+
+            betterTop1 = $j('.better li:nth-of-type(1)').offset().top - screen.height;
+            betterTop2 = $j('.better li:nth-of-type(2)').offset().top - screen.height;
+            betterTop3 = $j('.better li:nth-of-type(3)').offset().top - screen.height;
+
+            if (viewScrollTop > betterTop1) $j('.better li:nth-of-type(1)').animate({top: 0}, moveTime);
+            if (viewScrollTop > betterTop2) $j('.better li:nth-of-type(2)').animate({top: 0}, moveTime);
+            if (viewScrollTop > betterTop3) $j('.better li:nth-of-type(3)').animate({top: 0}, moveTime);
+        } else if (theLanguage.indexOf('en') >= 0) {
+            sectionTop1 = $j(".section1").offset().top + offSet;
+            sectionTop2 = $j(".section2").offset().top + offSet;
+            sectionTop7 = $j(".section7").offset().top + offSet;
+            sectionTop3 = $j(".section3").offset().top + offSet;
+            sectionTop8 = $j(".section8").offset().top + offSet;
+
+            titleTop1 = $j('.section1 h3').offset().top - screen.height;
+            titleTop2 = $j('.section2 h3').offset().top - screen.height;
+            titleTop7 = $j('.section7 h3').offset().top - screen.height;
+            titleTop3 = $j('.section3 h3').offset().top - screen.height;
+            titleTop8 = $j('.section8 h3').offset().top - screen.height;
+
+            if (viewScrollTop > titleTop1) $j('.section1 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop2) $j('.section2 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop7) $j('.section7 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop3) $j('.section3 h3').animate({top: 0}, moveTime);
+            if (viewScrollTop > titleTop8) $j('.section8 h3').animate({top: 0}, moveTime);
+
+            global1 = $j('.global-contact').offset().top - screen.height;
+            global2 = $j('.global-question-area').offset().top - screen.height;
+
+            if (viewScrollTop > global1) $j('.global-contact').animate({top: 0}, moveTime);
+            if (viewScrollTop > global2) $j('.global-question-area').animate({top: 0}, moveTime);
+        }
+
+        // 국문,영문 공통
+        keyVisualTop = $j(".key-visual").offset().top;
+        boardTop1 = $j('.board-area:nth-of-type(1) li:nth-of-type(1)').offset().top - screen.height;
+        boardTop2 = $j('.board-area:nth-of-type(1) li:nth-of-type(2)').offset().top - screen.height;
+        boardTop3 = $j('.board-area:nth-of-type(1) li:nth-of-type(3)').offset().top - screen.height;
+
+        if (viewScrollTop > boardTop1) $j('.board-area li:nth-of-type(1)').animate({top: 0}, moveTime);
+        if (viewScrollTop > boardTop2) $j('.board-area li:nth-of-type(2)').animate({top: 0}, moveTime);
+        if (viewScrollTop > boardTop3) $j('.board-area li:nth-of-type(3)').animate({top: 0}, moveTime);
+
+        if (viewScrollTop > sectionTop6) {
+            $j(".section6").addClass('active');
+        }
+        else if (viewScrollTop > sectionTop5) {
+            $j(".section5").addClass('active');
+        }
+        else if (viewScrollTop > sectionTop4) {
+            $j(".section4").addClass('active');
+        }
+        else if (viewScrollTop > sectionTop3) {
+            $j(".section3").addClass('active');
+        }
+        else if (viewScrollTop > sectionTop2) {
+            $j(".section2").addClass('active');
+            $j('.count').click();
+        }
+        else if (viewScrollTop > sectionTop1) {
+            $j(".key-visual").removeClass('active');
+            $j(".section1").addClass('active');
+        }
+        else if (viewScrollTop >= keyVisualTop) {
+            $j(".key-visual").addClass('active');
+        }
+    };
+    navSensor();
+    $j(window).bind('scroll', function () {
+        navSensor();
+    });
+});
+
+function drawMain() {
+    //key-visual
+    var $slider = $j('.key-visual .key-bxslider');
+    $slider.bxSlider({
+        mode: 'fade',
+        speed: 1000,
+        auto: true,
+        pause: 3000,
+        pager: true,
+        oneToOneTouch: false,
+		ariaLive: false,// 2017-11-23 접근성
+        controls: true,//2017-11-23 접근성
+        autoControls: true,// 2017-11-23 접근성
+    });
+    // 2017-11-23 접근성개선
+    $j('.key-visual .bx-controls').find('.bx-stop').hide();
+    $j(".key-visual .bx-controls .bx-stop").on('click', function () {
+        $j('.key-visual .bx-controls').find('.bx-stop').hide();
+        $j('.key-visual .bx-controls').find('.bx-start').show();
+    });
+    $j(".key-visual .bx-controls .bx-start").on('click', function () {
+        $j('.key-visual .bx-controls').find('.bx-start').hide();
+        $j('.key-visual .bx-controls').find('.bx-stop').show();
+    });
+	var $btnPager = $j('.key-visual .bx-controls .bx-pager-link');
+	$btnPager.each(function(index){
+		$btnPager.eq(index).on('click', function(){
+			//2017-11-22 접근성 수정
+			$slider.stopAuto();
+			$j('.key-visual .bx-controls').find('.bx-stop').hide();
+			$j('.key-visual .bx-controls').find('.bx-start').show();
+			slider.goToSlide(index);
+		});
+	});
+    //num - count
+    $j('.count').one("click", function () {
+        $j(this).prop('Counter', 0).animate({
+            Counter: $j(this).text()
+        }, {
+            duration: 2000,
+            easing: 'swing',
+            step: function (now) {
+                $j(this).text(Math.ceil(now));
+            }
+        });
+    });
+
+    // more
+    var bool = true;
+    var theOffset;
+
+    $j('.btn-wrap.more a').on('click', function (e) {
+        if (bool) {
+            $j('.board-area').eq(1).show();
+            if ($j(this).text() == "더보기") {
+                $j(this).text("접기");
+            } else {
+                $j(this).text("Less");
+            }
+
+            theOffset = $j('.board-area').eq(1).offset();
+        } else {
+            $j('.board-area').eq(1).hide();
+            if ($j(this).text() == "접기") {
+                $j(this).text("더보기");
+            } else {
+                $j(this).text("More");
+            }
+
+            theOffset = $j('.board-area:nth-of-type(1) li:nth-of-type(2)').offset();
+        }
+        bool = !bool;
+
+        $j('html, body').animate({scrollTop: theOffset.top}, 400);
+
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+    //접근성 관련
+    //메인 슬라이드 개수 체크
+    $j('.key-visual .bx-controls .bx-pager-item').each(function (index) {
+        $j(this).find('a').text(index + 1 + "번째 슬라이드 콘텐츠 보기");
+        if ($j('html').attr('lang') === 'en') {
+            $j(this).find('a').text("Slide " + (index + 1) + " - contents view");
+        }
+    });
+
+    $j('i[class^="icon-"]').each(function () {
+        $j('section i[class^="icon-"]').attr('title', '아이콘 이미지');
+        if ($j('html').attr('lang') === 'en') {
+            $j('section i[class^="icon-"]').attr('title', 'icon image');
+        }
+    });
+}

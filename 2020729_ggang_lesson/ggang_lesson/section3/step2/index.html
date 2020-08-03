@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="chrome=1,IE=edge">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+.wrap {overflow: hidden; min-height: 1400px;}
+.tit {margin:100px 0 80px; font-size:70px; text-align: center;}
+.ggang_model {width:400px; margin:0 auto;}
+.ggang_model {
+animation-name: move_model;
+animation-duration: 4s; /*한번 재생걸리는시간*/
+animation-delay: 0s; /*애니메이션 지연*/
+animation-direction: alternate; /* 애니메이션 재생방향 alternate :순방향, reverse: 역방향*/
+animation-iteration-count: infinite; /* 애니메이션 재생횟수 infinite 무한*/
+animation-play-state: running; /* 애니메이션 재생여부  running :재생 (기본값), paused(애니메이션정지)*/
+animation-timing-function: linear; /*애니메이션 가속도 설정 linear, ease, ease-in, ease-out, custom 등*/
+animation-fill-mode: both; /* forwards:애니메이션이 끝날 때 요소의 마지막 키 프레임의 스타일 값을 유지, backwards:첫 번째 키 프레임에 의해 설정된 스타일 값을 얻음, both:애니메이션이 시작되기 전에 첫 번째 키 프레임에서 설정 한 스타일 값을 가져 오도록하고 애니메이션이 끝날 때 마지막 키 프레임의 스타일 값을 유지 */
+}
+.ggang_model.active {
+    animation-play-state: running;
+}
+
+@keyframes move_model {
+    0%{
+        transform:translate(-200px,0px);
+    }
+    50% {
+    	transform:translate(200px,0px);
+    }
+    100%{
+        transform:translate(600px, 200px);
+    }
+}
+
+</style>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<body>
+	<div class="wrap">
+		<h2 class="tit">CSS ANIMATION KEYFRAME</h2>
+		<figure class="ggang_model">
+			<img src="../images/ggang_model.png" alt="">
+		</figure>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $('.ggang_model').addClass('active');
+        },2000);
+    });
+</script>
+
+
+
+
+
+
+
+
+

@@ -159,16 +159,9 @@ a {text-decoration:none; color:#666}
 				<div class="orange"><span>orange</span></div>
 				<div class="pink"><span>pink</span></div>
 				<div class="purple"><span>purple</span></div>
-				<div class="black"><span>black</span></div>
-				<div class="crimson"><span>crimson</span></div>
 			</div>
 			<div class="swiper-slide">
 				<div class="orange"><span>orange</span></div>
-				<div class="skyblue"><span>skyblue</span></div>
-				<div class="purple"><span>purple</span></div>
-				<div class="black"><span>black</span></div>
-				<div class="crimson"><span>crimson</span></div>
-				<div class="grey"><span>grey</span></div>
 				<div class="palevioletred"><span>palevioletred</span></div>
 				<div class="chocolate"><span>chocolate</span></div>
 				<div class="coral"><span>coral</span></div>
@@ -176,21 +169,13 @@ a {text-decoration:none; color:#666}
 			<div class="swiper-slide">
 				<div class="orange"><span>orange</span></div>
 				<div class="skyblue"><span>skyblue</span></div>
-				<div class="pink"><span>pink</span></div>
-				<div class="crimson"><span>crimson</span></div>
-				<div class="grey"><span>grey</span></div>
 				<div class="palevioletred"><span>palevioletred</span></div>
-				<div class="chocolate"><span>chocolate</span></div>
 				<div class="coral"><span>coral</span></div>
 			</div>
 			<div class="swiper-slide">
 				<div class="pink"><span>pink</span></div>
 				<div class="purple"><span>purple</span></div>
-				<div class="black"><span>black</span></div>
-				<div class="crimson"><span>crimson</span></div>
-				<div class="grey"><span>grey</span></div>
 				<div class="palevioletred"><span>palevioletred</span></div>
-				<div class="chocolate"><span>chocolate</span></div>
 				<div class="coral"><span>coral</span></div>
 			</div>
 			<div class="swiper-slide">
@@ -198,9 +183,6 @@ a {text-decoration:none; color:#666}
 				<div class="skyblue"><span>skyblue</span></div>
 				<div class="pink"><span>pink</span></div>
 				<div class="purple"><span>purple</span></div>
-				<div class="black"><span>black</span></div>
-				<div class="crimson"><span>crimson</span></div>
-				<div class="grey"><span>grey</span></div>
 			</div>
 		</div>
 	</div>
@@ -212,7 +194,7 @@ a {text-decoration:none; color:#666}
 	var mainSwiper = {
 		swiper : null, //이벤트리스터 this 선언을 위함
 		init : function(){
-			var swiperWeb = new Swiper('#mainCont.swiper-container', {
+			var swiperWeb = new Swiper('#mainCont', {
 				initialSlide : 0, //Index number of initial slide.
 				direction: "horizontal", //Could be 'horizontal' or 'vertical'
 				autoHeight: true,
@@ -235,13 +217,13 @@ a {text-decoration:none; color:#666}
 
 			//event
 			$("#mainNavi ul.nav li").on("click", function(e){
-				console.log(this)
-				e.preventDefault();
-				if( $(this).hasClass("active") ) return false;
+				// console.log(this)
+				// e.preventDefault();
+				// if( $(this).hasClass("active") ) return false;
 				var index = $(this).index();
-				console.log(index);
-				$("#mainNavi ul.nav li").removeClass("active").children("a").attr("aria-selected","false");
-				$("#mainNavi ul.nav li:eq("+ index +")").children("a").attr("aria-selected","true");
+				// console.log(index);
+				// $("#mainNavi ul.nav li").removeClass("active").children("a").attr("aria-selected","false");
+				// $("#mainNavi ul.nav li:eq("+ index +")").children("a").attr("aria-selected","true");
 				mainSwiper.swiper.slideTo(index+1,0); //slideTo(index,speed,callback)
 				// return false; //e.preventDefault() + e.stopPropagation();
 				// //실행후 return false 넣을것 (실행 전에 있을경우 실행자체가 안됨)

@@ -1,0 +1,84 @@
+<html lang="en" class="">
+<head>
+<meta charset="UTF-8">
+<title>twinEX</title>
+
+<link rel="stylesheet" type="text/css" href="../../resources/web/css/common.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+<style type="text/css">
+    body{margin:0;padding:0;min-height :100vh;background: #000;}
+    img{width: 100%;}
+    a{display: inline-block; color: #000;font-size: 40px;z-index: 999; }
+
+   span{margin:-0.5px}
+    .view_1{position: fixed; top:0; left: 1px; width: calc(100% + 4px); height: 100%; display: flex; flex-wrap: wrap; overflow: hidden;z-index: 300;}
+    .view_1 span{ width: 33.3%;height: 80px;background: url(./images/mlb_4.jpg);background-attachment: fixed;background-size: cover;}
+    .view_2{position: fixed; top:0; left: 1px; width: calc(100% + 4px); height: 100%; display: flex; flex-wrap: wrap; overflow: hidden;z-index: 341}
+    .view_2 span{ width: 20%;height: 80px;background: url(./images/mlb_5.jpg);background-attachment: fixed;background-size: cover;}
+</style>
+
+</head>
+
+<body>
+    <div style="position: fixed; bottom:10%; left: 25%; width: 400px;height: 100px; border: 1px solid red; background: #fff;z-index: 9999;">
+        <a href="#" onclick="effect_1()">열기11111</a>
+        <a href="#" onclick="effect_2()">열기22222</a>
+    </div>
+
+    <img src="./images/mlb_1.jpg">
+
+    <div class="showCase"></div>
+</body>
+<script src="./plugin/jquery-3.3.1.js"></script>
+<script>
+    function effect_1(){
+        var html = `
+            <div class="view_1"></div>
+        `
+
+        $('.showCase').html(html);
+
+        for (var i = 0; i < 100; i++) {
+            var $div = $('<span></span>');
+            $div.appendTo('.view_1')
+        }
+
+         TweenMax.staggerFrom('.view_1 span',
+            1,{
+            x:1000,
+            opacity:0,
+        },0.01)
+
+        // function test(){
+        //     $('.view_1').remove();
+        // }
+    }
+
+    function effect_2(){
+        var html = `
+            <div class="view_2"></div>
+        `
+
+        $('.showCase').html(html);
+
+        for (var i = 0; i < 150; i++) {
+            var $div = $('<span></span>');
+            $div.appendTo('.view_2')
+        }
+
+         TweenMax.staggerTo('.view_2 span',
+            0.2,{
+            x:300,
+            opacity:0,
+        },0.03)
+
+        // function test(){
+        //     $('.view_1').remove();
+        // }
+    }
+
+
+
+</script>
+</html>

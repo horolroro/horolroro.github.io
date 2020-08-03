@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative; overflow: hidden;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.com_tit01 {font-family: 'NotoB'; font-size:60px; color:#fff; text-align: center;}
+.com_txt01 {max-width:70%; margin:0 auto; font-family: 'NotoR'; font-size:24px; color:#fff; text-align: center;;}
+.header_wrap {position: fixed; left:0; top:0; z-index:100; width:100%; height:70px; border-bottom:1px solid rgba(255,255,255,.2);}
+.header_wrap .logo {margin-top:15px; padding-left:20px; font-size:24px; color:#fff;;}
+.footer {position:relative; height:300px; background: #111}
+.footer .text_area {position: relative; z-index: 20; padding:20px;}
+.footer .text_area p {color:#fff; font-size:34px;}
+.tb_row {display: table; width:100%; height: 100%;}
+.tb_row .tb_cell {display: table-cell; vertical-align: middle;}
+
+/* 이미지 마스크 */
+.section_product {background: #000;}
+.section_product .prd_mask {}
+.section_product .prd_mask .tit_wrap {padding:120px 0 80px 0;}
+.section_product .prd_mask .img_list {width:60%; margin:0 auto;}
+.section_product .prd_mask .img_list:after {clear:both; display:block; content:'';}
+.section_product .prd_mask .img_list li {overflow:hidden; position:relative; display:inline-block; width:calc(50% - 40px); padding-right:20px; margin-bottom:20px;}
+.section_product .prd_mask .img_list li:after {position:absolute; right:0; top:0; width:100%; height:100%; background: #000; content:""; transition:2.5s;}
+.section_product .prd_mask.active .img_list li:after {width: 0%;}
+.section_product .prd_mask .img_list li:nth-child(even) {top:-20px;}
+.section_product .prd_mask .img_list li:nth-child(even):after {right:auto; left:0; }
+.section_product .prd_mask .img_list li .img_content {font-size:0; transform:translateX(-101%); -webkit-transform:translateX(-101%); -moz-transform:translateX(-101%); -o-transform:translateX(-101%); -ms-transform:translateX(-101%); transition:1.2s .5s;}
+.section_product .prd_mask.active .img_list li .img_content {transform:translateX(0%); -webkit-transform:translateX(0%); -moz-transform:translateX(0%); -o-transform:translateX(0%); -ms-transform:translateX(0%);}
+.section_product .prd_mask .img_list li .img_content img {width: 100%;}
+
+.section_product .text_img {padding-top:150px; padding-bottom:100px; text-align: center; font-size:0;}
+.section_product .text_img .text_area {display:inline-block; width:60%; padding:0 50px; color:#fff; font-size:40px; vertical-align: middle; text-align: right; box-sizing: border-box; opacity:0; transform:translateX(-150px); -webkit-transform:translateX(-150px); -moz-transform:translateX(-150px); -o-transform:translateX(-150px); -ms-transform:translateX(-150px); transition: 1s;}
+.section_product .text_img.active .text_area {opacity:1; transform:translateX(0px); -webkit-transform:translateX(0px); -moz-transform:translateX(0px); -o-transform:translateX(0px); -ms-transform:translateX(0px); }
+.section_product .text_img .text_area h3 {font-family: 'NotoB'; font-size:64px;}
+.section_product .text_img .text_area p {font-family: 'NotoR'; font-size:24px;}
+.section_product .text_img .img_area {position:relative; display: inline-block; width:30%; vertical-align: middle;}
+.section_product .text_img .img_area:after {position: absolute; right:0; bottom:0; width:100%; height:100%; background:#000; content:""; transition:2s .5s cubic-bezier(0.31, 0.85, 0.31, 1.06);}
+.section_product .text_img.active .img_area:after {height:0px;}
+</style>
+<body>
+    <div class="wrap">
+        <header class="header_wrap">
+            <div class="logo">GGANG CODING</div>
+        </header>
+        <section class="section_product">
+			<article class="prd_mask">
+				<div class="tit_wrap">
+					<h2 class="com_tit01">IMAGE MASK</h2>
+					<p class="com_txt01">숨어있다가 나오는 느낌의 이미지 마스크 기법</p>
+				</div>
+				<ul class="img_list">
+					<li>
+						<figure class="img_content">
+							<img src="../images/1.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure class="img_content">
+							<img src="../images/2.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure class="img_content">
+							<img src="../images/3.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure class="img_content">
+							<img src="../images/4.jpg">
+						</figure>
+					</li>
+				</ul>
+			</article>
+			<article class="text_img">
+				<div class="text_area">
+					<h3 class="tit">텍스트와 이미지 패턴</h3>
+					<p class="txt">
+						왼쪽은 텍스트 오른쪽은 이미지! :) CSS를 활용해 모션을 만들고 스크롤위치에 도착 했을때
+						등장하는 인터렉션을 구현해보세요. 공부가 목적이 아니라도 재밌는 수업이 될거라 믿습니다 :)
+					</p>
+				</div>
+				<div class="img_area">
+					<figure>
+						<img src="../images/6.jpg">
+					</figure>
+				</div>
+			</article>
+        </section>
+        <footer class="footer">
+            <div class="text_area">
+                <p>
+                    2020 GGANG CODING. 당신의 열정을 응원합니다. :)
+                </p>
+            </div>
+        </footer>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+setTimeout(function(){
+	$('.section_product .prd_mask').addClass('active');
+	$('.section_product .text_img').addClass('active');
+},200)
+</script>
+</body>
+</html>

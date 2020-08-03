@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="chrome=1,IE=edge">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/*.wrap { padding:100px 0; min-height:900px; background:#191919;}*/
+/**
+ * css 타이밍펑션
+ *
+ * ease, ease-in, ease-out, ease-in-out,등이 있고 개발자가 직접 타이밍을 설정하는 방법이 있습니다
+ */
+
+
+.tit_area {padding:100px 0 0 0;}
+.tit_area .f_content {position: relative; width:70%; margin:0 auto;}
+.tit_area .f_content .tit {position:relative; z-index:20; left:50px; font-size:80px; line-height:1.2; opacity:1;}
+.tit_area .f_content .txt {position:relative; z-index:20; left:80px; font-size:50px; opacity:1;}
+.tit_area .f_content .img {position: relative; transform:translateY(50px);  transition:4s .2s cubic-bezier(0.3, 1.01, 0.51, 1.04);}
+.tit_area .f_content.active .img {transform:translateY(-10px);}
+.tit_area .f_content .img:after {position:absolute; left:0; top:0; z-index:10; width:100%; height:100%; content:""; background-color: #fff; transition:2s .3s cubic-bezier(0.3, 1.01, 0.51, 1.04);}
+.tit_area .f_content.active .img:after {width:0px;}
+.tit_area .f_content .img img {width:100%;}
+</style>
+<body>
+	<div class="wrap">
+		<section class="tit_area">
+			<article class="f_content">
+				<h2 class="tit">
+					GGANG CODING
+				</h2>
+				<p class="txt">애니메이션 가속도 처리방법</p>
+
+				<figure class="img">
+					<img src="../images/4.jpg">
+				</figure>
+			</article>
+		</section>
+	</div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+	$('.tit_area .f_content').addClass('active')
+})
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

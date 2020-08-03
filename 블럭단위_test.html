@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>터치 스와이프</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            color: #ffffff;
+            font-size: 24pt;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .nomalBox{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            color: #ffffff;
+            font-size: 24pt;
+            background-repeat: no-repeat;
+            background-attachment: unset;
+            background-size: 100% auto;
+            padding-top: 127%;
+        }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="./plugin/hammer.min.js"></script>
+
+
+</head>
+<body>
+    <div class="box" style="background-image: url(./images/mlb_1.jpg);">1</div>
+    <div class="box" style="background-image: url(./images/mlb_2.jpg);">2</div>
+    <div class="nomalBox" style="background-image: url(./images/mlb_3.jpg);">3</div>
+    <div class="box" style="background-image: url(./images/mlb_4.jpg);">4</div>
+    <div class="box" style="background-image: url(./images/mlb_5.jpg);">5</div>
+    <div class="box" style="background-color:orange;">6</div>
+    <div class="box" style="background-image: url(https://www.w3schools.com/howto/img_parallax.jpg);">7</div>
+</body>
+
+<script>
+    (function() {
+        $('.box').each(function(i, el){
+            var $el = $(el);
+            var hammertime = new Hammer(el, {
+                recognizers: [
+                    [Hammer.Swipe, {direction: Hammer.DIRECTION_ALL}]
+                ]
+            });
+
+            hammertime.set({ enable: true });
+
+            hammertime.on('swipeup', function () {
+                console.log('swipeup');
+                if($el.next() != undefined){
+                    try{
+                        var nextElm = $el.next().offset().top;
+                        $('html,body').animate({
+                            scrollTop:`${nextElm}px`
+                        },600);
+                    }catch(e){}
+
+                }
+                // console.log($el)
+            });
+
+            hammertime.on('swipedown', function () {
+                console.log('swipedown');
+                if($el.prev() != undefined){
+                    try{
+                        var prevElem = $el.prev().offset().top;
+                        $('html,body').animate({
+                            scrollTop:`${prevElem}px`
+                        },600);
+                    }catch(e){
+                        $('html,body').animate({
+                            scrollTop:`0px`
+                        },600);
+                    }
+                }
+            });
+        });
+          
+    }());
+
+</script>
+
+
+
+
+</html>

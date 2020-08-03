@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="chrome=1,IE=edge">
+<title></title>
+<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+.com_tit {margin:100px 0 80px; font-size:70px; text-align: center;}
+
+.sc_infinity {}
+.sc_infinity .list {}
+.sc_infinity .list:after {clear:both; display:block; content:'';}
+.sc_infinity .list li {float:left; width:25%;}
+.sc_infinity .list li figure {padding:10px;}
+
+.footer {height:200px;  background-color: #ddd;}
+.footer p {padding:50px 20px;}
+</style>
+<body>
+	<div class="wrap">
+		<section class="sec01">
+			<h2 class="com_tit">INFINITE SCROLL</h2>
+			<article class="sc_infinity">
+				<ul class="list">
+					<li>
+						<figure>
+							<img src="../images/1.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="../images/2.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="../images/3.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="../images/1.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="../images/2.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="../images/3.jpg">
+						</figure>
+					</li>
+				</ul>
+			</article>
+			<div class="footer">
+				<p>FOOTER</p>
+			</div>
+		</section>
+
+	</div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+	var target = $('.sc_infinity .list'); //변수에 리스트를 추가할 타겟을 담았습니다.
+	var breakList = 10; //리스트호출을 멈추기위한 값을 셋팅한 변수입니다.
+	var listCount = 0; //리스트 호출한 횟수를 카운트하는 변수입니다.
+
+	/* 스크롤할때 값이 변해야하는 변수 */
+	var winTop; // 스크롤바 위치값을 담는 변수입니다.
+	var onTop;  //스크롤이 문서 하단에 도착했는지 알수 있도록 해주는 값
+
+	function getList(){ //리스트를 가지고 오는 함수입니다. 실무에서 작성한다면 AJAX를 호출해 데이터를 가지고 오는 함수입니다.
+		var list; // 추가할 리스트 변수
+
+
+		listCount++; //함수를 호출할때 리스트를 호출한 횟수를 1씩 카운트합니다. 실무에서는 이 방식이 아니라 조회할 데이터가 더이상 없을 경우 호출을 멈춰야합니다.
+
+		if(listCount > breakList){ //리스트를 호출한 횟수가 10보다 커지면 리스트를 더이상 호출하지 않습니다.
+			list = null;
+		}else{
+			list = '<li><figure><img src="../images/1.jpg"></figure></li>';
+			list += '<li><figure><img src="../images/2.jpg"></figure></li>';
+			list += '<li><figure><img src="../images/3.jpg"></figure></li>';
+		}
+
+		return list;
+
+	}
+
+	function listCall(){ //무한스크롤을 할지 체크하는 함수
+		winTop = $(window).scrollTop(); //스크롤할때마다 윈도우 스크롤값을 업데이트해줍니다.
+		onTop = $(document).height() - $(window).height() - $('.footer').height(); //스크롤이 문서하단에 도착했는지 계산합니다.
+
+		if(winTop >= onTop){ //하단에 도착했을경우
+
+			var data = getList(); //리스트를 가지고옵니다. 실무라면 db에서 조회한 데이터를 가지고 와야합니다.
+
+			if(data !== null){ //리스트가 있을경우에만 리스트를 추가합니다.
+				target.append(data);
+			}else{
+				return false;
+			}
+
+		}
+	}
+
+	function init(){ //초기화
+		listCall(); //처음 실행시 호출해줍니다.
+	}
+
+	$(window).scroll(function(){ //스크롤 이벤트를 추가합니다.
+
+		listCall(); //스크롤을 할때 매번 호출합니다.
+
+	});
+
+	init();
+
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

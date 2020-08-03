@@ -8,31 +8,18 @@
 	<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 	<meta content="telephone=no" name="format-detection"><!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
 	<title>K 쇼핑</title><!-- css -->
-	<link href="https://ecdev2.kshop.co.kr/static/mc/css/common.css" rel="stylesheet" type="text/css">
-	<link href="https://ecdev2.kshop.co.kr/static/mc/css/main.css" rel="stylesheet" type="text/css">
-
-	<link href="https://ecdev2.kshop.co.kr/static/mc/css/contents.css" rel="stylesheet" type="text/css">
-
-	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/mc/css/slick.css" />
-	<link rel="stylesheet" type="text/css" href="https://static.kshop.co.kr/mc/css/slick-theme.css">
-	
-	<!-- 신규 -->
-	<link href="./home.css" rel="stylesheet" type="text/css">
-
-	
 	<!-- script -->
+	<script src="./js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="./js/slick.js"></script>
+	<script type="text/javascript" src="./js/swiper.min.js"></script>
 
-	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-1.12.0.js" type="text/javascript"></script>
-	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.bxslider.min.js" type="text/javascript"></script>
-	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery.mobile.custom.js" type="text/javascript"></script>
-	<script src="https://ecdev2.kshop.co.kr/static/mc/js/jquery-ui.js" type="text/javascript"></script>
-	<!--script src="https://ecdev2.kshop.co.kr/static/mc/js/common.js" type="text/javascript"></script-->
+	<!-- 신규 -->
+	<link href="./css/common.css" rel="stylesheet" type="text/css">
+	<link href="./css/catemenu.css" rel="stylesheet" type="text/css">
+	<link href="./css/home.css" rel="stylesheet" type="text/css">
+	<link href="./css/tvsch.css" rel="stylesheet" type="text/css">
+	<link href="./css/swiper4.css" rel="stylesheet" type="text/css">
 
-	<script type="text/javascript" src="https://static.kshop.co.kr/mc/js/slick.js"></script>
-
-	<style type="text/css">
-		
-	</style>
 
 </head>
 
@@ -54,21 +41,8 @@
 				<a class="prodLink" href="javascript:;" id="vod"><img src="./images/khome/tvs_banner.jpg" alt="상품이미지"></a>
 
 				<!-- 비디오버튼 -->
-				<a class="play" id="vodPlay" href='javascript:commFunc.playSmallVideo("tvMovieMain", "stream", "Stream1", "", "http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg", "기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!", "2019-03-07 14:36:52", "2999-12-31 23:59:59", "playerTvtvMovieMain", "474012");' style="display: block;">동영상 재생</a>
-				<div class="player" id="playerTvtvMovieMain">
-					<video id="tvMovieMain" class="mainVodArea" preload="none" webkit-playsinline="" playsinline="" onplaying="this.controls=false">
-						<source src="http://cdnwow.kshop.co.kr:8080/livetv/Stream1/playlist.m3u8" type="application/x-mpegURL">
-					</video>
-					<div class="videoControl">
-						<a href="javascript:;" id="btnPlay" class="btnPlay" onclick="moviePlay.play('tvMovieMain','playerTvtvMovieMain','seekBar_tv');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_play.png" alt="재생"></a>
-						<a href="javascript:;" id="btnPause" class="btnPause" onclick="moviePlay.stop('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_pause.png" alt="멈춤"></a>
-						<a href="javascript:;" id="btnVol" class="btnVol" onclick="moviePlay.volume('tvMovieMain','playerTvtvMovieMain');return false;"><img src="//static.kshop.co.kr/mc/images/skin/mov_vol.png" alt="볼륨"></a>
-						<a href="javascript:;" id="btnResize" class="btnResize" onclick="javascript:moviePlay.resizeStream(&quot;tvMovieMain&quot;, &quot;stream&quot;, &quot;http://m.kshop.co.kr/goods/474012&quot;, &quot;http://imgs.kshop.co.kr/goods/012/474012_h_20190304110056.jpg&quot;, &quot;기초 1등! 참존 GE라인 시그니처 프리미엄 황금패키지!&quot;, &quot;2019-03-07 14:36:52&quot;, &quot;2999-12-31 23:59:59&quot;);"><img src="//static.kshop.co.kr/mc/images/skin/mov_scale.png" alt="확대"></a>
-					</div>
-					<a href="javascript:;" class="tvClose" onclick="moviePlay.close('tvMovieMain','playerTvtvMovieMain');videoDisplay('close');return false;">
-						<img src="//static.kshop.co.kr/mc/images/cm/icon/tv_close.png" alt="방송닫기">
-					</a>
-				</div>
+				<a class="play" id="vodPlay" href='' style="display: block;">동영상 재생</a>
+
 			</div>
 
 			<!-- 상품정보영역 -->
@@ -103,15 +77,6 @@
 		<div class="onairProd">
 			
 			<div class="onairSubProd" id="subject_1">
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
 				들어올상품위치 <br/><br/><br/><br/><br/>
 				들어올상품위치 <br/><br/><br/><br/><br/>
 				들어올상품위치 <br/><br/><br/><br/><br/>
@@ -260,27 +225,6 @@
 				들어올상품위치 <br/><br/><br/><br/><br/>
 				들어올상품위치 <br/><br/><br/><br/><br/>
 				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
-				들어올상품위치 <br/><br/><br/><br/><br/>
 			</div>
 			<a href="javascript;" class="btn">
 				<span>함께 방송중인 상품 더보기</span><em>(1개)</em> <i class="down"></i>
@@ -298,7 +242,7 @@
 					<a href="#">
 						<!-- 상품 이미지 -->
 						<div class="prodImg img">
-							<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/khome/@sample_02.jpg" alt="상품이미지">
+							<img src="./images/main/khome/@sample_02.jpg" alt="상품이미지">
 							<div class="playBtn2">동영상재생</div>
 							<span class="ico sold">매진</span>
 						</div>
@@ -350,7 +294,7 @@
 					<a href="#">
 						<!-- 상품 이미지 -->
 						<div class="prodImg img">
-							<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/khome/@sample_02.jpg" alt="상품이미지">
+							<img src="./images/main/khome/@sample_02.jpg" alt="상품이미지">
 							<div class="playBtn2">동영상재생</div>
 							<span class="ico sold">매진</span>
 						</div>
@@ -770,7 +714,7 @@
 						<li onclick="javascript:" class="slick-slide">
 							<div class="img">
 								<div class="imgProd">
-									<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/khome/@bandthum.jpg" alt="[한샘_Stefan] 아미카 적재형 분리수거박스">
+									<img src="./images/main/khome/@bandthum.jpg" alt="[한샘_Stefan] 아미카 적재형 분리수거박스">
 								</div>                                                                               
 							</div>
 							<div class="txt">
@@ -791,7 +735,7 @@
 						<li onclick="javascript:" class="slick-slide">
 							<div class="img">
 								<div class="imgProd">
-									<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/khome/@bandthum.jpg" alt="[한샘_Stefan] 아미카 적재형 분리수거박스">
+									<img src="./images/main/khome/@bandthum.jpg" alt="[한샘_Stefan] 아미카 적재형 분리수거박스">
 								</div>                                                                               
 							</div>
 							<div class="txt">
@@ -812,7 +756,7 @@
 						<li onclick="javascript:" class="slick-slide">
 							<div class="img">
 								<div class="imgProd">
-									<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/khome/@bandthum.jpg" alt="[한샘_Stefan] 아미카 적재형 분리수거박스">
+									<img src="./images/main/khome/@bandthum.jpg" alt="[한샘_Stefan] 아미카 적재형 분리수거박스">
 								</div>                                                                               
 							</div>
 							<div class="txt">
@@ -872,7 +816,7 @@
 				</li>
 				<li>
 					<a href="#">
-						<img src="http://ecdev2.kshop.co.kr/static/mc/images/main/khome/@exhi.jpg" alt="">
+						<img src="./images/main/khome/@exhi.jpg" alt="">
 						
 						<div>
 							<p>모던 스트릿 감성 슈즈</p>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{margin:0;padding:0;}
+    ul,li{list-style:none;}
+    .slide{height:200px;overflow:hidden;}
+    .slide ul{width:100%;display:flex;animation:slide 30s infinite;transition: 1s; } /* slide를 8초동안 진행하며 무한반복 함 */
+    .slide li{width:calc(100% / 4);height:200px;}
+    .slide li:nth-child(1){background:#ffa;}
+    .slide li:nth-child(2){background:#faa;}
+    .slide li:nth-child(3){background:#afa;}
+    .slide li:nth-child(4){background:#aaf;}
+    @keyframes slide {
+      0% {margin-left:0;}
+
+      100% {margin-left:-100%;}
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <script></script>
+</body>

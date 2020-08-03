@@ -77,6 +77,9 @@ body {
   text-align: center;
 }
 
+.swiper2.swiper-container-horizontal>.swiper-pagination-progressbar,
+.swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite{top:auto;bottom:0}
+
 </style>
 <body>
 
@@ -113,6 +116,8 @@ body {
 				<div class="swiper-slide">内容 9</div>
 				<div class="swiper-slide">内容 10</div>
 			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
 		</div>
 		
 	</div>
@@ -122,11 +127,11 @@ body {
 		var mainSlide = {
 			init: function(){
 				var swiper1 = new Swiper('.swiper1', {
-				slidesPerView: 5,
-				paginationClickable: true,
-				spaceBetween: 10,
-				freeMode: true,
-				loop: false,
+					slidesPerView: 5,
+					paginationClickable: true,
+					spaceBetween: 10,
+					freeMode: true,
+					loop: false,
 				});
 
 				swiper1.slides.each(function(index){
@@ -143,9 +148,15 @@ body {
 					direction: 'horizontal',
 					loop: true,
 					autoHeight: true,
+					pagination: {
+						el: '.swiper-pagination',
+						type: 'progressbar',
+					},
 					on : {
 						init : function(){
 							mainSlide.afterSlide();
+							var conIndex = $('.swiper2 .swiper-slide-active').attr('data-swiper-slide-index');
+							console.log(conIndex)
 						},
 						slideChangeTransitionEnd: function(){
 							mainSlide.afterSlide();

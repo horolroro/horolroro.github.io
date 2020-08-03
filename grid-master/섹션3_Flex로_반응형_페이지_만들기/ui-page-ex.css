@@ -1,0 +1,75 @@
+header{width: 100%;display: flex;padding: 1rem;}
+header .search-form{margin-left: auto;margin-right: 3rem;max-width: 50%;}
+.menu_2{display: flex;width: 100%;}
+.menu_2 .menu_item{flex:1 auto;width: 25%;background: gold;transition: 0.3s;}
+.menu_2 .menu_item:hover{
+	width:30%;
+	
+}
+h1{min-width: 135px;}
+.page{display: flex;flex-wrap: wrap;}
+
+.main{padding: 1rem;}
+.card_list {margin-right: -1rem;}
+.card_item{margin-bottom: 2rem;padding: 0 1rem 0 0;display: flex;flex-direction: column;}
+.secondary-b{color: white; background: #666;}
+.secondary-a{background: white;}
+.secondary{padding: 1rem;width: 100%;}
+footer{width: 100%;padding: 1rem;border-top: 1px solid lightgray;text-align: center;}
+
+
+.modal{display: none;}
+#modal-switch,
+label[for="modal-switch"] span{position: absolute;width: 1px;height: 1px;top:0;opacity: 0;overflow: hidden;}
+#modal-switch .modal{display: none;}
+#modal-switch:checked ~ .modal{display: flex;}
+
+#modal-switch:checked ~ .modal label{color:royalblue}
+label[for="modal-switch"]{
+	position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+.menu_item:hover ul{display: block;}
+.menu_item ul{display: none;padding: 1.5rem;color: black;}
+.menu_item ul li{margin-bottom: 5px;}
+.menu_item:nth-child(1) ul{background-color: aqua;}
+.menu_item:nth-child(2) ul{background-color: greenyellow;;}
+.menu_item:nth-child(3) ul{background-color:sandybrown;}
+.menu_item:nth-child(4) ul{background-color:tomato}
+label[for="modal-switch"]:before{
+	content: "⚑";
+    font-size: 2rem;
+    cursor: pointer;
+}
+@media(min-width:600px){
+	.card_list{display: flex;flex-wrap: wrap; flex-direction: row;}
+	.card_item{width:50%}
+}
+@media(min-width:1024px){
+	.menu_2 .menu_item{width:25%}
+	.menu_2 .menu_item:hover{
+		color: #fff;
+		width: 30%;
+		background: crimson;
+	}
+	.main{width: 60%;}
+	.card_item{width:33.3333%}
+	.secondary{width:20%}
+	.secondary-a{order: 1;}
+	.secondary-b{order: 3;}
+	.main{order: 2;}
+	footer{order: 4;}
+}
+@media(min-width:1400px){
+	.main{width: calc(100% - 600px);}
+	.secondary-a{width:300px}
+	.secondary-b{width:300px}
+}
+

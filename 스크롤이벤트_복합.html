@@ -14,9 +14,7 @@
  </head>
 
 	<style type="text/css">
-	body, html {margin: 0;
-    padding: 0;
-	}
+	body, html {margin: 0;padding: 0;}
 	.menu {
 		width: 100%;
 		height: 75px;
@@ -31,19 +29,9 @@
 		
 	}
 
-	#menu-center {
-		width: 980px;
-		height: 75px;
-		margin: 0 auto;
-	}
-	#menu-center ul {
-		margin: 15px 0 0 0;
-	}
-	#menu-center ul li {
-		list-style: none;
-		margin: 0 30px 0 0;
-		display: inline;
-	}
+	#menu-center {width: 980px;height: 75px;margin: 0 auto;}
+	#menu-center ul {margin: 15px 0 0 0;}
+	#menu-center ul li {list-style: none;margin: 0 30px 0 0;display: inline;}
 	#menu-center ul li a.active {
 		font-family:'Droid Sans', serif;
 		font-size: 14px;
@@ -67,47 +55,31 @@
 		box-sizing: border-box;
 	}
 	#home .img{opacity: 1;}
-	#portfolio {
+	#portfolio {position: relative;background-image: url(images/portfolio-bg.png);width: 100%;}
+	#about {background-color: blue;width: 100%;	}
+	#contact {background-color: red;width: 100%;}
+
+	.container{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 		position: relative;
-		background-image: url(images/portfolio-bg.png);
-
-		width: 100%;
 	}
-	#about {
-		background-color: blue;
-
-		width: 100%;
-	}
-	#contact {
-		background-color: red;
-
-		width: 100%;
-	}
-
-.container{display: flex;
-    flex-direction: column;
-	height: 100%;
-	position: relative;
-	}
-	.container > div{
-
-		min-height: 70vh;
-		overflow: auto;
-	}
+	.container > div{min-height: 70vh;overflow: auto;}
 	
-		.ilbuni{position: relative;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			display: flex;
-			justify-content: center;
+	.ilbuni{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
 
-			}
-		.ilbuni .img{opacity: 0; position: absolute;width:300px;transition: all 1s;}
-		.ilbuni.active .img{opacity: 1; transform: scale(1.3);}
-
-		.ilbuni .img img{width: 100%;}
-		
+		}
+	.ilbuni .img{opacity: 0; position: absolute;width:300px;transition: all 1s;}
+	.ilbuni.active .img{opacity: 1; transform: scale(1.3);}
+	.ilbuni .img img{width: 100%;}
+	/* .box.active .ilbuni .img{opacity: 1;} */
 	</style>
 
 <body>
@@ -128,6 +100,20 @@
 				</li>
 			</ul>
 		</div>
+		<ul>
+			<li><a class="active" href="#home">•Home😀</a>
+
+			</li>
+			<li><a href="#portfolio">•Portfolio✅</a>
+
+			</li>
+			<li><a href="#about">•About😴</a>
+
+			</li>
+			<li><a href="#contact">•Contact👩‍👦</a>
+
+			</li>
+		</ul>
 	</div>
 
 	<div class="container">
@@ -172,7 +158,7 @@
 	$(document).ready(function () {
 		
 		$(document).on("scroll", function(){
-			onScroll();
+			//onScroll();
 			blockActive();
 			
 		});
@@ -281,8 +267,8 @@
 			const selectElm = $(currentLink.attr('href'))
 
 			if(selectElm.offset().top <= parseInt(scrollPos * 1.2)){
-				//console.log('selectElm='+ selectElm.offset().top)
-				//console.log('scrollPos * 1.1=='+ parseInt(scrollPos * 1.2))
+				console.log('selectElm='+ selectElm.offset().top)
+				console.log('scrollPos * 1.1=='+ parseInt(scrollPos * 1.2))
 				$('#menu-center a').removeClass("active");
 				currentLink.addClass('active')
 			}else{

@@ -16,20 +16,19 @@
 	<meta property="og:type" content="website" />
 	<title>K 쇼핑</title>
 
+	<script src="../../plugin/swiper.min.js"></script>
+	<link rel="stylesheet" type="text/css" class="comcss" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"/>
 	<!-- style -->
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/mc.reset.min.css?20190417">
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/jquery-ui.min.css">
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/swiper.min.css">
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/mc.common.min.css?20190417">
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/display/css/mc.display.min.css?20190417">
 
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/mc.slick.min.css?20191122_4">
+	<link rel="stylesheet" href="../../plugin/mc.slick.min.css">
+	<link rel="stylesheet" href="../../plugin/reset.css">
 	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/mc.slick-theme.min.css?20191122_4">
-	<link rel="stylesheet" href="https://static.kshop.co.kr/d2/emc/mc/common/css/mc.swiper4.min.css?20191122_4">
 
-	<script src="https://static.kshop.co.kr/d2/emc/mc/common/js/lib/jquery-3.3.1.min.js"></script>
-	<script src="https://static.kshop.co.kr/d2/emc/mc/common/js/mc.slick.min.js?20191122_4"></script>
-	<script src="https://static.kshop.co.kr/d2/emc/mc/common/js/mc.swiper4.min.min.js?20191122_4"></script>
+	<script src="../../plugin/jquery-3.3.1.js"></script>
+	
+
+	<script src="../../plugin/mc.slick.min.js"></script>
+
 
 	
 </head>
@@ -45,6 +44,8 @@
 
 		<!-- S : 템플릿  planshop/_sub1 -->
 		<style type="text/css">
+
+
 			#showf {
 				position: relative;
 				overflow: hidden;
@@ -191,14 +192,48 @@
 			#showf .popup01 .layerPop_event> a.exDown{bottom: 6%;left: 4%;width: 44%; height: 14%;}
 			#showf .popup01 .layerPop_event> a.goPlan{bottom: 6%;left: 52%;width: 44%; height: 14%;}
 			
-	
+			
 		</style>
+		<div class="textAniConainer">
+			<div class="scrolling">
+				We don’t need the absolutely positioned scrolling element
+			</div>
+			<div class="scrolling">
+				We don’t need the absolutely positioned scrolling element
+			</div>
+			<div class="scrolling">
+				We don’t need the absolutely positioned scrolling element
+			</div>
+
+				
+				<!-- … -->
+		</div>
+		  <style type="text/css">
 	
+			.textAniConainer{
+				overflow: hidden;
+				white-space: nowrap;
+			}
+			.scrolling {
+				animation: marquee 10s linear infinite;
+				display: inline-block;
+				font-size: 80px;
+    			font-weight: bold;
+				line-height: 80px;
+			}
+			@keyframes marquee {
+				from {
+					transform: translateX(0);
+				}
+				to {
+					transform: translateX(-100%);
+				}
+			}
+		  </style>
 		<div id="showf">
 			<div class="top__area">
 				<h3><img src="./images/top.png" alt="탑타이틀"></h3>
 			</div>
-	
 			<!-- QUICK 메뉴 -->
 			<div class="quick">
 				<a href="javascript:;ucMove('1')"><img src="./images/a_btn.png" alt="클릭시페이지이동1"></a>
@@ -243,14 +278,17 @@
 				<ul class="swiper-wrapper">
 					<li class="swiper-slide">
 						<div class="prodList">
-							<img src="./images/slide_2_1.png" alt="슬라이드_1_타이틀">
+							<img src="https://images.innisfree.co.kr/upload/mainMng/BM03_160_left_mo.jpg" alt="스무살 생일 이벤트" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
 						</div>
+						<div>111 <br>111 <br>111 <br>111 <br></div>
 					</li>
 					<li class="swiper-slide">
 						<div class="prodList">
 							<img src="./images/slide_2_2.png" alt="슬라이드_2_타이틀">
 						</div>
+						<div>111 <br>111 <br>2222 <br>222 <br></div>
 					</li>
+					
 	
 				</ul>
 	
@@ -332,7 +370,9 @@
 					slidesPerView: 1,
 					loop: true,
 					noSwiping: true,
-					autoHeight: false,
+					autoHeight: true,
+        //adaptiveHeight: true,
+					//autoHeight: false,
 					navigation: {
 						nextEl: '.swiper-button-next',
 						prevEl: '.swiper-button-prev',

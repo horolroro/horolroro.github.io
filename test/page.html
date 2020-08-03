@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>블럭 단위 터치스와이프</title>
+    
+    <link rel="stylesheet" href="./plugin/reset.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+
+    <style type="text/css">
+        * {margin: 0;padding: 0;}
+		img {width:100%;}
+
+        .item { position: relative;transition: 1s; }
+        .item img {width: 100%; height: 100%; object-fit: cover; }
+
+        .pagination {display: flex;justify-content: space-between;position:fixed;left:74px;bottom:30px;z-index:1100;width:620px;height:94px;margin:0 auto;padding:18px 55px 0;background: rgba(0,0,0,0.8);border-radius:47px;box-sizing:border-box;}
+		.pagination .item {height:34px;padding-top: 47px;background: url('') no-repeat  center top;opacity: 1;border-radius: 0;
+			transition:0.5s ease;opacity:0;margin-top:20px;outline: none;}
+		.pagination.on .item {margin-top:0;opacity:1;}
+		.pagination .item.bul1 {width:34px;background-image: url('../../resources/web/images/main/page_bg1_off.png');}
+		.pagination .item.bul2 {width:34px;background-image: url('../../resources/web/images/main/page_bg2_off.png');transition-delay:0.1s;}
+		.pagination .item.bul3 {width:37px;background-image: url('../../resources/web/images/main/page_bg3_off.png');transition-delay:0.2s;}
+		.pagination .item.bul4 {width:44px;background-image: url('../../resources/web/images/main/page_bg4_off.png');transition-delay:0.3s;}
+		.pagination .item.bul5 {width:23px;background-image: url('../../resources/web/images/main/page_bg5_off.png');transition-delay:0.4s;}
+		.pagination .item.bul6 {width:34px;background-image: url('../../resources/web/images/main/page_bg6_off.png');transition-delay:0.5s;}
+		.pagination .item.bul7 {width:34px;background-image: url('../../resources/web/images/main/page_bg7_off.png');transition-delay:0.6s;}
+		.pagination .item-active.bul1 {background-image: url('../../resources/web/images/main/page_bg1_on.png');transition-delay:unset;}
+		.pagination .item-active.bul2 {background-image: url('../../resources/web/images/main/page_bg2_on.png');transition-delay:unset;}
+		.pagination .item-active.bul3 {background-image: url('../../resources/web/images/main/page_bg3_on.png');transition-delay:unset;}
+		.pagination .item-active.bul4 {background-image: url('../../resources/web/images/main/page_bg4_on.png');transition-delay:unset;}
+		.pagination .item-active.bul5 {background-image: url('../../resources/web/images/main/page_bg5_on.png');transition-delay:unset;}
+		.pagination .item-active.bul6 {background-image: url('../../resources/web/images/main/page_bg6_on.png');transition-delay:unset;}
+		.pagination .item-active.bul7 {background-image: url('../../resources/web/images/main/page_bg7_on.png');transition-delay:unset;}
+		.pagination .item em {display: block;text-align: center;font: 300 10px/8px 'Noto Sans KR';color:#fff;}
+
+        .loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 1;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            -webkit-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+            transition-timing-function: cubic-bezier(.645, .045, .355, 1);
+        }
+        .loader .svg-wrap, .loader .circle {
+            -webkit-transition-duration: 0.6s;
+            transition-duration: 0.6s;
+            transition-timing-function: cubic-bezier(.645, .045, .355, 1);
+        }
+        .loader .circle {
+            cx: 50%;
+            cy: 50%;
+            -webkit-transition-property: all;
+            transition-property: all;
+        }
+        .loader.end {
+            z-index: -1;
+        }
+        .loader.end .circle {
+            r: 0;
+        }
+        .loader.end .svg-wrap {
+            -ms-transform: scale(0, 0);
+        }
+        .loader.exit {
+            z-index: 100;
+        }
+
+        .loader.exit .svg-wrap {
+            -ms-transform: scale(1, 1);
+        }
+
+    </style>
+</head>
+<body>
+<div class="loader end">
+    <svg height="100%" width="100%" class="svg-wrap">
+        <circle class="circle"  r="100%" cx="50%" cy="50%" fill="#000"/>
+    </svg>
+</div>
+
+<div class="item_container">
+    <div class="item">
+        <img src="./images/mlb_1.jpg" alt="0">
+    </div>
+    <div class="item">
+        <img src="./images/mlb_2.jpg" alt="0">
+    </div>
+    <div class="item">
+        <img src="./images/mlb_3.jpg" alt="0">
+    </div>
+    <div class="item">
+        <img src="./images/mlb_4.jpg" alt="0">
+    </div>
+    <div class="item">
+        <img src="./images/mlb_5.jpg" alt="0">
+    </div>
+    <div class="item">
+        <img src="./images/mlb_6.jpg" alt="0">
+    </div>
+</div>
+
+<div class="pagination on">
+    <span class="item bul1 item-active"><em>HOME</em></span>
+    <span class="item bul2"><em>WEAR</em></span>
+    <span class="item bul3"><em>CAP</em></span>
+    <span class="item bul4"><em>SHOES</em></span>
+    <span class="item bul5"><em>BAG</em></span>
+    <span class="item bul6"><em>KIDS</em></span>
+    <span class="item bul7"><em>LIKE</em></span>
+</div>
+    
+
+</body>
+<script>
+    // $(window).load(function() {
+    //     setTimeout(function(){
+    //         $(".loader").addClass('end');
+    //     },100);
+
+    // });
+
+    const pagination = $('.pagination > span')
+
+    var $item = pagination.on('click', function() {
+        var idx = $item.index(this) +1;
+
+        pagination.removeClass('item-active')
+        $(this).addClass('item-active');
+        $(".loader").removeClass('end');
+        setTimeout(function(){
+            $(".loader").addClass('end');
+        },2000);
+
+        $.ajax({
+			type: 'post',
+			url: `./page_item_${idx}.html`,
+			dataType: 'html',
+			success: function(data) {
+				console.log(this);
+                
+                $('html,body').animate({
+                    scrollTop: 0
+                },300);
+				
+                setTimeout(function(){
+                    $('.item_container').html(data);
+                    $(".loader").addClass('end');
+                },1000);
+
+			},
+			error: function(){
+				console.log('에러')
+			}
+		});
+    });
+
+</script>
+
+</html>

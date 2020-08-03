@@ -28,7 +28,7 @@
 .loginWrap .sns-login-area{overflow:hidden;margin:20px 0 21px;padding:0 17px;}
 .loginWrap .sns-login-area li{float:left;width:33%;text-align:center;font-weight:bold}
 .loginWrap .sns-login-area li a{display:block;color:#222;}
-.loginWrap .sns-login-area li a span{display:block;padding-top:55px;width:45px;margin:auto;background:url(../images/cm/icon/bg-sns-login.png) no-repeat;background-size:249px 45px;}
+.loginWrap .sns-login-area li a span{display:block;padding-top:55px;width:45px;margin:auto;background:url(./images/cm/icon/bg-sns-login.png) no-repeat;background-size:249px 45px;}
 .loginWrap .sns-login-area li a.naver-login span{background-position: 0px 0;}
 .loginWrap .sns-login-area li a.kakao-login span{background-position:-136px 0;}
 .loginWrap .sns-login-area li a.face-login span{background-position:-68px 0;}
@@ -39,9 +39,9 @@
 .loginWrap .btnHalfLeft{height: 44px}
 .loginWrap .btnHalfRight{height: 44px}
 .loginWrap:after{display: block; clear: both; content: ""; height: 20px;}
-.loginWrap .bgkshop-login{display: block;height: 44px; color:#fff;background:#e30613 url(../images/cm/icon_kshop_login.png) no-repeat;background-size: contain;}
-.loginWrap .bgnaver-login{display: block;height: 44px; color:#fff;background:#1ec800 url(../images/cm/icon_naver_login.png) no-repeat;background-size: contain;}
-.loginWrap .bgkakao-login{display: block;height: 44px; color:#381e1e;background:#fee71b url(../images/cm/icon_kakao_login.png) no-repeat;background-size: contain;}
+.loginWrap .bgkshop-login{display: block;height: 44px; color:#fff;background:#e30613 url(./images/cm/icon_kshop_login.png) no-repeat;background-size: contain;}
+.loginWrap .bgnaver-login{display: block;height: 44px; color:#fff;background:#1ec800 url(./images/cm/icon_naver_login.png) no-repeat;background-size: contain;}
+.loginWrap .bgkakao-login{display: block;height: 44px; color:#381e1e;background:#fee71b url(./images/cm/icon_kakao_login.png) no-repeat;background-size: contain;}
 .loginWrap .bgnaver-login>span,
 .loginWrap .bgkshop-login>span,
 .loginWrap .bgkakao-login>span{text-align: center;display: inline-block;width: 244px;margin-left: 47px;line-height: 44px;padding-top:2px}

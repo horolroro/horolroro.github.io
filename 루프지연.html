@@ -1,0 +1,116 @@
+다른 비동기 프로그래밍 언어도 그런건지는 잘 모르겠으나 이게 루프 돌릴때 참 골때립니다.
+
+해보신분은 알겠지만 자바스크립트에서 지연처리를 한다고 하면 setTimeout이나 setInterval을 쓰죠
+
+ 
+
+setTimeout(fn, delay)
+
+ 
+
+이렇게 쓰면 함수fn이 delay시간(밀리세컨드 단위) 후에 실행이 되는건데 그러면 누구나 상식적으로
+
+ 
+
+for(var i = 0; i < 10; i++) {
+
+setTimeout(function() {
+
+console.log(i);    //반복작업 구문 example
+
+}, 1000);
+
+}
+
+ 
+
+이런 식으로 쓰겠죠. 그런데 문제는.. 이러면 결과는 1초 후에 10만 열번 출력됩니다. What the..
+
+ 
+
+결론적으로 말하면 setTimeout이 기다리거나 말거나 for는 죽어라 루프를 돌리고 setTimeout이 i를 찾을때는 10만 남아있는거죠
+
+여기서 해결책이 두가지입니다. (물론 더 있겠지만..)
+
+ 
+
+A : 내부에 함수를 하나 더 만들어서 i를 인자로 입력받습니다. 어려워보이지만 쓰고보면 별거 아닙니다.
+
+ 
+
+// 익명함수 버전
+
+for (i=0; i < 3; i++) {
+
+(function(x) {
+
+setTimeout(function() {
+
+console.log(x);
+
+}, 1000*x);
+
+})(i);
+
+}
+
+}
+
+ 
+
+// 기명함수 버전
+
+function loop(x) {
+
+setTimeout(function() {
+
+console.log(x);
+
+}, 1000*x);
+
+}
+
+for (i = 0; i < 3; i++) {
+
+loop(i);
+
+}
+
+ 
+
+함수로 setTimeout을 감싸고 i를 놓치지 않고 죄다 익명함수의 x라는 변수로 받아서 시간 순서대로 실행되도록 만드는 거죠
+
+오~ 기발한데~ 라고 생각이 들다가도 이게 뭔짓인가 싶습니다(...) 필요한 갯수만큼 setTimeout을 다 만들어놓는거니까요
+
+ 
+
+B : 재귀함수를 만듭니다. 백문이 불여일견
+
+ 
+
+function start(counter){
+
+if(counter < 10){
+
+setTimeout(function(){
+
+counter++;
+
+console.log(counter);
+
+start(counter);
+
+}, 1000);
+
+}
+
+}
+
+ 
+
+start(0);
+
+ 
+
+A와 비교하면 for 대신 if, 스코프는 한 단계 줄었습니다. (A도 결국 function 안에 속한다고 치면 말이죠.) 그러나 재귀함수가 그렇듯이 실행되기 시작하면 루프 개수만큼 늘어날테죠. 아무래도 재귀함수 자체가 좀 어려운 개념이다 보니 A 방식을 더 많이 본거 같긴 하네요
+자바스크립트는 루프지연이 참 어렵군요 - 인터넷 / 소프트웨어 - 기글하드웨어 : https://gigglehd.com/gg/?mid=soft&document_srl=252878

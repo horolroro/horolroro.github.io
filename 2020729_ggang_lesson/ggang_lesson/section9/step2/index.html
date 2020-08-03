@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.com_tit01 {font-family: 'NotoB'; font-size:120px; color:#fff; text-align: center;}
+.com_txt01 {max-width:70%; margin:0 auto; font-family: 'NotoR'; font-size:32px; color:#fff; text-align: center;;}
+
+/* main */
+.ggang_box {position:relative; height:500px; background-color:#fff;}
+.ggang_box h2 {position: absolute; left:0; top:50%; width: 100%; color:#000; font-size:80px; line-height:1; text-align: center;}
+
+.fix_motion {height: 7000px;}
+.fix_motion .fix_wrap {overflow: hidden; position: sticky; position: -webkit-sticky; top:0; left: 0; width: 100%; height: 100vh;}
+.fix_motion .fix_wrap .cont_box {overflow:hidden; position:relative; height: 100%;}
+.fix_motion .fix_wrap .cont_box .canvas_wrap {position:relative; width: 100%; height: 100%;}
+.fix_motion .fix_wrap .cont_box .canvas_wrap canvas {position: absolute; left:50%; top:50%; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%); -moz-transform:translate(-50%,-50%); -o-transform:translate(-50%,-50%); -ms-transform:translate(-50%,-50%);}
+.fix_motion .fix_wrap .cont_box .canvas_wrap .no_canvas {display: none;  position: absolute; left:50%; top:50%; width:1920px; height:1080px; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%); -moz-transform:translate(-50%,-50%); -o-transform:translate(-50%,-50%); -ms-transform:translate(-50%,-50%);}
+
+.fix_motion .fix_wrap .cont_box .txt {position: absolute; left:50%; top:50%; z-index:30; font-size:24px; color:transparent; transition:color .5s .5s;}
+.fix_motion .fix_wrap .cont_box .txt.active {color:#000;}
+.fix_motion .fix_wrap .cont_box .txt:after {position:absolute; left:-80%; top:18px; z-index:10; width:0%; height:1px; background:#000; content:""; transition:width .5s;}
+.fix_motion .fix_wrap .cont_box .txt.active:after {width:80%;}
+.fix_motion .fix_wrap .cont_box .txt.pos1 {margin-left:380px; margin-top:-230px;}
+.fix_motion .fix_wrap .cont_box .txt.pos2 {margin-left:-500px; margin-top:-50px;}
+.fix_motion .fix_wrap .cont_box .txt.pos2:after {left:auto; right:-80%;}
+.fix_motion .fix_wrap .cont_box .txt.pos3 {margin-left:150px; margin-top:100px;}
+
+@media only screen and (max-width: 1024px) {
+
+.ggang_box {height: 200px}
+.ggang_box h2 {font-size:26px;}
+
+.fix_motion {height: 5000px;}
+.fix_motion .fix_wrap .cont_box .txt { font-size:16px; }
+.fix_motion .fix_wrap .cont_box .txt:after {top:13px;}
+.fix_motion .fix_wrap .cont_box .txt.pos1 {margin-left: 0px; margin-top: -220px; transform:rotate(-90deg);}
+.fix_motion .fix_wrap .cont_box .txt.pos2 {margin-left: -120px; margin-top: 120px; transform:rotate(-90deg);}
+.fix_motion .fix_wrap .cont_box .txt.pos3 {margin-left: -50px; margin-top: 152px; transform:rotate(-90deg);}
+.fix_motion .fix_wrap .cont_box .txt.pos3:after {right:-80%; left:auto; }
+
+}
+</style>
+<body>
+    <div class="wrap">
+        <section class="ggang_box">
+        	<h2>FIXED CONTENT</h2>
+        </section>
+        <section class="fix_motion">
+            <article class="fix_wrap">
+                <div class="cont_box ">
+                    <div class="canvas_wrap">
+                        <figure class="no_canvas">
+                            <img src="../images/seq/62.jpg">
+                        </figure>
+                    </div>
+                    <p class="txt pos1">
+                        16인치 모니터
+                    </p>
+                    <p class="txt pos2">
+                        인체공학 키보드
+                    </p>
+                    <p class="txt pos3">
+                        터치 트랙패드
+                    </p>
+                </div>
+            </article>
+        </section>
+        <section class="ggang_box"></section>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+
+    var scrollBody = $('.fix_motion'); //부모 스크롤 엘리먼트
+
+    var scrollHeight; // 스크롤 높이
+    var sectionOffsetTop; //섹션의 오프셋 탑 변수
+    var sectionScrolTop; //섹션의 스크롤 탑 변수
+    var scrollRealHeight; //실제로 스크롤해야될 높이를 담을 변수를 선업합니다
+    var winScrollTop; // 스크롤바의 높이를 담을 변수를 선업합니다
+    var scrollPerecnt; // 스크롤위치 / 스크롤 길이로 구한 비율 값
+    var percent; // 스크롤 백분율값을 담을 변수를 선업합니다
+    /* 윗쪽 변수들 지겹도록 설명했죠?? ^^;; */
+
+    var windowWdith = $(window).width(); // 화면의 넓이값
+    var mobileSize = 1024; //모바일로 변환된 사이즈 설정 (기기명으로 모바일버전을 체크하는게 아니라 스크린 사이즈가 1024보다 작을경우 모바일로 간주함)
+    var isMobile; //화면사이즈가 모바일인지 체크하는 변수
+
+    var el = document.querySelector('.canvas_wrap'); //캔버스를 담을 요소
+    var canvas = document.createElement('canvas'); // 캔버스 생성
+    var ctx = canvas.getContext('2d'); //렌더링 컨텍스트 타입을 2d로 선언
+    var imgSrc = '../images/seq/'; //이미지의 경로 설정
+    var imgFormat = '.jpg'; // 이미지 포맷 설정
+    var imgLength = 116; // 총 이미지의 렝쓰
+    var pcImgSize = [1920,1080]; // pc일때 이미지 사이즈 [가로,세로]
+    var mobileImgSize = [640,360]; // mobile일때 이미지 사이즈 [가로,세로]
+    var imgWidth; // 이미지 넓이
+    var imgHeight; // 이미지 높이
+    var imgArray = []; // 이미지를 담을 배열
+    var imageIterlator = 0; // 이미지가 로드되었는지 체크하는 값
+
+    function setProperty(){ //스크롤할때 변할 값들을 셋팅해주는 함수
+
+        scrollHeight = scrollBody.height(); // 스크롤 높이
+        sectionOffsetTop = scrollBody.offset().top; //섹션의 오프셋 탑 변수
+
+        scrollRealHeight = (scrollHeight - $(window).height()); //실제로 스크롤해야될 높이값을 구합니다
+        winScrollTop = $(window).scrollTop(); //스크롤바의 현재 위치를 구합니다
+        sectionScrolTop = winScrollTop - sectionOffsetTop
+
+        scrollPerecnt = sectionScrolTop / scrollRealHeight; // 스크롤위치 / 스크롤 길이로 구한 비율 값
+        percent = scrollPerecnt * 100; //백분율을 구합니다
+        /* 윗쪽 내용 지겹도록 설명했죠!! ^^;; */
+
+        windowWdith = $(window).width(); //윈도우의 넓이
+        isMobile = windowWdith > mobileSize ? false : true; //PC일경우 false, MOBILE일경우 true
+
+        imgWidth = !isMobile ? pcImgSize[0] : mobileImgSize[0]; // 이미지 넓이
+        imgHeight = !isMobile ? pcImgSize[1] : mobileImgSize[1];; // 이미지 높이
+
+    };
+
+    function setCanvas(){ //캔버스 기본값 셋팅
+
+        canvas.width = imgWidth; //캔버스 넓이 세팅
+        canvas.height = imgHeight; //캔버스 높이 세팅를
+
+    };
+
+    function scrollFunc(){ //스크롤할때 실행될 함수
+
+        var sequence = Math.max(imgLength-imgLength, Math.min(Number((imgLength-imgLength - (imgLength-imgLength - imgLength * scrollPerecnt)).toFixed(0)), imgLength)); //이미지 시퀀스 번호 구합니다.
+
+        renderCanvas(sequence); //캔버스를 그리는 함수
+        contentIn(); //중간중간 나타나는 컨텐츠를 처리하는 함수
+
+    };
+
+    function renderCanvas(sequence){ //캔버스에 이미지를 그리는 함수
+
+        ctx.clearRect(0, 0, imgWidth, imgHeight); //지정한 x,y위치값과 넓이 높이 값을 넣어 캔버스를 클리어해줌
+        ctx.drawImage(imgArray[sequence], 0, 0, imgWidth, imgHeight); //이미지 배열에 담아둔 이미지를 캔버스에 그림
+
+    };
+
+    function contentIn(){ //텍스트 등장을 처리하는 함수
+
+        if(percent >= 39 && percent < 45){
+            $('.fix_motion .txt.pos1').addClass('active');
+        }
+
+        if(percent >= 45 && percent < 51) {
+            $('.fix_motion .txt.pos2').addClass('active');
+        }
+
+        if(percent >= 51) {
+            $('.fix_motion .txt.pos3').addClass('active');
+        }
+
+        if(percent > 62 || percent < 38 ){
+            $('.fix_motion .txt.pos1').removeClass('active');
+            $('.fix_motion .txt.pos2').removeClass('active');
+            $('.fix_motion .txt.pos3').removeClass('active');
+        }
+
+    };
+
+    function bindEvent(){ //이벤트를 바인드해주는 함수
+
+        $(window).scroll(function(){
+            setProperty()
+            scrollFunc(); //스크롤할때 실행될 함수
+
+        });
+
+        $(window).resize(function(){
+
+            setProperty(); //스크롤할때 변할 값들을 셋팅해주는 함수
+            setCanvas(); //캔버스 기본값 셋팅
+            scrollFunc(); //스크롤할때 실행될 함수
+
+        });
+    };
+
+    function init(){ // 초기화
+
+        el.appendChild(canvas); // canvas_wrap 엘리먼트에 캔버스를 담아줌
+
+        for(var i = 0; i <= imgLength; i++){
+
+            var img = new Image(); //이미지 객체 인스턴스 생성
+            var path = imgSrc+i+imgFormat; //이미지 패스 생성
+
+                img.src = path; //img에 패스 대입
+
+                img.onload = function(){
+                    imageIterlator += 1; //이미지 로드 카운트 카운트
+                    if(imageIterlator === imgLength){ //이미지가 로드된 횟수와 이미지 렝스가 같아질 경우에 인터렉션 함수들을 호출함
+
+                        setProperty(); //스크롤할때 변할 값들을 셋팅해주는 함수
+                        setCanvas(); //캔버스 기본값 셋팅
+                        bindEvent(); //스크롤 이벤트 바인드
+                        scrollFunc(); //스크롤할때 실행될 함수
+
+                    };
+                }
+
+                imgArray.push(img); //이미지 배열에 이미지를 담음
+
+        };
+    };
+
+    init(); //start
+
+});
+</script>
+</body>
+</html>

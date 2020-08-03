@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!-- head -->
+	<?php require("../include/head.html"); ?>
+	<!-- //head -->
+</head>
+
+<body>
+<!-- skip_navi -->
+<?php require("../include/skipnavi.html"); ?>
+<!-- //skip_navi -->
+
+<div id="wrap">
+	<!-- aside -->
+	<div id="aside"></div>
+	<!-- aside -->
+
+	<!-- header -->
+	<?php require("../include/header.html"); ?>
+	<!-- //header -->
+
+	<!-- container -->
+	<div id="container">
+		<!-- contents -->
+		<div class="contents">
+			<!-- Start Page Content -->
+			111
+
+
+			<div class="popupDim"></div>
+			<a href="javascript:;" onclick="layerOpen()" style="position: fixed;left: 0; top:0; z-index: 100; color:#000;font-size: 20px;">열기</a>
+
+			<!-- <div class="pop" style="top:0px">
+				<div class="popContent">
+					<img src="../../resources/web/images/temp/@layer.jpg" alt="">
+
+					<button type="button" class="btnLayerClose" onclick="">레이어 팝업 닫기</button>
+				</div>
+			</div> -->
+			
+
+			<script>
+				function layerOpen(seq){
+
+					let dataNum = 0;
+					let styleTop = 0;
+
+					$('.popupDim').show();
+
+					var html = 
+						`
+							<div class="pop">
+								<div class="popContent" data-id="1122">
+									<img src="../../resources/web/images/temp/@layer_1.png" alt="">
+									<button type="button" class="btnLayerClose" onclick="">레이어 팝업 닫기</button>
+									<a href="javascript:;" onclick="layerOpen()" style="z-index: 100; color:#000;font-size: 20px;">열기</a>
+									<img src="../../resources/web/images/temp/@layer_2.png" alt="">
+								</div>
+							</div>
+						`
+
+					$('.contents').append(html)
+
+					var popElm = $('.pop');
+					popElm.each(function(index,item){
+						styleTop +=10;
+						$(this).attr('style','top:'+ styleTop+'px')
+					});
+
+					$('.btnLayerClose').on( "click", function(){
+
+						if($('.pop').length == 1){
+							$('.popupDim').hide();
+						}
+
+						$(this).parent().parent().remove()
+					});
+
+				}
+
+				(function() {
+					
+					// layerOpen() 
+
+				}());
+				
+			</script>
+			<!-- //End Page Content -->
+		</div>
+		<!-- //contents -->
+	</div>
+	<!-- //container -->
+
+	<!-- footer -->
+	<?php require("../include/footer.html"); ?>
+	<!-- //footer -->
+
+	<!-- layer -->
+	<div class="layerWrap">
+		
+	</div>
+	<!-- //layer -->
+</div>
+
+<script type="text/javascript">
+	//페이지 제어 스크립트
+</script>
+</body>
+</html>
+
+
+		
+var heartAni = {
+    init: function(){
+        const zzimBtn = $('.card_list ul li span.zzim');
+        const heartElm = '<div class="bg_heart"></div>';
+
+        zzimBtn.on('click', function(){
+            if($(this).hasClass('active')){
+                return;
+            }
+            $(this).addClass('active')
+
+            $('#wrap').append(heartElm);
+            heartAni.heartSet();
+
+            setTimeout(function(){
+                $('body').find('.bg_heart').fadeOut();
+            }, 3000);
+            setTimeout(function(){
+                $('body').find('.bg_heart').remove();
+            }, 3100);
+        })
+    },
+    heartSet : function(){
+        var love = setInterval(function(){
+            var r_num = Math.floor(Math.random() * 40) + 1;
+            var r_size = Math.floor(Math.random() * 65) + 10;
+            var r_left = Math.floor(Math.random() * 100) + 1;
+            var r_bg = Math.floor(Math.random() * 25) + 100;
+            var r_time = Math.floor(Math.random() * 5) + 1;
+            
+            $('.bg_heart').append("<div class='heart' style='width:"+r_size+"px;height:"+r_size+"px;left:"+r_left+"%;background:rgba(255,"+(r_bg-25)+","+r_bg+",1);-webkit-animation:love "+r_time+"s ease;-moz-animation:love "+r_time+"s ease;-ms-animation:love "+r_time+"s ease;animation:love "+r_time+"s ease'></div>");
+            
+            $('.bg_heart').append("<div class='heart' style='width:"+(r_size-10)+"px;height:"+(r_size-10)+"px;left:"+(r_left+r_num)+"%;background:rgba(255,"+(r_bg-25)+","+(r_bg+25)+",1);-webkit-animation:love "+(r_time+5)+"s ease;-moz-animation:love "+(r_time+5)+"s ease;-ms-animation:love "+(r_time+5)+"s ease;animation:love "+(r_time+5)+"s ease'></div>");
+            
+            $('.heart').each(function(){
+                var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+                var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+                if(top <= -100 || width >= 150){
+                $(this).detach();
+                }
+            });
+        },300);
+    }
+}

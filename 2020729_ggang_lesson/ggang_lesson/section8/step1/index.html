@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.com_tit01 {font-family: 'NotoB'; font-size:120px; color:#fff; text-align: center;}
+.com_txt01 {max-width:70%; margin:0 auto; font-family: 'NotoR'; font-size:32px; color:#fff; text-align: center;;}
+
+/* main */
+.ggang_box {position:relative; height:500px; background-color:#080808;}
+.ggang_box h2 {position: absolute; left:0; top:50%; width: 100%; color:#333; font-size:80px; line-height:1; text-align: center;}
+
+.fix_motion {background:#080808;}
+.fix_motion .fix_wrap {position:relative;}
+.fix_motion .fix_wrap:after {clear:both; display:block; content:'';}
+.fix_motion .fix_wrap .tit {position:relative; z-index:50; margin-bottom:170px; font-size:200px; color:#333; text-align: center;}
+.fix_motion .fix_wrap .text_box {float:left; width:50%; padding-top:300px;}
+.fix_motion .fix_wrap .text_box p {max-width:80%; font-size:36px; font-family: 'NotoM'; color:#333; transition:color .5s;}
+.fix_motion .fix_wrap .text_box p.active {color:#fff;}
+.fix_motion .fix_wrap .text_box p.txt02 {margin-top:300px;}
+.fix_motion .fix_wrap .text_box p.txt03 {margin-top:300px;}
+.fix_motion .fix_wrap .text_box p.txt04 {margin-top:300px; margin-bottom:500px;}
+
+.fix_motion .fix_wrap .device_fix {position: sticky; position: -webkit-sticky; top:calc(50vh - 204px); left: 0; z-index: 40; float:left; width:50%;}
+.fix_motion .fix_wrap .device_fix .watch_img {position:relative; width: 240px; height:409px; margin:0 auto; }
+.fix_motion .fix_wrap .device_fix .watch_img .img_device {position:absolute; left:0; top:0; right:0; bottom:0; z-index:20;}
+.fix_motion .fix_wrap .device_fix .watch_img .slide_wrap {overflow:hidden; position: absolute; left:15px; top:89px; z-index:10; width:195px; height:237px;}
+.fix_motion .fix_wrap .device_fix .watch_img .slide_wrap .sldie {width: 780px; height: 100%; transition:transform .5s;}
+.fix_motion .fix_wrap .device_fix .watch_img .slide_wrap .sldie figure {float:left; width:195px;}
+</style>
+<body>
+    <div class="wrap">
+        <section class="ggang_box">
+        	<h2>FIXED CONTENT</h2>
+        </section>
+        <section class="fix_motion">
+            <article class="fix_wrap inner">
+                <h2 class="tit">watchOS</h2>
+                <div class="text_box">
+                    <p class="txt01 active">
+                        여러분 드디어 수업이 막바지에 이르렀습니다 :)
+                    </p>
+                    <p class="txt02">
+                        2편에서는 더 고급스럽고
+                        난이도 있는 인터렉션을 만들 예정입니다
+                    </p>
+                    <p class="txt03">
+                        1편에서 기초를 탄탄하게
+                        다져야 2편이 수월해집니다
+                    </p>
+                    <p class="txt04">
+                        이 수업이 여러분에게
+                        많은 도움이 되었다면 좋겠습니다
+                    </p>
+                </div>
+                <div class="device_fix"> <!-- sticky로 고정시킬 엘리먼트-->
+                    <div class="watch_img">
+                        <figure class="img_device">
+                            <img src="../images/bg_device.png" alt="">
+                        </figure>
+                        <div class="slide_wrap"> <!-- 이미지 슬라이더 -->
+                            <div class="sldie">
+                                <figure>
+                                    <img src="../images/1.jpg">
+                                </figure>
+                                <figure>
+                                    <img src="../images/2.jpg">
+                                </figure>
+                                <figure>
+                                    <img src="../images/3.jpg">
+                                </figure>
+                                <figure>
+                                    <img src="../images/4.jpg">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="ggang_box"></section>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+</body>
+</html>

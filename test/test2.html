@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>블럭 단위 터치스와이프</title>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="./plugin/hammer.min.js"></script>
+
+    <style type="text/css">
+    html,body{height: 100%;}
+    .bg {
+        
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.bg1 {
+    background-image: url("./images/mlb_1.jpg")
+}
+.bg2 {
+    background-image: url("./images/mlb_2.jpg");
+
+}
+.bg3 {
+    background-image: url("./images/mlb_3.jpg");
+
+}
+    </style>
+</head>
+<body> 
+
+    <div class="bg bg1"> 
+        dd
+        <div class="moveBG "> </div>
+    </div>
+    <div class="bg bg2"> 
+        <div class="moveBG "> </div>
+    </div>
+    <div class="bg bg3"> 
+        <div class="moveBG "> </div>
+    </div>
+    
+
+    
+
+</body>
+<script>
+    $.fn.bgMove = function() {
+        var $this = $(this);
+
+        if (!$this.length) {
+        return;
+        }
+
+        var bgEl = $this.find('.moveBG');
+        var $headerMenu = $('.pageHeader');
+
+        var scrollEvent = function() {
+        var $win = $(this);
+
+        var metas = {
+            wt: $win.scrollTop(),
+            wh: $win.innerHeight(),
+            tt: $this.offset().top,
+            th: $this.height()
+        };
+
+        if (metas.wt + metas.wh > metas.tt || metas.wt < metas.tt + metas.th) {
+            var moveScroll = metas.wt - metas.tt + $headerMenu.height();
+            moveScroll = Math.abs(moveScroll) > metas.wh ? metas.wh : moveScroll;
+
+            bgEl
+            .css('height', metas.wh)
+            .velocity({
+                translateY: moveScroll
+            }, 0);
+        }
+        };
+
+        $(win).on('scroll', scrollEvent);
+    };
+
+    $('.moveBG').bgMove();
+</script>
+
+</html>
