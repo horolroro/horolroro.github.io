@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.header_wrap {position: fixed; left:0; top:0; z-index:100; width:100%; height:70px; border-bottom:1px solid rgba(255,255,255,.2);}
+.header_wrap .logo {margin-top:15px; padding-left:20px; font-size:24px; color:#fff;}
+
+/* main */
+.ggang_box {position:relative; height:500px; background-color:#111;}
+.ggang_box h2 {position: absolute; left:0; top:50%; width: 100%; color:#fff; font-size:80px; line-height:1; text-align: center;}
+
+.fix_motion {position: relative; height: 5000px;}
+.fix_motion .sticky_cont {overflow: hidden; position: sticky; position: -webkit-sticky; top:0; left: 0; width: 100%; height: 100vh;}
+.fix_motion .sticky_cont .cont_box {position:relative; height: 100%;}
+.fix_motion .sticky_cont .cont_box .intro_txt {position:absolute; left:50%; top:50%; z-index:60; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%); -moz-transform:translate(-50%,-50%); -o-transform:translate(-50%,-50%); -ms-transform:translate(-50%,-50%); transition: opacity .5s;}
+.fix_motion .sticky_cont .cont_box .intro_txt h2 {font-size: 80px; line-height: 1; color:#fff;}
+.fix_motion .sticky_cont .cont_box .intro_txt.active {opacity: 0;}
+.fix_motion .sticky_cont .cont_box .left_mask {position: absolute; left:0; top:0; z-index:50; width:50%; height: 100%; background: #000; }
+.fix_motion .sticky_cont .cont_box .right_mask {position: absolute; right:0; top:0; z-index:50; width:50%; height: 100%; background: #000; }
+.fix_motion .sticky_cont .cont_box .bg_img {position:absolute; left:0; top:0; z-index:20; width: 100%; height: 100%; background-image: url('../images/steve_jobs.jpg'); background-size: auto 100%; background-repeat: no-repeat; background-position: center center;}
+.fix_motion .sticky_cont .cont_box .ending_txt {position: absolute; left:0; top:0; z-index:30; width: 100%; height: 100%; opacity:0; transition:opacity 1s;}
+.fix_motion .sticky_cont .cont_box .ending_txt:after {position: absolute; left:0; top:0; z-index:-1; width: 100%; height: 100%; background: rgba(255,255,255,1); content:"";}
+.fix_motion .sticky_cont .cont_box .ending_txt.active {opacity: 1;}
+.fix_motion .sticky_cont .cont_box .ending_txt .tb_row {display: table; width: 100%; height: 100%;}
+.fix_motion .sticky_cont .cont_box .ending_txt .tb_row .tb_cell {display: table-cell; vertical-align: middle; text-align: center;}
+.fix_motion .sticky_cont .cont_box .ending_txt .tb_row .tb_cell p {font-size: 80px; color:#000; line-height: 1;}
+</style>
+<body>
+    <div class="wrap">
+        <header class="header_wrap">
+            <div class="logo">GGANG CODING</div>
+        </header>
+        <section class="ggang_box">
+        	<h2>FIXED CONTENT</h2>
+        </section>
+        <section class="fix_motion"> <!-- 스크롤할 거리를 설정하는 엘리먼트 -->
+            <article class="sticky_cont"> <!-- 고정시킬 엘리먼트 sticky -->
+                <div class="cont_box ">
+                    <div class="intro_txt">
+                        <h2>
+                            APPLE
+                        </h2>
+                    </div>
+                    <div class="left_mask"></div>
+                    <div class="right_mask"></div>
+                    <figure class="bg_img"></figure>
+					<div class="ending_txt">
+						<div class="tb_row">
+							<div class="tb_cell">
+								<p>
+									APPLE
+								</p>
+							</div>
+						</div>
+					</div>
+                </div>
+            </article>
+        </section>
+        <section class="ggang_box">
+            <h2>END</h2>
+        </section>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+
+    /*변수및 요소 선언*/
+    var scrollBody = $('.fix_motion'); //부모 스크롤 엘리먼트
+    var titText = scrollBody.find('.intro_txt'); //타이틀 텍스트
+    var maskLeft = scrollBody.find('.left_mask'); //마스크 레프트
+    var maskRight = scrollBody.find('.right_mask'); //마스크 라이트
+    var bgImage = scrollBody.find('.bg_img'); //배경 이미지
+    var endingContent = scrollBody.find('.ending_txt'); //엔딩이미지
+
+
+    /*리사이즈, 스크롤할때 변해야 할 값들*/
+    var scrollHeight; // 스크롤 높이
+    var sectionOffsetTop; //섹션의 오프셋 탑 변수
+    var sectionScrolTop; //섹션의 스크롤 탑 변수
+    var scrollRealHeight; //실제로 스크롤해야될 높이를 담을 변수를 선업합니다
+    var winScrollTop; // 스크롤바의 높이를 담을 변수를 선업합니다
+    var scrollPerecnt // 스크롤탑 / 스크롤 길이로 구한 비율 값
+    var percent; // 스크롤 백분율값을 담을 변수를 선업합니다
+
+
+    function changeOverlap(){ //스크롤할때 계속 호출될 함수 선언
+
+        setProperty(); // 스크롤할때 변해야할 값들의 변수를 선언
+        motionRender(); //모션 실행 함수
+
+    };
+
+    function setProperty(){ // 스크롤할때 변할 값들을 셋팅해주는 함수
+
+        scrollHeight = scrollBody.height(); // 스크롤 높이
+        sectionOffsetTop = scrollBody.offset().top; //섹션의 오프셋 탑 구함
+
+        scrollRealHeight = (scrollHeight - $(window).height()); //실제로 스크롤해야될 높이값을 구합니다
+        winScrollTop = $(window).scrollTop(); //스크롤바의 현재 위치를 구합니다
+        sectionScrolTop = winScrollTop - sectionOffsetTop // 섹션의 탑 값을 구함
+
+        scrollPerecnt =  sectionScrolTop / scrollRealHeight; // 스크롤탑 / 스크롤 길이로 비율을 구합니다
+        percent = scrollPerecnt * 100 ; //백분율을 구합니다
+
+    };
+
+    function motionRender(){ //모션 실행 함수
+
+        var maskStartValue = 50; //마스크 처리값
+        var maskEndValue = 0; // 최종 마스크 크기
+        var zoomValue = 1.5; //줌될 크기
+        var zoomOutValue = 1; //줌 아웃될 크기
+        var maskVal = Math.max(maskEndValue, maskStartValue - (scrollPerecnt * maskStartValue)); //마스크 처리값
+        var scaleVal = Math.max(zoomOutValue, zoomValue - (scrollPerecnt * zoomValue)); // 줌 처리값
+
+        /* 마스크 처리 */
+        maskLeft
+        .css({
+            width: maskVal + '%'
+        });
+
+        maskRight
+        .css({
+            width: maskVal + '%'
+        });
+
+        /* 이미지 스캐일 처리 */
+        bgImage
+        .css({
+            'transform': 'scale('+ scaleVal +')'
+        });
+
+        /* 인트로 텍스트 퇴장 처리 */
+        if(percent > 0.3){
+            titText.addClass('active');
+        }else{
+            titText.removeClass('active');
+        }
+
+        /* 엔딩 텍스트 등장 처리 */
+        if(percent >= 70){
+            endingContent.addClass('active');
+        }else {
+            endingContent.removeClass('active');
+        }
+
+    };
+
+    function init(){ //최초 한번실행
+        changeOverlap();
+    };
+
+    $(window).scroll(function(e){ //스크롤 이벤트를 추가합니다.
+        changeOverlap();
+    });
+
+    init(); //start
+
+});
+</script>
+</body>
+</html>

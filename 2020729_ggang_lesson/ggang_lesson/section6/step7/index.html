@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+/* common */
+.wrap {position:relative; overflow: hidden;}
+.inner {max-width:1100px; height: 100%;  margin: 0 auto;}
+.com_tit01 {font-family: 'NotoB'; font-size:60px; color:#fff; text-align: center;}
+.com_txt01 {max-width:70%; margin:0 auto; font-family: 'NotoR'; font-size:24px; color:#fff; text-align: center;;}
+.header_wrap {position: fixed; left:0; top:0; z-index:100; width:100%; height:70px; border-bottom:1px solid rgba(255,255,255,.2);}
+.header_wrap .logo {margin-top:15px; padding-left:20px; font-size:24px; color:#fff;;}
+.footer {position:relative; height:300px; background: #111}
+.footer .text_area {position: relative; z-index: 20; padding:20px;}
+.footer .text_area p {color:#fff; font-size:34px;}
+.tb_row {display: table; width:100%; height: 100%;}
+.tb_row .tb_cell {display: table-cell; vertical-align: middle;}
+
+/* main */
+.sec01 {position:relative; height:100vh; background: #111;}
+.sec01 .nav_list {position: relative; z-index:20;}
+.sec01 .nav_list .list {}
+.sec01 .nav_list .list li {}
+.sec01 .nav_list .list li a {overflow:hidden; position:relative; display:inline-block; font-size:140px; line-height: 1; color:#fff; transition:transform .5s;}
+.sec01 .nav_list .list li a .mask {position:absolute; left:0; top:0; z-index:10; height:100%; background: #fff; animation:text_mask 2s 1 cubic-bezier(0.24, 0.77, 0.32, 0.95) both paused;}
+.sec01 .nav_list .list li a .txt {position:relative; z-index:20; display: block; animation:text_opacity 2s 1s 1 cubic-bezier(0.24, 0.77, 0.32, 0.95) both paused;}
+.sec01.active .nav_list .list li a .mask {animation-play-state: running;}
+.sec01.active .nav_list .list li a .txt {animation-play-state: running;}
+
+.sec01 .nav_list .list li a .mask2 {position:absolute; left:0; bottom:0; z-index:-1; width:0%; height:40%; background: #e9c400; transition:width .5s cubic-bezier(0.24, 0.77, 0.32, 0.95);}
+.sec01 .nav_list .list li a:hover {transform:translateX(-10px); -webkit-transform:translateX(-10px); -moz-transform:translateX(-10px); -o-transform:translateX(-10px); -ms-transform:translateX(-10px);}
+.sec01 .nav_list .list li a:hover .mask2 {width:100%;}
+.sec01 .nav_list .list li a:hover {text-decoration: none;}
+.sec01 .nav_list .list li a:focus {text-decoration: none;}
+
+.sec01 .bg_rotate {position:absolute; left:50%; top:50%; z-index:10; width:1200px; height:1215px; margin-left:-357px; margin-top:-350px; background-image:url('../images/bg_rotate01.png'); background-repeat: no-repeat; background-size:cover; opacity: .15; animation:rotate_bg 40s infinite linear paused;}
+.sec01.active .bg_rotate {animation-play-state: running;}
+
+@keyframes text_mask {
+    0%{
+        width: 0%;
+        transform:translateX(0%);
+    }
+    50%{
+        width: 100%;
+        transform:translateX(0%);
+    }
+    100%{
+        width: 100%;
+        transform:translateX(101%);
+    }
+}
+
+@keyframes text_opacity {
+    0%{
+        opacity: 0;
+        color:#3535ff;
+        transform:translateX(-50%);
+    }
+    100%{
+        opacity: 1;
+        color:#fff;
+        transform:translateX(0%);
+    }
+}
+
+@keyframes rotate_bg {
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+.section_today {overflow:hidden; position:relative; height:100vh; background: #000; text-align:center;}
+.section_today .date_box {height: 100%;}
+.section_today .date_box .date_count {overflow:hidden; position: relative; display:inline-block; height: 200px; opacity: 0; transition:opacity .5s 1s;}
+.section_today.active .date_box .date_count {opacity: 1;}
+.section_today .date_box .date_count:after {clear:both; display:block; content:'';}
+.section_today .date_box .date_count .count_box { float: left; animation: count_date 2.8s 1 ease-out both paused;}
+.section_today .date_box .date_count .count_box.active {animation-play-state: running;}
+.section_today .date_box .date_count .count_box span {display:block; color:#fff; font-size:200px; line-height: 1; text-align: center; -webkit-text-fill-color:transparent; -webkit-text-stroke:6px #fff;}
+
+.section_today .date_box .t_date {position: absolute; left:20px; top:400px; z-index:100; font-size:300px; color:#fff; opacity: .1; transform:translateX(-100%); -webkit-text-fill-color:transparent; -webkit-text-stroke:2px #fff; transition:transform 1s;}
+.section_today.active .date_box .t_date {transform:translateX(0%); -webkit-transform:translateX(0%); -moz-transform:translateX(0%); -o-transform:translateX(0%); -ms-transform:translateX(0%);}
+
+@keyframes count_date {
+    0%{
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-4800px); /* 높이 x 롤링될 개수 */
+    }
+}
+
+.section_product {background: #000;}
+.section_product .prd_mask {}
+.section_product .prd_mask .tit_wrap {padding:120px 0 80px 0;}
+.section_product .prd_mask .img_list {width:60%; margin:0 auto;}
+.section_product .prd_mask .img_list:after {clear:both; display:block; content:'';}
+.section_product .prd_mask .img_list li {overflow:hidden; position:relative; display:inline-block; width:calc(50% - 40px); padding-right:20px; margin-bottom:20px;}
+.section_product .prd_mask .img_list li:after {position:absolute; right:0; top:0; width:100%; height:100%; background: #000; content:""; transition:2.5s;}
+.section_product .prd_mask.active .img_list li:after {width: 0%;}
+.section_product .prd_mask .img_list li:nth-child(even) {top:-20px;}
+.section_product .prd_mask .img_list li:nth-child(even):after {right:auto; left:0; }
+.section_product .prd_mask .img_list li .img_content {font-size:0; transform:translateX(-101%); -webkit-transform:translateX(-101%); -moz-transform:translateX(-101%); -o-transform:translateX(-101%); -ms-transform:translateX(-101%); transition:1.2s .5s;}
+.section_product .prd_mask.active .img_list li .img_content {transform:translateX(0%); -webkit-transform:translateX(0%); -moz-transform:translateX(0%); -o-transform:translateX(0%); -ms-transform:translateX(0%);}
+.section_product .prd_mask .img_list li .img_content img {width: 100%;}
+
+.section_product .text_img {padding-top:150px; padding-bottom:100px; text-align: center; font-size:0;}
+.section_product .text_img .text_area {display:inline-block; width:60%; padding:0 50px; color:#fff; font-size:40px; vertical-align: middle; text-align: right; box-sizing: border-box; opacity:0; transform:translateX(-150px); -webkit-transform:translateX(-150px); -moz-transform:translateX(-150px); -o-transform:translateX(-150px); -ms-transform:translateX(-150px); transition: 1s;}
+.section_product .text_img.active .text_area {opacity:1; transform:translateX(0px); -webkit-transform:translateX(0px); -moz-transform:translateX(0px); -o-transform:translateX(0px); -ms-transform:translateX(0px); }
+.section_product .text_img .text_area h3 {font-family: 'NotoB'; font-size:64px;}
+.section_product .text_img .text_area p {font-family: 'NotoR'; font-size:24px;}
+.section_product .text_img .img_area {position:relative; display: inline-block; width:30%; vertical-align: middle;}
+.section_product .text_img .img_area:after {position: absolute; right:0; bottom:0; width:100%; height:100%; background:#000; content:""; transition:2s .5s cubic-bezier(0.31, 0.85, 0.31, 1.06);}
+.section_product .text_img.active .img_area:after {height:0px;}
+
+.section_textmask {overflow:hidden; position:relative; padding-top:150px; padding-bottom:200px; background: #000;}
+.section_textmask .txt_area {}
+.section_textmask .txt_area .tit_wrap {}
+.section_textmask .txt_area .motion_area {overflow:hidden; position: relative; margin-top:100px; font-size:150px; line-height:1; color:#fff;}
+.section_textmask .txt_area .motion_area .text_box {overflow:hidden; text-align: center;}
+.section_textmask .txt_area .motion_area .text_box .left {overflow:hidden; float:left; width:50%; height:100%;}
+.section_textmask .txt_area .motion_area .text_box .left p {width:200%;}
+.section_textmask .txt_area .motion_area .text_box .left p span {display:inline-block; padding-bottom:5px; text-align: center; white-space: nowrap; animation:move_text_mask 2.2s 1 both ease-in-out paused;}
+.section_textmask.active .txt_area .motion_area .text_box .left p span {animation-play-state: running;}
+
+.section_textmask .txt_area .motion_area .text_box .right {overflow:hidden; float:left; width:50%; height:100%;}
+.section_textmask .txt_area .motion_area .text_box .right p {width:200%; margin-left:-100%; color:#00b8ff;}
+.section_textmask .txt_area .motion_area .text_box .right p span {display:inline-block;padding-bottom:5px; text-align: center; white-space: nowrap; animation:move_text_mask 2.2s 1 both ease-in-out paused;}
+.section_textmask.active .txt_area .motion_area .text_box .right p span {animation-play-state: running;}
+
+.section_textmask .txt_area .motion_area .text_box.type02 {}
+.section_textmask .txt_area .motion_area .text_box.type02 span {animation-delay:.3s !important;}
+.section_textmask .txt_area .motion_area .text_box.type02 .left p {color:#00b8ff;}
+.section_textmask .txt_area .motion_area .text_box.type02 .right p {color:#fff;}
+
+.section_textmask .txt_area .motion_area .text_box.type03 span {animation-delay:.6s !important;}
+
+@keyframes move_text_mask{
+	0%{
+		transform:translateX(-50%);
+	}
+	50%{
+		transform:translateX(50%);
+	}
+	100%{
+		transform:translateX(0%);
+	}
+}
+
+.section_overlap {overflow:hidden; position: relative; padding-top:100px; padding-bottom:80px;}
+.section_overlap .overlap_box {}
+.section_overlap .overlap_box .tit_wrap {position: relative; z-index: 60; padding-bottom:50px;}
+.section_overlap .overlap_box .img_device {position: relative; z-index:50; width:300px; margin:0 auto;}
+.section_overlap .overlap_box .bg_change {position: absolute; right:0; top:0; z-index:10; width: 100%; height: 100%;}
+.section_overlap .overlap_box .bg_change.color01 {z-index:40; background-color: #000; transition:width .5s .2s;}
+.section_overlap.active .overlap_box .bg_change.color01 {width:0px;}
+.section_overlap .overlap_box .bg_change.color02 {z-index:30; background-color: #272727; transition:width .5s .7s;}
+.section_overlap.active .overlap_box .bg_change.color02 {width:0px;}
+.section_overlap .overlap_box .bg_change.color03 {z-index:20; background-color: #c2bada; transition:width .5s 1.2s;}
+.section_overlap.active .overlap_box .bg_change.color03 {width:0px;}
+.section_overlap .overlap_box .bg_change.color04 {z-index:10; background-color: #000;}
+</style>
+<body>
+    <div class="wrap">
+        <header class="header_wrap">
+            <div class="logo">GGANG CODING</div>
+        </header>
+        <section class="sec01">
+            <article class="inner">
+                <div class="tb_row">
+                    <div class="tb_cell">
+                        <nav class="nav_list">
+                            <ul class="list">
+                                <li>
+                                    <a href="#toDay">
+                                        <span class="txt">TODAY</span>
+                                        <span class="mask"></span>
+                                        <span class="mask2"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#imgMask">
+                                        <span class="txt">IMAGE Mask</span>
+                                        <span class="mask"></span>
+                                        <span class="mask2"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#txtMask">
+                                        <span class="txt">TEXT Mask</span>
+                                        <span class="mask"></span>
+                                        <span class="mask2"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#overLap">
+                                        <span class="txt">OVERLAP</span>
+                                        <span class="mask"></span>
+                                        <span class="mask2"></span>
+									</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="bg_rotate"></div>
+            </article>
+        </section>
+        <section id="toDay" class="section_today">
+			<article class="date_box">
+	            <div class="tb_row">
+	                <div class="tb_cell">
+	                	<strong class="t_date">TODAY</strong>
+						<div class="date_count"></div>
+	                </div>
+	            </div>
+			</article>
+        </section>
+        <section id="imgMask" class="section_product">
+			<article class="prd_mask">
+				<div class="tit_wrap">
+					<h2 class="com_tit01">IMAGE MASK</h2>
+					<p class="com_txt01">숨어있다가 나오는 느낌의 이미지 마스크 기법</p>
+				</div>
+				<ul class="img_list">
+					<li>
+						<figure class="img_content">
+							<img src="../images/1.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure class="img_content">
+							<img src="../images/2.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure class="img_content">
+							<img src="../images/3.jpg">
+						</figure>
+					</li>
+					<li>
+						<figure class="img_content">
+							<img src="../images/4.jpg">
+						</figure>
+					</li>
+				</ul>
+			</article>
+			<article class="text_img">
+				<div class="text_area">
+					<h3 class="tit">텍스트와 이미지 패턴</h3>
+					<p class="txt">
+						왼쪽은 텍스트 오른쪽은 이미지! :) CSS를 활용해 모션을 만들고 스크롤위치에 도착 했을때
+						등장하는 인터렉션을 구현해보세요. 공부가 목적이 아니라도 재밌는 수업이 될거라 믿습니다 :)
+					</p>
+				</div>
+				<div class="img_area">
+					<figure>
+						<img src="../images/6.jpg">
+					</figure>
+				</div>
+			</article>
+        </section>
+		<section id="txtMask" class="section_textmask">
+			<article class="txt_area">
+				<div class="tit_wrap">
+					<h2 class="com_tit01">TEXT MASK</h2>
+					<p class="com_txt01">텍스트로 구현하는 엣지 있는 모션 :)</p>
+				</div>
+				<div class="motion_area">
+					<div class="text_box">
+						<div class="left">
+							<p class="txt_com txt01">
+								<span>깡코딩 좋아요!</span>
+							</p>
+						</div>
+						<div class="right">
+							<p class="txt_com txt01">
+								<span>깡코딩 좋아요!</span>
+							</p>
+						</div>
+					</div>
+					<div class="text_box type02">
+						<div class="left">
+							<p class="txt_com txt01">
+								<span>수강생 화이팅!</span>
+							</p>
+						</div>
+						<div class="right">
+							<p class="txt_com txt01">
+								<span>수강생 화이팅!</span>
+							</p>
+						</div>
+					</div>
+					<div class="text_box type03">
+						<div class="left">
+							<p class="txt_com txt01">
+								<span>신난다 재미난다!</span>
+							</p>
+						</div>
+						<div class="right">
+							<p class="txt_com txt01">
+								<span>신난다 재미난다!</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section id="overLap" class="section_overlap">
+			<article class="overlap_box">
+				<div class="tit_wrap">
+					<h2 class="com_tit01">OVERLAP BACKGROUND</h2>
+					<p class="com_txt01">배경으로 강조하는 상품이미지</p>
+				</div>
+				<figure class="img_device">
+					<img src="../images/img_iphone01.png">
+				</figure>
+				<div class="bg_change color01"></div>
+				<div class="bg_change color02"></div>
+				<div class="bg_change color03"></div>
+				<div class="bg_change color04"></div>
+			</article>
+		</section>
+        <footer class="footer">
+            <div class="text_area">
+                <p>
+                    2020 GGANG CODING. 당신의 열정을 응원합니다. :)
+                </p>
+            </div>
+        </footer>
+    </div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+/* GGang SectionIn */
+$.fn.GgangSectionIn = function(fuc){
+
+    /* 변수 선언 */
+    var el = $(this);
+    var winScrollTop; // 스크롤바의 높이를 담을 변수를 선업합니다
+    var sectionOfffsetTop; // 섹션의 오프셋탑값을 저장할 변수
+    var sectionHeight; //섹션의 높이를 담을 변수
+    var sectionOffsetBottom; //섹션의 오프셋 바텀값을 저장할 변수
+    var checkInSection = false; //섹션에 진입해 함수가 실행되었는지 체크하는 변수
+    var fastIn; //섹션에 더 빠르게 진입하도록 값을 조절할 변수
+
+    var startFunction = fuc; //깡 섹션인 함수에 전달된 함수
+    var isFunction = typeof(startFunction) === 'function' ? true : false; //전달된 값이 함수인지 체크
+
+    function setProperty(){ // 스크롤할때 변할 값들을 셋팅해주는 함수
+
+    	fastIn = $(window).height() / 2; // 섹션에 더 빨리 진입해 함수가 실행되록 값을 조절함
+        winScrollTop = $(window).scrollTop(); //스크롤바의 현재 위치를 구합니다
+        sectionOfffsetTop = el.offset().top - fastIn; //섹션의 오프셋 탑 값
+        sectionHeight = el.height(); //섹션의 높이값
+        sectionOffsetBottom = sectionOfffsetTop + sectionHeight + fastIn; //섹션의 오프셋 바텀값
+
+    };
+
+	function inSection(){ // 섹션에 진입했을때 액션을 처리해줄 함수입니다.
+
+		setProperty(); // 스크롤할때 변해야할 값들의 변수를 선언한 함수입니다
+
+		if(winScrollTop >= sectionOfffsetTop && winScrollTop <= sectionOffsetBottom){ //해당 섹션의 위치에 도달했는지 체크합니다.
+
+			if(isFunction && !checkInSection){ //실행될 함수가 있고 한번도 실행이 되지 않았다면 실행합니다
+				checkInSection = true;
+				startFunction(); //스타트 함수 실행
+			}
+
+		}
+
+	};
+
+    function init(){ //최초 한번실행
+
+        inSection(); // 섹션에 진입했을때 처리해줄 함수입니다.
+
+    };
+
+    $(window).scroll(function(e){ //스크롤 이벤트를 추가합니다.
+
+        inSection(); // 섹션에 진입했을때 처리해줄 함수입니다.
+
+    });
+
+    $(window).resize(function(){ //리사이즈 이벤트를 추가합니다.
+        inSection();
+    });
+
+    init(); //start
+
+};
+
+$(function(){
+
+	$('.sec01').GgangSectionIn(function(){
+		$('.sec01').addClass('active');
+	});
+
+	$('.section_today').GgangSectionIn(function(){
+		$('.section_today').addClass('active');
+		countDate();
+	});
+
+	$('.section_product .prd_mask').GgangSectionIn(function(){
+		$('.section_product .prd_mask').addClass('active');
+	});
+
+	$('.section_product .text_img').GgangSectionIn(function(){
+		$('.section_product .text_img').addClass('active');
+	});
+
+	$('.section_textmask').GgangSectionIn(function(){
+		$('.section_textmask').addClass('active');
+	});
+
+	$('.section_overlap').GgangSectionIn(function(){
+		$('.section_overlap').addClass('active');
+	});
+
+	/* 날짜 카운트*/
+    function countDate(){
+
+        var el = $('.date_count');
+        var date = new Date();
+        var todayDate = String(date.getFullYear()) + String(date.getMonth() + 1) + String(date.getDate()); //오늘의 날짜를 구함
+        var rolling = 24; //롤링될 개수
+        var resultArray = [];
+            resultArray = todayDate.split(''); //롱링할 오늘날짜를 나눠서 배열에 담음
+
+        $.each(resultArray, function(idx, val) {
+			var conuntBox = $('<div class="count_box" />');
+			var numberArray = []; //쪼갠 날짜를 담을 배열 선언
+			var number = Number(val);
+
+            for(var i = 0; i <= rolling; i++){ //롤링될 숫자만큼 값을 생성해 배열에 담음
+                var sum = number + i;
+                var num = sum >= 10 ? Number(String(sum).split('')[1]) : sum; //값이 10보다커질경우 첫번째 자릿수를 버리도록 함
+                numberArray[i] = num;
+            };
+
+            numberArray.reverse(); //롤링방향 때문에 배열을 뒤집어줍니다.
+
+            numberArray.forEach(function(val){ //날짜를 담은 span엘리먼트를 coutBox에 어펜드
+
+               var countValue = $('<span/>', {
+                    text: val
+				});
+
+               countValue.appendTo(conuntBox)
+
+            });
+
+			conuntBox //최종 엘리먼트에 추가함. 딜레이와 큐를 이용해 롤링 타이밍을 처리합니.
+			.appendTo(el)
+			.delay(idx * 300)
+			.queue(function(){
+				$(this).addClass('active');
+			});
+        });
+
+    };
+
+	/* 네비 리모컨*/
+	$('.nav_list .list li a').click(function(e){
+		// console.log($(this.hash).offset());
+		if($(this.hash).offset()){
+			$('html')
+			.animate({
+				scrollTop:$(this.hash).offset().top
+			}, 500);
+		}
+
+	});
+
+});
+
+</script>
+</body>
+</html>

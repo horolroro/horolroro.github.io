@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="chrome=1,IE=edge">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+.wrap {overflow: hidden;}
+.tit {margin:100px 0 80px; font-size:70px; text-align: center;}
+.btn {height:50px; line-height:50px; padding:0 30px; margin-top:50px; border:1px solid #ddd; background: #ddd; font-size:24px; transition:.5s;}
+.btn:hover {background-color: #222; color:#fff;}
+
+.sec01 {}
+.sec01 .transfom_ex .list {}
+.sec01 .transfom_ex .list:after {clear:both; display:block; content:'';}
+.sec01 .transfom_ex .list li {float:left; width:25%; padding:0 10px; box-sizing: border-box}
+.sec01 .transfom_ex .list li .txt {display: block; margin-top:30px; text-align: center;}
+
+.sec01 .transfom_ex .ggang01 {transform:rotate(20deg); -webkit-transform:rotate(20deg); -moz-transform:rotate(20deg); -o-transform:rotate(20deg); -ms-transform:rotate(20deg);}
+.sec01 .transfom_ex .ggang01.active {transform:rotate(0deg); -webkit-transform:rotate(0deg); -moz-transform:rotate(0deg); -o-transform:rotate(0deg); -ms-transform:rotate(0deg);}
+.sec01 .transfom_ex .ggang02 {transform:scale(.7); -webkit-transform:scale(.7); -moz-transform:scale(.7); -o-transform:scale(.7); -ms-transform:scale(.7);}
+.sec01 .transfom_ex .ggang02.active {transform:scale(1); -webkit-transform:scale(1); -moz-transform:scale(1); -o-transform:scale(1); -ms-transform:scale(1);}
+.sec01 .transfom_ex .ggang03 {transform:skew(30deg); -webkit-transform:skew(30deg); -moz-transform:skew(30deg); -o-transform:skew(30deg); -ms-transform:skew(30deg);}
+.sec01 .transfom_ex .ggang03.active {transform:skew(0deg); -webkit-transform:skew(0deg); -moz-transform:skew(0deg); -o-transform:skew(0deg); -ms-transform:skew(0deg);}
+.sec01 .transfom_ex .ggang04 {transform:translate(100px, -100px); -webkit-transform:translate(100px, -100px); -moz-transform:translate(100px, -100px); -o-transform:translate(100px, -100px); -ms-transform:translate(100px, -100px);}
+.sec01 .transfom_ex .ggang04.active {transform:translate(0px, 0px); -webkit-transform:translate(0px, 0px); -moz-transform:translate(0px, 0px); -o-transform:translate(0px, 0px); -ms-transform:translate(0px, 0px);}
+
+
+/*섹션 2는 보기 편하도록 벤더 프리픽스 생략*/
+.sec02 {}
+.sec02 .transfom_ex .list {}
+.sec02 .transfom_ex .list:after {clear:both; display:block; content:'';}
+.sec02 .transfom_ex .list li {float:left; width:25%; padding:0 10px; box-sizing: border-box}
+.sec02 .transfom_ex .list li .txt {display: block; margin-top:30px; text-align: center;}
+
+.sec02 .transfom_ex .ggang01 {transform:rotate(20deg); transition:transform .5s;}
+.sec02 .transfom_ex .ggang01.active {transform:rotate(0deg);}
+.sec02 .transfom_ex .ggang02 {transform:scale(.7); transition:transform .5s;}
+.sec02 .transfom_ex .ggang02.active {transform:scale(1);}
+.sec02 .transfom_ex .ggang03 {transform:skew(30deg); transition:transform .5s;}
+.sec02 .transfom_ex .ggang03.active {transform:skew(0deg);}
+.sec02 .transfom_ex .ggang04 {transform:translate(100px, -100px); transition:transform .5s;}
+.sec02 .transfom_ex .ggang04.active {transform:translate(0px, 0px);}
+
+</style>
+<body>
+	<div class="wrap">
+		<section class="sec01">
+			<h2 class="tit">TRANSFORM</h2>
+			<article class="transfom_ex">
+				<ul class="list">
+					<li>
+						<figure class="ggang01">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">ROTATE</strong>
+					</li>
+					<li>
+						<figure class="ggang02">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">SCALE</strong>
+					</li>
+					<li>
+						<figure class="ggang03">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">SKEW</strong>
+					</li>
+					<li>
+						<figure class="ggang04">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">TRANSLATE</strong>
+					</li>
+				</ul>
+				<button class="btn start">START</button>
+				<button class="btn reset">RESET</button>
+			</article>
+		</section>
+
+		<section class="sec02">
+			<h2 class="tit">TRANSFORM & TRANSITION</h2>
+			<article class="transfom_ex">
+				<ul class="list">
+					<li>
+						<figure class="ggang01">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">ROTATE</strong>
+					</li>
+					<li>
+						<figure class="ggang02">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">SCALE</strong>
+					</li>
+					<li>
+						<figure class="ggang03">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">SKEW</strong>
+					</li>
+					<li>
+						<figure class="ggang04">
+							<img src="../images/ggang_model.png">
+						</figure>
+						<strong class="txt">TRANSLATE</strong>
+					</li>
+				</ul>
+				<button class="btn start">START</button>
+				<button class="btn reset">RESET</button>
+			</article>
+		</section>
+	</div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+	var time = 1000;
+	function sec01Start(obj){
+
+		setTimeout(function(){
+			$(obj).parent().find('.ggang01').addClass('active');
+		},time * 1);
+
+		setTimeout(function(){
+			$(obj).parent().find('.ggang02').addClass('active');
+		},time * 2);
+
+		setTimeout(function(){
+			$(obj).parent().find('.ggang03').addClass('active');
+		},time * 3);
+
+		setTimeout(function(){
+			$(obj).parent().find('.ggang04').addClass('active');
+		},time * 4);
+
+	};
+
+	function sec01Reset(obj){
+		$(obj).parent().find('.ggang01').removeClass('active');
+		$(obj).parent().find('.ggang02').removeClass('active');
+		$(obj).parent().find('.ggang03').removeClass('active');
+		$(obj).parent().find('.ggang04').removeClass('active');
+	};
+
+	$('.btn.start').on('click',function(){
+		sec01Start(this);
+	});
+
+	$('.btn.reset').on('click',function(){
+		sec01Reset(this);
+	})
+
+})
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

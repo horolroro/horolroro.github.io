@@ -1,0 +1,128 @@
+<html lang="en" class="">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>CodePen Demo</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <!-- <script type="text/javascript" src="./plugin/hammer.min.js"></script> -->
+    <script type="text/javascript" src="./plugin/jquery.touchSwipe.min.js"></script>
+
+    <style type="text/css">
+    * {margin: 0;padding: 0;}
+		img {width:100%;}
+        body {position: relative; height: 100%; }
+
+        .cta__slider-item { position: relative; height: 100%;transition: 1s; }
+        .cta__slider-item .media-wrapper {position: absolute; width: 100%; height: 100%;left: 0;top: 0; }
+        .cta__slider-item img {width: 100%; height: 100%; object-fit: cover; }
+
+
+    </style>
+    
+</head>
+
+    <body>
+        <div class="cta__slider-item">
+            <div class="media-wrapper slide-inner">
+                <img src="./images/mlb_1.jpg">
+              </div>
+        </div>
+        <div class="cta__slider-item">
+            <div class="media-wrapper slide-inner">
+                <img src="./images/mlb_3.jpg">
+              </div>
+        </div>
+        <div class="cta__slider-item">
+            <div class="media-wrapper slide-inner">
+                <img src="./images/mlb_2.jpg">
+              </div>
+        </div>
+
+    </body>
+
+    <script>
+        
+        // (function() {
+
+        //     $('.cta__slider-item').swipe( {
+        //         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+        //             var $el = $(this);
+
+        //             if (direction == 'up') {
+        //                 console.log('swipeup');
+        //                 if($el.next() != undefined){
+        //                     try{
+        //                         var nextElm = $el.next().offset().top;
+        //                         $el.next().css('transform', `translate3d(0px,-${nextElm}px, 0px)`);
+        //                     }catch(e){}
+
+        //                 }
+        //             }
+        //             if (direction == 'down') {
+        //                 console.log('swipedown');
+        //                 if($el.prev() != undefined){
+        //                     try{
+        //                         var prevElem = $el.prev().offset().top;
+        //                         console.log($el.prev())
+        //                         $el.css('transform', `translate3d(0px,${prevElem}px, 0px)`);
+        //                     }catch(e){}
+                            
+        //                 }
+        //             }
+        //         },
+        //         threshold:90
+        //     });
+
+
+        // }());
+    </script>
+
+    <script>
+        // (function() {
+
+        //     $('.cta__slider-item').each(function(i, el){
+        //         var $el = $(el);
+        //         var hammertime = new Hammer(el, {
+        //             recognizers: [
+        //                 [Hammer.Swipe, {direction: Hammer.DIRECTION_ALL}]
+        //             ]
+        //         });
+
+        //         hammertime.set({ enable: true });
+
+        //         hammertime.on('swipeup', function () {
+        //             console.log('swipeup');
+        //             if($el.next() != undefined){
+        //                 try{
+        //                     var nextElm = $el.next().offset().top;
+        //                     $el.next().css('transform', `translate3d(0px,-${nextElm}px, 0px)`);
+        //                 }catch(e){}
+
+        //             }
+        //             // console.log($el)
+        //         });
+
+        //         hammertime.on('swipedown', function () {
+        //             console.log('swipedown');
+        //             if($el.prev() != undefined){
+        //                 try{
+        //                     var prevElem = $el.prev().offset().top;
+        //                     console.log($el.prev())
+        //                     $el.css('transform', `translate3d(0px,${prevElem}px, 0px)`);
+        //                 }catch(e){}
+                        
+        //             }
+        //         });
+        //     });
+
+
+        // }());
+    </script>
+    
+    
+
+
+    </html>

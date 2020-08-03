@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="chrome=1,IE=edge">
+<title></title>
+<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="../../library/css/common.css">
+<script type="text/javascript" src="../../library/js/jquery.1.12.4.js"></script>
+</head>
+<style type="text/css">
+.com_tit {padding:100px 0 80px; font-size:70px; text-align: center;}
+.com_txt {max-width:70%; margin:0 auto; font-size:30px; text-align: center;;}
+
+.sec01 {background: #ddd;}
+.sec01 .content {font-size:170px;}
+.sec01 .content .progress {position:fixed; left:50%; top:500px; width:70%; height:100px; margin-left:-35%; border:1px solid #222;; text-align: center;}
+.sec01 .content .progress .bar {display: block; width:0%; height:100%;; background-color: #111;}
+.sec01 .content .progress .txt {font-size:30px;}
+</style>
+<body>
+	<div class="wrap">
+		<section class="sec01">
+			<h2 class="com_tit">스크롤 백분율 구하는 방법</h2>
+			<p class="com_txt">뒤에 나오는 예제에서 반복 학습을 계속합니다. 부담없이 학습하세요 :)</p>
+			<article class="content">
+				<div class="progress">
+					<span class="bar"></span>
+					<p class="txt">
+						0%
+					</p>
+				</div>
+				가<br>
+				나<br>
+				다<br>
+				라<br>
+				마<br>
+				바<br>
+				사<br>
+				아<br>
+				자<br>
+				차<br>
+				카<br>
+				타<br>
+				파<br>
+				하
+			</article>
+		</section>
+	</div>
+<!--
+****** 2020 깡코딩 LICENSE 안내 ******
+이 프로그램은 저작권법의 보호를 받습니다.
+이 프로그램은 깡코딩 강의를 수강한 수강생들에게 무료로 제공됩니다.
+이 프로그램은 웹,앱 프로젝트에 자유롭게 사용할 수 있지만
+웹사이트, 커뮤니티, 블로그에 배포하거나 인터넷 강의, 유튜브등 유료 무료 강좌에 배포, 사용하는
+행위는 민사 및 형사법에 의해 엄격히 규제되어 있으며, 기소 사유가 됩니다.
+-->
+<script type="text/javascript">
+$(function(){
+
+	var text = $('.progress .txt'); //퍼센트값을 담을 엘리먼트
+	var progressBar = $('.progress .bar'); //퍼센트 게이지 엘리먼트
+
+	function getPercent(){
+
+		var scrollHeight = $('.sec01').height(); //스크롤 거리를 구합니다
+		var scrollRealHeight = (scrollHeight - $(window).height()); //스크롤할 실제 거리를 구합니다
+		var winScrollTop = $(window).scrollTop(); //스크롤바의 상단 위치를 구합니다
+		var scrollPercent = (winScrollTop / scrollRealHeight) * 100; //백분율을 구합니다
+		var textPercent = Math.floor(scrollPercent); //텍스트에 삽입될 값은 소수점을 버려줍니다
+		// console.log(winScrollTop);
+		// console.log(scrollPercent);
+
+		render(textPercent,scrollPercent);
+	};
+
+	function render(textPercent,scrollPercent){
+		text.text(textPercent + '%'); //텍스트 값을 업데이트 합니다
+
+		progressBar.css({ //게이지 값을 업데이트합니다
+			width : scrollPercent + '%'
+		});
+	};
+
+	function init(){
+		getPercent();
+	};
+
+	$(window).scroll(function(){//스크롤 이벤트를 추가합니다.
+
+		getPercent();
+
+	});
+
+	init(); //초기화
+
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
