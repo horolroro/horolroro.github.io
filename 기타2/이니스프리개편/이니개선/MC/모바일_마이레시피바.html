@@ -1,0 +1,422 @@
+
+
+
+ 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+
+<title>이니스프리 | Natural benefits from Jeju, innisfree</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
+<meta name="Author" content="innisfree.co.kr">
+<meta name="title" content="innisfree">
+<meta name="keywords" content="화장품 쇼핑몰, 스킨케어, 메이크업, 마스크팩, 바디, 헤어, 남성화장품, 맨스토어, 마이쿠션, 추천제품,기획전, 이벤트">
+<meta name="description" content="피부에 휴식을 주는 섬 자연주의 화장품 브랜드 이니스프리의 온라인 화장품 쇼핑몰입니다.">
+<meta name="format-detection" content="telephone=no">
+<link href="http://d2veos.innisfree.com:8401/resources/mobile2/images/common/favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" href="http://d2veos.innisfree.com:8401/resources/fonts/fonts.css">
+<link rel="stylesheet" href="http://d2veos.innisfree.com:8401/resources/mobile2/css/common.css">
+<link rel="stylesheet" href="http://d2veos.innisfree.com:8401/resources/mobile2/css/ui.css">
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css"> -->
+
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/common/js/jquery.util.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/jquery-ui.min.js"></script>
+<!-- <script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/swiper.min.js"></script> -->
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/ui.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="http://d2veos.innisfree.com:8401/resources/mobile2/js/jquery.infinitescroll.min.js"></script>
+
+<!-- 추가할 CSS -->
+<link rel="stylesheet" href="https://images.innisfree.co.kr/resources/mobile2/css/exp.css">
+
+<link rel="stylesheet" href="./resources/mobile2/css/ui_add.css">
+<script type="text/javascript" src="./resources/mobile2/js/ui_add.js"></script>
+
+<style type="text/css">
+    
+</style>
+</head>
+<body>
+	
+<div id="container"> 
+<!-- header -->
+<header class="sub">
+	<div class="headerWrap">
+		<div class="headerInner fixed">
+			<div class="headerAside">
+				<h1 class="headerTitle">마이레시피바</h1>
+				<div class="backBtn">
+					<a href="javascript:;" onclick="window.history.back();" class="backPage">이전 페이지로 이동</a>
+				</div>
+				<div class="homeBtn">
+					<a href="/kr/ko/mMain.do" class="homePage">메인 페이지로 이동</a>
+				</div>
+				<div class="myBox">
+					<button type="button" class="mySearch" onclick="layerOpen('search')"><span>검색</span></button>
+					<button type="button" class="myCart" onclick="javascript:$.jhead.fnCartPage();"><span>장바구니</span><em id="cartCntTxt">0</em></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div id="container">
+	<div class="subWrap">
+		<div id="mrbReserve" class="mrbReserve">
+			<h2 class="colorBlack">예약하기</h2>
+	
+			<div class="mrbReserveWrap">
+				<!-- 서비스 선택 추가 -->
+				<div class="resStoreBox selectCommon01 mgt40">
+					<div class="selectBox1 selected">
+						<em>서비스(Service)</em>
+						<select name="shopCd" id="resStore" class="select1">
+							<option value="">서비스 선택</option>
+							<option value="13000363">개인 체험 프로그램</option>
+						</select>
+					</div>
+				</div>
+				<!-- //서비스 선택 추가 -->
+	
+				<div class="resStoreBox selectCommon01 mgt40">
+					<div class="selectBox1 selected">
+						<em>예약 매장 (Reservation Store)</em>
+						<select name="shopCd" id="resStore" class="select1">
+							<option value="">매장 선택</option>
+							<option value="13000363">이니스프리 강남 플래그십</option>
+						</select>
+					</div>
+				</div>
+	
+				<div class="resDateBox inputCommon01 mgt40">
+					<label for="resDate" class="inputLabel"><span class="inputSpan">예약 일자 (Reservation Date)</span></label>
+					<div class="inputBox filled">
+						<input type="text" id="rsrvDt" name="rsrvDt" value="" class="field input1 colorGray" readonly="">
+						<label for="dpSttlDt" class="icon">
+							<span class="hide">달력으로 보기</span>
+						</label>
+					</div>
+				</div>
+				
+				<div class="resTimeBox selectCommon01 mgt40">
+					<em>예약 시간 (Reservation Time)</em>
+					<div class="resTimeWrap">
+						<ul>
+							<li class="on"><span class="time">10:00</span><span class="resStatus">예약가능</span></li>
+							<li><span class="time">10:00</span><span class="resStatus">예약가능</span></li>
+							<li><span class="time">10:00</span><span class="resStatus">예약가능</span></li>
+							<li><span class="time">10:00</span><span class="resStatus">예약가능</span></li>
+						</ul>
+					</div>
+				</div>
+	
+				<!-- 외국인 추가 -->
+				<div class="resForeigerChkBox inputCommon01 mgt40">
+					<div class="inputBox filled">
+						<label for="resForeigerChk" class="inputLabel"><span class="inputSpan">외국인(Foreigner)</span></label>
+					
+						<ul class="agreeChk">
+							<li class="mgt5">
+								<span class="cmnCb1 small">
+									<label for="foreign_chk1_1" class="inputRadio"><input type="radio" id="foreign_chk1_1" name="foreign" class="chk_radio"> <span>아니오(NO)</span></label>
+								</span>   
+							</li>
+							<li class="mgt5">
+								<span class="cmnCb1 small">
+									<label for="foreign_chk1_2" class="inputRadio"><input type="radio" id="foreign_chk1_2" name="foreign" class="chk_radio"> <span>예(YES)</span></label>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //외국인 추가 -->
+	
+				<div class="resNameBox inputCommon01 mgt40">
+					<div class="inputBox filled">
+						<label for="resName" class="inputLabel"><span class="inputSpan">신청자명 (Name)</span></label>
+						<input type="text" id="cstmNm" name="cstmNm" class="input1" value="" maxlength="100">
+					</div>
+				</div>
+
+				<!-- 소속 그룹추가 -->
+				<div class="resNameBox inputCommon01 mgt40">
+					<div class="inputBox filled">
+						<label for="resName" class="inputLabel"><span class="inputSpan">소속그룹 (Group)</span></label>
+						<input type="text" id="" name="" class="input1" value="" maxlength="100">
+					</div>
+				</div>
+				<!-- //소속 그룹추가 -->
+	
+				<div class="mblNoBox selectCommon02 mgt40">
+					<ul class="after altPosition">
+						<li>
+							<div class="selectCommon01">
+								<em>휴대전화 (Phone)</em>
+								<div class="selectBox1 selected">
+									<label for="userPhone"></label>
+									<select name="mblNo1" id="phone1" class="select1">
+											<option value="010" selected="selected">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="018">018</option>
+											<option value="019">019</option>
+									</select>
+								</div>
+							</div>
+						</li>
+						<!-- 스타일 추가 -->
+						<li class="bar" style="visibility:hidden;">-</li>
+						<!-- //스타일 추가 -->
+						<li>
+							<div class="inputCommon01">
+								<div class="inputBox">
+									<input type="tel" class="input1" name="mblNo2" id="phone2" value="" maxlength="4" onkeyup="fnCheckNum(this);">
+									<label for="mblNo2" class="inputLabel"><span class="inputSpan"></span></label>
+								</div>
+							</div>
+						</li>
+						<li class="bar">-</li>
+						<li>
+							<div class="inputCommon01">
+								<div class="inputBox">
+									<input type="tel" class="input1" name="mblNo3" id="phone3" value="" maxlength="4" onkeyup="fnCheckNum(this);">
+									<label for="mblNo3" class="inputLabel"><span class="inputSpan"></span></label>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="btnCommon01 sizeT02 mgt20">
+						<a href="javascript:void(0);" onclick="javascript:goPhoneAuth('N');" class="btnBk">인증하기</a>
+					</div>
+					<p class="warning">고객님의 휴대전화 번호가 맞는지 확인 부탁드립니다.<br> 아닐 경우 연락 가능한 번호로 수정 해주세요.</p>
+				</div>
+	
+				<div class="smsChk mgt20">
+					<div class="foreignerChkBox cmnCb1 small">
+						<label for="foreignerChk" class="inputChk"><input type="checkbox" name="foreignerChk" id="foreignerChk" class="chk_check"> <span>Check if you are a foreigner</span></label>
+					</div>
+					<div class="smsChkBox cmnCb1 small mgt8" id="smsAgreeBox">
+						<label for="smsChk" class="inputChk"><input type="checkbox" name="smsChk" id="smsChk" class="chk_check"> <span>마이 레시피 바 예약 관련 SMS 수신에 동의합니다.</span></label>
+					</div>
+					<div class="scrollBox mgt30">
+						<p class="smsNoticeBox scroll">
+							<em>주의사항 (Notes)</em>
+							예약 시간 이후 10분 내 미방문 시 자동 취소됩니다.<br>
+							예약 접수 결과와 함께 '예약번호‘가 SMS로 자동 발신됩니다. (외국인 고객의 경우, 이메일로 발송됩니다.)<br>
+							서비스를 이용 받으시려면 매장에 오실 때 예약 완료 SMS를 보여주셔야만 이용 가능합니다.<br>
+							예약 확인은 Reservation(예약확인 및 취소) 페이지에서 가능합니다.(예약번호 입력 필수)<br>
+							<!-- 2019. 09. 09 jgkim 명동 플래그십 스토어 추가 -->
+							예약 취소는 온라인에서 하루 전까지 가능합니다.(예약 문의 전화 : 강남 플래그십 스토어 02-535-0584, 명동 플래그십 스토어 02-776-0117 )<br>
+							Your reservation will be automatically canceled if you do not arrive by 10 minutes after your scheduled time.<br>
+							Confirmation of your reservation and a ‘reservation number’ will be sent to you via automatic text message. (For foreign customers, an e-mail will be sent.)<br>
+							In order to use our service, you must present your reservation confirmation text message or e-mail.<br>
+							You may check your reservation details on the Reservation (confirmation and cancel) page. A reservation number is required.<br>
+							Payment is available on-site after My Recipe Bar service is finished.<br>
+							<!-- 2019. 09. 09 jgkim 명동 플래그십 스토어 추가 -->
+							Cancelling a reservation is available up until the day before your scheduled date. (Reservation inquiries: Gangnam Flagship Store +82-2-535-0584, Myeongdong Flagship Store +82-2-776-0117 )
+						</p>
+					</div>
+				</div>
+				
+				<div class="emailBox emailField">
+					<div class="selectCommon03 mgt40 mgb10">
+						<ul class="after altPosition">
+							<li>
+								<div class="inputCommon01">
+									<div class="inputBox selectionType filled">
+										<input id="email1" name="email1" class="input1" type="text" value="">
+										<label for="" class="inputLabel"><span class="inputSpan">이메일</span></label>
+										<span class="trans"></span>
+									</div>
+								</div>    
+								<span class="sep">@</span>                                     
+							</li>
+							<li>
+								<div class="inputCommon01">
+									<div class="inputBox">
+										<input id="email2" name="email2" class="input1" type="text" value="">
+									</div>
+								</div>                            
+							</li>
+						</ul>                                                                             
+					</div>
+					<p class="warning">For foreign customers, a reservation number will be sent to the e-mail address you provided above. You must agree to receiving e-mails to make a reservation.</p>
+					<div class="emailAgreeBox cmnCb1 small mgt15">
+						<label for="emailChk" class="inputChk"><input type="checkbox" name="emailAgree" id="emailChk" class="chk_check"> <span>I agree to receiving e-mails.</span></label>
+					</div>
+				</div>
+	
+				<div class="agreeArea mgt25">
+					<div class="agreeBox">
+						<div class="scrollBox">
+							<div class="agreeNotice scroll">
+								<em>개인정보 수집 및 이용동의 (Consent to the Collection and Use of Personal Information)</em>
+								회사는 My Recipe Bar 프로그램 운영을 위하여 다음과 같이 개인정보를 수집 및 이용합니다.
+								<ul>
+									<li>수집하는 개인정보의 항목 : 이름, 휴대전화번호 (단, 외국인의 경우 휴대전화번호 대신 이메일주소)</li>
+									<li>수집 및 이용목적 : My Recipe Bar 프로그램 예약</li>
+									<li>보유 및 이용기간 : My Recipe Bar 프로그램 종료 후 1개월</li>
+								</ul>
+								고객님께서는 개인정보 수집 및 이용동의에 거부할 수 있습니다. 단, 거부하는 경우 예약서비스 이용이 불가능 합니다.<br>
+								<br>
+								The company collects and makes use of the following personal information to operate its My Recipe Bar program.
+								<ul>
+									<li>Collected personal information: name, mobile phone number (e-mail address for foreign customers instead of mobile phone number)</li>
+									<li>Purpose of collection and use: making a reservation for My Recipe Bar</li>
+									<li>Period of possession and use: 1 month after finishing My Recipe Bar program</li>
+								</ul>
+								You may reject the collection and use of personal information. In this case though, you will not be able to use the reservation service.
+							</div>
+						</div>
+						<ul class="agreeChk">
+							<li class="mgt5">
+								<span class="cmnCb1 small">
+									<label for="useAree1_1" class="inputRadio"><input type="radio" id="useAree1_1" name="useAree1" class="chk_radio"> <span>동의합니다.(I agree)</span></label>
+								</span>   
+							</li>
+							<li class="mgt5">
+								<span class="cmnCb1 small">
+									<label for="useAree1_2" class="inputRadio"><input type="radio" id="useAree1_2" name="useAree1" class="chk_radio"> <span>동의하지 않습니다.(I disagree)</span></label>
+								</span>
+							</li>
+						</ul>
+					</div>
+	
+					<div class="agreeBox mgt25">
+						<div class="scrollBox">
+							<div class="agreeNotice scroll">
+								<em>개인정보 처리위탁에 대한 동의 (Consent to the Consigned Processing of Personal Information)</em>
+								회사는 My Recipe Bar 프로그램 운영을 위하여 다음과 같이 개인정보의 처리를 위탁합니다.
+								<ul>
+									<li>개인정보 처리업무를 위탁받는 자 : CJ올리브네트웍스</li>
+									<li>개인정보 처리를 위탁받는 업무 : 문자메시지 발송</li>
+									<li>개인정보 처리업무를 위탁받는 자 : IBM</li>
+									<li>개인정보 처리를 위탁받는 업무 : 개인정보의 전산관리 및 저장</li>
+									<li>개인정보 처리업무를 위탁받는 자 : 아이그린</li>
+									<li>개인정보 처리를 위탁받는 업무 : 마이 레시피바 서비스 운영 대행</li>
+								</ul>
+								고객님께서는 개인정보 수집 및 이용동의에 거부할 수 있습니다. 단, 거부하는 경우 예약서비스 이용이 불가능 합니다.<br>
+								<br>
+								The company consigns the following handling of personal information to operate My Recipe Bar program.
+								<ul>
+									<li>Consignee of personal information handling: CJ Olive Networks</li>
+									<li>Consigned personal information handling: Sending text messages</li>
+									<li>Consignee of personal information handling: IBM</li>
+									<li>Consigned personal information handling: Systematic management and saving of personal information.</li>
+									<li>Consignee of personal information handling: IGREEN</li>
+									<li>Consigned personal information handling: My Recipe Bar service operation</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="agreeChk">
+							<li class="mgt5">
+								<span class="cmnCb1 small">
+									<label for="useAree2_1" class="inputRadio"><input type="radio" id="useAree2_1" name="useAree2" class="chk_radio"> <span>동의합니다.(I agree)</span></label>
+								</span>   
+							</li>
+							<li class="mgt5">
+								<span class="cmnCb1 small">
+									<label for="useAree2_2" class="inputRadio"><input type="radio" id="useAree2_2" name="useAree2" class="chk_radio"> <span>동의하지 않습니다.(I disagree)</span></label>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="smsChkBox cmnCb1 small mgt25">
+						<label for="allAgreeChk" class="inputChk"><input type="checkbox" name="smsChk" id="allAgreeChk" class="chk_check"> <span>전체 동의합니다.<br>(I accept the full terms and conditions)</span></label>
+					</div>
+				</div>
+	
+				<div class="btnWrap">
+					<a href="javascript:void(0);" onclick="myRecipeRsrvGo();" class="btnBk">예약하기(Reservation)</a>
+				</div>
+			</div>
+	
+			<!-- 팝업 -->
+			<div class="mrbPopWrap">
+				<!-- 예약 폼 입력 체크 -->
+				<div class="layPop size560" id="reserveWriteInpCk">
+					<div class="wrapModal">
+						<div class="inner">
+							<div class="popWrap">
+								<div class="popBody">
+									<div class="mid">
+										입력 되지 않은 정보가 있습니다.<br>
+										다시 확인해주세요 : )<br>
+										There is some information missing.<br>
+										Please check again :)
+									</div>
+									<div class="btnWrap">
+										<div class="btnCommon01 sizeT02">
+											<a href="javascript:void(0);" class="btnBk" onclick="layerClose();">확인</a>
+										</div>
+									</div>
+								</div>      
+							</div>										
+							<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+						</div>
+					</div>  
+				</div>
+	
+				<!-- 휴대폰 인증1-->
+				<div class="layPop size560" id="reservePhoneCk1">
+					<div class="wrapModal">
+						<div class="inner">
+							<div class="popWrap">
+								<div class="popBody">
+									<div class="mid">
+										휴대전화 인증을 완료해주세요.
+									</div>
+									<div class="btnWrap">
+										<div class="btnCommon01 sizeT02">
+											<a href="javascript:void(0);" class="btnBk" onclick="layerClose();">확인</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+						</div>
+					</div>  
+				</div>
+	
+				<!-- 휴대폰 인증2-->
+				<div class="layPop size560" id="reservePhoneCk2">
+					<div class="wrapModal">
+						<div class="inner">
+							<div class="popWrap">
+								<div class="popBody">
+									<div class="mid">
+										휴대전화 인증 완료 후<br>
+										다시 시도해주세요 :)
+									</div>
+									<div class="btnWrap">
+										<div class="btnCommon01 sizeT02">
+											<a href="javascript:void(0);" class="btnBk" onclick="layerClose();">확인</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+					</div>  
+				</div>
+			</div>
+			<!-- //팝업 -->
+		</div>
+
+	</div>
+	
+</div>
+
+
+<!-- footer -->
+
+
+</body>
+</html>

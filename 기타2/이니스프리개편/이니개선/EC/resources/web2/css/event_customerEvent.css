@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+.eventCon .evtjoin{display: block;width: 300px;height: 60px;font-size: 24px;line-height: 60px;color: #fff;background: #000;border-radius: 3px;text-align: center;
+    margin: 30px auto;}
+.customerEventArea .pdtName{font-family: 'notoM';}
+.customerEventArea .replyList h4{padding: 3rem 0rem 0.5rem; font-family: 'notoM';color: #000; font-size: 26px;}
+
+.customerEventLayer{color: #222;}
+.customerEventLayer .btnWrap{margin-right: 0;margin-left: 0;}
+.customerEventLayer .eventTable {padding: 16px 0px;color: #000;text-align: left; font-family: 'notoL';}
+.customerEventLayer .eventTable td{padding: 5px 0;}
+
+.customerEventLayer .eventTable_2 {padding: 0px 0px;color: #000;text-align: left; font-family: 'notoL';}
+.customerEventLayer .eventTable_2 th{font-family: 'notoL';}
+
+.customerEventLayer .eventTable_3 {margin:36px 0 22px; padding: 18px 24px;color: #000;text-align: left; font-family: 'notoL';background: #f3f3f3;}
+.customerEventLayer .eventTable_3 th {color: #777;}
+.customerEventLayer .eventTable_3 td{font-family: 'notoM';}
+
+.customerEventLayer .subTit_1{font-size: 18px; margin-bottom: 16px;}
+.customerEventLayer .subTit_2{font-size: 18px;margin:24px 0 12px;}
+.customerEventLayer textarea{margin:14px 0 15px}
+.customerEventLayer .txtBx_1{border-top: 1px solid #000; border-bottom: 1px solid #a7a7a7; padding: 15px 0; font-size: 14px;margin-top: 36px;}
+.customerEventLayer .txtBx_2{padding: 21px 24px;background: #f3f3f3;font-family: 'notoM';margin-bottom: 21px;}
+.customerEventLayer .txtBx_2 p{line-height: 1.4;}
+.customerEventLayer .profileRegTerms{border-top: 0;margin-top:0}
+.customerEventLayer .profileRegTerms .terms{ margin: 13px 0 0;height: 151px;font-size: 14px;padding: 8px; overflow-y: scroll;}
+.customerEventLayer .profileRegTerms label{font-family: 'notoM'}
+.customerEventLayer .completeTxt{text-align: center;padding-top: 3px;}
+.customerEventLayer .completeTxt em{display: block; font-family: 'notoM';font-size: 18px;}
+.customerEventLayer .completeTxt span{font-family: 'notoM';margin-left:10px}
+.customerEventLayer .txtBx_1 + .bulListType2{margin-top: 21px;}
+.customerEventLayer .bulListType2 > li{font: 13px/1.4 'notoL';}
+
