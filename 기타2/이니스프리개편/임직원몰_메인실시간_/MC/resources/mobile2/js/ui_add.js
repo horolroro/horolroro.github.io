@@ -86,7 +86,20 @@ var onRanking = {
 			e.preventDefault();
 		
 			$('.cateWrap ul li').removeClass('active');
-			$(this).addClass('active')
+			$(this).addClass('active');
+
+			var sum = 0; 
+			var dist;
+			$(this).prevAll().each(function(e){
+				sum += $(this).width();
+			})
+			
+			dist = sum - ($(this).parent().width() - $(this).width()) / 2;
+			if(dist<0){dist=0;}
+
+			$(this).parent().animate({
+				scrollLeft :dist
+			},300)
 		});
 	}
 }

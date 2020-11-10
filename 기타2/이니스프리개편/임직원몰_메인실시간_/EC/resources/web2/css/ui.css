@@ -7379,6 +7379,8 @@
 	padding: 0 8px;
 	box-sizing: border-box;
 }
+.reivewWrite .addBtn.full {margin:16px 0 8px}
+.reivewWrite .addBtn.full span {float:none;width:100%;padding:0;}
 .reivewWrite .addBtn button {
 	width: 100%; height: 56px;
 	background: #f3f3f3;
@@ -7399,6 +7401,11 @@
 	font:14px/1 'notoL';
 	color: #d72137;
 }
+.reivewWrite .agreeWrap {position:relative;margin-top:15px;}
+.reivewWrite .agreeWrap .inputChk {font-size:16px;vertical-align:top;}
+.reivewWrite .agreeWrap .inputChk > span:after {top:1px}
+.reivewWrite .agreeWrap .linkArwB {position:absolute;right:0;top:0;line-height:1;text-decoration:underline;}
+.reivewWrite .agreeWrap .altTxt {}
 .reivewWrite .btnWrap {margin-top: 40px;}
 
 .reviewAddLayer .txt {

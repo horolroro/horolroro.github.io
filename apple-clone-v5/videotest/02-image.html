@@ -48,7 +48,7 @@
 				progress = pageYOffset / (document.body.offsetHeight - window.innerHeight);
 				if (progress < 0) progress = 0;
 				if (progress > 1) progress = 1;
-
+				console.log(progress)
 				requestAnimationFrame(function () {
 					currentFrame = Math.round((totalImagesCount - 1) * progress);
 					imgElem.src = videoImages[currentFrame].src;

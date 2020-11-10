@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* common 수정할것 */
+
+.floatingBanner a{box-shadow: 2px 3px 4px 1px rgba(0,0,0,.2); border: 0;}
+.floatingBanner .btnHide::before{background: #363636 url(../images/common/icon_exfloatingclose.png) no-repeat center;background-size: contain;}
+header nav .headerNav > .list > li .ic-hot{position: absolute; top: 6px; right: 2px; width: 1.4rem; height: 1.4rem; background: url(../images/common/ic_hot.png) no-repeat;background-size: contain;}
+
+/* ui 수정할것 */
+.payMethodSec .etcList li.etcList10 label {background:url('../images/order/icon_toss.png') no-repeat 50% 50%; font-size: 0;}
+
+/* 2차개선 프로젝트 css */
+/* 20.05 온라인실시간:: 비주얼 슬라이더:: 가로분할,세로분할 */
+.productState .pstaff {background: #000; font-family: 'roboR';}/* 상세 임직원할인아이콘 */
+.productStyle .pstaff {padding: 0 0.6rem;background: #000;border-radius: 0.8rem;color: #fff;font-size: 0.9rem;}
+.staffShopWrap{position: relative; min-height: 30rem;}
+.staffShopWrap .mallHead{text-align: center;}
+.staffShopWrap .mallHead .bx{padding: 7.7rem 0;background: url(../images/common/bg_mallHead.png) no-repeat;background-size: cover;}
+@media screen and (min-width: 800px) {
+    .staffShopWrap .mallHead{background-color: #f3f3f3;}
+    .staffShopWrap .mallHead .bx{padding: 3rem 0;width: 750px; height: 247px; margin: 0 auto; background-size: auto;}
+}
+.staffShopWrap .mallHead .bx .tit{color: #000; font-size: 2.3rem; font-family: 'notoM';}
+.staffShopWrap .mallHead .bx .desc{color: #555; width: 48%; margin: 5.5rem auto 0 auto;line-height: 1.8rem;}
+.staffShopWrap .mallHead .bx button.noteToggle{position: absolute;top: 15px;right: 15px;width: 25px; height: 25px; color: transparent;background: url(../images/common/btn_noteopen.png) no-repeat; background-size: 100%;}
+
+.staffShopWrap .mallHead .bx .note{display: none; position: absolute; top: 63px; right: 25px;width: 90%; padding: 30px 20px 20px; text-align: left; background: #fff; border: 2px solid #a7a7a7;box-sizing: border-box;z-index: 29;}
+.staffShopWrap .mallHead .bx .note ul{position: relative;}
+.staffShopWrap .mallHead .bx .note ul::before{content: ''; position: absolute; top:-53px; right: -22px; display: block; width: 26px;height: 23px;background: url(../images/common/bg_notetail.png) no-repeat; background-size: 100%;}
+.staffShopWrap .mallHead .bx .note li{position: relative;padding-left: 10px;margin-bottom: 10px; color: #555;}
+.staffShopWrap .mallHead .bx .note li::before{content: '-'; position: absolute; left: 0; top: -2px; }
+
+.mdpick{margin-bottom: 4rem;}
+.mdpick .tit_area{margin: 4rem 0;}
+.mdpick .tit_area .tit{display: flex; flex-flow: column; padding:0 2rem;  }
+.mdpick .tit_area .tit h4{font-size: 2.2rem;font-family: 'notoM';color: #000; }
+.mdpick .tit_area p{line-height: 1.8rem; margin-top: 1rem; margin-bottom: 2rem; color: #555;}
+.mdpick .tit_area .bgarea img{width: 100%;}
+.mdpick .horizScroll{margin:0}
+
+
+

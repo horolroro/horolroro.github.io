@@ -1,0 +1,17 @@
+.wrap {max-width: 1920px; margin:0 auto;}
+/* tit */
+.tit {position: fixed; left:50%; top:50%; z-index:100; font-family: 'NotoB'; font-size:80px; line-height: 1; color:#fff; transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%); -moz-transform:translate(-50%, -50%); -o-transform:translate(-50%, -50%); -ms-transform:translate(-50%, -50%); opacity: .6;}
+.tit span {position: absolute; right:0; top:-30px; font-size:30px; font-family: 'NotoM'; border-bottom:3px solid rgba(255,255,255,.6);}
+
+/*이펙트*/
+.ggang_effect {overflow:hidden; position:relative; width:100%; height:100vh; background-size: cover; background-position: 50% 50%; background-repeat:no-repeat;}
+.ggang_effect:after {position: absolute; left:0; top:0; z-index:10; width: 100%; height: 100%; background-color: #000; content:"";}
+.ggang_effect.bg01 {background-image:url('../../images/1.jpg');}
+
+.ggang_effect .img_box {overflow: hidden; position: relative; z-index: 20; float: left; background: inherit; opacity: 0; transition-duration: 2s;}
+.ggang_effect .img_box.active {opacity: 1;}
+
+.ggang_effect .img_box .img_position {position: absolute; background:inherit;}
+
+
+

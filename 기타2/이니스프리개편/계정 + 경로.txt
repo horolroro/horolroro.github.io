@@ -1,0 +1,36 @@
+cdms : http://cdmsout.amorepacific.com/main.jsp
+cdms : http://cdmsin.amorepacific.com/main.jsp
+
+CDMS
+ID : AC913602 / PW : 1q2w3e4r5t6y (병만과장님 계정)
+
+VPN
+https://vpn.amorepacific.com/
+id: AC925101
+pw:  Qkdldhgkwkem12!@
+
+ap-on/iam/sac
+id:    AC925101
+pw:  1qazxsw23edc
+
+
+SFTP 운영 비번 
+AC925101
+3w#Cg3h3bq
+
+VDI
+AC924512
+Aqswdefr12!!
+
+
+스테이징 was :  /app/INNISTG/WAS/np_innisfree_kr.stg.ear/np_innisfree_kr_stg.war/
+스테이징 web : /app/INNISTG/WEB/
+
+
+
+운영서버 기본경로
+WAS
+/app/INNIMALL/WAS/np_innisfreemall_kr_2019.ear/np_innisfreemall_kr_2019.war/
+
+WEB
+/app/INNIMALL/WEB/

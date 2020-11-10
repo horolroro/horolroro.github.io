@@ -1,3 +1,5 @@
+//WEB
+
 $(document).ready(function(){
 	//온라인실시간
 	if($('.onRanking').length){onRanking.init();}
@@ -166,18 +168,13 @@ var popEvtSlider = {
 	init: function(){
 		var mainSlidePop = $('.mainSlidePop');
 
-		mainSlidePop.find('.txtArea').mCustomScrollbar({
-			theme:"custom-theme"
-		});
-		// mainSlidePop.find('.txtArea').niceScroll({cursorcolor:"#b2b2b2", cursorwidth:2, cursorborder:'none'});
-		//나이스크스롤.js는 스와이퍼안에서 위치를 잘 못잡아서 안쓰기로
+		mainSlidePop.find('.txtArea2').addClass('mCustomScrollbar');
 		mainSlidePop.find('.popWrap').css({transform: 'scale(1)'})
 		
 		popEvtSlider.slider();
 		$('.btnWrap .close').on('click', function(){
 			mainSlidePop.find('.popWrap').css({transform: 'scale(0)'});
-			mainSlidePop.css({background: 'none'});
-			setTimeout(function(){ mainSlidePop.hide()}, 1000);
+			mainSlidePop.css({background: 'none',zIndex:'0'});
 		})
 	},
 	slider : function(){
@@ -185,9 +182,14 @@ var popEvtSlider = {
 		var itemLength =  $('.'+ obj).find('.swiper-slide').length;
 		var next = $('.mainSlidePop').find('.next');
 		var today = $('.mainSlidePop').find('.today');
+		
+		if($('.popEvtSlider .slide').find('li').length == 1){
+			next.hide();
+			today.show();
+		}
 
 		var slide = new Swiper('.' + obj + ' .slide', {
-			loop: false,
+			loop: true,
 			// speed: 600,
 			// autoplay: {delay: 5000},
 			//autoHeight: true,
@@ -220,3 +222,20 @@ var popEvtSlider = {
 		})
 	}
 }
+
+//제품 상세, 함께 진행하는 프로모션 제품
+$(function(){
+	var list = $('.pdtPromo').find('.scrollWrap');
+
+	list.niceScroll({cursorcolor:"#e2e2e2", cursorwidth:8, cursorborder:'none', horizrailenabled: false});
+		
+	$('a.btnpromo').on('click', function(){
+		$(this).parent().toggleClass('active');
+
+		if(!list.is(':visible')){
+			list.slideDown();
+		}else{
+			list.slideUp();
+		}
+	})
+});

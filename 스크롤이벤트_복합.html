@@ -76,8 +76,8 @@
 		justify-content: center;
 
 		}
-	.ilbuni .img{opacity: 0; position: absolute;width:300px;transition: all 1s;}
-	.ilbuni.active .img{opacity: 1; transform: scale(1.3);}
+	.ilbuni .img{ position: absolute;width:300px;;transform: translate(-300% ,-300%) scale(0);opacity: 0; transition: all 1s; overflow: hidden;}
+	.ilbuni.active .img{transform: translate(0) scale(1); opacity: 1;}
 	.ilbuni .img img{width: 100%;}
 	/* .box.active .ilbuni .img{opacity: 1;} */
 	</style>

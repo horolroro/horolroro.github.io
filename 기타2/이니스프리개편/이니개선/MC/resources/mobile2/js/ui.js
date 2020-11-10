@@ -143,8 +143,15 @@ function allMenu() {
 		conts.toggleClass('short');
 	});
 	$('#proMore').on('click',function(){
-		$('.pdtViewMobile').toggleClass('grad');
-		$(this).toggleClass('open');
+		var proST = $(window).scrollTop();
+		if ($(this).hasClass('open')) {
+			$('.pdtViewMobile').removeClass('grad');
+			$(this).removeClass('open');
+		} else {
+			$('.pdtViewMobile').addClass('grad');
+			$(this).addClass('open');
+			window.scrollTo(0,proST);
+		}
 	});
 	$('.qMypage, .home').on('click',function(){
 		$('.dim').hide();
@@ -624,9 +631,15 @@ var mainPopClose = function(state, seq) {
 }
 
 defaultObj.win.on({
+	
 	'ready' : function() {
 		var popupId = $('.mainPopup').data('target');
-		if($.jutil.getCookie("mainPopup_"+popupId) != 'hide') {$('.mainPopup').fadeIn(200);}
+		var dim = $('.dim');
+		
+		if($.jutil.getCookie("mainPopup_"+popupId) != 'hide') {
+			//$('.mainPopup').fadeIn(200);
+			dim.show();
+		}
 	},
 	'scroll': function() {
 		var scrollTop = defaultObj.doc.scrollTop();
@@ -734,23 +747,6 @@ var wishSel = function(myshop_yn, myShopRegFl) {
 		}
 	}
 }
-
-/* 특정 제품 구매 팝업 */
-var popBuy = function(e) {
-	$('.popBuy').remove();
-	var popMsg = '구매 시 00을 확인하세요.';
-	var popHtml = "";
-		popHtml += '<div id="popBuy" class="popBuy"><div class="inner">';
-		popHtml += '<p class="msg">' +  popMsg + '</p>';
-		popHtml += '<div class="btn_wrap"><button type="button" class="btnBk">확인</button></div>';
-		popHtml += '<a href="#none" class="btn_close">닫기</a>';
-		popHtml += '</div></div>';
-		$('#container').append(popHtml);
-}
-$(document).on('click','.popBuy .btn_close',function(){
-	$(this).closest('.popBuy').remove();
-	return false;
-});
 
 var tostPop = function(txt, type) {
 	var body = $('body');

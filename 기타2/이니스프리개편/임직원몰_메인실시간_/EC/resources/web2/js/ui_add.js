@@ -8,13 +8,17 @@ $(document).ready(function(){
 //온라인 실시간랭킹
 var onRanking = {
 	init: function(){
+		var idx = Math.round($(".swiper2 .swiper-slide").length) 
+		var idx2 = Math.round($(".swiper3 .swiper-slide").length) 
+		console.log('idx='+idx+','+'idx2='+idx2)
+
 		var swiper2 = new Swiper ('.swiper2', {
 			autoplay: {
 				delay: 2500,
 			},
 			speed : 1000,
 			spaceBetween: 10,
-			slidesPerView: 5,
+			slidesPerView: 7,
 			slidesPerGroup : 1,
 			loop: true,
 			autoHeight: true,
@@ -45,8 +49,8 @@ var onRanking = {
 							btnAuto.text('재생');
 						}
 					});
-					var idx = Math.round(($(".swiper2 .swiper-slide").length /2) -1) 
-					if(idx <= 5) {
+					
+					if(idx <= 4) {
 						$('.swiper2').addClass( "disabled" );
 
 						btnAuto.on('click', function(){
@@ -58,6 +62,7 @@ var onRanking = {
 				}
 			}
 		});
+		
 
 		var swiper3 = new Swiper ('.swiper3', {
 			autoplay: {
@@ -65,7 +70,7 @@ var onRanking = {
 			},
 			speed : 1000,
 			spaceBetween: 10,
-			slidesPerView: 5,
+			slidesPerView: 7,
 			slidesPerGroup : 1,
 			loop: true,
 			autoHeight: true,
@@ -96,8 +101,8 @@ var onRanking = {
 							btnAuto.text('재생');
 						}
 					});
-					var idx = Math.round(($(".swiper3 .swiper-slide").length /2) -1) 
-					if(idx <= 5) {
+
+					if(idx2 <= 4) {
 						$('.swiper3').addClass( "disabled" );
 
 						btnAuto.on('click', function(){

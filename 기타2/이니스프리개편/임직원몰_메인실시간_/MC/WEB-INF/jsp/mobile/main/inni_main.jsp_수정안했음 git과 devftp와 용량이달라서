@@ -1,0 +1,1498 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="u" uri="/WEB-INF/tld/userInfo.tld" %>
+<%@ taglib prefix="uf" uri="userFunction"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="str" uri="/WEB-INF/tld/str.tld"%>
+<%@ page import="kr.innisfree.common.constants.SessionConstants"%>
+<%@page import="kr.innisfree.common.config.Constants"%>
+<%@ page import="kr.innisfree.customer.CustomerBean"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="kr.innisfree.product.ProductService"%>
+<%@page import="org.springframework.web.servlet.support.RequestContextUtils"%>
+<%@page import="java.util.*"%>
+<%
+	pageContext.setAttribute("newLineChar", "\n");
+%>
+<%
+	String title = "이니스프리";
+	String description = "피부에 휴식을 주는 섬 자연주의 화장품 브랜드 이니스프리의 온라인 화장품 쇼핑몰입니다.";
+	String keyword = "화장품 쇼핑몰, 스킨케어, 메이크업, 마스크팩, 바디, 헤어, 남성화장품, 맨스토어, 마이쿠션, 추천제품,기획전, 이벤트";
+
+	CustomerBean cstm = (CustomerBean) session.getAttribute(SessionConstants.SESS_USER);
+	boolean isLogin = false;
+	String cstmNm = "";
+	String appUserFl = (kr.innisfree.common.support.CommonSupport.chkIsAppUser(request)?"Y":"");
+	String appUserLowFl = (kr.innisfree.common.support.CommonSupport.chkIsAppAndLowUser(request)?"Y":""); //안드로이드 하위버전
+
+	// SNS login User
+	String isSnsLogin = null;
+	if(null != cstm) {
+		isLogin = true;
+		cstmNm = cstm.getCstmNm();
+		isSnsLogin = cstm.getIsSnsLogin();
+	}
+
+	String cstmId = "";
+	String grade = "";
+	String snsFl = "";
+	String jjimYn = "N";
+
+	if(cstm != null) {
+	    cstmId = cstm.getCstmId();
+	    grade = cstm.getGradeCd();
+	}
+
+	// SNS회원 구분
+	if(null != grade && Constants.CUSTOMER_LEVEL_SNS.equals(grade)) {
+		snsFl = "Y";
+	}
+
+	ApplicationContext ctx = RequestContextUtils.getWebApplicationContext(request);
+	ProductService productService = (ProductService)ctx.getBean("productService");
+
+	Map<String, String> param = new HashMap<String, String>();
+
+	param.put("cstmId", cstmId);
+	param.put("snsFl", snsFl);
+%>
+<!DOCTYPE html>
+<html lang="ko">
+<c:set var="appUserFl" value="<%=appUserFl%>" />
+<c:set var="appUserLowFl" value="<%=appUserLowFl %>" />
+<c:set var="prdUrl" value="${_head_cdn_root }${uf:getConst('PRODUCT_FILE_UPLOAD') }" />
+<c:set var="mainBnrUrl" value="${_head_cdn_root }${uf:getConst('MAIN_MNG_BANNER_FILE_UPLOAD') }" />
+<c:set var="embLocCd" value="${uf:getConst('ADM_EMB_MNG_LOC_CD') }" />
+<c:set var="moQuickLocCd" value="${uf:getConst('ADM_MAIN_MNG_MO_QUICK') }"/>
+<c:set var="prdReviewUrl" value="${_head_cdn_root }${uf:getConst('PRODUCTREVIEW_FILE_UPLOAD') }"/>
+<head>
+<jsp:include page="${uf:getConst('INCLUDE_MOBILE_HEAD') }">
+	<jsp:param value="<%=title%>" name="title"/>
+	<jsp:param value="<%=description %>" name="description"/>
+	<jsp:param value="<%=keyword %>" name="keywords"/>
+</jsp:include>
+<script type="text/javascript">
+	var mainInstaFeedInfo = {};
+	function instaLoad (bizAccType, loc) {
+
+		var div = 'rollingList';
+		var type = '1' === loc ? 'left' : 'right';
+
+		$.ajax({
+			type: 'GET',
+			url: '/kr/ko/MainInstaApiRequest.do',
+			data : { bizAccType : bizAccType , "page" : "MAIN"},
+			dataType: 'json',
+			success: function(json) {
+			    var list = json.media.data;
+			    var html = '';
+
+			    $.each (list, function(i, e) {
+
+			   		var mediaType = e.media_type;
+			   		var mediaUrl = e.media_url;
+			   		var mediaId = e.id;
+
+			   		mainInstaFeedInfo[mediaId] = e;
+
+			   		if (mediaType === 'VIDEO') {
+			   			mediaUrl = e.thumbnail_url;
+			   		}
+			   		html += '<li class="swiper-slide"><a href="javascript:getInstaDetail(\''+mediaId+'\')"><img src="' + mediaUrl + '"></a></li>';
+			    });
+			    $('#'+ bizAccType).html(html);
+			},
+			complete : function() {
+				rollingSlide('.'+div+loc, type);
+			},
+			error : function() {
+				$('.innisfreeNews').css('display','none');
+				$('.innisfreeOfficial').css('display','none');
+				console.log('instagram graph api error');
+			}
+		});
+	}
+
+	function fnJoin() {
+		location.href = '/kr/ko/MemberJoinStep1.do';
+	}
+
+	function fnRegMyShop() {
+		location.href = '/kr/ko/mFindStoreList.do';
+	}
+
+	function getInstaDetail(mediaId){
+		var data = mainInstaFeedInfo[mediaId];
+		if(data!=undefined){
+			if (data.media_type === 'VIDEO') {
+	   			mediaTag = '<video controls src="'+data.media_url+'" poster="'+data.thumbnail_url+'" />';
+	   		}else{
+	   			mediaTag = '<img src="'+data.media_url+'" />';
+	   		}
+	   		$("#instaDetailMedia").html(mediaTag);
+	   		$("#instaDetailUser").text("@"+data.username);
+	   		$("#instaDetailUrl").attr("href",data.permalink);
+			$("#instaDetailContext").html(data.caption.split('\n').join('<br/>'));
+			layerOpen('instaPop');
+		}else{
+			$.jcom.showCommonLayer("처리 중 장애가 발생하였습니다. 잠시 후 재시도 후에도 지속적인 문제 발생 시 고객센터로 문의 바랍니다.");
+		}
+	}
+/* 
+	var benefit = "";
+	var seq = "";
+	var sapCd = "";
+	// 장바구니 담기
+	function fnCartAdd(mode, prdSeq, noOptPrdFlg, sapPrdCd, memberOnlyFl,prdNm) {
+		if(prdSeq == "" && seq != ""){
+			prdSeq = seq;
+		}
+
+		//layer 지속 오픈
+		if(sapPrdCd == 'Y')
+			benefit = "open";
+		else
+			benefit = "";
+
+		if(sapCd == "")
+			sapCd = sapPrdCd;
+
+		//비회원 불가 상품
+		if(memberOnlyFl =="Y" && ('${userInfo.cstmId }' == '' || '${userInfo.cstmId }' == null)){
+			alert(prdNm+" 제품은 이니스프리 회원만 구매가 가능합니다.");
+			$.jhead.fnChkLoginPop();
+			return;
+		}
+
+		if(noOptPrdFlg == 'false'){
+			location.href="/kr/ko/mProductView.do?prdSeq="+prdSeq;
+			return;
+		}
+		//앱사용자
+		if("${appUserFl}" == "Y" || "${appUserLowFl}" == "Y") { //앱사용자는 온라인 가입회원만 이용 가능
+			if("${userInfo.cstmId }" != "" && "${userInfo.cstmCl}" == "P" && "${userInfo.cstmId }" == "${userInfo.posId }") {
+				setMoveDefaultValue("","","","","Y");
+				layerOpen('onlineJoinInfoPop');
+				return;
+			}
+		}
+
+		//로그인 전 바로 구매 시 회원 구매 혜택 레이어 노출
+		if(mode == "mORDER"  && benefit == "" && ('${userInfo.cstmId }' == '' || '${userInfo.cstmId }' == null || "Y" ===  '${userInfo.isSnsLogin }')) {
+			seq = prdSeq;
+
+			//로그인 안한경우 옵션이 없을때 회원 구매 혜택 레이어 오픈
+			if(noOptPrdFlg == 'true' && "Y" ===  '${userInfo.isSnsLogin }'){
+				layerOpen('fullMbBenefit');
+			}else{
+				layerOpen('mbBenefit');
+			}
+			return;
+		}
+
+		// 장바구니 담을 JSON데이터 생성
+		var prdList = new Array();
+		// 본제품
+		var prd = {
+			prdSeq: prdSeq,
+	           sapPrdCd: sapCd,
+	           ordQty: "1",
+	           ordType: "01",
+	           prdType: (noOptPrdFlg === 'true')?"SINGLE_PRD":"OPTION_PRD"
+		}
+		prdList.push(prd);
+		sapCd= "";
+
+		//장바구니에 담기 실행
+		$.jcom.cartAdd(mode, prdList);
+
+		//google tagging add
+		var cartArrObj = new Array();
+
+		var GaPrdList=new Array();
+		for(i=0; i<prdList.length; i++){
+			var cartObj = new Object();
+			var GaObject = new Object();
+			GaObject.id = prdList[i].prdSeq;
+			GaObject.name = $("#"+prdList[i].prdSeq).attr("$prdnm");
+			GaObject.brand = "INNISFREE";
+			GaObject.category = $("#"+prdList[i].prdSeq).attr("$categoryNm");
+			GaObject.price =  parseInt($("#"+prdList[i].prdSeq).attr("$salPrc"));
+			GaObject.quantity = parseInt(prdList[i].ordQty);
+			GaObject.variant = "옵션없음";
+			GaObject.dimension27 = $("#"+prdList[i].prdSeq).attr("$sapprdseq");
+			GaObject.dimension32 = $("#"+prdList[i].prdSeq).attr("$catCd2nd") == "" ? "<c:out value='${productBean.catCd01}' />" : $("#"+prdList[i].prdSeq).attr("$catCd2nd");
+			if($("#"+prdList[i].prdSeq).attr("$p_type") == "E"){
+				GaObject.dimension34 = "1+1";
+			}else{
+				GaObject.dimension34 = "";
+			}
+			GaObject.dimension35 = $("#"+prdList[i].prdSeq).attr("$catCd3ndNm");
+			GaObject.dimension43 = "X";
+			GaPrdList.push(GaObject);
+
+			//추가
+			cartObj.name = $("#"+prdList[i].prdSeq).attr("$prdnm");
+			cartObj.code = prdList[i].prdSeq;
+			cartObj.sapcode = $("#"+prdList[i].prdSeq).attr("$sapprdseq");
+			cartObj.brand = "INNISFREE";
+			cartObj.price = parseInt($("#"+prdList[i].prdSeq).attr("$salPrc"));
+			cartObj.prdprice = "";
+			cartObj.quantity = parseInt(prdList[i].ordQty);
+			cartObj.variant = "";
+
+			if($("#"+prdList[i].prdSeq).attr("$p_type") == "E"){
+				cartObj.promotion = "1+1";
+			}else{
+				cartObj.promotion = "";
+			}
+			cartObj.cate = $("#"+prdList[i].prdSeq).attr("$catCd3ndNm");
+			cartObj.catecode = $("#"+prdList[i].prdSeq).attr("$catCd2nd") == "" ? "<c:out value='${productBean.catCd01}' />" : $("#"+prdList[i].prdSeq).attr("$catCd2nd");
+			cartArrObj.push(cartObj);
+		}
+
+		if (mode == "mORDER"){
+			makeOrderTag();
+		}else{
+			makeScriptGA_Order_Step3_CartAdd(GaPrdList,"X");
+		}
+		//makeCartTag(cartArrObj);
+	 }
+ */
+	$(function() {
+		/* INSTALOG와 OFFICIAL 속도개선으로 fl값이 Y일때만 실행하도록  */
+		if("${dpTitleList[10].useFl}" == "Y"){
+			instaLoad('INSTALOG', '1');
+			instaLoad('OFFICIAL', '2');	
+		}
+	});
+ 
+	function fncSaveJim(prdSeq, prdSeq2,myshopYn,myshopFl) {
+		var flag = $.jcom.saveJim(prdSeq, prdSeq2,myshopYn,myshopFl);
+    	if(flag != "false"){
+    		wishSel(myshopYn,myshopFl);
+    	}
+    }
+	
+	function dynamicRank(obj){
+		if($(obj).parent('li').hasClass('active'))return;
+		var target = $(obj).data('target');		
+		$('.rankingTab').find('li').removeClass('active');
+		$(obj).parent('li').addClass('active');
+		//$(obj).addClass('active');
+		
+		$.ajax({
+			url : '/kr/ko/mMainOnlineSalRank.do',
+			type : 'GET',
+			data : {			
+				viewType : target
+			},
+			dataType : "text",
+			success : function(data){
+				if(target == "view"){
+					$(".cateWrap").hide();					
+					$('#dynamicDiv').html(data);					
+				}else if(target =="sale"){
+					$(".cateWrap").show();
+					var activeLeft = $('.cateWrap > ul > li:first').position().left- $('.cateWrap > ul > li:first').width();
+					$(".cateWrap > ul").scrollLeft(activeLeft);
+					$('.cateWrap li').removeClass('active');
+					$('.cateWrap > ul > li:first').addClass('active');		
+					$('#dynamicDiv').html(data);					
+				}			
+				onRanking.init();
+			},
+			error : function(data){
+				$.jcom.showCommonLayer("처리 중 장애가 발생하였습니다. 잠시 후 재시도 후에도 지속적인 문제 발생 시 고객센터로 문의 바랍니다.");
+			}
+		});				
+	}
+	function dynamicRank2(ct){
+		$.ajax({
+			url : '/kr/ko/mMainOnlineSalRank.do',
+			type : 'GET',
+			data : {			
+				catCd : ct
+			},
+			dataType : "text",
+			success : function(data){
+				$('#dynamicDiv').html(data);	
+				onRanking.init()
+			},
+			error : function(data){
+				$.jcom.showCommonLayer("처리 중 장애가 발생하였습니다. 잠시 후 재시도 후에도 지속적인 문제 발생 시 고객센터로 문의 바랍니다.");
+			}
+		});
+	}
+
+</script>
+</head>
+<body>
+    <div id="container">
+        <!-- header -->
+        <jsp:include page="${uf:getConst('INCLUDE_MOBILE_HEADER') }" />
+        <!-- //header -->
+
+        <!-- quickmenu -->
+        <jsp:include page="${uf:getConst('INCLUDE_MOBILE_QUICKMENU') }"/>
+        <!-- //quickmenu -->
+
+      	<!-- 메인 팝업 -->
+		<jsp:include page="${uf:getConst('INCLUDE_MAIN_POPUP') }" />
+		<!-- //메인 팝업 -->
+
+        <!-- body -->
+        <div class="main">
+        	<c:set var="keyVisualList" value="${keyVisualInfo.keyVisualList}" />
+        	<c:if test="${not empty keyVisualList }">
+        		<div class="mainVisualDefault">
+	                <div class="slide swiper-container">
+	                    <ul class="swiper-wrapper">
+	                    	<c:forEach items="${keyVisualList }" var="keyVo" varStatus="keyIdx">
+	                    		<c:set var="keyLeftMoImg" value="${mainBnrUrl}${keyVo.locCd}_${uf:GetProductImgName(keyVo.mainDpSeq, keyVo.leftMoImgNm, '_left_mo')}" />
+								<c:set var="keyRightMoImg" value="${mainBnrUrl}${keyVo.locCd}_${uf:GetProductImgName(keyVo.mainDpSeq, keyVo.rightMoImgNm, '_right_mo')}" />
+								<!-- 기존 -->
+								<c:if test="${empty keyVo.inm_banr_dtl_cd}">
+									<!-- 텍스트 -->
+			                        <li class="swiper-slide">
+			                            <a href="${keyVo.leftMoLink }">
+			                                <div class="visualImg">
+			                                    <img src="${keyLeftMoImg}" alt="${keyVo.leftImgDesc}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+			                                </div>			                                
+			                                <c:if test="${! empty keyVo.leftTitle || ! empty keyVo.leftSubTitle}">
+											<div class="visualTxt tac">
+												<%-- <strong style="color:${IEFlag eq 'Y' ? fn:substring(keyVo.leftTitleClr, 0, 7) : keyVo.leftTitleClr};">${fn:replace(keyVo.leftTitle, newLineChar, '<br/>') }</strong>
+		                                		<p style="color:${IEFlag eq 'Y' ? fn:substring(keyVo.leftSubTitleClr, 0, 7) : keyVo.leftSubTitleClr};">${fn:replace(keyVo.leftSubTitle, newLineChar, '<br/>') }</p> --%>				                               
+		                                		<strong>${fn:replace(keyVo.leftTitle, newLineChar, '<br/>') }</strong>
+		                                		<p>${fn:replace(keyVo.leftSubTitle, newLineChar, '<br/>') }</p>
+				                            </div>
+											</c:if>
+			                            </a>
+			                        </li>
+			                        <c:if test="${keyVo.bnrTmpl eq 'TPKV02'}">
+			                        <li class="swiper-slide">
+			                        	<a href="${keyVo.rightMoLink }">
+				                            <div class="visualImg">
+				                                <img src="${keyRightMoImg}" alt="${keyVo.rightImgDesc}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+				                            </div>
+				                            <c:if test="${! empty keyVo.rightTitle || ! empty keyVo.rightSubTitle}">
+					                            <div class="visualTxt ${sortTyp }">
+						                            <%-- <strong style="color:${IEFlag eq 'Y' ? fn:substring(keyVo.rightTitleClr, 0, 7) : keyVo.rightTitleClr};">${fn:replace(keyVo.rightTitle, newLineChar, '<br/>') }</strong>
+			                                		<p style="color:${IEFlag eq 'Y' ? fn:substring(keyVo.rightSubTitleClr, 0, 7) : keyVo.rightSubTitleClr};">${fn:replace(keyVo.rightSubTitle, newLineChar, '<br/>') }</p> --%>
+			                                		<strong>${fn:replace(keyVo.rightTitle, newLineChar, '<br/>') }</strong>
+			                                		<p>${fn:replace(keyVo.rightSubTitle, newLineChar, '<br/>') }</p>
+					                            </div>
+				                            </c:if>
+			                            </a>
+			                        </li>
+			                        </c:if>								
+								</c:if>
+								<!-- 기존 -->
+								<!-- 2단가로 -->
+								<c:if test="${keyVo.inm_banr_dtl_cd eq 'HO'}">
+								<li class="swiper-slide">
+		                            <a href="${keyVo.leftMoLink }">
+		                                <div class="visualImg">
+		                                    <img src="${keyLeftMoImg}" alt="${keyVo.leftImgDesc}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+		                                </div>
+		                            </a>
+		                            <a href="${keyVo.rightMoLink }">
+		                                <div class="visualImg">
+		                                    <img src="${keyRightMoImg}" alt="${keyVo.rightImgDesc}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+		                                </div>
+		                            </a>
+		                        </li>
+								</c:if>
+								<!-- 2단가로 -->
+								<!-- 2단세로 -->
+								<c:if test="${keyVo.inm_banr_dtl_cd eq 'VE'}">
+								<li class="swiper-slide">
+		                            <div class="vertical_col">
+		                                <a href="${keyVo.leftMoLink }">
+		                                    <div class="visualImg">
+		                                        <img src="${keyLeftMoImg}" alt="${keyVo.leftImgDesc}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+		                                    </div>
+		                                </a>
+		                                <a href="${keyVo.rightMoLink }">
+		                                    <div class="visualImg">
+		                                        <img src="${keyRightMoImg}" alt="${keyVo.rightImgDesc}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+		                                    </div>
+		                                </a>
+		                            </div>
+		                        </li>
+								
+								</c:if>
+								<!-- 2단세로 -->
+	                    	
+	                    	</c:forEach>
+	                       
+	                    </ul>
+	                    <div class="slideControl">
+	                        <span class="slidePage"></span>
+	                        <button class="slideAll">전체보기</button>
+	                        <button type="button" class="btnAuto"><span>자동제어버튼</span></button>
+	                    </div>
+	                </div>
+	                <div class="allvisual">
+	                	<ul></ul>
+	                    <div class="allClose">
+	                        <a href="#"><span>닫기</span></a>
+	                    </div>
+	                </div>
+	            </div>
+        	
+            </c:if>
+
+            <c:if test="${! empty moQuickList}">
+            	<div class="horizScroll case1">
+	                <ul>
+	                	<c:forEach items="${moQuickList}" var="moQuick">
+	                		<li>
+		                        <a href="${moQuick.mnLink}">
+		                            <div class="mIcon"><img src="${mainBnrUrl}${moQuickLocCd}_${uf:GetProductImgName(moQuick.moSeq, moQuick.mnImg, '_img')}" alt="${moQuick.title}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'"></div>
+		                            <p class="mTxt">${moQuick.title}</p>
+		                        </a>
+		                    </li>
+	                	</c:forEach>
+	                </ul>
+	            </div>
+            </c:if>
+
+			<c:if test="${dpTitleList[0].useFl eq 'Y'}">
+            <%if (!isLogin) { %>
+            <section class="sec5">
+                <div class="loginWrap">
+                    <p class="lgTxt">로그인 하시면 <span class="logoImg"><img src="/kr/ko/resources/mobile2/images/common/innisfree_logo.png" alt="이니스프리"></span>에서<br>고객님께 딱! 맞는 제품을 추천해드립니다.</p>
+                    <div class="row2">
+                        <span>
+                            <button type="button" class="joinBtn" onclick="fnJoin();">회원가입</button>
+                        </span>
+                        <span>
+                            <button type="button" class="loginBtn" onclick="$.jhead.fnChkLogin();return false;" class="colorT01"">로그인</button>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <% } else {%>
+            
+            <c:if test="${! empty mainRecommendList}">
+            <section class="sec5">
+                <div class="recommendInnitem">
+                    <h2><%=cstmNm %>${dpTitleList[0].cdNm}</h2>
+                    <div class="horizScroll case">
+                        <ul>
+                        	<c:forEach items="${mainRecommendList}" var="prd" varStatus="s">
+                        	<c:set var="discount" value="${uf:GetDiscount(prd.stdPrc, prd.salPrc, true) }"/>
+                            <li>
+                                <a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq }" id="${prd.prdSeq }" $prdnm="<c:out value="${prd.prdNm }"/>" $sapPrdSeq="<c:out value="${prd.sapPrdCd}"/>"  $salPrc="<c:out value="${prd.salPrc}"/>" $catCd2nd="<c:out value="${prd.catCd2nd }"/>"  $categoryNm="<c:out value="${prd.categoryNm }"/>"  $p_type="<c:out value="${prd.p_type }"/>" $catCd3ndNm="<c:out value="${prd.catCd3ndNm }"/>" >
+                                    <div class="pImg">
+                                    	<c:set var="imggubun" value="_${prd.lpGubun }_S_320" />
+										<img src="${prdUrl}${uf:GetProductImgName(prd.prdSeq, prd.prdImg, imggubun) }" alt="${prd.prdNm}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+										<ul class="rk">
+											<c:forTokens items="${prd.pEmblem }" delims="," var="item" varStatus="i">
+												<c:forTokens items="${prd.pEmblemInfo }" delims="," var="item" varStatus="i">
+													<c:set var="mainSeq" value="${fn:split(item,'::')[0]}" />
+													<c:set var="embPcImgNm" value="${fn:split(item,'::')[1]}" />
+													<c:if test="${temp eq mainSeq}">
+														<li><span class="rk1"><img src="${prdUrl }${embLocCd}_${uf:GetProductImgName(mainSeq, embPcImgNm, '_0')}" onerror="this.src='/kr/ko/resources/error/img/75x75.png'"></span></li>
+													</c:if>
+												</c:forTokens>
+											</c:forTokens>
+                                        </ul>
+									</div>
+                                    <div class="pWrap">
+                                        <p class="pDesc2 mgt0" style="color:${prd.attribute01}" >${prd.prdNmS}</p>
+                                        <p class="pName mgt0">${prd.prdNm}</p>
+                                        <c:if test="${prd.salFl ne '4' }">
+											<p class="price">
+												<c:if test="${!empty prd.stdPrc && prd.salPrc < prd.stdPrc}">
+													<strong class="cost"><fmt:formatNumber value="${prd.stdPrc}" type="number" /></strong>
+												</c:if>
+												<strong class="unit"><fmt:formatNumber value="${prd.salPrc}" type="number" /></strong>원
+												<c:if test="${prd.salFl eq '2' }"><span class="stock">일시품절</span></c:if>
+											</p>
+										</c:if>
+										<c:if test="${prd.salFl eq '4' }">
+											<p class="price">
+												<strong class="stock">출시예정</strong>
+											<p class="price">
+										</c:if>
+                                    </div>
+                                </a>
+                                <div class="way">
+                                    <c:choose>
+										<c:when test="${empty userInfo}">
+											<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+										</c:when>
+										<c:otherwise>
+											<c:set var="jimUrl" value="fncSaveJim('${prd.prdSeq }@', '${prd.prdSeq }@', '${prd.myshop_yn }', '${myShopRegFl}');"/>
+										</c:otherwise>
+									</c:choose>
+									<button type="button" class="hart <c:if test="${prd.jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+									<c:if test="${prd.salFl ne '2' && prd.salFl ne '4' }">
+										<button type="button" class="cart" onclick="javascript:openPreview('${prd.prdSeq }', 'mCART');">장바구니</button>
+										<button type="button" class="card" onclick="javascript:openPreview('${prd.prdSeq }', 'mORDER');">바로구매</button>
+									</c:if>
+                                </div>
+                            </li>
+                            </c:forEach>
+                            <c:if test="${appUserFl eq 'Y' }">
+                            <li>
+                                <a href="innimemapp://go_foru" class="productMore"><span>제품 더보기</span></a>
+                            </li>
+                            </c:if>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            </c:if>
+			<% } %>
+			</c:if>
+	
+			<c:if test="${dpTitleList[1].useFl eq 'Y'}">
+			<c:if test="${!empty popularPrdInfo.bannerInfo}">
+				<c:set var="popularPrd" value="${popularPrdInfo.bannerInfo}" />
+				<c:set var="popularPrdImg" value="${mainBnrUrl}${popularPrd.locCd}_${uf:GetProductImgName(popularPrd.mainDpSeq, popularPrd.imgNm, '_img')}" />
+	            <section class="sec5">
+	                <div class="popularProduct">
+	                    <h2>${dpTitleList[1].cdNm}</h2>
+	                    <div class="productVideo">
+	                    	<c:choose>
+		                    	<c:when test="${!empty popularPrd.videoNm}">
+									<!-- mp4로 등록 될 경우-->
+									<video controls src="${mainBnrUrl}${popularPrd.locCd}_${uf:GetProductImgName(popularPrd.mainDpSeq, popularPrd.videoNm, '_video')}" id="videoPlayer" poster="${popularPrdImg}"></video>
+									<button type="button" onclick="vodPlay();" style="display: block;">
+			                            <span class="txt">동영상</span>
+			                            <img src="${popularPrdImg}" alt="${popularPrd.imgDesc}" onerror="this.src='/kr/ko/resources/error/img/640x350.png'">
+			                        </button>
+								</c:when>
+								<c:when test="${!empty popularPrd.videoLink}">
+									<c:choose>
+										<c:when test="${'U' eq popularPrd.videoLinkTyp}">
+											<!-- 유튜브로 등록 될 경우-->
+											<script>
+												var youtubeLinkArr = '${popularPrd.videoLink}'.split('/');
+												var yotubeId = youtubeLinkArr[youtubeLinkArr.length - 1]; // 유튜브 아이디
+												var tag = document.createElement('script');
+												tag.src = "https://www.youtube.com/iframe_api";
+												var firstScriptTag = document.getElementsByTagName('script')[0];
+												firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
+												var youtubePlayer;
+												var btnPlay;
+												function onYouTubeIframeAPIReady() {
+													youtubePlayer = new YT.Player(
+															'youtubePlayer',
+															{
+																width : '100%',
+																height : '100%',
+																videoId : yotubeId,
+																playerVars : {
+																	'controls' : 0,
+																	'showinfo' : 0,
+																	'rel' : 0,
+																	'playsinline' : 1
+																},
+																events : {
+																	'onStateChange' : onPlayerStateChange
+																}
+															});
+												}
+												function onPlayerStateChange(event) {
+													if (event.data === 0) {
+														btnPlay.fadeIn(1000);
+													}
+												}
+											</script>
+											<div id="youtubePlayer"></div>
+										</c:when>
+										<c:otherwise>
+											<!-- 비메오로 등록 될 경우-->
+											<video controls src="${popularPrd.videoLink}" id="videoPlayer" poster="${popularPrdImg}"></video>
+										</c:otherwise>
+									</c:choose>
+									<button type="button" onclick="vodPlay();" style="display: block;">
+			                            <span class="txt">동영상</span>
+			                            <img src="${popularPrdImg}" alt="${popularPrd.imgDesc}" onerror="this.src='/kr/ko/resources/error/img/640x350.png'">
+			                        </button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" style="display: block;" class="img">
+			                            <img src="${popularPrdImg}" alt="${popularPrd.imgDesc}" onerror="this.src='/kr/ko/resources/error/img/640x350.png'">
+			                        </button>
+								</c:otherwise>
+							</c:choose>
+	                    </div>
+
+	                    <div class="horizScroll case">
+	                        <ul>
+	                        	<c:forEach items="${popularPrdInfo.prdList}" var="prd" varStatus="idx">
+									<li>
+										<a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq}">
+											<div class="pImg">
+												<c:set var="imggubun" value="_${prd.lpGubun }_S_320" />
+												<img src="${prdUrl}${uf:GetProductImgName(prd.prdSeq, prd.prdImg, imggubun) }" alt="${prd.prdNm}" onerror="this.src='/kr/ko/resources/error/img/125x125.png'">
+												<ul class="rk">
+													<c:forTokens items="${prd.pEmblem }" delims="," var="item" varStatus="i">
+														<c:forTokens items="${prd.pEmblemMoInfo }" delims="," var="item" varStatus="i">
+															<c:set var="mainSeq" value="${fn:split(item,'::')[0]}" />
+															<c:set var="embPcImgNm" value="${fn:split(item,'::')[1]}" />
+															<c:if test="${temp eq mainSeq}">
+																<li><span class="rk1"><img src="${prdUrl }${embLocCd}_${uf:GetProductImgName(mainSeq, embPcImgNm, '_0')}" onerror="this.src='/kr/ko/resources/error/img/75x75.png'"></span></li>
+															</c:if>
+														</c:forTokens>
+													</c:forTokens>
+		                                        </ul>
+											</div>
+											<div class="pWrap">
+		                                        <p class="pName mgt0">${prd.prdNm}</p>
+		                                        <c:if test="${prd.salFl ne '4' }">
+			                                        <p class="price">
+			                                        	<c:if test="${!empty prd.stdPrc && prd.salPrc < prd.stdPrc}">
+															<strong class="cost"><fmt:formatNumber value="${prd.stdPrc}" type="number" /></strong>
+														</c:if>
+														<strong class="unit"><fmt:formatNumber value="${prd.salPrc}" type="number" /></strong>원
+														<c:if test="${prd.salFl eq '2' }">
+				                                        	<span class="stock">일시품절</span>
+				                                        </c:if>
+			                                        </p>
+			                                     </c:if>
+			                                     <c:if test="${prd.salFl eq '4' }">
+													<p class="price">
+														<strong class="stock">출시예정</strong>
+													<p class="price">
+												</c:if>
+		                                    </div>
+										</a>
+										<div class="way">
+											<c:choose>
+												<c:when test="${empty userInfo}">
+													<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+												</c:when>
+												<c:otherwise>
+													<c:set var="jimUrl" value="fncSaveJim('${prd.prdSeq }@', '${prd.prdSeq }@', '${prd.myshop_yn }', '${myShopRegFl}');"/>
+												</c:otherwise>
+											</c:choose>
+											<c:set var="paramPrdSeq" value="${prd.prdSeq}"/>
+											<c:set var="paramjjimYn" value="${prd.jjimYn}"/>
+											<%
+												// 2020.04.21 찜 상품 prd에서 꺼내서 쓰기위해 수정, 페이지 속도 높이기 위해 수정
+												jjimYn = "N";
+												if(cstmId != null && cstmId != ""){
+													//param.put("prdSeq", String.valueOf(pageContext.getAttribute("paramPrdSeq")));
+													jjimYn = String.valueOf(pageContext.getAttribute("paramjjimYn"));
+												}
+											%>
+											<c:set var="jjimYn" value="<%=jjimYn%>" />
+											<button type="button" class="hart <c:if test="${jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+											<c:if test="${prd.salFl ne '2' && prd.salFl ne '4' }">
+												<button type="button" class="cart" onclick="javascript:openPreview('${prd.prdSeq }', 'mCART');">장바구니</button>
+												<button type="button" class="card" onclick="javascript:openPreview('${prd.prdSeq }', 'mORDER');">바로구매</button>
+											</c:if>
+		                                </div>
+									</li>
+								</c:forEach>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </section>
+	        </c:if>
+	        </c:if>
+
+			<c:if test="${dpTitleList[2].useFl eq 'Y'}">
+			<c:if test="${! empty onlineProductList}">
+	            <section class="sec5">
+	                <div class="onlineProduct">
+	                    <h2>${dpTitleList[2].cdNm}</h2>
+	                    <!-- <p class="desc">이니스프리 온라인몰만의 제품입니다!</p> -->
+	                    <div class="horizScroll case6">
+	                        <ul>
+	                        	<c:forEach items="${onlineProductList}" var="prd" varStatus="idx">
+									<li>
+		                                <a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq}">
+		                                    <div class="pImg">
+		                                    <c:set var="imggubun" value="_${prd.lpGubun }_S_450" />
+		                                    	<img src="${prdUrl }${uf:GetProductImgName(prd.prdSeq, prd.prdImg, imggubun) }" alt="${prd.prdNm}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+		                                    </div>
+		                                    <div class="pWrap">
+		                                        <p class="pDesc">${prd.basicDesc}</p>
+		                                        <p class="pName">${prd.prdNm}</p>
+		                                        <c:if test="${prd.salFl ne '4' }">
+													<p class="price">
+														<c:if test="${!empty prd.stdPrc && prd.salPrc < prd.stdPrc}">
+															 <strong class="cost"><fmt:formatNumber value="${prd.stdPrc}" type="number" /></strong>
+														</c:if>
+														<strong class="unit"><fmt:formatNumber value="${prd.salPrc}" type="number" /></strong>원
+														<c:if test="${prd.salFl eq '2' }">
+															<span class="stock">일시품절</span>
+														</c:if>
+													</p>
+												</c:if>
+												<c:if test="${prd.salFl eq '4' }">
+													<p class="price">
+														<span class="stock">출시예정</span>
+													</p>
+												</c:if>
+		                                    </div>
+		                                </a>
+		                                <div class="way">
+		                                	<c:choose>
+												<c:when test="${empty userInfo}">
+													<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+												</c:when>
+												<c:otherwise>
+													<c:set var="jimUrl" value="fncSaveJim('${prd.prdSeq }@', '${prd.prdSeq }@', '${prd.myshop_yn }', '${myShopRegFl}');"/>
+												</c:otherwise>
+											</c:choose>
+											<c:set var="paramPrdSeq" value="${prd.prdSeq}"/>
+											<c:set var="paramjjimYn" value="${prd.jjimYn}"/>
+											<%
+												// 2020.04.21 찜 상품 prd에서 꺼내서 쓰기위해 수정, 페이지 속도 높이기 위해 수정
+												jjimYn = "N";
+												if(cstmId != null && cstmId != ""){
+													//param.put("prdSeq", String.valueOf(pageContext.getAttribute("paramPrdSeq")));
+													jjimYn = String.valueOf(pageContext.getAttribute("paramjjimYn"));
+												}
+											%>
+											<c:set var="jjimYn" value="<%=jjimYn%>" />
+											<button type="button" class="hart <c:if test="${jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+											<c:if test="${prd.salFl ne '2' && prd.salFl ne '4' }">
+												<button type="button" class="cart" onclick="javascript:openPreview('${prd.prdSeq }', 'mCART');">장바구니</button>
+												<button type="button" class="card" onclick="javascript:openPreview('${prd.prdSeq }', 'mORDER');">바로구매</button>
+											</c:if>
+		                                </div>
+		                            </li>
+								</c:forEach>
+								<li>
+	                                <a href="/kr/ko/mProduct.do?catCd01=OO" class="productMore"><span>제품 더보기</span></a>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </section>
+	        </c:if>
+	        </c:if>
+
+			<c:if test="${dpTitleList[3].useFl eq 'Y'}">
+			<c:if test="${! empty rtOnlineSalRankList || ! empty rtViewsRankList}">
+				<section class="sec5">
+                <div class="onRankingWrap">
+                    <h2>온라인 실시간 랭킹</h2>
+                    <div class="rankingWrap">
+                        <ul class="rankingTab">
+                        	<c:if test="${! empty rtOnlineSalRankList}">
+                            	<li class="active"><a href="javascript:void(0)" onclick = "dynamicRank(this)" data-target= "sale" >${dpTitleList[3].codeList[0].cdNm}</a></li>
+                            </c:if>
+                            <c:if test="${! empty rtViewsRankList}">
+                            	<li class="${empty rtOnlineSalRankList ? 'active' : ''}"><a href="javascript:void(0)" onclick = "dynamicRank(this)" data-target= "view" >${dpTitleList[3].codeList[1].cdNm}</a></li>
+                            </c:if>                            
+                        </ul>
+                        <div class="rankingCont">
+                        
+                            <!-- 1번째 탭 -->
+                            <div class="rankingList">
+								<div class="cateWrap">
+									<ul>
+										<li class="active"><a href="javascript:void(0)" onclick = "dynamicRank2('ZZ')">전체</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UA')">스킨케어</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UM')">팩/마스크</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UC')">페이스 메이크업</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UN')">컬러 메이크업</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UD')">클렌징</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UF')">바디</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('NA')">네일</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UG')">헤어</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UH')">방향</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UB')">남성</a></li>
+										<li><a href="javascript:void(0)" onclick = "dynamicRank2('UT')">기획세트</a></li>
+									</ul>
+									<div class="high"></div>
+								</div>
+								<div id = "dynamicDiv">
+								<!-- swiper-container -->
+								<div class="swiper-container swiper2">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<ul class="rolling">
+											<c:forEach items="${rtOnlineSalRankList}" var="prd" varStatus="idx">
+												<c:if test="${idx.count < 6}">
+												<li>
+													<a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq}" onClick="adobeActionTrack('o','INNIMOBILE^SHOPPING^MAIN^BESTSELLER'); makeScriptGA_Order_Step1_ProductClick('온라인 판매 랭킹','${prd.prdSeq }', '${prd.prdNm }', 'INNISFREE', '${prd.categoryNm}',('${prd.catCd2nd}' == '') ? '${prd.catCd1st}' : '${prd.catCd2nd}', '${prd.p_type }', '${prd.CATCD3NDnm}');">
+														<em class="num">${idx.count}</em>${prd.prdNm}
+													</a>
+												</li>
+												</c:if>
+											</c:forEach>				
+											</ul>
+										</div>
+										<c:if test="${fn:length(rtOnlineSalRankList) > 5 }">
+										<div class="swiper-slide">
+											<ul class="rolling">
+											<c:forEach items="${rtOnlineSalRankList}" var="prd" varStatus="idx">
+												<c:if test="${idx.count > 5 && idx.count < 11}">
+												<li>
+													<a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq}" onClick="adobeActionTrack('o','INNIMOBILE^SHOPPING^MAIN^BESTSELLER'); makeScriptGA_Order_Step1_ProductClick('온라인 판매 랭킹','${prd.prdSeq }', '${prd.prdNm }', 'INNISFREE', '${prd.categoryNm}',('${prd.catCd2nd}' == '') ? '${prd.catCd1st}' : '${prd.catCd2nd}', '${prd.p_type }', '${prd.CATCD3NDnm}');">
+														<em class="num">${idx.count}</em>${prd.prdNm}
+													</a>
+												</li>
+												</c:if>
+											</c:forEach>				
+											</ul>
+										</div>
+										</c:if>
+									</div>
+								</div>
+								
+								</div>
+                            </div>
+
+                            <!-- 2번째 탭 -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+			
+	        </c:if>
+	        </c:if>
+	        <c:if test="${!empty middleBnrList}">
+	            <section class="sec5">
+	            	<c:choose>
+	            		<c:when test="${device eq 'APP'}">
+	            			<ul class="productBanner">
+			                	<c:forEach items="${middleBnrList}" var="middleBnr" varStatus="idx">
+									<li>
+										<a href="${middleBnr.appLbLink}" target="${middleBnr.appLbLinkTyp eq '1' ? '_blank' : '_self' }">
+											<c:if test="${!empty middleBnr.appLbImgNm}">
+												<img src="${mainBnrUrl}${middleBnr.locCd}_${uf:GetProductImgName(middleBnr.mainDpSeq, middleBnr.appLbImgNm, '_mo')}" alt="${middleBnr.appLbImgDesc}" onerror="this.src='/kr/ko/resources/error/img/320x104.png'">
+											</c:if>
+											<c:if test="${ (middleBnr.appLbTitFlUse eq 'Y') || (middleBnr.appLbSubTitFlUse eq 'Y') }">
+												<div class="txt">
+													<c:if test="${middleBnr.appLbTitFlUse eq 'Y'}">
+														<strong>${fn:replace(middleBnr.appLbTitle, newLineChar, '<br/>') }</strong>
+													</c:if>
+													<c:if test="${middleBnr.appLbSubTitFlUse eq 'Y'}">
+														<span>${fn:replace(middleBnr.appLbSubTitle, newLineChar, '<br/>') }</span>
+													</c:if>
+												</div>
+											</c:if>
+										</a>
+									</li>
+								</c:forEach>
+			                </ul>
+	            		</c:when>
+	            		<c:otherwise>
+	            			<ul class="productBanner">
+			                	<c:forEach items="${middleBnrList}" var="middleBnr" varStatus="idx">
+									<li>
+										<a href="${middleBnr.moLbLink}" target="${middleBnr.moLbLinkTyp eq '1' ? '_blank' : '_self' }">
+											<c:if test="${!empty middleBnr.moLbImgNm}">
+												<img src="${mainBnrUrl}${middleBnr.locCd}_${uf:GetProductImgName(middleBnr.mainDpSeq, middleBnr.moLbImgNm, '_mo')}" alt="${middleBnr.moLbImgDesc}" onerror="this.src='/kr/ko/resources/error/img/320x104.png'">
+											</c:if>
+											<c:if test="${ (middleBnr.moLbTitFlUse eq 'Y') || (middleBnr.moLbSubTitFlUse eq 'Y') }">
+												<div class="txt">
+													<c:if test="${middleBnr.moLbTitFlUse eq 'Y'}">
+														<strong>${fn:replace(middleBnr.moLbTitle, newLineChar, '<br/>') }</strong>
+													</c:if>
+													<c:if test="${middleBnr.moLbSubTitFlUse eq 'Y'}">
+														<span>${fn:replace(middleBnr.moLbSubTitle, newLineChar, '<br/>') }</span>
+													</c:if>
+												</div>
+											</c:if>
+										</a>
+									</li>
+								</c:forEach>
+			                </ul>
+	            		</c:otherwise>
+	            	</c:choose>
+
+	            </section>
+	        </c:if>
+
+			<c:if test="${dpTitleList[4].useFl eq 'Y'}">
+            <c:if test="${not empty mdRcmdList }">
+            <section class="sec5">
+                <div class="mdProduct">
+                    <h2>${dpTitleList[4].cdNm}</h2>
+                    <div class="horizScroll case4">
+                        <ul>
+                        	<c:forEach items="${mdRcmdList}" var="mdRcmdVo" varStatus="s">
+                        	<c:set var="mdRcmdImg" value="${mainBnrUrl}${mdRcmdVo.locCd}_${uf:GetProductImgName(mdRcmdVo.mdFoSeq, mdRcmdVo.prdImg, '_pc')}" />
+							<c:set var="discount" value="${uf:GetDiscount(mdRcmdVo.stdPrc, mdRcmdVo.salPrc, true) }" />
+                            <li>
+                            	<a href="/kr/ko/mProductView.do?prdSeq=${mdRcmdVo.prdSeq }">
+		                            <div class="pImg">
+		                                <img src="${mdRcmdImg}" alt="${mdRcmdVo.prdNm}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'">
+		                            </div>
+		                            <div class="pWrap">
+		                                <p class="pDesc2" style="color:${mdRcmdVo.attribute01}">${mdRcmdVo.prdNmS}</p>
+		                                <p class="pName mgt0">${mdRcmdVo.prdNm}</p>
+		                                <c:if test="${mdRcmdVo.salFl ne '4' }">
+											<p class="price">
+												<c:if test="${!empty mdRcmdVo.stdPrc && mdRcmdVo.salPrc < mdRcmdVo.stdPrc}">
+													<strong class="cost"><fmt:formatNumber value="${mdRcmdVo.stdPrc}" type="number" /></strong>
+
+												</c:if>
+												<strong class="unit"><fmt:formatNumber value="${mdRcmdVo.salPrc}" type="number" /></strong>원
+												<c:if test="${mdRcmdVo.salFl eq '2' }">
+													<span class="stock">일시품절</span>
+												</c:if>
+											</p>
+										</c:if>
+										<c:if test="${mdRcmdVo.salFl eq '4' }">
+											<span class="price">
+												<strong class="ready">출시예정</strong>
+											</span>
+										</c:if>
+							        </div>
+                                </a>
+                                <div class="way">
+                                    <c:choose>
+										<c:when test="${empty userInfo}">
+											<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+										</c:when>
+										<c:otherwise>
+											<c:set var="jimUrl" value="fncSaveJim('${mdRcmdVo.prdSeq }@', '${mdRcmdVo.prdSeq }@', '${mdRcmdVo.myshop_yn }', '${myShopRegFl}');"/>
+										</c:otherwise>
+									</c:choose>
+									<c:set var="paramPrdSeq" value="${mdRcmdVo.prdSeq}"/>
+									<c:set var="paramjjimYn" value="${prd.jjimYn}"/>
+											<%
+												// 2020.04.21 찜 상품 prd에서 꺼내서 쓰기위해 수정, 페이지 속도 높이기 위해 수정
+												jjimYn = "N";
+												if(cstmId != null && cstmId != ""){
+													//param.put("prdSeq", String.valueOf(pageContext.getAttribute("paramPrdSeq")));
+													jjimYn = String.valueOf(pageContext.getAttribute("paramjjimYn"));
+												}
+											%>
+									<c:set var="jjimYn" value="<%=jjimYn%>" />
+									<button type="button" class="hart <c:if test="${jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+									<c:if test="${mdRcmdVo.salFl ne '2' && mdRcmdVo.salFl ne '4' }">
+										<button type="button" class="cart" onclick="javascript:openPreview('${mdRcmdVo.prdSeq }', 'mCART');">장바구니</button>
+										<button type="button" class="card" onclick="javascript:openPreview('${mdRcmdVo.prdSeq }', 'mORDER');">바로구매</button>
+									</c:if>
+                                </div>
+                            </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            </c:if>
+			</c:if>
+			
+			<c:if test="${dpTitleList[5].useFl eq 'Y'}">
+			<c:if test="${! empty hotDealPrdList}">
+	            <section class="sec5">
+	                <div class="hotProduct">
+	                    <h2>${dpTitleList[5].cdNm}</h2>
+	                    <div class="horizScroll case">
+	                        <ul>
+	                        	<c:forEach items="${hotDealPrdList}" var="prd" varStatus="s"  begin = "0" end = "20">
+								<c:set var="discount" value="${uf:GetDiscount(prd.stdPrc, prd.salPrc, true) }"/>
+									<li>
+		                                <a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq }">
+		                                    <div class="pImg">
+		                                        <div class="stateWrap">
+		                                        	<c:if test="${!empty prd.stdPrc && prd.salPrc < prd.stdPrc && discount > 0}"><p class="stateR">${discount }%</p></c:if>
+													<c:if test="${prd.salChannel eq 'O' || prd.catCd1st eq 'OO' }"><p class="stateD">온라인<br>전용</p></c:if>
+													<c:if test="${prd.myshop_yn eq 'Y'}"><p class="stateD">마이샵<br>전용</p></c:if>
+													<c:if test="${!empty prd.multiPurType }"><p class="stateR"><c:out value="${prd.multiPurType }"/></p></c:if>
+													<c:if test="${prd.p_type eq 'E' }"><p class="stateR">1+1</p></c:if>
+		                                        </div>
+		                                        <c:set var="imggubun" value="_${prd.lpGubun }_S_320" />
+		                                        <img src="${prdUrl}${uf:GetProductImgName(prd.prdSeq, prd.prdImg, imggubun)}" alt="${prd.prdNm}" onerror="this.src='/kr/ko/resources/error/img/125x125.png'">
+		                                        <ul class="rk">
+		                                        	<c:forTokens items="${prd.pEmblem }" delims="," var="temp" varStatus="i">
+														<c:forTokens items="${prd.pEmblemMoInfo }" delims="," var="item" varStatus="i">
+															<c:set var="mainSeq" value="${fn:split(item,'::')[0]}"/>
+															<c:set var="embPcImgNm" value="${fn:split(item,'::')[1]}"/>
+															<c:if test="${temp eq mainSeq}">
+																<li><span class="rkIcon"><img src="${prdUrl }${embLocCd}_${uf:GetProductImgName(mainSeq, embPcImgNm, '_0')}" onerror="this.src='/kr/ko/resources/error/img/75x75.png'"></span></li>
+															</c:if>
+														</c:forTokens>
+													</c:forTokens>
+		                                        </ul>
+		                                    </div>
+		                                    <div class="pWrap">
+		                                        <p class="pDesc2" style="color:${prd.attribute01}" >${prd.prdNmS}</p>
+		                                        <p class="pName mgt0">${prd.prdNm}</p>
+		                                        <c:if test="${prd.salFl ne '4' }">
+													<p class="price">
+														<c:if test="${!empty prd.stdPrc && prd.salPrc < prd.stdPrc}">
+															<strong class="cost"><fmt:formatNumber value="${prd.stdPrc}" type="number" /></strong>
+														</c:if>
+														<strong class="unit"><fmt:formatNumber value="${prd.salPrc}" type="number" /></strong>원
+														<c:if test="${prd.salFl eq '2' }">
+															<span class="stock">일시품절</span>
+														</c:if>
+													</p>
+												</c:if>
+												<c:if test="${prd.salFl eq '4' }">
+													<p class="price">
+														<strong class="stock">출시예정</strong>
+													</p>
+												</c:if>
+		                                        <div class="productStyle">
+		                                        	<c:if test="${prd.newPrdFl eq 'Y' }"><span class="pNew">NEW</span></c:if>
+													<c:if test="${stopGiftFlag eq 0 && prd.purrwrdPrdUnPaidFl ne 'Y' && prd.rwrdPrdFl eq 'Y' }"><span class="pGift">GIFT</span></c:if>
+													<c:if test="${prd.stdPrc > prd.salPrc }"><span class="pSale">SALE</span></c:if>
+													<c:if test="${prd.stkLmtPrdFl eq 'Y' }"><span class="pLimit">한정수량</span></c:if>
+													<c:if test="${prd.catCd2nd eq 'OOBP' }"><span class="pMeasure">대용량</span></c:if>
+													<c:if test="${prd.rglDlvPrDfl eq 'Y' && bigSalePreoOrder == 0 }"><span class="pShip">정기배송</span></c:if>
+		                                        </div>
+		                                    </div>
+		                                </a>
+		                                <div class="way">
+		                                	<c:choose>
+												<c:when test="${empty userInfo}">
+													<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+												</c:when>
+												<c:otherwise>
+													<c:set var="jimUrl" value="fncSaveJim('${prd.prdSeq }@', '${prd.prdSeq }@', '${prd.myshop_yn }', '${myShopRegFl}');"/>
+												</c:otherwise>
+											</c:choose>
+											<c:set var="paramPrdSeq" value="${prd.prdSeq}"/>
+											<c:set var="paramjjimYn" value="${prd.jjimYn}"/>
+											<%
+												// 2020.04.21 찜 상품 prd에서 꺼내서 쓰기위해 수정, 페이지 속도 높이기 위해 수정
+												jjimYn = "N";
+												if(cstmId != null && cstmId != ""){
+													//param.put("prdSeq", String.valueOf(pageContext.getAttribute("paramPrdSeq")));
+													jjimYn = String.valueOf(pageContext.getAttribute("paramjjimYn"));
+												}
+											%>
+											<c:set var="jjimYn" value="<%=jjimYn%>" />
+											<button type="button" class="hart <c:if test="${jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+											<c:if test="${prd.salFl ne '2' && prd.salFl ne '4' }">
+												<button type="button" class="cart" onclick="javascript:openPreview('${prd.prdSeq }', 'mCART');">장바구니</button>
+												<button type="button" class="card" onclick="javascript:openPreview('${prd.prdSeq }', 'mORDER');">바로구매</button>
+											</c:if>
+		                                </div>
+		                            </li>
+								</c:forEach>
+								<li>
+	                                <a href="/kr/ko/mHotdealSpcPrcMain.do" class="productMore"><span>제품 더보기</span></a>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </section>
+	        </c:if>
+	        </c:if>
+
+
+			<c:if test="${dpTitleList[6].useFl eq 'Y'}">
+			<c:if test="${! empty recobellReviewList}">
+	            <section class="sec5">
+	                <div class="realReview">
+	                    <h2>${dpTitleList[6].cdNm}</h2>
+	                    <div class="realReviewBg">
+		                    <div class="realSlide">
+		                        <ul class="swiper-wrapper">
+		                        	<c:forEach items="${recobellReviewList}" var="review" varStatus="s">
+		                        		<li class="swiper-slide">
+			                                <div class="realReviewWrap">
+			                                	<a href="/mProductReviewView.do?reviewSeq=${review.reviewSeq}&mode=photo" onClick="makeScriptGA_Order_Step1_ProductClick('어제 많이 본 제품 후기','${review.prdSeq }', '${review.prdNm }', 'INNISFREE', '${review.categoryNm}',('${review.catCd2nd}' == '') ? '${review.catCd1st}' : '${review.catCd2nd}', '${review.p_type }', '${review.catCd3ndNm}');">
+				                                    <div class="realImg">
+				                                        <div class="realPos">
+				                                            <img src="${prdReviewUrl }${uf:GetProductReviewListImgName(review.attch)}" alt="${review.attch}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'" />
+				                                            <div class="imgInfor"><span>${review.tplRegCnt}</span></div>
+				                                        </div>
+				                                    </div>
+				                                    <div class="realWrap">
+				                                        <div class="inforWrap">
+				                                        	<c:choose>
+																<c:when test="${empty review.revrseq }">
+																	<div class="writerInfor">
+																		<c:choose>
+																			<c:when test="${review.gradeCd eq 'CA02' }">
+																				<p class="g24"><u:idHidden str="${review.regId}" /></p>
+																			</c:when>
+																			<c:when test="${review.gradeCd eq 'CA03'}">
+																				<p class="w24"><u:idHidden str="${review.regId}" /></p>
+																			</c:when>
+																			<c:when test="${review.gradeCd eq 'CA04'}">
+																				<p class="p24"><u:idHidden str="${review.regId}" /></p>
+																			</c:when>
+																		</c:choose>
+																		<p class="date">${review.regDate}</p>
+						                                            </div>
+																</c:when>
+																<c:otherwise>
+																	<div class="inforIcon">
+																		<img src="${_head_cdn_root }/kr/ko/resources/web/images/review/${review.profileimg}_on.png" onerror="this.src='/kr/ko/resources/error/img/75x75.png'"/>
+																	</div>
+																	<div class="writerInfor">
+																		<p class="writerId"><span class="lv">${review.revrlev}</span>${review.revrniknm }</p>
+																		<p class="date">${review.regDate}</p>
+																	</div>
+																</c:otherwise>
+															</c:choose>
+				                                        </div>
+				                                        <p class="realTxt">
+				                                        	<c:if test="${review.bestFl eq 'Y'}"><span class="best">best</span></c:if>${fn:replace(review.goodcnt, newLineChar, '<br/>') }
+				                                        </p>
+				                                        <span class="reviewPoint"><span style="width:${20*review.evalScor}%;">${review.evalScor}점</span></span>
+				                                        <%-- <ul class="star">
+
+				                                        	<c:forEach var="i" begin="1" end="5">
+				                                        		<li class="${i<=review.evalScor ? 'on' : ''}"><span></span></li>
+															</c:forEach>
+				                                        </ul> --%>
+				                                    </div>
+			                                   </a>
+			                                   <!-- <div class="realMore">
+		                                            <a href="#">더보기</a>
+		                                        </div> -->
+			                                </div>
+			                                <div class="reviewPro">
+			                                	<c:choose>
+													<c:when test="${review.salFl eq '3'}">
+														<c:set var="reviewRedirectValue" value="javascript:alert('판매가 중지된 제품입니다.');"/>
+													</c:when>
+													<c:otherwise>
+														<c:set var="reviewRedirectValue" value="/kr/ko/mProductView.do?prdSeq=${review.prdSeq }"/>
+													</c:otherwise>
+												</c:choose>
+			                                    <div class="rPimg">
+			                                    	<a href="${reviewRedirectValue}" onClick="makeScriptGA_Order_Step1_ProductClick('어제 많이 본 제품 후기','${review.prdSeq }', '${review.prdNm }', 'INNISFREE', '${review.categoryNm}',('${review.catCd2nd}' == '') ? '${review.catCd1st}' : '${review.catCd2nd}', '${review.p_type }', '${review.catCd3ndNm}');">
+			                                    		<c:set var="imggubun" value="_${review.lpGubun }_S_210" />
+			                                    		<img src="${prdUrl }${uf:GetProductImgName(review.prdSeq, review.prdImg, imggubun) }" alt="${review.prdNm }" onerror="this.src='/kr/ko/resources/error/img/125x125.png'">
+			                                    	</a>
+			                                    </div>
+			                                    <div class="rPwrap">
+			                                        <p class="rPtxt">
+			                                        	<a href="${reviewRedirectValue}" onClick="makeScriptGA_Order_Step1_ProductClick('어제 많이 본 제품 후기','${review.prdSeq }', '${review.prdNm }', 'INNISFREE', '${review.categoryNm}',('${review.catCd2nd}' == '') ? '${review.catCd1st}' : '${review.catCd2nd}', '${review.p_type }', '${review.catCd3ndNm}');">${review.prdNm}</a>
+			                                        </p>
+			                                        <c:if test="${review.salFl ne '4' }">
+														<p class="rprice">
+															<c:if test="${!empty review.stdPrc && review.salPrc < review.stdPrc}">
+																<strong class="cost"><fmt:formatNumber value="${review.stdPrc}" type="number" /></strong>
+															</c:if>
+															<strong class="unit"><fmt:formatNumber value="${review.salPrc}" type="number" /></strong>원
+															<c:if test="${review.salFl eq '2' }">
+																<span class="stock">일시품절</span>
+															</c:if>
+														</p>
+													</c:if>
+													<c:if test="${review.salFl eq '4' }">
+														<p class="rprice">
+															<strong class="stock">출시예정</strong>
+														</p>
+													</c:if>
+			                                        <div class="way">
+			                                        	<c:choose>
+															<c:when test="${empty userInfo}">
+																<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+															</c:when>
+															<c:otherwise>
+																<c:set var="jimUrl" value="fncSaveJim('${review.prdSeq }@', '${review.prdSeq }@', '${review.myshop_yn }', '${myShopRegFl}');"/>
+															</c:otherwise>
+														</c:choose>
+														<button type="button" class="hart <c:if test="${review.jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+														<c:if test="${review.salFl ne '4' && review.salFl ne '3' && review.salFl ne '2'}">
+															<button type="button" class="cart" onclick="javascript:openPreview('${review.prdSeq }', 'mCART');">장바구니</button>
+															<button type="button" class="card" onclick="javascript:openPreview('${review.prdSeq }', 'mORDER');">바로구매</button>
+														</c:if>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </li>
+									</c:forEach>
+		                        </ul>
+		                    </div>
+                        	<div class="swiper-scrollbar"></div>
+		            	</div>
+	                </div>
+	                <script>
+	                    realReview();
+	                </script>
+	            </section>
+	        </c:if>
+			</c:if>
+			
+			<c:if test="${dpTitleList[7].useFl eq 'Y'}">
+            <section class="sec5">
+                <div class="myShop">
+                    <h2>${dpTitleList[7].cdNm}</h2>
+                    <div class="myshopWrap">
+                        <div class="myshopImg"><img src="/kr/ko/resources/mobile2/images/temp/myshop_bimg.jpg" alt="MY SHOP innisfree"></div>
+                        <div class="myshopTxt">
+                            <strong>잠깐! MY SHOP은 등록 하셨나요?</strong>
+                            <p>자주 가는 매장을 등록하시면 MY SHOP만의 특별한 혜택을 받으실 수 있습니다!</p>
+                            <button class="resis" onclick="fnRegMyShop();" >MY SHOP 등록하기</button>
+                        </div>
+                    </div>
+                    <c:if test="${not empty myShopProdList }">
+                    <div class="horizScroll case8">
+                        <ul>
+                        	<c:forEach items="${myShopProdList}" var="prd" varStatus="s">
+                        	<c:set var="discount" value="${uf:GetDiscount(prd.stdPrc, prd.salPrc, true) }"/>
+                            <li>
+                                <a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq }">
+                                    <div class="pImg">
+                                    	<c:set var="imggubun" value="_${prd.lpGubun }_S_210" />
+                                        <img src="${prdUrl }${uf:GetProductImgName(prd.prdSeq, prd.prdImg, imggubun)}" onerror="this.src='/kr/ko/resources/error/img/125x125.png'" alt="${prd.prdNm }"/>
+                                        <ul class="rk">
+											<c:forTokens items="${prd.pEmblem }" delims="," var="item" varStatus="i">
+												<c:forTokens items="${prd.pEmblemInfo }" delims="," var="item" varStatus="i">
+													<c:set var="mainSeq" value="${fn:split(item,'::')[0]}" />
+													<c:set var="embPcImgNm" value="${fn:split(item,'::')[1]}" />
+													<c:if test="${temp eq mainSeq}">
+														<li><span class="rk1"><img src="${prdUrl }${embLocCd}_${uf:GetProductImgName(mainSeq, embPcImgNm, '_0')}" onerror="this.src='/kr/ko/resources/error/img/300x300.png'"></span></li>
+													</c:if>
+												</c:forTokens>
+											</c:forTokens>
+                                        </ul>
+                                    </div>
+                                    <div class="pWrap">
+                                        <p class="pName">${prd.prdNm}</p>
+                                    </div>
+                                </a>
+                            </li>
+                            </c:forEach>
+                            <li>
+                                <a href="/kr/ko/mProduct.do?catCd01=MS&catCd02=MSMS" class="productMore"><span>제품 더보기</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    </c:if>
+                </div>
+            </section>
+            </c:if>
+            
+			<c:if test="${dpTitleList[8].useFl eq 'Y'}">
+            <c:if test="${not empty newPrdList }">
+	            <section class="sec5">
+	                <div class="newProduct">
+	                    <h2>${dpTitleList[8].cdNm}</h2>
+	                    <div class="horizScroll case6">
+	                        <ul>
+	                            <c:forEach items="${newPrdList}" var="prd" varStatus="s">
+	                            <c:set var="discount" value="${uf:GetDiscount(prd.stdPrc, prd.salPrc, true) }"/>
+	                            <li>
+	                                <a href="/kr/ko/mProductView.do?prdSeq=${prd.prdSeq }">
+	                                	<c:set var="imggubun" value="_${prd.lpGubun }_S_320" />
+	                                    <div class="pImg"><img src="${prdUrl }${uf:GetProductImgName(prd.prdSeq, prd.prdImg, imggubun)}" onerror="this.src='/kr/ko/resources/error/img/125x125.png'" alt="${prd.prdNm }"/></div>
+	                                    <div class="pWrap">
+	                                        <p class="pDesc2 mgt0" style="color:${prd.attribute01}" >${prd.prdNmS}</p>
+	                                        <p class="pName mgt0">${prd.prdNm}</p>
+	                                        <c:if test="${prd.salFl ne '4' }">
+												<p class="price">
+													<c:if test="${!empty prd.stdPrc && prd.salPrc < prd.stdPrc}">
+														<strong class="cost"><fmt:formatNumber value="${prd.stdPrc}" type="number" /></strong>
+													</c:if>
+													<strong class="unit"><fmt:formatNumber value="${prd.salPrc}" type="number" /></strong>원
+													<c:if test="${prd.salFl eq '2' }">
+														<span class="stock">일시품절</span>
+													</c:if>
+												</p>
+											</c:if>
+											<c:if test="${prd.salFl eq '4' }">
+												<span class="price">
+													<strong class="ready">출시예정</strong>
+												</span>
+											</c:if>
+	                                    </div>
+	                                </a>
+	                                <div class="way">
+	                                    <c:choose>
+											<c:when test="${empty userInfo}">
+												<c:set var="jimUrl" value="$.jhead.fnChkLoginPopAlert();"/>
+											</c:when>
+											<c:otherwise>
+												<c:set var="jimUrl" value="fncSaveJim('${prd.prdSeq }@', '${prd.prdSeq }@', '${prd.myshop_yn }', '${myShopRegFl}');"/>
+											</c:otherwise>
+										</c:choose>
+										<c:set var="paramPrdSeq" value="${prd.prdSeq}"/>
+										<c:set var="paramjjimYn" value="${prd.jjimYn}"/>
+											<%
+												// 2020.04.21 찜 상품 prd에서 꺼내서 쓰기위해 수정, 페이지 속도 높이기 위해 수정
+												jjimYn = "N";
+												if(cstmId != null && cstmId != ""){
+													//param.put("prdSeq", String.valueOf(pageContext.getAttribute("paramPrdSeq")));
+													jjimYn = String.valueOf(pageContext.getAttribute("paramjjimYn"));
+												}
+											%>
+										<c:set var="jjimYn" value="<%=jjimYn%>" />
+										<button type="button" class="hart <c:if test="${jjimYn eq 'Y'}">on </c:if>" onclick="<c:out value="${jimUrl }"/>">찜</button>
+										<c:if test="${prd.salFl ne '2' && prd.salFl ne '4' }">
+											<button type="button" class="cart" onclick="javascript:openPreview('${prd.prdSeq }', 'mCART');">장바구니</button>
+											<button type="button" class="card" onclick="javascript:openPreview('${prd.prdSeq }', 'mORDER');">바로구매</button>
+										</c:if>
+	                                </div>
+	                            </li>
+	                            </c:forEach>
+	                            <li>
+	                                <a href="/kr/ko/mShopNewPrdList.do" class="productMore"><span>제품 더보기</span></a>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </section>
+			</c:if>
+			</c:if>
+
+			<c:if test="${!empty bottomBnrList}">
+	           <section class="sec5">
+	               <div class="innisfreePut">
+	                   <div class="inniSlide">
+	                       <div class="slide">
+		                       <c:choose>
+			                       <c:when test="${device eq 'APP'}">
+				                       <ul class="swiper-wrapper">
+			                           		<c:forEach items="${bottomBnrList}" var="bottomBnr" varStatus="idx">
+												<li class="swiper-slide">
+													<a href="${bottomBnr.appLbLink}" target="${bottomBnr.appLbLinkTyp eq '1' ? '_blank' : '_self' }" >
+														<c:if test="${!empty bottomBnr.appLbImgNm}">
+															<img src="${mainBnrUrl}${bottomBnr.locCd}_${uf:GetProductImgName(bottomBnr.mainDpSeq, bottomBnr.appLbImgNm, '_mo')}" alt="${bottomBnr.appLbImgDesc}" onerror="this.src='/kr/ko/resources/error/img/320x104.png'">
+														</c:if>
+														<c:if test="${ (bottomBnr.appLbTitFlUse eq 'Y') || (bottomBnr.appLbSubTitFlUse eq 'Y') }">
+															<div class="txt">
+																<c:if test="${bottomBnr.appLbTitFlUse eq 'Y'}">
+																	<strong>${fn:replace(bottomBnr.appLbTitle, newLineChar, '<br/>') }</strong>
+																</c:if>
+																<c:if test="${bottomBnr.appLbSubTitFlUse eq 'Y'}">
+																	<span>${fn:replace(bottomBnr.appLbSubTitle, newLineChar, '<br/>') }</span>
+																</c:if>
+															</div>
+														</c:if>
+													</a>
+												</li>
+										   </c:forEach>
+			                           </ul>
+			                       </c:when>
+			                       <c:otherwise>
+				                       <ul class="swiper-wrapper">
+			                           		<c:forEach items="${bottomBnrList}" var="bottomBnr" varStatus="idx">
+												<li class="swiper-slide">
+													<a href="${bottomBnr.moLbLink}" target="${bottomBnr.moLbLinkTyp eq '1' ? '_blank' : '_self' }" >
+														<c:if test="${!empty bottomBnr.moLbImgNm}">
+															<img src="${mainBnrUrl}${bottomBnr.locCd}_${uf:GetProductImgName(bottomBnr.mainDpSeq, bottomBnr.moLbImgNm, '_mo')}" alt="${bottomBnr.moLbImgDesc}" onerror="this.src='/kr/ko/resources/error/img/320x104.png'">
+														</c:if>
+														<c:if test="${ (bottomBnr.moLbTitFlUse eq 'Y') || (bottomBnr.moLbSubTitFlUse eq 'Y') }">
+															<div class="txt">
+																<c:if test="${bottomBnr.moLbTitFlUse eq 'Y'}">
+																	<strong>${fn:replace(bottomBnr.moLbTitle, newLineChar, '<br/>') }</strong>
+																</c:if>
+																<c:if test="${bottomBnr.moLbSubTitFlUse eq 'Y'}">
+																	<span>${fn:replace(bottomBnr.moLbSubTitle, newLineChar, '<br/>') }</span>
+																</c:if>
+															</div>
+														</c:if>
+													</a>
+												</li>
+										   </c:forEach>
+			                           </ul>
+			                       </c:otherwise>
+		                       </c:choose>
+	                       </div>
+	                       <div class="slideControl">
+	                           <span class="slidePage"></span>
+	                       </div>
+	                   </div>
+	                   <script>
+	                       creamSlide();
+	                   </script>
+	               </div>
+	           </section>
+            </c:if>
+
+			<c:if test="${dpTitleList[10].useFl eq 'Y'}">
+            <section class="sec5">
+                <div class="innisfreeNews">
+                    <h2>${dpTitleList[10].cdNm}</h2>
+                    <a href="https://www.instagram.com/innisfree.instalog/"><p class="instalog">Innisfree.instalog</p></a>
+                    <div class="instaSlide rollingList1">
+                        <ul id="INSTALOG" class="swiper-wrapper">
+                        </ul>
+                    </div>
+                </div>
+                <div class="innisfreeOfficial">
+                    <a href="https://www.instagram.com/innisfreeofficial/"><p class="instalog">Innisfreeofficial</p></a>
+                    <div class="instaSlide rollingList2">
+                        <ul id="OFFICIAL" class="swiper-wrapper">
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            </c:if>
+            <section class="sec5">
+                <div class="memberShip">
+                    <h2>멤버십 혜택 안내</h2>
+                    <p class="desc">이니스프리에서는 이런 혜택을 드려요!</p>
+                    <div class="memberGuide">
+                        <ul>
+                            <li>
+                                <div class="iconGuide"><img src="/kr/ko/resources/mobile2/images/common/icon_membership.png" alt="멤버십데이 혜택"></div>
+                                <p class="guideTxt">멤버십데이 혜택</p>
+                                <p class="guideDesc">최대 30% 할인</p>
+                            </li>
+                            <li>
+                                <div class="iconGuide"><img src="/kr/ko/resources/mobile2/images/common/icon_seed.png" alt="씨드 혜택"></div>
+                                <p class="guideTxt">씨드 혜택</p>
+                                <p class="guideDesc">씨드 적립 및 쿠폰 지급</p>
+                            </li>
+                            <li>
+                                <div class="iconGuide"><img src="/kr/ko/resources/mobile2/images/common/icon_purchase.png" alt="뷰티포인트 적립"></div>
+                                <p class="guideTxt">뷰티포인트 적립</p>
+                                <p class="guideDesc">결제 금액의 1% 적립</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <div class="iconGuide"><img src="/kr/ko/resources/mobile2/images/common/icon_birthday.png" alt="생일 혜택"></div>
+                                <p class="guideTxt">생일 혜택</p>
+                                <p class="guideDesc">40% 할인 쿠폰 지급</p>
+                            </li>
+                            <li>
+                                <div class="iconGuide"><img src="/kr/ko/resources/mobile2/images/common/icon_prime.png" alt="프라임 바우처 발급"></div>
+                                <p class="guideTxt">프라임 바우처 발급</p>
+                                <p class="guideDesc">KIT 증정 및 쿠폰 지급</p>
+                            </li>
+                            <li>
+                                <div class="iconGuide"><img src="/kr/ko/resources/mobile2/images/common/icon_myshop.png" alt="MY SHOP 혜택"></div>
+                                <p class="guideTxt">MY SHOP 혜택</p>
+                                <p class="guideDesc">제품 할인 및 쿠폰 지급</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="memberMore">
+                        <a href="/kr/ko/GreenteaClubMembership.do">더보기</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- //body -->
+
+		<!-- 인스타그램 상세보기 레이어 -->
+        <div class="layPop resize" id="instaPop">
+            <div class="wrapModal">
+                <div class="inner">
+                    <div class="resizeBody">
+                        <div class="img" id="instaDetailMedia">
+                            <img src="/kr/ko/resources/web2/images/main/@insta.png" alt="">
+                        </div>
+                        <div class="contTxt">
+                            <p class="id" id="instaDetailUser"></p>
+                            <div class="txt" id="instaDetailContext">
+                            </div>
+                        </div>
+                        <div class="btnWrap">
+                            <span><a id="instaDetailUrl" href="#" class="btnBk" target="_blank" >더보기</a></span>
+                        </div>
+                    </div>
+                    <button type="button" class="mvClose" onclick="layerClose();">닫기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <jsp:include page="${uf:getConst('INCLUDE_MOBILE_FOOTER') }"/>
+        <!-- //footer -->
+    </div>
+</body>
+</html>
+ 

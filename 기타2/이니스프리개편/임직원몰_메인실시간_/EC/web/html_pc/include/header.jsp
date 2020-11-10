@@ -45,7 +45,7 @@
 				<a href="#">
 					<!-- 대각선 라인 좌측 배너 background 컬러와 동일하게 맟춰주세요. -->
 					<span class="txt_background" style="border-top-color:#297552;"></span>
-					<span class="txt" style="color:#fff;">4월 멤버십 데이 UP TO 50%</span>
+					<span class="txt" style="color:#fff;">4월 멤버십 데이 노토산///<span style="font-family: 'nanum',sans-serif;">4월 멤버십 나눔체입니다</span></span>
 				</a>
 			</div>
 
@@ -357,7 +357,7 @@
 						<ul class="gnbList">
 							<li class="btn"><button type="button" onclick="gnbControl('open')"><span>카테고리</span></button></li>
 							<li><a href="#"><img src="/resources/web2/images/common/@gnb_txt.png" alt="그린티 씨드"></a></li>
-							<li><a href="#">HOT DEAL</a></li>
+							<li><a href="#">HOT DEAL</a><span class="ic-hot"></span></li>
 							<li><a href="#">FOR U</a></li>
 							<li><a href="#">이벤트</a></li>
 							<li><a href="#">리뷰</a></li>
@@ -696,11 +696,12 @@
 				<div class="exfloatingBanner">
 					<button type="button" class="btnHide" onclick="$('.exfloatingBanner').hide();">안보기</button>
 					<div class="bnr_off">
-						<a href="#"><img src="/resources/web2/images/common/@exBaner.jpg" alt="" width="101" height="129"></a>
+						<a href="">
+						<img src="/resources/web2/images/common/@exBaner.jpg" alt="" width="101" height="129"></a>
 					</div>
 					
 					<div class="bnr_on">
-						<a href="#">
+						<a href="">
 							<!-- 이미지WIDTH 필수 -->
 							<img src="/resources/web2/images/common/@exBaner_on.png" width="831" alt="">
 						</a>
