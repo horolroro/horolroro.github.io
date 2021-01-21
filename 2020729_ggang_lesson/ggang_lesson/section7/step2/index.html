@@ -20,7 +20,7 @@
 .ggang_box h2 {position: absolute; left:0; top:50%; width: 100%; color:#fff; font-size:80px; line-height:1; text-align: center;}
 
 .fix_motion {position: relative; height: 5000px;}
-.fix_motion .sticky_cont {overflow: hidden; position: sticky; position: -webkit-sticky; top:0; left: 0; width: 100%; height: 100vh;}
+.fix_motion .sticky_cont {overflow: hidden; position: relative; position: -webkit-sticky; top:0; left: 0; width: 100%; height: 100vh;}
 .fix_motion .sticky_cont .cont_box {position:relative; height: 100%;}
 .fix_motion .sticky_cont .cont_box .intro_txt {position:absolute; left:50%; top:50%; z-index:60; transform:translate(-50%,-50%); -webkit-transform:translate(-50%,-50%); -moz-transform:translate(-50%,-50%); -o-transform:translate(-50%,-50%); -ms-transform:translate(-50%,-50%); transition: opacity .5s;}
 .fix_motion .sticky_cont .cont_box .intro_txt h2 {font-size: 80px; line-height: 1; color:#fff;}
@@ -105,6 +105,12 @@ $(function(){
         setProperty(); // 스크롤할때 변해야할 값들의 변수를 선언
         motionRender(); //모션 실행 함수
 
+        if(winScrollTop > 500){
+            $('.fix_motion .sticky_cont').css({position:'fixed'})
+        }else{
+            $('.fix_motion .sticky_cont').css({position:'relative'})
+        }
+
     };
 
     function setProperty(){ // 스크롤할때 변할 값들을 셋팅해주는 함수
@@ -118,7 +124,7 @@ $(function(){
 
         scrollPerecnt =  sectionScrolTop / scrollRealHeight; // 스크롤탑 / 스크롤 길이로 비율을 구합니다
         percent = scrollPerecnt * 100 ; //백분율을 구합니다
-
+        //console.log(percent)
     };
 
     function motionRender(){ //모션 실행 함수
@@ -127,9 +133,11 @@ $(function(){
         var maskEndValue = 0; // 최종 마스크 크기
         var zoomValue = 1.5; //줌될 크기
         var zoomOutValue = 1; //줌 아웃될 크기
-        var maskVal = Math.max(maskEndValue, maskStartValue - (scrollPerecnt * maskStartValue)); //마스크 처리값
+        var maskVal = Math.max(maskEndValue , maskStartValue - (scrollPerecnt * maskStartValue)) //마스크 처리값 50에서 0 으로 가기위해
+        //var maskVal = scrollPerecnt * maskStartValue
+        //var maskVal = Math.min(maskStartValue,Math.max(maskEndValue, maskStartValue - (scrollPerecnt * maskStartValue)));
         var scaleVal = Math.max(zoomOutValue, zoomValue - (scrollPerecnt * zoomValue)); // 줌 처리값
-
+        console.log(maskVal)
         /* 마스크 처리 */
         maskLeft
         .css({

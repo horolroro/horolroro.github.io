@@ -112,6 +112,7 @@ $(function(){
     var scrollHeight; // 스크롤 높이
     var scrollRealHeight; //실제로 스크롤해야될 높이를 담을 변수를 선업합니다
     var winScrollTop; // 스크롤바의 높이를 담을 변수를 선업합니다
+    var scrollPerecnt;
     var percent; // 스크롤 백분율값을 담을 변수를 선업합니다
     var moveDistance; // 패럴럭스 요소가 움직일 거리를 담을 변수 선업합니다
 
@@ -120,7 +121,7 @@ $(function(){
         scrollHeight = scrollBody.height(); // 스크롤 높이
         scrollRealHeight = (scrollHeight - $(window).height()); //실제로 스크롤해야될 높이값을 구합니다
         winScrollTop = $(window).scrollTop(); //스크롤바의 현재 위치를 구합니다
-        var scrollPerecnt = winScrollTop / scrollRealHeight; //거리와 현재 위치를 기준으로 비율을 구합니다
+        scrollPerecnt = winScrollTop / scrollRealHeight; //거리와 현재 위치를 기준으로 비율을 구합니다
         percent = scrollPerecnt * 100; //백분율 구하기
         moveDistance = scrollPerecnt * parallaxDistance; //패럴럭스 요소가 움직일 거리 실제 높이에 백분율값을 곱하고 시간차 움직임을 위해 패럴러스 거리값을 곱합니다.
 

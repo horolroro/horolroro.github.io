@@ -1,0 +1,1180 @@
+@charset "utf-8";
+@import url(font.css);
+@import url(slick.css);
+@import url(jquery.fullPage.css);
+
+/* Reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button{margin:0;padding:0}
+body,h1,h2,h3,h4,input,button,select,textarea{font-family:'Noto Sans KR',"맑은 고딕","Malgun Gothic",Sans-serif; font-weight:400;font-size:12px;color:#000}
+body{text-align:left; word-break:break-word;  -webkit-text-size-adjust: 100%;}
+img,fieldset,iframe{border:0 none}
+li{list-style:none}
+input,select,button{vertical-align:top; border-radius:0;}
+img{vertical-align:top; max-width:100%;}
+i,em,address{font-style:normal}
+label,button{cursor:pointer; border:none; outline:none; background:none;}
+a{color:#000;text-decoration:none}
+a:hover{text-decoration:none}
+hr{display:none}
+table{border-collapse:collapse;border-spacing:0}
+caption{font-size:0; line-height:0; height:0}
+* {box-sizing:border-box;}
+
+/* Placeholder */
+::-webkit-input-placeholder { color: #afb0b3; font-weight: normal; font-size: 13px; letter-spacing:-0.05em;  }
+:-moz-placeholder { color: #afb0b3; opacity: 1; font-weight: normal; font-size: 13px; }
+::-moz-placeholder { color: #afb0b3; opacity: 1; font-weight: normal; font-size: 13px; }
+:-ms-input-placeholder { color: #afb0b3; font-weight: normal; font-size: 13px; }
+
+/* Skip */
+#skipnavigation{z-index:9999;position:absolute;left:0;top:0;width:100%;text-align:center}
+#skipnavigation *{list-style:none;margin:0;padding:0;}
+#skipnavigation a{display:block;width:100%;height:0;overflow:hidden;white-space:nowrap;}
+#skipnavigation a:focus,
+#skipnavigation a:active{display:block;width:100%;height:36px;color:#fff;background:#000;line-height:36px;text-decoration:underline !important;font-size:14px;}
+
+
+/* head */
+.head {position: fixed; left:0; top:0; width: 100%; z-index:500; }
+.head h1 {position: absolute; left:43px; top:17px; z-index:10;  transition:1s all; transform:translateX(-25px); opacity:0;}
+.head h1 a {display: inline-block; vertical-align: top; width:65px; height:21px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo.png?v2') center no-repeat; background-size:cover !important; text-indent:-999em;} 
+.head .rightSide {position: absolute; right:12px; top:0; padding-top:17px; z-index:10;   transition:1s all; transform:translateX(25px); opacity:0;}
+.head .rightSide:after {content:''; display: block; clear:both;} 
+.head .rightSide .info {float:left; }
+.head .rightSide .info:after {content:''; display: block; clear:both;} 
+.head .rightSide .info a {float:left; width:85px; height:25px; line-height:25px; background:#191919; border-radius:20px; color:#fff; font-size:12px; text-align: center;  font-weight:500;  letter-spacing:-0.06em}
+.head .rightSide .info a:first-child {margin-right:9px;}
+.head .rightSide .info a.login span{padding-left:13px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login.png') left center no-repeat; background-size:10px auto ;}
+.head .rightSide .info a.logout span{padding-left:13px; }
+.head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01.png') left center no-repeat; background-size:10px auto ;}
+.head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02.png') left center no-repeat; background-size:10px auto ;}
+.head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03.png') left center no-repeat; background-size:10px auto ;}
+
+.btnMenu {position: absolute; left:0; top:0; transition:1s all; transform:translateX(-25px); opacity:0; padding:23px 0 0 12px; }
+.btnMenu a {display: block;text-indent:-999em; width:24px; height:13px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu.png') center no-repeat; background-size:24px auto;}
+
+
+.fp-viewing-main .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-main .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-main .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-main .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-main .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-main .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-main .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+.fp-viewing-reserve .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-reserve .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-reserve .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-reserve .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-reserve .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-reserve .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-reserve .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+
+.fp-viewing-story .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-story .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-story .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-story .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-story .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-story .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-story .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+
+.fp-viewing-class .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-class .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-class .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-class .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-class .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-class .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-class .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+.fp-viewing-classSub .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-classSub .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-classSub .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-classSub .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-classSub .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-classSub .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-classSub .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+.fp-viewing-growth .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-growth .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-growth .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-growth .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-growth .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-growth .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-growth .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+.fp-viewing-media .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-media .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-media .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-media .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-media .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-media .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-media .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+
+.navList {position: fixed; left:0; top:0; bottom:0; overflow-y:auto; width: 100%; height:100%; background:rgba(0,0,0,.95); text-align: center; z-index: 500; opacity:0; transition:.3s all; transform:translate(-100%); visibility:hidden; }
+.navList .inner {padding:50px 0;}
+.navList .bi {margin-bottom:20px;}
+.navList .bi img {width:180px;}
+.navList .list ul li p a {display: inline-block; vertical-align: top; font-size:25px; line-height:25px; color:#fff; width:136px; text-align: center;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_gnb_line.png?v1') center bottom no-repeat;  background-size:136px auto; padding:20px 0;  }
+.navList .list ul li p a span {position: relative; display: inline-block; vertical-align: top; padding:0 13px;}
+.navList .list ul li p a span:after {content:''; position: absolute; left:0; top:50%; margin-top:-3px; width:6px; height:6px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_gnb.png') center no-repeat; background-size:6px auto;}
+.navList .list ul li p a span:before {content:''; position: absolute; right:0; top:50%; margin-top:-3px; width:6px; height:6px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_gnb.png') center no-repeat; background-size:6px auto; }
+.navList .list .sub {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_gnb_line.png?v1') center bottom no-repeat;  background-size:136px auto; padding:3px 0; }
+.navList .list .sub li a {position: relative;font-size:16px; line-height:16px; color:#868686; display: inline-block; vertical-align: top; padding:12px 0}
+.navList .list .sub li a:after {content:''; position: absolute; left:50%; bottom:0; margin-left:-13px; width:26px; height:1px; background:#555353;}
+.navList .list .sub li:last-child a:after {display: none; }
+.navList .closeNav {position: fixed; right:25px; top:25px; }
+.navList .closeNav a {display: inline-block; width:35px; height:35px; vertical-align: top; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close_gnb.png') no-repeat; background-size:35px auto; text-indent:-999em;}
+.head.gnbOpen .navList {transform:translate(0,0); opacity:1; visibility:visible;}
+
+
+html.load .head h1 {transform:translateX(0); opacity:1;}
+html.load .head .rightSide {transform:translateX(0); opacity:1;}
+html.load .btnMenu {transform:translateX(0); opacity:1; }
+html.load .section.main .notice {transform:translateY(0); opacity:1;}
+
+/* share */
+.share {margin-top:30px; text-align: center;}
+.share .sns a {display: inline-block; vertical-align: top; width:35px; height:35px; text-indent:-999em;margin-right:15px;}
+.share .sns a:last-child {margin-right:0;}
+.share .sns a:nth-child(1) {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_sns03.png?V1') center no-repeat; background-size:35px auto;  }
+.share .sns a:nth-child(2) {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_sns04.png?V1') center no-repeat;  background-size:35px auto;}
+.share .sns a:nth-child(3) {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_sns01.png?V1') center no-repeat; background-size:35px auto;  }
+.share .sns a:nth-child(4) {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_sns02.png?V1') center no-repeat;  background-size:35px auto;}
+
+
+.copy {position:absolute; left:0; bottom:13px; width: 100%; height:12px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/tit_copy.png') center top no-repeat; background-size:auto 12px; text-indent:-999em;   }
+.copy.black {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/tit_copy2.png') center top no-repeat; background-size:auto 12px}
+.copy.white {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/tit_copy3.png') center top no-repeat; background-size:auto 12px}
+
+
+
+/* main */
+.section {position: relative; overflow:hidden; }
+.section.main {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_main.jpg') center top  no-repeat; background-size:cover; }
+.section.main .mainCont { text-align: center; z-index: 30;}
+.section.main .mainCont .mrLogo {position: absolute; left:0; top:100px; width:100%;  transition:1s all; transform:translateY(-25px); opacity:0; z-index: 10; }
+.section.main .mainCont .mrLogo img {width:270px;}
+.section.main .mainCont .btn {position: absolute; left:0; bottom:110px; width: 100%; text-align: center; z-index: 10;  transition:1s all; transform:translateY(-25px); opacity:0; font-size:23px; line-height:23px; display: inline-block; vertical-align: top; color:#1f1f1f; font-weight:500; letter-spacing:-1px;}
+.section.main .mainCont .btn a{color:#fff;}
+.section.main .mainCont .btn span {display: block; font-size: 22px; line-height:22px; font-weight:300; margin-bottom:7px;}
+
+.section.main .notice {position: absolute; right:0; bottom:0; transition:1s all; transform:translateY(25px); opacity:0; z-index: 30; width:100%; color:#fff;  text-align: left; letter-spacing:-1px;  height:57px; padding:20px 5px 0 10px; background:#000;}
+.section.main .notice .tit {position: relative; float:left;padding:0 10px 0 0; text-align: center; line-height:15px; font-size:15px;  color:#fff;  }
+.section.main .notice .tit:after{content:''; position: absolute; right:0; top:1px; width:2px; height:13px;; background:#fff;}
+.section.main .notice .noticeSlide {margin-left:62px;}
+.section.main .notice .noticeSlide ul li a {display: block;  font-size:15px; line-height:15px;  color:#fff; text-align: left;  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.section.main .notice .slick-slide {border:none; outline:none;}
+
+
+.section.main .mouse {position: absolute; left:50%; margin-left:-21px; bottom:73px; text-align: center;  cursor:pointer; transition:1s all; transform:translateY(5px); opacity:0; z-index: 30;}
+.section.main .mouse .ico {position: relative; width:43px; height:27px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btnDown.png') left no-repeat;  background-size:43px auto;  text-indent:-999em; animation-name: mouseWheel; animation-duration:1s; animation-iteration-count: infinite; animation-direction: alternate; }
+.section.main .btnVideo {position: absolute; left:50%; margin-left:-30px; margin-top:0; top:50%; z-index: 30;  transition:1s all; transform:translateY(25px); opacity:0; }
+.section.main .btnVideo img {width:59px;}
+.section.main .btnVideo .closeVideo {position: absolute; right:-40px; top:0; text-indent:-999em; width:34px; height:34px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close3.png') no-repeat; }
+.section.main .btnVideo.hide {display: none;}
+@keyframes dot {
+  from { opacity:0; }
+  to { opacity:1;}
+}
+@keyframes mouseWheel {
+  from { transform:translateY(0); }
+  to { transform:translateY(5px); }
+}
+
+
+.fp-viewing-main .section.main .mainCont .btnPlay  {transform:translateX(0); opacity:1; transition-delay:300ms;}
+.fp-viewing-main .section.main .mainCont .mrLogo  {transform:translateX(0); opacity:1; transition-delay:600ms;}
+.fp-viewing-main .section.main .mainCont .btn  {transform:translateX(0); opacity:1; transition-delay:900ms;}
+.fp-viewing-main .section.main .mouse  {transform:translateX(0); opacity:1; transition-delay:1100ms;}
+.fp-viewing-main .section.main .btnVideo  {transform:translateY(0); opacity:1; transition-delay:1100ms;}
+
+
+/* reserveWrap */
+.section.reserve {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_reserve.jpg?v1') center no-repeat; background-size:cover;}
+.section.reserve .scrollControl {transition:1s all; transform:translateX(30px); opacity:0;}
+.reserveWrap { padding:65px 15px;}
+.reserveWrap .title {margin-bottom:25px; font-size:37px; line-height:42px; font-weight:300; color:#e20138; text-align: center; transition:1s all; transform:translateY(-25px); opacity:0; letter-spacing:-3px;;}
+.reserveWrap .title span {font-weight:500;}
+.reserveWrap .inner {margin:0 auto; max-width:400px;}
+.reserveWrap .inner .box{ transition:1s all; transform:translateY(25px); opacity:0;}
+.reserveWrap .inner .deviceList {text-align: center; margin-bottom:20px;}
+.reserveWrap .inner .deviceList input {position: absolute;visibility: hidden;}
+.reserveWrap .inner .deviceList label {position: relative; font-size:18px; color:#ffffff; line-height:18px; display: inline-block; vertical-align: top; padding-left:29px;}
+.reserveWrap .inner .deviceList label:last-child {margin-left:50px;}
+.reserveWrap .inner .deviceList label:after {content:''; position: absolute; left:0; top:-2px; width:19px; height:19px; border:2px solid #fff; border-radius:50%;}
+.reserveWrap .inner .deviceList input:checked + label:before {content:''; position: absolute; left:5px; top:3px; width:13px; height:13px; background:#fff; border-radius:50%;}
+.reserveWrap .inner .input {position: relative; margin-bottom:5px; padding-right:115px;}
+.reserveWrap .inner .input .ip { background:rgba(255,255,255,.15);}
+.reserveWrap .inner .input .ip input {display: block; width: 100%; border:none; background:none; outline:none;  height:50px; font-size:14px; font-weight:500; color:#fff; text-align: center;  }
+.reserveWrap .inner .input .btn {position: absolute; right:0; top:0;}
+.reserveWrap .inner .input .btn a {display: block; width: 110px; height:50px; line-height:50px; color:#fff; font-size:14px; background:#9e1436; font-weight:500; text-align: center; letter-spacing:-1px;}
+
+.reserveWrap .inner .input.phone .ip {padding-left:44px;}
+.reserveWrap .inner .input.phone .ip input {text-align:left;}
+.reserveWrap .inner .input.phone .first {position: absolute; left:15px; top:50%; margin-top:-7px;  font-size:14px; line-height:14px; color:#fff; font-weight:500;}
+.reserveWrap .inner .input.auth {padding-right: 0; margin-top:63px;}
+.reserveWrap .inner .input.auth .ip {text-align:center; font-size:16px; line-height:22px; color:#bfbfc1; height:105px; padding-top:45px;}
+
+.reserveWrap .inner .checkList  { margin-bottom:20px; margin-top:15px;}
+.reserveWrap .inner .checkList .line > div {margin-bottom:7px; text-align: left; position: relative;}
+.reserveWrap .inner .checkList .line:after {content:''; display: block; clear:both;}
+.reserveWrap .inner .checkList input {position: absolute;visibility: hidden;}
+.reserveWrap .inner .checkList label {position: relative; font-size:12px; color:#a7a7a7; line-height:12px; display: inline-block; vertical-align: top; padding-left:22px;}
+.reserveWrap .inner .checkList label span {font-size:11px; font-weight:300;}
+.reserveWrap .inner .checkList label:after {content:''; position: absolute; left:0; top:0; width:10px; height:10px; border:1px solid #a7a9aa; }
+.reserveWrap .inner .checkList input:checked + label:before {content:''; position: absolute; left:3px; top:3px; width:6px; height:6px; background:#a7a9aa;}
+
+.reserveWrap .inner .checkList .checkAll label {color:#bf7286; }
+.reserveWrap .inner .checkList .checkAll label:after {border:1px solid #bf7286; }
+.reserveWrap .inner .checkList .checkAll input:checked + label:before {background:#bf7286;}
+
+.reserveWrap .inner .checkList .detail {position: absolute; right:0; top:0; padding-right:9px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_detail.png') right 3px no-repeat; cursor:pointer; background-size:4px auto; font-size:12px; line-height:12px; color:#adb3b5;}
+.reserveWrap .inner .product {margin-bottom:15px; text-align: center;}
+.reserveWrap .inner .product img {width:305px;}
+.reserveWrap .inner .product .tit {font-size:24px; line-height:24px; color:#e20138; margin-bottom:20px;; text-align: center;}
+.reserveWrap .inner .infoWarn {text-align:left; font-size:12px; margin-top:10px; }
+.reserveWrap .inner .infoWarn .tit {  font-size:12px; color:#8b8786; padding-left: 20px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_warn.png') left 2px no-repeat; background-size:14px auto; }
+.reserveWrap .inner .infoWarn .text {font-size:12px; color:#8b8786; font-weight:500; letter-spacing:-0.05em;  padding-left:12px;}
+.reserveWrap .inner .infoWarn .text p { text-indent:-8px; padding-left:8px; word-break:keep-all;}
+
+
+.fp-completely .reserveWrap .title  {transform:translateX(0); opacity:1; }
+.fp-completely .reserveWrap .inner .box.no1  {transform:translateX(0); opacity:1; transition-delay:200ms;}
+.fp-completely .reserveWrap .inner .box.no2  {transform:translateX(0); opacity:1; transition-delay:400ms;}
+
+/* scrollControl */
+.scrollControl {position: absolute; right:93px; width:36px; height:385px; top:50%; margin-top:-192px; transition:1s all; transform:translateX(30px); opacity:0;}
+.scrollControl a { position: absolute; left:0; width:37px; height:19px;}
+.scrollControl a span {position: absolute; font-size:15px; color:#fff; width:160px; left:50%; margin-left:-80px; text-align: center; font-weight:500;}
+.scrollControl a.up {top:0; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_scroll01.png') center no-repeat;}
+.scrollControl a.up span {top:-28px; }
+.scrollControl a.down {bottom:0; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_scroll02.png') center no-repeat;}
+.scrollControl a.down span {bottom:-28px; }
+
+.scrollControl.black a span {color:#000}
+.scrollControl.black a.down {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_scroll02_b.png') center no-repeat;}
+.scrollControl.black a.up {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_scroll01_b.png') center no-repeat;}
+.fp-completely .scrollControl  {transform:translateX(0); opacity:1; transition-delay:1000ms;}
+
+
+/* storeWrap */
+.section.store {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_store.jpg?v1') center no-repeat; background-size:cover;}
+.storeWrap {padding:60px 15px; text-align: center; margin:0 auto; max-width:400px;}
+.storeWrap .tit {margin-bottom:40px; transition:1s all; transform:translateY(25px); opacity:0; text-align: left; padding-left:30px;}
+.storeWrap .tit p {font-size:37px; line-height:37px; font-weight: 500; color:#010101; letter-spacing:-1px;  }
+.storeWrap .tit .tit01 {color:#28abff;  margin-bottom: 5px;}
+.storeWrap .tit .tit02 { margin-bottom: 5px;}
+.storeWrap .tit .tit03 { font-weight:300;}
+.storeWrap .product {margin-bottom:20px; transition:1s all; transform:translateY(25px); opacity:0; position: relative; left:-10px;}
+.storeWrap .product img {position: relative; width:338px; }
+.storeWrap .add {transition:1s all; transform:translateY(25px); opacity:0;}
+.storeWrap .add .text {font-size:18px; line-height:18px; color:#000000; margin-bottom:15px; font-weight:300; letter-spacing:-1px; }
+.storeWrap .add .text span {font-weight:500;}
+.storeWrap .add .btn {margin-left:-5px;}
+.storeWrap .add .btn a {float:left; width:50%; padding:0 0 5px 5px;  }
+.storeWrap .add .btn:after{content:''; display: block; clear:both;}
+
+
+.fp-completely .storeWrap .tit  {transform:translateX(0); opacity:1;}
+.fp-completely .storeWrap .product  {transform:translateX(0); opacity:1; transition-delay:200ms;}
+.fp-completely .storeWrap .add  {transform:translateX(0); opacity:1; transition-delay:400ms;}
+
+
+/* friendsWrap */
+.section.friends {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_event01.jpg') center no-repeat; background-size:cover;}
+.friendsWrap {text-align: center; padding:65px 0; margin:0 auto; max-width:400px; }
+.friendsWrap .title {margin-bottom:25px; transition:1s all; transform:translateY(25px); opacity:0;}
+.friendsWrap .title .tit01 {font-size:37px; line-height:42px; color:#203b67; font-weight:300; margin-bottom:5px; letter-spacing:-1px;}
+.friendsWrap .title .tit01 span {font-weight:500;}
+.friendsWrap .title .tit02 {font-size:16px; line-height:16px; margin-bottom:25px; color:#000000; letter-spacing:-1px; font-weight:300;}
+.friendsWrap .product {margin-bottom:13px; transition:1s all; transform:translateY(25px); opacity:0;}
+.friendsWrap .product img {position: relative; width:345px;}
+.friendsWrap .step {margin-bottom:15px; transition:1s all; transform:translateY(25px); opacity:0;}
+.friendsWrap .step img {width:330px;}
+.friendsWrap .event {transition:1s all; transform:translateY(25px); opacity:0; padding:0 15px;}
+.friendsWrap .event .in {position: relative; margin:0 auto 10px auto;}
+.friendsWrap .event .in .urlBox {position: relative; padding-right:115px; margin-bottom:5px; }
+.friendsWrap .event .in .urlBox input {outline:none; border:none; text-align: center; height:50px; font-size:14px; padding:0 5px; color:#727272; width:100%; background:#e5e5e5;}
+.friendsWrap .event .in .urlBox a.btnUrl {position: absolute; right:0; top:0; width:110px; height:50px; line-height:50px; font-size:14px; color:#fff; background:#203b67; }
+.friendsWrap .event .in .count { height:50px; line-height:50px; background:#256bb3; font-size:14px; color:#fff; }
+.friendsWrap .event .in .count span {display: inline-block; vertical-align: middle;}
+.friendsWrap .event .in .count input {display: inline-block; vertical-align: middle; width:35px; height:26px; background:#fff; border:none; color:#125eac; font-weight:500; text-align: center; font-size:14px; outline:none; margin:0 3px 0 10px }
+.friendsWrap .infoWarn {text-align: right; }
+.friendsWrap .infoWarn .tit { color:#3e3e3e; font-size:12px; font-weight:500; display: inline-block; vertical-align: middle; margin-right:15px;}
+.friendsWrap .infoWarn .detail {display: inline-block; vertical-align: middle; background:rgba(0,0,0,.5); width:76px; height:18px; line-height:18px; text-align: center;}
+.friendsWrap .infoWarn .detail em {padding-right:9px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_detail.png') right center no-repeat; cursor:pointer; color:#dce2e4; font-size:12px; background-size:4px auto;}
+
+
+.fp-completely .friendsWrap .title  {transform:translateX(0); opacity:1;}
+.fp-completely .friendsWrap .product  {transform:translateX(0); opacity:1; transition-delay:200ms;}
+.fp-completely .friendsWrap .step  {transform:translateX(0); opacity:1; transition-delay:400ms;}
+.fp-completely .friendsWrap .event  {transform:translateX(0); opacity:1; transition-delay:600ms;}
+
+.thumb {text-align: center; font-size:25px; position: absolute; left:0; top:50%; width: 100%; text-align: center;}
+
+
+/* squareWrap */
+.section.square {}
+.squareWrap {padding:65px 15px; text-align: center; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_square.jpg?v1') center no-repeat; background-size:cover;  }
+.squareWrap .title {margin-bottom:20px; transition:1s all; transform:translateY(25px); opacity:0;}
+.squareWrap .title .tit01 {font-size:36px; line-height:36px; color:#000000; font-weight:300; margin-bottom:12px; letter-spacing:-1px;}
+.squareWrap .title .tit01 span {font-weight:500;}
+.squareWrap .title .tit02 {font-size:17px;  line-height:24px; margin-bottom:10px; color:#000000; letter-spacing:-1px; font-weight:300;}
+.squareWrap .title .tit02 span {font-weight:500;}
+.squareWrap .title .tit03 {font-size:15px; color:#555555; line-height:15px; font-weight:300;}
+.squareWrap .grid:after {content:''; display: block; clear:both;}
+.squareWrap .grid {transition:1s all; transform:translateY(25px); opacity:0; margin:0 auto; max-width:400px;}
+.squareWrap .grid .right {position: relative;}
+.squareWrap .product {margin-bottom:10px;  transition:1s all; transform:translateY(25px); opacity:0;}
+.squareWrap .product img {width:100%; max-width:400px;}
+.squareWrap .event {text-align: left;}
+.squareWrap .event .in {position: relative; margin:0 auto 10px auto;}
+.squareWrap .event .in:after {content:''; display: block; clear:both;}
+.squareWrap .event .in .count {position: relative;  height:50px; line-height:45px; background:#2369b2; font-size:14px; color:#fff;  letter-spacing:-1px;; text-align: center; padding-right:60px; }
+.squareWrap .event .in .count span {display: inline-block; vertical-align: middle; }
+.squareWrap .event .in .count input {position: absolute; left:50%;margin-left:30px; top:12px; width:40px; height:27px; background:#fff; border:none; color:#125eac; font-weight:500; text-align: center; font-size:14px; outline:none; }
+.squareWrap .event .in .count.my {background:#223d68;   margin-bottom:7px;}
+.squareWrap .event .in .count.my input{color:#0c2959; }
+
+.squareWrap .infoWarn {text-align: right; }
+.squareWrap .infoWarn .tit { color:#3e3e3e; font-size:12px; font-weight:500; display: inline-block; vertical-align: middle; margin-right:15px;}
+.squareWrap .infoWarn .detail {display: inline-block; vertical-align: middle; background:#9a9a9a; width:76px; height:18px; line-height:18px; text-align: center;}
+.squareWrap .infoWarn .detail em {padding-right:9px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_detail.png') right center no-repeat; cursor:pointer; color:#dce2e4; font-size:12px; background-size:4px auto;}
+
+.squareWrap .sqBox {position: relative; text-align: left;  width:300px; }
+.squareWrap .sqBox ul.sqList {margin-left:-5px;margin-bottom:60px;}
+.squareWrap .sqBox ul.sqList:after {content:''; display: block; clear:both;}
+.squareWrap .sqBox ul.sqList li{float:left; margin:0 0 5px 5px; width:92px;}
+.squareWrap .sqBox ul.sqList li a{position: relative; display: block; width:92px; height:92px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/btn_sq.png') center no-repeat; background-size:cover !important;}
+.squareWrap .sqBox ul.sqList li a .count {position: absolute; right:10px; bottom:5px; font-size:11px; line-height:11px; color:#fff; font-weight:500;}
+.squareWrap .sqBox ul.sqList li.active .count {display: none;}
+.squareWrap .sqBox ul.sqList li.no1.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq1.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no2.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq2.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no3.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq3.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no4.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq4.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no5.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq5.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no6.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq6.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no7.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq7.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no8.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq8.png') center no-repeat;}
+.squareWrap .sqBox ul.sqList li.no9.active a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/bg_sq9.png') center no-repeat;}
+
+
+
+.squareWrap .sqBox ul.trList li {position: absolute; width:38px; height:32px; cursor:pointer;}
+.squareWrap .sqBox ul.trList li span {position: relative; display: inline-block; vertical-align: top; z-index: 5; width:38px; height:32px;  text-indent:-999em;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/ico_treasure1.png') center no-repeat;  background-size:cover !important;}
+.squareWrap .sqBox ul.trList li.type2 span {width:33px; height:35px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/ico_treasure2.png') center no-repeat;}
+.squareWrap .sqBox ul.trList li.type3 span {width:32px; height:38px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/event/ico_treasure3.png') center no-repeat;}
+
+
+.squareWrap .sqBox ul.trList li.no1 {right:-27px; top:32px;}
+.squareWrap .sqBox ul.trList li.no2 {right:-27px; top:128px;}
+.squareWrap .sqBox ul.trList li.no3 {right:-27px; top:228px;}
+.squareWrap .sqBox ul.trList li.no4 {right:-27px; top:290px;}
+.squareWrap .sqBox ul.trList li.no5 {left:29px; bottom:-28px;}
+.squareWrap .sqBox ul.trList li.no6 {left:126px; bottom:-28px;}
+.squareWrap .sqBox ul.trList li.no7 {left:224px; bottom:-28px;}
+
+.squareWrap .sqBox ul.trList li.active:after {animation-name: light; animation-duration:.5s; animation-iteration-count: infinite; animation-direction: alternate; animation-timing-function:linear;  content:''; position: absolute; left:50%; top:50%;  margin:-40px 0 0 -30px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_light.png') center no-repeat; width:60px; height:80px; background-size:60px auto;}
+.squareWrap .sqBox ul.trList li em {display: none; position: absolute; left:50%; margin-left:-27px; width:60px; z-index: 5; text-align: center; bottom:-20px; font-size:12px; color:#fff; font-weight:500; }
+.squareWrap .sqBox ul.trList li.active em {display: block; }
+.squareWrap .sqBox ul.trList li.type2 em {margin-left:-29px; bottom:-21px;}
+.squareWrap .sqBox ul.trList li.type2:after {margin:-37px 0 0 -33px}
+.squareWrap .sqBox ul.trList li.type3 em {margin-left:-33px; bottom:-25px; }
+.squareWrap .sqBox ul.trList li.type3:after {margin:-35px 0 0 -35px}
+
+@keyframes light {
+  from { opacity:.5; }
+  to { opacity:1;}
+}
+
+.fp-completely .squareWrap .title  {transform:translateY(0); opacity:1; }
+.fp-completely .squareWrap .product {transform:translateY(0); opacity:1; transition-delay:200ms;}
+.fp-completely .squareWrap .grid {transform:translateY(0); opacity:1; transition-delay:400ms;}
+
+
+/* entryWrap */
+.section.entry {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_entry.jpg?v1') center no-repeat; background-size:cover;}
+.entryWrap {padding:65px 0; text-align: center; margin:0 auto; max-width:400px;}
+.entryWrap .title {font-size:37px; line-height:37px; color:#000000; font-weight:300; margin-bottom:17px; transition:1s all; transform:translateY(25px); opacity:0;}
+.entryWrap .title span{font-weight:500;}
+.entryWrap .prList {transition:1s all; transform:translateY(25px); opacity:0; margin-bottom:10px;}
+.entryWrap .prList ul {width:340px; margin:0 auto;}
+.entryWrap .prList ul li {position: relative; display: inline-block; vertical-align: top; width:105px; margin:0 0 25px 5px;}
+.entryWrap .prList ul li:nth-child(1) {margin-left: 0;}
+.entryWrap .prList ul li:nth-child(4) {margin-left: 0;}
+.entryWrap .prList ul li input {position: absolute; visibility: hidden;}
+.entryWrap .prList ul li label {display: block; position: relative; text-align: center; letter-spacing:-1px;}
+.entryWrap .prList ul li label .name {display: inline-block; vertical-align: top; margin-bottom:4px; font-size:11px; padding:0 4px; color:#fff; background:#0c2959; border-radius:30px; min-width:90px; height:27px; line-height:27px;  }
+.entryWrap .prList ul li label .count {position: absolute; left:0; top:76px; width: 100%; text-align: center;} 
+.entryWrap .prList ul li label .count em {position: relative; display: inline-block; vertical-align: top; font-size:12px; line-height:12px; color:#0c2959; font-weight:500; padding-bottom:7px;}
+.entryWrap .prList ul li label .img {display: block; margin-bottom:5px;}
+.entryWrap .prList ul li label .draw { text-align: center; margin-bottom:8px; display: block; font-size:12px; line-height:12px; color:#444444; font-weight:500;} 
+.entryWrap .prList ul li label .need {display: block; position: relative; white-space:nowrap;} 
+.entryWrap .prList ul li label .need em {font-size:12px; line-height:12px; color:#0c2959; font-weight:500; display: inline-block; vertical-align: middle;} 
+.entryWrap .prList ul li label a {display: inline-block; width:36px; margin-left:4px; line-height:23px; background:#203b67; box-shadow:0 0 4px 4px rgba(0,0,0,.05);   text-align: center;  font-size:12px; color:#fff; font-weight:500;}
+
+
+.entryWrap .event {text-align: left; padding:0 15px; margin:0 auto; transition:1s all; transform:translateY(25px); opacity:0;}
+.entryWrap .event .in {position: relative; margin:0 auto 10px auto;}
+.entryWrap .event .in:after {content:''; display: block; clear:both;}
+.entryWrap .event .in .count {position: relative; text-align: center;   height:50px; line-height:47px; background:#256bb3; background-size:100% 100%; font-size:14px; color:#fff;  box-shadow:0 0 4px 4px rgba(0,0,0,.05); letter-spacing:-1px;; }
+.entryWrap .event .in .count span {display: inline-block; vertical-align: middle; }
+.entryWrap .event .in .count input {display: inline-block; vertical-align: middle; width:40px; height:27px;  background:#fff; border:none; color:#125eac; font-weight:500; text-align: center; font-size:14px; outline:none;  margin:0 4px 0 8px;}
+.entryWrap .event .in .count.my {text-align: center; margin-bottom:5px;}
+.entryWrap .event .in .count.my a {display: block; height:50px; color:#fff; font-size:14px; font-weight:500;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_btn01.png') center no-repeat; background-size:100% 100%;}
+.entryWrap .event .in .count.my input{color:#0c2959; }
+
+.fp-completely .entryWrap .title  {transform:translateY(0); opacity:1;}
+.fp-completely .entryWrap .prList  {transform:translateY(0); opacity:1; transition-delay:200ms;}
+.fp-completely .entryWrap .event  {transform:translateY(0); opacity:1; transition-delay:400ms;}
+
+/* bgVideo */
+.bgVideo {position:absolute;left:0;top:0;z-index:1;width:100%;height:100%; overflow:hidden;}
+.bgVideo video {position:absolute; background:#000; object-fit: cover; min-height:600px;}
+.bgVideo:after {content:'';position: absolute;left:0;top:0;width: 100%;height: 100%;z-index:10;background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_pattern.png') 0 0 / 4px 4px repeat;}
+
+/* Alert */
+#popupAlert {position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 500; display: none;}
+#popupAlert .bg { position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 1; background:rgba(0,0,0,.8);}
+#popupAlert .popIn {position:absolute; left:0; top:50%;    min-width:100px; width: 100%;  box-sizing:border-box;  z-index:2;  visibility:hidden; text-align: center; }
+#popupAlert .popIn .closePop {position: absolute; right:-25px; top:0;}
+#popupAlert .popIn .closePop a {display: block; width:20px; height: 20px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close.png') center no-repeat; background-size:20px auto; text-indent:-999em; }
+#popupAlert .popIn .cell {display: inline-block; background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert.jpg') center no-repeat;  width:217px; min-height:120px; background-size:100% 100%; padding-top:20px; position: relative;}
+#popupAlert .popIn .verCenter {display:table;   min-height:60px; width: 100%; text-align: center; margin-bottom:60px;}
+#popupAlert .popIn .verCenter .alertText {display:table-cell;  font-size: 14px; font-weight:500; line-height:20px; vertical-align: middle; color:#222222;  padding:0 7px; letter-spacing:-1px; font-weight:500; }
+#popupAlert .popIn .btnWrap {padding-bottom: 20px;}
+#popupAlert .popIn .btnWrap a{display: inline-block; padding:10px 30px; border:1px solid #000; background:#fff; font-size: 20px;}
+
+.btnNone .btnWrap {display: none;}
+
+/* youtube Popup */
+.youtubePop {position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 500; display: none;}
+.youtubePop .bg { position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 1; background:rgba(0,0,0,.8);}
+.youtubePop .popIn {position:absolute; left:0; top:50%; margin-top:-100px;    min-width:100px; width: 100%;  box-sizing:border-box;  z-index:2; text-align: center; }
+.youtubePop .popIn .youtubeCont {position: relative; width: 340px; height: 190px; margin:0 auto;}
+.youtubePop .popIn .youtubeCont #youtubeMovie {background:#000;}
+.youtubePop .popIn .youtubeCont iframe {width: 100%; height: 190px; vertical-align: top;}
+.youtubePop .popIn .closePop {position: absolute; right:0; top:-40px;}
+.youtubePop .popIn .closePop a {display: block; width:35px; height: 35px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close2.png') center no-repeat; background-size:35px auto; text-indent:-999em; }
+
+/* content Popup */
+.contentPop {position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 500; display: none;}
+.contentPop .bg { position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 1; background:rgba(0,0,0,.8);}
+.contentPop .popIn {position:absolute; left:0; top:50%;    min-width:100px; width: 100%;  box-sizing:border-box;  z-index:2;  visibility:hidden; text-align: center; }
+.contentPop .popIn .closePop {position: absolute; right:0; top:-40px;}
+.contentPop .popIn .closePop a {display: block; width:35px; height: 35px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close2.png') center no-repeat; background-size:35px auto; text-indent:-999em; }
+.contentPop .popIn .content {display: inline-block; position: relative;}
+.contentPop .popIn .content .contentList > div {background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_info.jpg') center no-repeat; background-size:100% 100%; width:283px;   padding:20px 20px 20px 20px; text-align: left;}
+.contentPop .popIn .content .tit { margin-bottom:20px;}
+.contentPop .popIn .content .info {font-size:12px; color:#000000; font-weight:500; margin-top:8px;}
+.contentPop .popIn .popTit01 {font-size:25px; line-height:30px; color:#28abff; font-weight:500; letter-spacing:-1px; margin-bottom:5px; }
+.contentPop .popIn .popTit02 {font-size:15px; line-height:20px; color:#000000; font-weight:300; letter-spacing:-1px; padding:0 20px;}
+.contentPop .popIn .popTit02 span {font-weight:500;}
+.contentPop .popIn .popTit03 span {font-weight:500;}
+.contentPop .popIn .popTit04 {font-size:14px; line-height:20px; color:#000000; font-weight:500; letter-spacing:-1px; padding:0 10px;}
+.contentPop .popIn .btnEnd {padding-top:10px;}
+.contentPop .popIn .btnEnd p { margin-bottom:5px;}
+.contentPop .popIn .btnEnd p img { width:160px;}
+.contentPop .popIn .content div.reserveComplete {text-align: center; background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_reserve.jpg') center no-repeat; background-size:100% 100%;width:283px; height:490px;  padding:30px 0 0 0; }
+.contentPop .popIn .content div.reserveComplete.type2 {height:350px;}
+.contentPop .popIn .content div.cont05_type2 {height:350px;}
+.contentPop .popIn .content div.reserveComplete .product{margin-bottom:10px; position: relative; }
+.contentPop .popIn .content div.reserveComplete .product img {width:222px;}
+.contentPop .popIn .content div.reserveComplete .login {margin-bottom:10px; text-align: center; padding:0 20px;}
+.contentPop .popIn .content div.reserveComplete .login p {}
+.contentPop .popIn .content div.reserveComplete .login a {display: block;  margin-bottom:5px;}
+
+.contentPop .popIn .content div.snsLogin {text-align: center; background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_login.jpg') center no-repeat; background-size:278px 100%; width:278px; padding:25px 20px 20px 20px; }
+.contentPop .popIn .content div.snsLogin.type2 {background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_login2.jpg') center no-repeat;  width:278px;; background-size:278px 100%;  }
+.contentPop .popIn .content div.snsLogin.type2 .popTit02 {font-size:15px; font-weight:400;}
+.contentPop .popIn .content div.snsLogin .login p{margin-bottom:5px;}
+.contentPop .popIn .content div.snsLogin .login p:last-child {margin-bottom:0;}
+.contentPop .popIn .content div.eventInfo {/* background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_info3.jpg') center no-repeat; width:796px; height:436px; padding-left: 40px; */ }
+.contentPop .popIn .content div.eventInfo .warnBox .info2 {font-weight:400;}
+
+.contentPop .popIn .content .contentList .trPop {background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_stone.jpg') center no-repeat; background-size:217px 100%; width:217px; height:180px; padding:0}
+.contentPop .popIn .content .contentList .trPop .img {text-align: center; padding:15px 0 5px 0; }
+.contentPop .popIn .content .contentList .trPop .img  img {width:67px;}
+.contentPop .popIn .content .contentList .trPop .stone {text-align: center; padding:15px 0 10px 0; }
+.contentPop .popIn .content .contentList .trPop .stone img {width:35px;}
+.contentPop .popIn .content .contentList .trPop .tit01 {font-size:15px; line-height:22px; text-align: center; color:#000000; font-weight: 500; margin-bottom:10px;}
+.contentPop .popIn .content .contentList .trPop .tit02 {font-size:14px; line-height:20px; text-align: center; color:#000000; font-weight: 500;}
+.contentPop .popIn .content .contentList .trPop .btnOpen {text-align: center;}
+.contentPop .popIn .content .contentList .trPop .btnOpen img {width:139px;}
+.contentPop .popIn .content .contentList .loginComplete {text-align: center;}
+.contentPop .popIn .content .contentList .loginComplete .tit {font-size:14px; line-height:20px; text-align: center; color:#000000; font-weight: 500;}
+.contentPop .popIn .content .contentList .loginComplete .btn p {margin-bottom:5px;}
+.contentPop .popIn .content .contentList .loginComplete .btn img {width: 160px;}
+.contentPop .popIn .content .contentList .cont11 {background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_step.jpg') center no-repeat; width:217px; background-size:100% 100%; }
+.contentPop .popIn .content .contentList .cont12 {background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_step.jpg') center no-repeat; width:217px; background-size:100% 100%; padding-left:0; padding-right: 0; }
+.contentPop .popIn .content .contentList .cont12 img {width:160px;}
+
+/* css 추가 by WEMADE */
+.contentPop .popIn .content div.common_type {
+  padding: 28px;
+  width: 260px;
+  min-height: 120px;
+  background: url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert.jpg') center no-repeat;
+  background-size: 100% 100%;
+  line-height: 1.3;
+  font-weight: 500;
+  font-size: 11px;
+  color: #666;
+}
+.contentPop .popIn .content div.common_type .wrap_button {
+  margin-top: 5px;
+}
+.contentPop .popIn .content div.common_type .wrap_button:first-of-type {
+  margin-top: 0;
+}
+.contentPop .popIn .content div.common_type .baseText {
+  margin-top: 10px;
+}
+.contentPop .popIn .content div.common_type .title {
+  margin-top: 5px;
+  color: #333;
+  font-weight: 700;
+}
+.contentPop .popIn .content div.common_type.type2 {
+  padding: 28px 14px;
+  width: 320px;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap {
+  padding: 0;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .desc {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #121212;
+  letter-spacing: -0.05em;
+  text-align: center;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .desc em {
+  font-style: normal;
+  color: #0a7ac3;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .input .btn a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 34px;
+  font-size: 12px;
+  background-color: #0977be;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .inner .input {
+  padding-right: 95px;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .input .ip {
+  background-color: rgba(0,0,0,.2);
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .input .ip input {
+  height: 34px;
+  color: #fff;
+}
+.contentPop .popIn .content div.common_type.type2 .reserveWrap .input .ip input::placeholder {
+  font-size: 12px;
+  color: rgba(18, 18, 18, .6);
+}
+.contentPop .popIn .content div.common_type.type2 .box.no1 {
+  opacity: 1;
+  transform: none;
+}
+/*// css 추가 by WEMADE */
+
+
+
+.warnBox {margin-bottom:40px;}
+.warnBox .info1 {font-size:13px; font-weight:500; color:#000000; line-height:18px; margin-bottom:15px;  letter-spacing:-0.07em}
+.warnBox .info2 {font-size:11px; color:#000000;   letter-spacing:-0.08em; line-height:16px;}
+.warnBox .info2.light {font-weight:300;}
+.warnBox .info2 p {margin-bottom:5px;}
+.warnBox .info2 span {font-size:11px;}
+.warnBox .info3 {font-size:10px; color:#484848; font-weight:300;  letter-spacing:-0.07em; padding:5px 0 10px 0; line-height:17px;}
+
+.btnConfirm {position: absolute; left:0; bottom:20px; width: 100%; text-align: center;}
+.btnConfirm a {display: inline-block; vertical-align: top; width:100px; height: 32px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_confirm.png') center no-repeat; background-size:100px auto; text-indent:-999em;  }
+
+/* rewardPop */
+.rewardPop {position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 500; display: none; }
+.rewardPop .bg { position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 1; background:rgba(0,0,0,.8);}
+.rewardPop .popIn {position:absolute; left:50%; top:50%; margin:-140px 0 0 -160px; width:320px; height:280px; background:#e0e0e0 url('https://mir4-live-hp.wemade.com/booking_mobile/images/alert/bg_alert_event.jpg?v1') center no-repeat;  box-sizing:border-box;  background-size:100% 100%; z-index:2; text-align: center; padding-top:20px; }
+.rewardPop .popIn .youtubeCont {position: relative; width: 300px; height: 160px; overflow:hidden; margin:0 auto;}
+.rewardPop .popIn .youtubeCont #rewardYoutube {background:#000;}
+.rewardPop .popIn .youtubeCont iframe {width: 260px; height:160px; vertical-align: top;}
+.rewardPop .popIn .info {text-align: center; font-size: 14px; font-weight: 500; padding-top:10px; text-align: center;}
+.rewardPop .popIn .closePop { position: absolute; right:0; top:-40px;}
+.rewardPop .popIn .closePop a {display: block; width:35px; height: 35px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close2.png') center no-repeat; background-size:35px auto; text-indent:-999em; }
+.rewardPop .btnGet {position: absolute; left:0; bottom:20px; width: 100%; text-align: center;}
+.rewardPop .btnGet a {display: inline-block; vertical-align: top; width:203px; height:38px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_get.png') center no-repeat; background-size:203px auto; text-indent:-999em;  }
+.rewardPop .btnGet span {display: none; vertical-align: top; width:203px; height:38px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_get_off.png') center no-repeat; background-size:203px auto; text-indent:-999em;  }
+.rewardPop.off .btnGet a {display: none;}
+.rewardPop.off .btnGet span {display: inline-block; }
+
+/* youtube Popup */
+.youtubePop {position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 500; display: none;}
+.youtubePop .bg { position: fixed; left:0; top:0; width: 100%; height: 100%; z-index: 1; background:rgba(0,0,0,.8);}
+.youtubePop .popIn {position:absolute; left:0; top:50%; margin-top:-100px;    min-width:100px; width: 100%;  box-sizing:border-box;  z-index:2; text-align: center; }
+.youtubePop .popIn .youtubeCont {position: relative; width: 340px; height: 190px; margin:0 auto;}
+.youtubePop .popIn .youtubeCont #youtubeMovie {background:#000;}
+.youtubePop .popIn .youtubeCont iframe {width: 100%; height: 190px; vertical-align: top;}
+.youtubePop .popIn .closePop {position: absolute; right:0; top:-40px;}
+.youtubePop .popIn .closePop a {display: block; width:35px; height: 35px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close2.png') center no-repeat; background-size:35px auto; text-indent:-999em; }
+
+
+/* iscroll */
+.iScrollLoneScrollbar {top:0 !important; bottom:0 !important; opacity:.3; width:4px !important;}
+.iScrollIndicator {border:none !important;   }
+
+
+/* page */
+.page {overflow:hidden; }
+.page .in {width:200%; transition:.5s all; transition-timing-function:cubic-bezier( 0.66, 0, 0.34, 1 ); transform-origin:left top; white-space:nowrap; font-size: 0;}
+.page .in:after {content:''; display: block; clear:both;}
+.page .in > div {position: relative; display: inline-block; width:100vw; height:100vh; text-align: center;  overflow:hidden;}
+.page.subOpen .in {transform:translateX(-50%);}
+.pageChange {position: absolute; left:0; width: 100%; bottom:70px; text-indent:-999em; z-index: 30; transition:1s all;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btnDown.png') center no-repeat; background-size:43px auto; animation-name: arrow; animation-duration:.8s; animation-iteration-count: infinite; animation-direction: alternate; animation-timing-function:linear; }
+.pageChange.sub span {display: inline-block; vertical-align: top; width:43px; height:23px;z-index: 30; }
+
+.pageChange.main {left:50%; margin-left:-530px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_page02.png') no-repeat; display: none;}
+
+.fp-completely .pageChange {opacity:1; transition-delay:300ms;}
+.vc {position: absolute; left:50%; top:50%;transform:translate(-50%,-50%);  white-space:nowrap;}
+
+.pageChange.sub span:nth-child(1) {animation-delay:100ms;}
+.pageChange.sub span:nth-child(2) {animation-delay:200ms;}
+.pageChange.sub span:nth-child(3) {animation-delay:300ms;}
+.pageChange.sub span:nth-child(4) {animation-delay:400ms;}
+
+@keyframes arrow {
+  from { transform:translateY(0); }
+  to { transform:translateY(5px); }
+}
+
+/* intro */
+.introTitle {position: absolute; right:130px; top:50%; margin-top:-45px; font-size:36px; line-height:36px; color:#fff; font-weight:500; text-align: right; z-index: 20; }
+.introTitle p {margin-bottom:12px; letter-spacing:-2px;}
+.introTitle span {font-size:55px; color:#3aa5ff;}
+
+
+/* storySection */
+.storySection .mainPage {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_intro.jpg?v1') center top no-repeat; background-size:cover;;}
+.storySection .storyMain {width:100%;  transform:translate(0,0); padding-top:85px; top:0; left:0; position: relative;}
+.storySection .storyMain .tit01 {font-size:16px; color:#fff; line-height:20px; font-weight:300; margin-bottom:15px;}
+.storySection .storyMain .tit02 {font-size:20px; color:#fff; line-height:25px; margin-bottom:20px; font-weight:300; }
+.storySection .storyMain .tit02 span {font-weight:400;}
+.storySection .storyMain .tit03 {font-size:14px; color:#fff; line-height:18px; font-weight:300; margin-bottom:10px;}
+.storySection .storyMain .tit03 span {font-weight:500 ;}
+.storySection .storyMain .tit03 p {margin-bottom:10px;}
+.storySection .storyMain .tit04 {font-size:14px; color:#fff; line-height:20px; font-weight:500; }
+.storySection .storyMain .infoCha {height:230px; padding:0 20px;}
+.storySection .storyMain .infoCha .skill {padding-top:10px;}
+.storySection .control a {display: inline-block; vertical-align: top; font-size:15px; line-height:15px;color:#000000; font-weight:700; }
+.storySection .control a span {display: inline-block; vertical-align: top; padding-left:18px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab01_on_big.png') left center no-repeat; background-size:10px auto !important;}
+.storySection .control a:last-child {margin-left:45px;}
+.storySection .control a:last-child span {padding-left:0; padding-right:18px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab02_on_big.png') right center no-repeat;}
+.storySection .control a.active span {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab01_big.png') left center no-repeat;}
+.storySection .control a.active:last-child span {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab02_big.png') right center no-repeat;}
+
+.storySection .storyMain .videoStory {position: relative;background:#000; margin:0 auto 15px auto; max-width:330px; min-height:185px; }
+/* .storySection .storyMain .videoStory:after {content:''; position: absolute; left:-25px; top:-23px; width:360px; height:140px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/leaf.png') no-repeat; background-size:360px auto; z-index: 10;} */
+.storySection .storyMain .videoStory .btnPlay {position: absolute; left:50%; top:50%; width:35px; height:35px; margin:-17px 0 0 -17px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_movie.png') no-repeat; background-size:35px;; z-index: 20; cursor:pointer; }
+
+
+
+.storySection .storySub {margin-top:-70px;}
+.storySection .storySub .tit01 {font-size:60px; line-height:70px; color:#000000; font-weight:300; margin-bottom:25px; letter-spacing:-1px;}
+.storySection .storySub .tit01 span {color:#d70808; font-weight:500;}
+
+
+
+/* video */
+.video {position: relative; cursor:pointer;}
+.video:after {content:''; position: absolute; left:50%; top:50%; margin:-30px 0 0 -30px; width:60px; height:60px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_movie.png?v1') center no-repeat; background-size:50px auto; transition:.3s all;}
+.video:hover:after {transform:scale(1.1);}
+.video .youtube {position: absolute; left:0; top:0; width: 100%; height:100%; }
+.video .youtube iframe {position: absolute; left:0; top:0; width: 100%; height:100%; z-index: 10; }
+
+.mp4Wrap {position: relative; cursor:pointer;}
+/* .mp4Wrap:after {content:''; position: absolute; left:50%; top:50%; margin:-30px 0 0 -30px; width:60px; height:60px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_movie.png') center no-repeat; background-size:60px auto; transition:.3s all;}
+.mp4Wrap:hover:after {transform:scale(1.1);} */
+.mp4Wrap .mp4Video {position: relative;  padding-bottom:56.5%; background:#000;}
+.mp4Wrap .mp4Video video {position: absolute; left:0; top:0; width: 100%; height:100%; z-index: 10;  }
+
+
+.classSection .mainPage {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_class.jpg') center no-repeat; background-size:cover;;}
+.classSection .classMain {width:100%; transform:translate(0,-50%); left:0; font-size:15px; color:#ffffff;  text-align: center;font-weight:300; z-index: 30;}
+.classSection .classMain .tit01 {margin-bottom:15px;}
+.classSection .classMain .tit01 span {font-size:50px; font-weight:700;}
+.classSection .classMain .tit02 span {font-weight:700;}
+
+
+.classSectionSub  {background:#000;}
+#classList {min-height:700px;}
+#classList > ul > li {position: absolute; left:0; top:0; width: 100%; height: 100%; opacity:0;  transition:.7s all;}
+#classList > ul > li.active {opacity:1; z-index: 10;}
+#classList .video:after {margin:-32px 0 0 -32px; width:60px; height:60px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_movie.png') center no-repeat; background-size:60px auto;}
+
+#classList .btnCha {text-align: center; margin-bottom:30px; padding-top:70px;  opacity:0;  transition:.7s all; transform:translateY(25px); }
+#classList .btnCha a {position: relative; display: inline-block; vertical-align: top; padding-top:85px; width:70px; font-size:13px; font-weight:700; color:#fff; margin-right:12px; }
+#classList .btnCha a:last-child {margin-right:0;}
+#classList .btnCha a:after {content:''; position: absolute; left:50%; top:0; margin-left:-35px; width:70px; height: 80px; background-size:70px auto !important;}
+#classList .btnCha a:nth-child(1):after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class01.png?v2') center no-repeat;}
+#classList .btnCha a:nth-child(2):after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class02.png?v2') center no-repeat;}
+#classList .btnCha a:nth-child(3):after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class03.png?v2') center no-repeat;}
+#classList .btnCha a:nth-child(4):after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class04.png?v2') center no-repeat;}
+#classList .btnCha a:nth-child(1).active:after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class01_on.png?v2') center no-repeat; }
+#classList .btnCha a:nth-child(2).active:after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class02_on.png?v2') center no-repeat; }
+#classList .btnCha a:nth-child(3).active:after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class03_on.png?v2') center no-repeat; }
+#classList .btnCha a:nth-child(4).active:after {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/btn_class04_on.png?v2') center no-repeat; }
+
+#classList .infoWrap {z-index: 10; white-space:nowrap; padding:0 20px; position: relative; z-index: 10;}
+#classList .infoWrap .title {font-size:20px; color:#000000; margin-bottom:100px; text-align:right; opacity:0;  transition:.7s all; transform:translateY(25px); }
+#classList .infoWrap .title p {position: relative;  text-align: right; color:#fff; font-weight:300;} 
+#classList .infoWrap .title span {font-size:50px; line-height:50px; font-weight:700; color:#23642c; display: block;}
+#classList .infoWrap .title em {font-size:22px; color:#949183; display: block;}
+
+#classList > ul > li.no1 .infoWrap .title em {font-size:20px; }
+#classList > ul > li.no2 .infoWrap .title span {color:#af1314;}
+#classList > ul > li.no3 .infoWrap .title span {color:#b98d19;}
+#classList > ul > li.no4 .infoWrap .title span {color:#046798;}
+
+#classList > ul > li .cha {position: absolute; left:0; top:0; width: 100%; height: 100%; }
+#classList > ul > li.no1 .cha {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/bg_class_ch1.jpg?v1') center no-repeat; background-size:cover;}
+#classList > ul > li.no2 .cha {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/bg_class_ch2.jpg?v1') center no-repeat; background-size:cover;}
+#classList > ul > li.no3 .cha {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/bg_class_ch3.jpg?v1') center no-repeat; background-size:cover;}
+#classList > ul > li.no4 .cha {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/bg_class_ch4.jpg?v2') center no-repeat; background-size:cover;}
+#classList .control { opacity:0;  transition:.7s all; transform:translateY(25px);}
+.fp-completely #classList .btnCha {transform:translateY(0); opacity:1;}
+.fp-completely #classList .title {transform:translateY(0); opacity:1; transition-delay:200ms;}
+.fp-completely #classList .infoCha {transform:translateY(0); opacity:1; transition-delay:400ms;}
+.fp-completely #classList .control {transform:translateY(0); opacity:1; transition-delay:600ms;}
+
+
+.skillInfo {position: relative;width:100%;}
+.skillInfo:after {content:''; position: absolute; left:-20px; top:-230px; width: calc(100% + 40px); height: 500px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/skBg.png') center no-repeat; background-size:360px auto;}
+.skillInfo .skillText {margin-bottom:25px; position: relative; z-index:10;}
+.skillInfo .skillText ul li {position: relative; display: none; text-align: center; color:#fff; }
+.skillInfo .skillText ul li.active {display: block;}
+.skillInfo .skillText ul li:after {content:''; position: absolute; left:0; top:30px; width:100%; height:23px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/skillLine.png') center no-repeat; background-size:321px auto;; }
+.skillInfo .skillText ul li .tit {font-size:20px; line-height:20px; font-weight:500; padding-bottom:35px; }
+.skillInfo .skillText ul li .txt {font-size:12px; line-height:20px; }
+.skillInfo .skillIcon ul {padding-left:52px; position: relative; z-index:10;}
+.skillInfo .skillIcon ul:after {content:''; display: block; clear:both;}
+.skillInfo .skillIcon ul li {float:left; margin:0 0 5px 5px; width:37px; height:37px; cursor:pointer;  opacity:.3;}
+.skillInfo .skillIcon ul li.active { opacity:1;}
+.skillInfo .skillIcon ul li img {vertical-align: top;}
+.skillInfo .skillIcon ul li:nth-child(2) {margin-left: 0;}
+.skillInfo .skillIcon ul li:nth-child(8) {margin-left: 0;}
+.skillInfo .skillIcon ul li:first-child {position: absolute; left:0; top:15px; margin:0; width: 45px; height: 45px;}
+
+
+
+
+.control {padding:15px 0 0 0; position: relative; z-index: 5; text-align: center; }
+.control a {display: inline-block; vertical-align: top; font-size:17px;color:#fff; font-weight:700; }
+.control a span {display: inline-block; vertical-align: top; padding-left:20px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab01_on.png?V=1') left center no-repeat; background-size:12px auto !important;}
+.control a:last-child {margin-left:60px;}
+.control a:last-child span {padding-left:0; padding-right:20px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab02_on.png?V=1') right center no-repeat;}
+.control a.active { color:#a6a6a6; font-weight:500;}
+.control a.active span {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab01.png?V=1') left center no-repeat;}
+.control a.active:last-child span {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/cha/ico_tab02.png?V=1') right center no-repeat;}
+
+.infoCha { opacity:0;  transition:.7s all; transform:translateY(25px);}
+.infoCha > div {display: none;}
+.infoCha > div:first-child {display: block;}
+
+
+
+/* growt */
+.growthSection .mainPage {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_growth.jpg') center no-repeat; background-size:cover;;}
+.growthSection .growthMain {width:100%; transform:translate(0,-50%); left:0;   font-size:15px; color:#ffffff; text-align:center; font-weight:300; z-index: 30;}
+.growthSection .growthMain .tit01 {margin-bottom:15px;}
+.growthSection .growthMain .tit01 span {font-size:50px; font-weight:700;}
+.growthSection .growthMain .tit02 span {font-weight:700;}
+
+
+.growthSectionSub {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_growthSub.jpg') center no-repeat; background-size:cover;; }
+.growthSectionSub .growthSub {text-align: center;  color:#000000; padding-top:65px;}
+.growthSectionSub .growthSub .tit01 { font-size:20px; line-height:27px; font-weight:300; margin-bottom:10px;}
+.growthSectionSub .growthSub .tit02 { font-size:37px; line-height:37px;  font-weight:500; margin-bottom:70px;}
+.growthSectionSub .growthSub .growthSlide {position: relative; }
+.growthSectionSub .growthSub .growthSlide .slideBox {}
+.growthSectionSub .growthSub .growthSlide .infoSwipe {display: none; position: absolute; left:50%; margin-left:-61px; width:132px; top:8px; padding-top:10px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_swipe_w.png') center top no-repeat; background-size:132px auto; font-size:10px; line-height:10px; color:#f3efea;z-index:20;}
+.growthSectionSub .growthSub .growthSlide .infoSwipe.show {display: block !important}
+.growthSectionSub .growthSub .growthSlide .slick-slide {outline:none;width:285px;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .growthVideo {position: relative; background:#000;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .growthVideo video {width:100%; height:160px; vertical-align: top;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .growthVideo:after {content:''; position: absolute; left:0; top:0; width: 100%; height:100%; background:rgba(0,0,0,.7);  transition:.5s all;}
+.slick-slider .slick-track, .slick-slider .slick-list { transform: none; }
+.growthSectionSub .growthSub .growthSlide .slick-slide .textWrap {padding-top:32px; position: relative; text-align: center; opacity:0; transition:.5s all; white-space:nowrap;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .textWrap .info {position: absolute; right:-20px; top:10px;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .textWrap .tit {font-size:30px; line-height:30px; color:#000000; font-weight:700; margin-bottom:10px;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .textWrap .txt {font-size:20px; line-height:27px; color:#000000; font-weight:300;}
+.growthSectionSub .growthSub .growthSlide .slick-slide .textWrap .txt span{font-weight:700;}
+.growthSectionSub .growthSub .growthSlide .slick-slide.no1 .textWrap .info img{width: 70px}
+.growthSectionSub .growthSub .growthSlide .slick-slide.no2 .textWrap .info img{width: 75px}
+.growthSectionSub .growthSub .growthSlide .slick-slide.no3 .textWrap .info img{width: 125px}
+.growthSectionSub .growthSub .growthSlide .slick-slide.no4 .textWrap .info img{width: 76px}
+
+.growthSectionSub .growthSub .growthSlide .slick-slide.slick-center .growthVideo:after {opacity:0;}
+.growthSectionSub .growthSub .growthSlide .slick-slide.slick-center .textWrap {opacity:1;}
+.growthSectionSub .growthSub .growthSlide .slick-slide {margin: 0 7px;}
+.growthSectionSub .growthSub .growthSlide .slick-list {margin: 0 -7px; }
+.growthSectionSub .fp-tableCell {display: block;}
+
+/* soul */
+.soulSection .mainPage {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_soul.jpg') center no-repeat; background-size:cover;;}
+.soulSection .soulMain {font-size:15px; color:#000000; text-align:center; font-weight:300; }
+.soulSection .soulMain .tit01 {}
+.soulSection .soulMain .tit01 span {font-size:50px; font-weight:700;}
+.soulSection .soulMain .tit02 span {font-weight:700;}
+
+
+
+/* tabList */
+.tabList {position: absolute; right:0; top:200px; z-index: 10;  width: 100%; text-align: center;}
+.tabList > ul:after {content:''; display: block; clear:both;}
+.tabList > ul > li {margin-left:7px; display: inline-block; vertical-align: top;}
+.tabList > ul > li:first-child {margin-left: 0;}
+.tabList > ul > li a {display: block; width:6px; height:6px; background:#000000; border-radius:50%; transition:.3s all;}
+.tabList > ul > li.active a {width:27px; border-radius:30px; }
+.tabList > ul > li.db a { line-height:21px; padding-top:4px;}
+
+
+/* tabCont */
+.tabCont > ul > li {display: none;}
+.tabCont > ul > li:first-child {display: block;}
+.tabCont > ul .textWrap {padding-top:45px; text-align: center; letter-spacing:-1px;}
+.tabCont > ul .textWrap .tit01 {font-size:30px; line-height:30px; font-weight:500; margin-bottom:5px; color:#ae1010;}
+.tabCont > ul .textWrap .tit02 {font-size:18px; line-height:23px; font-weight:300; color:#000000;}
+.tabCont .lastInfo {font-size:13px; line-height:13px; font-weight:300; color:#7b7b7b; text-align: center; margin-bottom:7px;}
+.tabCont li:nth-child(2) .textWrap .tit01 { color:#cda10a;}
+.tabCont li:nth-child(3) .textWrap .tit01 { color:#399289;}
+.tabCont li:nth-child(4) .textWrap .tit01 { color:#60a418;}
+.tabCont li:nth-child(5) .textWrap .tit01 { color:#1867a4;}
+.tabCont li:nth-child(6) .textWrap .tit01 { color:#a77340;}
+.tabCont li:nth-child(7) .textWrap .tit01 { color:#427527;}
+
+/* signature */
+.signatureSection {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_signature.jpg') center no-repeat; background-size:cover;;}
+.signatureSection .signatureMain {padding:65px 20px 40px 20px;}
+.signatureSection .title01 {text-align: center; font-size:20px; line-height:25px; font-weight:300; color:#000000; margin-bottom:5px;}
+.signatureSection .title02 {text-align: center; font-size:37px; line-height:37px; font-weight:500; color:#000000; margin-bottom:25px;}
+.signatureSection .fp-tableCell {display: block;}
+
+.videoList {margin:0 auto; max-width:300px; margin:0 auto; position: relative;}
+.videoList ul:after {content:''; display: block; clear:both;}
+.videoList ul li {margin-bottom:1%; width:58.1%;}
+.videoList ul li img {vertical-align: top; width:100%;}
+.videoList ul li:nth-child(2) {position: absolute; right:0; top:0; width: 40.8%;}
+.videoList ul li:nth-child(3) {position: absolute; right:0; top:23.4%; width: 40.8%;}
+.videoList ul li:nth-child(4) {position: absolute; right:0; top:46.8%; width: 40.8%;}
+.videoList ul li:nth-child(7) {width:100%;}
+
+
+.rightVideo { background:#000; position: relative; max-width:400px; margin:0 auto;} 
+.rightVideo img {width:100%; max-width:1000%; height:185px;}
+.rightVideo .text {position: absolute; top:50%; margin-top:-20px;left:0; width: 100%; text-align: center; font-size:19px; line-height:19px; font-weight:500; color:#fff;}
+
+/* media */
+.mediaSection {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/bg_media.jpg?v=1') center no-repeat; background-size:cover;;}
+.mediaSection .mediaMain {padding:65px 35px 40px 35px; text-align: center;}
+.mediaSection .title01 {text-align: center; font-size:20px; line-height:20px; font-weight:300; color:#fff; margin-bottom:5px;}
+.mediaSection .title01 span {font-weight:500;}
+.mediaSection .title02 {text-align: center; font-size:42px; line-height:42px; font-weight:500; color:#fff; margin-bottom:25px;}
+.mediaList {max-width:280px; margin:0 auto; }
+.mediaList ul li {margin-bottom:15px;}
+
+
+/* motion */
+.mt {transition:1s all; transform:translateY(-30px); opacity:0;}
+.fp-completely .mt { transform:translateY(0); opacity:1;}
+.fp-completely .mt.no2 {transition-delay:300ms;}
+
+/* landscape */
+html.land {background:#000;}
+html.land body {background:#000;}
+html.land #landscape {opacity:1;  z-index: 9999999;}
+html.land #landscape .text .phone {  transform:rotate(0deg);  transition:.5s; transition-delay:.5s; }
+#landscape { position: fixed; left:0; top:0; right:0; bottom:0;  overflow:hidden;  text-align: center; background:#000; background-size:cover; opacity:0;-webkit-user-select: none; z-index:-10; }
+#landscape .text {position: absolute; left:50%; top:50%;  transform:translate(-50%,-50%); width:100%; }
+#landscape .text .phone {margin-bottom:35px;  transform:rotate(-90deg); }
+#landscape .text img {display: inline-block; vertical-align: top; width:80px;}
+#landscape .text .txt { color:#fff; font-size: 16px; white-space:nowrap;}
+	
+
+
+@media all and (min-width:600px){
+.squareWrap .sqBox {margin:0 auto;}
+}
+
+
+@media all and (min-width:768px){
+	.section {min-height:840px;}
+}
+
+@media all and (min-width:1024px){
+	#viewport {max-width:480px; margin:0 auto;}
+	.head {max-width:480px; left:50%; margin-left:-240px;}
+	.section {min-height:660px;}
+}
+
+@media all and (max-width:320px){
+	.head h1 a {font-size:10px;}
+	.head .rightSide .info a:first-child {width:65px;}
+}
+
+
+
+
+/* @start 수정1012 */
+
+.navList .list ul li p a {font-size:20px; padding:16px 0;}
+.navList .list ul li.new p a {position: relative;}
+.navList .list ul li.new p a:before {content:''; position: absolute; left:-12px; top:24px; width:22px; height: 8px;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/unboxing/ico_new.png') center no-repeat; background-size:22px 8px;}
+.navList .list ul li.new p a span:after {left:-24px;}
+
+.head .rightSide .info a.community {width:100px; background:#c31616;}
+.head .rightSide .info a.community span{padding-left:13px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/unboxing/ico_comu.png') left center no-repeat; color:#fff; background-size:10px auto;}
+
+.unboxing { text-align: center;}
+.unboxingWrap {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/unboxing/bg_unbox.jpg?v1') center top no-repeat; background-size:cover; max-width:400px; margin:0 auto;} /* 수정1026 */
+.unboxingWrap .tit01{margin-bottom:15px; transition:1s all; transform:translateY(25px); opacity:0; padding-top:75px;}
+.unboxingWrap .tit01 img {width:278px;}
+.unboxingWrap .tit02{font-size:17px; line-height:21px; color:#000000; font-weight:300; transition:1s all; transform:translateY(25px); opacity:0;}
+.unboxingWrap .btn {margin-top:270px; text-align: center; transition:1s all; transform:translateY(25px); opacity:0; padding:0 10px 60px 10px;}
+.unboxingWrap .btn span {display: block; margin-bottom:5px;}
+.unboxingWrap .btn span img {width: 100%;}
+.unboxingWrap .btn span:first-child {margin-left:0;}
+
+.fp-viewing-unboxing .unboxingWrap .tit01  {transform:translateY(0); opacity:1; transition-delay:200ms;}
+.fp-viewing-unboxing .unboxingWrap .tit02  {transform:translateY(0); opacity:1; transition-delay:400ms;}
+.fp-viewing-unboxing .unboxingWrap .btn  {transform:translateY(0); opacity:1; transition-delay:600ms;}
+
+
+.tablePop {position: absolute;  left:0; top:0; width: 100%; height: 100%; z-index:600; display: none;}
+.tablePop .bg {position: absolute;  left:0; top:0; width: 100%; height: 100%; z-index:1; background:rgba(0,0,0,.6);}
+.tablePop .popIn {position: absolute;  left:0; top:50%; width:100%; height:450px; margin:-225px 0 0 0; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/unboxing/bg_table.png?v1') center top no-repeat; background-size:auto 450px; z-index:10; }
+.tablePop .popIn .tit01 {padding:50px 0 30px 0; text-align: center;}
+.tablePop .popIn .tit01 img {width:300px;}
+.tablePop .popIn .tit02 {padding:20px 0 0 0; text-align: center; font-size:12px; color:#000000; line-height:12px;}
+.tablePop .popIn .tbList { padding:0 33px; max-width:370px; margin:0 auto;}
+.tablePop .popIn .tbList ul:after {content:''; display: block; clear:both;}
+.tablePop .popIn .tbList ul li {float:left; width:20%; height:92px; text-align: center; border-right:1px solid #d6d6d6; border-top:1px solid #d6d6d6;;}
+.tablePop .popIn .tbList ul li:nth-child(-1n+5) {border-top:none;} 
+.tablePop .popIn .tbList ul li:nth-child(5n) {border-right:none;}
+.tablePop .popIn .tbList ul li .day {font-size:10px; line-height:10px; color:#b2b2b2; padding:15px 0 15px 0; }
+.tablePop .popIn .tbList ul li.sunday .day { color:#c10202;}
+.tablePop .popIn .tbList ul li .text {font-size:10px; line-height:15px; color:#000000; letter-spacing:-0.03em; }
+.tablePop .popIn .tbList ul li .text.line1 {padding-top:7px;}
+.tablePop .popIn .close {position: absolute; right:0; top:-40px;; width:37px; height:37px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/unboxing/btn_close.png') no-repeat;; background-size:37px auto; text-indent:-999em;}
+
+.floatBanner {position: absolute; left:0px; bottom:57px; width: 100%; z-index: 50; }
+.floatBanner img {width: 100%;}
+
+.section.main .btnVideo {top:40%}
+.section.main .mainCont .btn {bottom:35%;}
+.section.main .mouse {bottom:29.5%;}
+
+
+
+/* @start 수정1107 */
+.showcase {background:#000 url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/bgShow.jpg?v1') center top no-repeat; background-size:cover; text-align: center; }
+.showcaseWrap {padding-top:70px;}
+.showcaseWrap .tit01{margin-bottom:40px;  transition:1s all; transform:translateY(25px); opacity:0; }
+.showcaseWrap .tit01 img {width:330px; position: relative; left:10px;}
+.showcaseWrap .tit02{transition:1s all; transform:translateY(25px); opacity:0;padding-bottom:50px; }
+.showcaseWrap .tit02 img {width:305px;}
+.showcaseWrap .countdown {margin-bottom:55px; transition:1s all; transform:translateY(25px); opacity:0; }
+.showcaseWrap .countdown p {margin-bottom:15px;}
+.showcaseWrap .countdown p span {display: inline-block; vertical-align: bottom;font-size:50px; line-height:50px; color:#fff;font-family: 'NanumSquare', sans-serif; font-weight:300; }
+.showcaseWrap .countdown p span.num {width:68px; letter-spacing:-2px;}
+.showcaseWrap .countdown p .txt {font-size:14px; line-height:21px; color:#fff; display: inline-block; vertical-align: bottom; position: relative; top:-5px;}
+
+.showcaseWrap .btn {margin-bottom:30px;  transition:1s all; transform:translateY(25px); opacity:0; text-align: center; padding:0 38px;}
+.showcaseWrap .btn a {margin-bottom:10px; display: block;}
+.showcaseWrap .btn a img {width: 100%; max-width:500px;}
+
+.fp-viewing-showcase .showcaseWrap .tit01  {transform:translateY(0); opacity:1; transition-delay:200ms;}
+.fp-viewing-showcase .showcaseWrap .countdown  {transform:translateY(0); opacity:1; transition-delay:300ms;}
+.fp-viewing-showcase .showcaseWrap .btn  {transform:translateY(0); opacity:1; transition-delay:400ms;}
+.fp-viewing-showcase .showcaseWrap .tit02  {transform:translateY(0); opacity:1; transition-delay:500ms;}
+
+.fp-viewing-showcase .btnMenu a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_menu_w.png') center no-repeat; background-size:24px auto;}
+.fp-viewing-showcase .head h1 a  {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/h1_logo_w.png?v2') center no-repeat;}
+.fp-viewing-showcase .head .rightSide .info a {background:#fff; color:#000;}
+.fp-viewing-showcase .head .rightSide .info a.community {background:#c31616;}
+.fp-viewing-showcase .head .rightSide .info a.login span{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-showcase .head .rightSide .info a span.google{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login01_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-showcase .head .rightSide .info a span.facebook{background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login02_b.png') left center no-repeat; background-size:10px auto ;}
+.fp-viewing-showcase .head .rightSide .info a span.apple{ background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_login03_b.png') left center no-repeat; background-size:10px auto ;}
+
+.navList .list ul li.new p a:before {left:4px; }
+/* @end 수정1107 */
+
+
+/* @start 수정1117 */
+.mediaSection .mediaMain {padding-bottom:60px;}
+.company {position: absolute; left:0; bottom:30px; width: 100%; text-align: center; transform:scale(.8); transform-origin:center bottom;}
+.company .link {font-size:9px;  color:#fff; font-weight:300;  position: absolute; left:50%; bottom:0; transform:translateX(-50%); white-space:nowrap;}
+.company .link a {font-size:9px; color:#fff; }
+@media all and (max-width:320px){
+.company {transform:scale(.73);}
+}
+/* @end 수정1117 */
+
+
+/* @start 수정1113 */
+.showcase {background:#000 url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/bgShow.jpg?v1') center top no-repeat; background-size:100% auto;}
+.showcase .fp-tableCell {vertical-align: top;}
+.showcase .videoIntro {position: absolute; left:0; top:0; width: 100%; height: 100%;z-index: 5; background:#000; opacity:0; visibility: hidden; }
+.showcase .videoIntro video {left:0; }
+.showcase .showcaseWrap {z-index: 10;}
+.showcase .showcaseWrap .tit01 img{width:345px;}
+.showcase .showcaseWrap .tit01 img{width:345px;}
+.showcase .showcaseWrap .playShow {position: absolute; left:0; top:410px; width: 100%; text-align: center; height:60px;  }
+.showcase .showcaseWrap .playShow em { animation-name:btnShow; animation-duration:.8s; animation-iteration-count: infinite; animation-direction: alternate; animation-timing-function:linear;}
+
+.showcase .showcaseWrap .tit04 {position: absolute; left:0; bottom:50px; z-index: 10; width: 100%; text-align: center; opacity:0; ; visibility:hidden; transform:translateY(50px);   }
+.showcase .showcaseWrap .tit04 img {width:305px;}
+
+
+.showcase.enter {background:#000 url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/bgEnter.jpg?v1') center no-repeat; background-size:cover;}
+.showcase.enter .playShow {display: none;}
+.showcase.enter .videoIntro {opacity:1; visibility:visible;}
+.showcase.enter .introBg {opacity:1; }
+.showcase.enter .tit01 {opacity:0 !important;; transform:translateY(-50px) !important; }
+.showcase.enter .tit02 {opacity:0 !important;; transform:translateY(50px) !important; }
+
+.showcase .showcaseWrap .playBack {position: absolute; right:0; top:0; z-index: 10; width:200px; height:60px; }
+.showcase .showcaseWrap .tit02 {position: absolute; left:0; bottom:0; z-index: 10; width: 100%; text-align: center;}
+
+.playShow .txt { cursor:pointer; display: block; height:100px; }
+.playShow .txt span {display: block;margin-top:3px; height:5px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/arrow3.png') center no-repeat; background-size:12px auto !important; animation-name: showAni; animation-duration:.8s; animation-iteration-count: infinite; animation-direction: alternate; animation-timing-function:linear;  z-index: 10; }
+.playShow .txt span:nth-child(2) {animation-delay:70ms;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/arrow2.png') center no-repeat;}
+.playShow .txt span:nth-child(3) {animation-delay:140ms;  background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/arrow.png') center no-repeat; margin-bottom:8px;}
+.playShow .txt img {position: relative; z-index:5; width:138px;}
+
+.playShow .fire {}
+.playShow .fire span {position: absolute; left:50%; top:50%; margin:-453px 0 0 -395px; width:831px; height:842px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/fire1.png') center no-repeat; background-size:360px auto !important; animation-name: showAni;   animation-iteration-count: infinite; animation-direction: alternate; animation-timing-function:linear;  animation-duration:.5s;  opacity:0;}
+.playShow .fire span:nth-child(2) { background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/fire2.png') center no-repeat;  animation-delay:500ms; animation-duration:1s; }
+.playShow .fire span:nth-child(3) { background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/show/fire3.png') center no-repeat;    animation-duration:1.5s;  }
+.playShow.active .fire span {}
+
+@keyframes showAni {
+	from { opacity:0; }
+	  to { opacity:1;}
+}
+
+.showEnter {position: absolute; left:0; top:0; width: 100%; opacity:0; visibility:hidden; z-index: 30; padding-top:140px; height:100%;}
+.showEnter .tit03 {margin-bottom:40px;  transition:.5s all;  transform:translateY(-30px); opacity:0; visibility:hidden; }
+.showEnter .tit03 img {width:330px;}
+
+.showEnter .videoArea {background:#000; max-width:330px;  min-height:185px; margin:0 auto; transition:.5s all;  transform:translateY(30px);  opacity:0;  transition-delay:200ms; position: static;}
+.showEnter .videoArea .video { cursor:default; }
+.showEnter .videoArea .video .youtube {position: static;}
+.showEnter .videoArea .video:after {display: none;}
+.showEnter .videoArea iframe{ position: static;}
+.showEnter .btnCbt {margin-top:13px;  transition:1s all; transform:translateY(30px);  opacity:0;  transition-delay:400ms; text-align: center; }
+.showEnter .btnCbt img {max-width:330px;}
+
+
+.showcase.videoComplted .showEnter {opacity:1; visibility: visible;}
+.showcase.videoComplted .tit03 {opacity:1; visibility: visible;  transform:translateY(0); }
+.showcase.videoComplted .videoArea {opacity:1; visibility: visible;  transform:translateY(0); }
+.showcase.videoComplted .videoArea .video { position: relative;  padding-bottom:56.25%; }
+.showcase.videoComplted .videoArea iframe {position: absolute; left:0;top:0;width: 100%; height:100%; }
+.showcase.videoComplted .btnCbt {opacity:1; visibility: visible;  transform:translateY(0); }
+.showcase.videoComplted .tit04 {opacity:1 !important; visibility: visible;  transform:translateY(0) !important; transition:.5s all; transition-delay:400ms;  }
+
+
+.showcase .closeEnter {position: absolute; right:0; top:-30px; text-indent:-999em; width:25px; height:25px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/btn_close2.png') no-repeat; background-size:25px auto; cursor:pointer; }
+.showcase .bgVideo:after {display: none;}
+
+@media (max-height: 590px){
+.showcase .showcaseWrap .playShow {top:350px; bottom:auto;}
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+.showcase .showcaseWrap .playShow {top:auto; bottom:90px;}
+}
+
+@media (min-height: 700px) and (max-height:800px) {
+.showcase .showcaseWrap .playShow {top:460px; bottom:auto;}
+}
+
+@media (min-height: 1280px) {
+.showcase .showcaseWrap .playShow {top:535px; bottom:auto;}
+}
+
+/* @end 수정1113 */
+
+
+
+/* @start 수정1119 */
+.company {position: absolute; left:0; bottom:30px; width: 100%; text-align: center; transform:scale(.66); transform-origin:center bottom;}
+.company .link {color:#666;   font-size:9px; font-weight:300;  position: absolute; left:50%; bottom:0; transform:translateX(-50%); white-space:nowrap;}
+.company .link p span:first-child{ padding-left: 0; margin-left: 0;}
+.company .link p span:first-child:after {display: none;}
+.company .link span {display: inline-block; vertical-align: top; position: relative; padding-left:4px; margin-left:2px; line-height:9px;}
+.company .link span:after {content:''; position: absolute; left:0; top:50%; margin-top:-5px; width:1px; height:10px; background:#999999;}
+.company .link span.ico a {color:#666;  font-size:9px !important; padding-right:13px; background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_copyArrow.png') right center no-repeat; background-size:10px auto !important;}
+.company .link a {font-size:9px !important; color:#666; }
+
+.copy {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/tit_copy2.png?v3') center top no-repeat !important;  background-size:auto 12px !important; }
+.mediaSection .copy {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/tit_copy.png?v1') center top no-repeat !important;  background-size:auto 12px !important; }
+.store  .copy {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/tit_copy3.png?v1') center top no-repeat !important;  background-size:auto 12px !important; }
+.store .link * { color:#fff; }
+.store .link span:after {background:#fff;}
+.store .link span a { color:#fff !important}
+.store  .company .link span.ico a {background:url('https://mir4-live-hp.wemade.com/booking_mobile/images/ico_copyArrow.png') right center no-repeat;}
+@media all and (max-width:320px){
+.company {transform:scale(.6);}
+}
+/* @end 수정1119 */
+
+
+/* @start 수정1121 */
+.head .rightSide .info a:first-child {margin-right:0;}
+.fp-viewing-main .copy {z-index: 10;}
+.fp-viewing-main .company {z-index: 10;}
+
+.lcCont {position: absolute; left:0; bottom:20%;  width:100%; text-align: center; z-index: 30; padding:0 30px;}
+.lcCont .mrLogo {margin-bottom:50px; transition:1s all; transform:translateY(-25px); opacity:0;}
+.lcCont .mrLogo img {width: 250px;}
+.lcCont .btn {transition:1s all; transform:translateY(-25px); opacity:0; max-width:360px; margin:0 auto;}
+.lcCont .btn p {margin-bottom:5px;}
+.lcCont .btn p:after {content:''; display: block; clear:both;}
+.lcCont .btn p.two a {float:left; width:50%; padding-right:2.5px; }
+.lcCont .btn p.two a:last-child {float:right; padding-left:2.5px; padding-right:0;}
+
+.fp-viewing-main .lcCont .mrLogo  {transform:translateX(0); opacity:1; transition-delay:300ms;}
+.fp-viewing-main .lcCont .btn  {transform:translateX(0); opacity:1; transition-delay:500ms;}
+
+/* @end 수정1121 */
+
+
+
+/* @start 수정1123 */
+.ready {position: fixed; left:0; top:0; width: 100%; height: 100%; z-index:9999; background:rgba(0,0,0,.8);}
+.ready .in{position: fixed; left:50%; top:50%; width:340px;  margin:-100px 0 0 -170px; text-align: center; background:#fff; padding-bottom:50px;}
+.ready .in .tit01 {font-size:23px; line-height:23px; color:#d42020; font-weight:700;  padding:50px 0 20px 0;}
+.ready .in .tit02 {font-size:16px; line-height:16px; color:#000000; display: inline-block; vertical-align: top; padding:10px 35px; border-radius:30px; border:2px solid #000000;}
+
+.btnCoupon{margin-top:20px; text-align: center;}
+.btnCoupon img {width:235px;}
+
+.floatBanner {bottom:65px; padding:30px}
+.lcCont {bottom:180px}
+/* @end 수정1123 */
+
+
+/* @start 수정1123-1 */
+.floatBanner {bottom:40px; padding:30px}
+/* @end 수정1123-1 */

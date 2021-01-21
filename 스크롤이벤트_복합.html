@@ -14,7 +14,7 @@
  </head>
 
 	<style type="text/css">
-	body, html {margin: 0;padding: 0;}
+	body, html {margin: 0;padding: 0; min-height: 100%;}
 	.menu {
 		width: 100%;
 		height: 75px;
@@ -60,13 +60,11 @@
 	#contact {background-color: red;width: 100%;}
 
 	.container{
-		display: flex;
-		flex-direction: column;
 		height: 100%;
 		position: relative;
 	}
-	.container > div{min-height: 70vh;overflow: auto;}
-	
+	.container > div{height: 100%; overflow: auto;}
+	.box:last-child{margin-bottom: 50px;}
 	.ilbuni{
 		position: relative;
 		width: 100%;
@@ -82,7 +80,7 @@
 	/* .box.active .ilbuni .img{opacity: 1;} */
 	</style>
 
-<body>
+<body> 
 	<div class="m1 menu">
 		<div id="menu-center">
 			<ul>
@@ -100,7 +98,7 @@
 				</li>
 			</ul>
 		</div>
-		<ul>
+		<!-- <ul>
 			<li><a class="active" href="#home">•Home😀</a>
 
 			</li>
@@ -113,7 +111,7 @@
 			<li><a href="#contact">•Contact👩‍👦</a>
 
 			</li>
-		</ul>
+		</ul> -->
 	</div>
 
 	<div class="container">
@@ -156,14 +154,17 @@
 <script>
 	// -------JQUERY------
 	$(document).ready(function () {
-		
+		moveHesh();
+		sectionActve();
+
 		$(document).on("scroll", function(){
+			//whellMoving();
 			onScroll();
 			blockActive();
 			
 		});
-
-		
+	});
+	function moveHesh(){
 		$('a[href^="#"]').on('click', function (e) {
 			e.preventDefault();
 			$(document).off("scroll");
@@ -179,11 +180,16 @@
 				scrollTop: $target.offset().top
 			}, 500, 'swing', function () {
 				window.location.hash = target;
-				$(document).on("scroll", blockActive);
+				$(document).on("scroll", function(){
+					blockActive();
+					sectionActve()
+				});
 			});
 		});
+	}
 
-		//const elm = $('.box');
+	function whellMoving(){
+		const elm = $('.box');
 		let delta = 0;
 
 		elm.each(function (index) {
@@ -236,13 +242,12 @@
 				});
 			});
 		});
-	});
+	}
 
-	const ilbuniElm = $('.ilbuni');
-	let posY = 0;
-	
 
 	function onScroll(){
+		const ilbuniElm = $('.ilbuni');
+
 		ilbuniElm.each(function (i){
 			
 			let posY = parseInt($(this)[0].getBoundingClientRect().top);
@@ -267,25 +272,125 @@
 
 			const selectElm = $(currentLink.attr('href'))
 
+			
+			//console.log(totalPrveHeight)
 			if(selectElm.offset().top <= parseInt(scrollPos * 1.2)){
-				console.log('selectElm='+ selectElm.offset().top)
-				console.log('scrollPos * 1.2=='+ parseInt(scrollPos * 1.2))
+				//console.log('selectElm='+ selectElm.offset().top)
+				//console.log('scrollPos * 1.2=='+ parseInt(scrollPos * 1.2))
 				$('#menu-center a').removeClass("active");
 				currentLink.addClass('active');
-				selectElm.addClass('active');
+				//selectElm.addClass('active'); //블럭 엑티브
 			}else{
 				currentLink.removeClass('active')
-				selectElm.removeClass('active')
+				//selectElm.removeClass('active')
 			}
 		})
 	}
 
+//섹션 구분
+var sectionActve = function(){
+	var el_section = $('.box');
+	var currentScene = 0;
+	var prevScrollHeight = 0;
+	var yOffset = 0;
+	var foo = [0,1, {start:1 ,end:2 } ]
+
+	setLayout();
+
+	$(document).on("scroll", function(){
+		scrollLoop();
+		partScroll();
+	});
+
+	function scrollLoop(){
+		yOffset = $(window).scrollTop();
+
+		prevScrollHeight = 0;
+		for(i=0; i < currentScene; i++){
+			prevScrollHeight += el_section[i].outerHeight(true)
+		}
+
+		if(yOffset > prevScrollHeight + el_section.eq(currentScene).outerHeight(true)){
+			currentScene++
+
+			$('body').attr({class:`scene-${currentScene}`})
+			
+		}
+
+		if(yOffset < prevScrollHeight){
+			if(currentScene === 0) return;
+			currentScene--
+
+			$('body').attr({class:`scene-${currentScene}`})
+		}
+		//박스 active 
+		//$('.box').removeClass('active');
+		//$('.box').eq(currentScene).addClass('active');
+
+	}
+
+	function partScroll(){
+		var currentYoffset = yOffset - prevScrollHeight;
+
+		var portfolio = $('#portfolio')
+		var portfolio_ratio = currentYoffset / portfolio.height() * 100;
+		console.log(portfolio_ratio)
+
+		$('.box').removeClass('active');
+		$('.box').eq(currentScene).addClass('active');
+		switch(currentScene){
+			case(0):
+
+				break;
+			case(1):
+
+				if(portfolio_ratio > 50 && portfolio_ratio < 70){
+					console.log('fooooooooooooo')
+				}
+
+				break;
+
+			case(2):
+
+				if(portfolio_ratio > 50 && portfolio_ratio < 70){
+					console.log('barrrrrrrrrrr')
+				}
+
+				break;
+			case(3):
+			
+				break;
+		}
+
+	}
+
+	function setLayout(){
+		let yOffset = $(window).scrollTop();
+		let totalScrollHeight = 0;
+		for(i=0; i < el_section.length; i++){
+			totalScrollHeight += el_section.outerHeight(true);
+			//console.log(totalScrollHeight , i)
+			if(totalScrollHeight > yOffset){
+				currentScene = i;
+				break;
+			}
+		}
+		$('body').attr({class:`scene-${currentScene}`})
+		//$('.box').eq(currentScene).addClass('active')
+	}
+}
 
 	
-	
-	
+
 
 	
+
+
+
+
+
+
+
 
 
 </script>

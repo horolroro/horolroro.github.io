@@ -93,11 +93,12 @@ $(function(){
         var resultArray = [];
             resultArray = todayDate.split(''); //롱링할 오늘날짜를 나눠서 배열에 담음
             // console.log(resultArray);
-        $.each(resultArray, function(idx, val) {
+        //$.each(resultArray, function(idx, val) {
+        resultArray.forEach(function(val, idx){
 			var conuntBox = $('<div class="count_box" />');
 			var numberArray = []; //쪼갠 날짜를 담을 배열 선언
 			var number = Number(val);
-
+            console.log(idx, val)
             for(var i = 0; i <= rolling; i++){ //롤링될 숫자만큼 값을 생성해 배열에 담음
                 var sum = number + i;
                 var num = sum >= 10 ? Number(String(sum).split('')[1]) : sum; //값이 10보다커질경우 첫번째 자릿수를 버리도록 함

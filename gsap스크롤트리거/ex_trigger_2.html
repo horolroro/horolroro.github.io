@@ -79,7 +79,7 @@
 				trigger: '.box',
 				start : "center center",
 				end: "bottom top",
-				markers: true,
+				markers: false,
 				scrub : true,  //스크롤 움직임 비율로 움직이는
 				pin: true //fixed 같은 역활
 			}
@@ -90,13 +90,13 @@
 		.from('.logo', {
 			y: innerWidth * 1,
 			rotate : 360,
-			duration: 30
+			duration: 1000
 		})
 		.from('.logo2', {
-			x: 500,
-			y: innerWidth * 1,
+			x: innerWidth *2,
+			y: innerWidth * 2,
 			rotate : 60,
-			duration: 30,
+			duration: 1000,
 			scale: 5
 		})
 
@@ -112,9 +112,9 @@
 			}
 		})
 		.from('.box2', {opacity:0,duration: 50})
-		.from('.text4', {x: innerWidth * 1,duration: 20})
-		.from('.text5', {x: innerWidth * -1,duration: 20})
-		.from('.text6', {x: innerWidth * 1,duration: 20})
+		.from('.text4', {x: innerWidth * 1,duration: 520})
+		.from('.text5', {x: innerWidth * -1,duration: 520})
+		.from('.text6', {x: innerWidth * 1,duration: 520})
 
 	</script>
 </body>

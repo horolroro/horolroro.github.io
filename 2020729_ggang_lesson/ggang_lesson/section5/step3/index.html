@@ -221,7 +221,7 @@ $(function(){
         parallaxThisTop = winScrollTop - parallaxOffsetTop; //패럴럭스가 시작될 위치값을 구함.
         parallaxPercent = parallaxThisTop / parallaxSpeed * 100; // 이동할 거리 백분율 값을 담음
         parallaxMoveDistance = Math.max(parallaxStartValue - parallaxStartValue,Math.min(parallaxStartValue, parallaxStartValue - (parallaxStartValue * (parallaxPercent/100)))); //패럴럭스 요소가 움직일 거리를 구합니다
-
+        console.log(parallaxPercent, parallaxMoveDistance)
     };
 
     function motionParallax(){ // 스크롤할때 계속 호출될 모션 함수 선언
