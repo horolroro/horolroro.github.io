@@ -309,7 +309,7 @@ var sectionActve = function(){
 
 		prevScrollHeight = 0;
 		for(i=0; i < currentScene; i++){
-			prevScrollHeight += el_section[i].outerHeight(true)
+			prevScrollHeight += el_section.eq(i).outerHeight(true)
 		}
 
 		if(yOffset > prevScrollHeight + el_section.eq(currentScene).outerHeight(true)){

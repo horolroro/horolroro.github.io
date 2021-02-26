@@ -97,29 +97,6 @@
   <script>
 	//여럿 중에 하나만 활성화하기
 
-	//즉시실행,전역변수회피
-	// (function(){
-	// 	const stageElem = document.querySelector('.stage')
-	// 	var currentItem;
-
-	// 	function doorHandler(e){
-	// 		var targetElem = e.target;
-
-	// 		if(currentItem){
-	// 			currentItem.classList.remove('door-opened');
-	// 		}
-
-	// 		if(targetElem.classList.contains('door-body')){
-	// 			targetElem.parentNode.classList.add('door-opened');
-	// 			currentItem = targetElem.parentNode;
-	// 		}
-	// 	}
-
-	// 	stageElem.addEventListener('click' , doorHandler);
-	// })();
-
-
-
 	//생성자 함수 (constructor)
 	function Person(nickname , age){
 		this.nickname = nickname;
