@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+	<style type="text/css">
+		#contents.main, .mainCon section[class*=con].swiper-slide {min-height: auto;}
+		#foodDctor {display: flex; flex-direction: column; height: calc(100vh); overflow-x: hidden; border-top: 4px solid #f3f3f3; box-sizing: border-box; background: #fff;}
+
+		#foodDctor .flex {overflow: auto;display: flex; }
+		#foodDctor .product {overflow:auto; flex: 1 0 0px;  height: 100%; padding: 32px 15px; box-sizing: border-box;}
+		#foodDctor .product .banner {margin: 0 -15px; padding-top: 50px;}
+		#foodDctor .product .items img{width: 100%;}
+		#foodDctor .product .items:not(:last-child) {padding-bottom: 50px;}
+		#foodDctor .hashtag {margin-bottom: 20px;}
+		#foodDctor .productItem + .hashtag, #foodDctor .banner + .hashtag {margin-top: 50px;}
+		#foodDctor .hashtag > span {display: inline-block; height: 26px; line-height: 24px; border: 1px solid #333; padding: 0 10px; border-radius: 12px; box-sizing: border-box; font-size: 15px; color: #333;}
+		#foodDctor .mainTit {margin-top: 20px; line-height: 1.2; font-size: 25px; font-weight: 900; color: #222;}
+		#foodDctor .productItem {margin-top: 30px;}
+		#foodDctor .productItem + .productItem {margin-top: 50px;}
+		#foodDctor .imgBox {position: relative;}
+		#foodDctor .redBox {display: flex; align-items: flex-end; position: absolute; bottom: -13px; padding: 8px 9px; background: #ff4b47;}
+		#foodDctor .redBox > em {font-size: 13px; color: #fff}
+		#foodDctor .redBox > span {font-size: 13px; color: #fff;}
+		#foodDctor .redBox > span::before {content: '/'; margin: 0 4px;}
+		#foodDctor .redBox strong small {font-weight: normal; font-size: 0.9em;}
+		#foodDctor .LinkWrap {position: relative;}
+		#foodDctor .subTit {margin-top: 37px; line-height: 1.2; font-size: 20px; font-weight: 500; color: #333;}
+		#foodDctor .desc {margin-top: 15px; line-height: 1.4; font-size: 14px; color: #333;}
+		#foodDctor .productLink {position: absolute; top:0; left: 0; width: 100%; height: 100%; text-indent: -9999px;}
+		#foodDctor .pinkBox {display: inline-block; min-width: 173px; margin-top: 20px; padding: 12px 14px; box-sizing: border-box; background: #fbe6e6;}
+		#foodDctor .pinkBox .tit {line-height: 1.2; font-size: 13px; color: #ff4b47;}
+		#foodDctor .iconBox {display: flex; justify-content: space-between; margin-top: 10px;}
+		#foodDctor .iconBox .month {font-size: 12px; color: #333;}
+		#foodDctor .iconBox .month::before {content: ''; display: inline-block; width: 15px; height: 14px; margin-right: 5px; background: url('https://imgs.kshop.co.kr/d2/emc/202102/05/202102051777065d8ee90.png') no-repeat; background-size: 100%; vertical-align: -2px;}
+		#foodDctor .iconBox .time {font-size: 12px; color: #333;}
+		#foodDctor .iconBox .time::before {content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 5px; background: url('https://imgs.kshop.co.kr/d2/emc/202102/05/202102051777066124450.png') no-repeat; background-size: 100%; vertical-align: -2px;}
+		#foodDctor .order {margin-top: 15px; font-size: 12px; color: #333;}
+		#foodDctor .nav {width: 90px; height: 100%; padding:15px 0; box-sizing: border-box; overflow: auto; background: #f2f2f2; transition: 1s;}
+		#foodDctor .menu-item {display: block;height: 70px; line-height: 70px; border-bottom: 1px solid #e6e6e6; box-sizing: border-box; text-align: center; cursor: pointer;}
+		#foodDctor .menu-item.active {border-bottom: 2px solid #ff4b47; background: #fff;}
+		#foodDctor .menu-item > span {font-size: 13px; color: #333;}
+		#foodDctor .menu-item.active > span {font-weight: 500; color: #ff4b47;}
+		#foodDctor .menu-item .new::after {content:''; display: inline-block; width: 5px; height: 5px; margin-left: 2px; border-radius: 50%; background: #ff4b47; vertical-align: text-top;}
+		#foodDctor .menu-item .woman::before {content:''; display: inline-block; width:19px; height: 18px; margin-right: 3px; background: url('https://imgs.kshop.co.kr/d2/emc/202102/05/20210205177706683e360.png') no-repeat; background-size: 100%; vertical-align: middle;}
+		#foodDctor .menu-item .man::before {content:''; display: inline-block; width:19px; height: 18px; margin-right: 3px; background: url('https://imgs.kshop.co.kr/d2/emc/202102/05/202102051777066507240.png') no-repeat; background-size: 100%; vertical-align: middle;}
+		#contents.mainFoodDctor+#footer, #contents.mainFoodDctor~aside .btnTop { display: none; }
+		</style>
+ </head>
+<body>
+    <div id="contents">
+		<div class="planTop">
+			<div class="typeImg">
+				<div>
+					<!-- ============================================================== MCN 템플릿 START -->
+					
+					<div id="foodDctor" style="height: calc(100vh - 60px);">
+						<div class="banner"><img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/23/20210223177cdb1425360.jpg"></div>
+						<div class="flex">
+							<div class="product">
+								<div class="items">
+									<div class="hashtag">
+										<span>#장 건강</span>
+									</div>
+									<h2 class="mainTit">장수의 비밀<br>
+									장(腸) 속에 있어요</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae6e160c10.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>22,900<small>원</small></strong></em> <span>하루 <strong>382<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">온 가족을 위한 하루 한 포</h3>
+											<p class="desc">면역세포의 60%가 장에 있는거 아시나요?<br>
+											즉 장이 건강해야 몸이 건강합니다.<br>
+											1포에 유산균 10억마리와 유익균의 먹이를 모두 담아 기능성을 높였고, 맛있는 오렌지 맛으로 식구들과 함께 먹을 수 있답니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="562370" data-ga-prd-nm="10억 생 유산균+프리바이오틱스 2박스" data-menu-obj="{}" data-prd-id="562370" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM 자연의품격</strong><br>
+											10억 생 유산균+프리바이오틱스 2박스</p>
+											<div class="iconBox">
+												<span class="month">2개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="562370">117</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="banner">
+										<a href="javascript:goSchem('sub1',%20'https://m.kshop.co.kr/display/mc/specialplan/detail?spdpId=2000002362&amp;isMain=false')"><img alt="GNM자연의품격" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae8b9c1350.jpg"></a>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#면역력</span>
+									</div>
+									<h2 class="mainTit">내 몸을 지키는 힘</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae87053560.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>24,900<small>원</small></strong></em> <span>하루 <strong>830<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">지친 일상에 불어넣는 붉은 활기</h3>
+											<p class="desc">가성비최고 홍삼 건강음료를 소개합니다.<br>
+											100% 계약재배한 국내산 6년근 홍삼만 사용해서 믿을 수 있고, 쓰지 않아서 마시기에도 좋습니다. 부담없는 가격으로 나와 지인의 지친 일상에 활력을 선물하세요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="516883" data-ga-prd-nm="정관장 홍삼원 50ml 30포" data-menu-obj="{}" data-prd-id="516883" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>정관장</strong><br>
+											정관장 홍삼원 50ml 30포</p>
+											<div class="iconBox">
+												<span class="month">1개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="516883">191</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae8d2f1980.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>27,900<small>원</small></strong></em> <span>하루 <strong>78<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">꿀벌에게 찾은 황금빛 선물</h3>
+											<p class="desc">잦은 피로감, 인후통은 면역력 약화에서 비롯됩니다. 프로폴리스는 이러한 기본적인 면역력 증강과 항산화에 도움을 줍니다.<br>
+											식약처 검사를 통과한 캐나다 직수입원료로 만들었으며, 캡슐형으로 먹기 간편합니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="793554" data-ga-prd-nm="프리미엄 프로폴리스 2병" data-menu-obj="{}" data-prd-id="793554" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>뉴트리디데이</strong><br>
+											프리미엄 프로폴리스 2병</p>
+											<div class="iconBox">
+												<span class="month">12개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="793554">273</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="banner">
+										<a href="javascript:goSchem('sub1',%20'https://m.kshop.co.kr/display/mc/specialplan/detail?spdpId=2000002322&amp;isMain=false')"><img alt="뉴트리디데이" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae8e882660.jpg"></a>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#영양 보충</span>
+									</div>
+									<h2 class="mainTit">나이들수록 중요해요</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae9c39d420.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>14,900<small>원</small></strong></em> <span>하루 <strong>83<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">알차게 눌러담은 기초 영양</h3>
+											<p class="desc">영양제, 먹긴 먹어야 하는데 종류도 가격도 천차만별이라 어려우셨죠?<br>
+											한국인에게 필요한 성분을 적절히 담았고, 원료별 원산지도 모두 표기해놓은 종합비타민 입니다. 알약 사이즈가 비교적 작아 목넘김도 편하답니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="485696" data-ga-prd-nm="종합비타민미네랄15 2박스" data-menu-obj="{}" data-prd-id="485696" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM자연의품격</strong><br>
+											종합비타민미네랄15 2박스</p>
+											<div class="iconBox">
+												<span class="month">6개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="485696">423</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae9c68c250.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>12,900<small>원</small></strong></em> <span>하루 <strong>72<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">과일계의 다이아몬드</h3>
+											<p class="desc">수면이 부족해지면 면역력이 떨어집니다.<br>
+											멜라토닌은 숙면에 도움을 주는 성분으로, 타트체리에 풍부하게 함유되어 있어요. 이 중 최고급 품종인 몽모랑시만 엄선, 농축분말 99%를 사용해 흡수력을 더 높였습니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="810984" data-ga-prd-nm="몽모랑시 타트체리99% 2병" data-menu-obj="{}" data-prd-id="810984" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>퍼니트</strong><br>
+											몽모랑시 타트체리99% 2병</p>
+											<div class="iconBox">
+												<span class="month">6개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="810984">1,451</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#눈 건강</span>
+									</div>
+									<h2 class="mainTit">스마트폰 시대<br>
+									30대도 노안 옵니다</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177af24fa2a80.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>19,900<small>원</small></strong></em> <span>하루 <strong>133<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">눈 건강 종합보험</h3>
+											<p class="desc">하루종일 전자기기에 지친 눈은 노안을 앞당기고, 한번 나빠지면 되돌릴 수 없어요. 그렇기 때문에 눈 영양제는 일찍 먹기 시작할수록 좋습니다. 루테인 외에 눈에 좋은 부원료로 가득 담은 영양제로 오늘부터 시작해보세요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="495035" data-ga-prd-nm="눈에 좋은 루테인11 5박스" data-menu-obj="{}" data-prd-id="495035" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>네이처드림</strong><br>
+											눈에 좋은 루테인11 5박스</p>
+											<div class="iconBox">
+												<span class="month">5개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="495035">35</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="banner">
+										<a href="javascript:goSchem('sub1',%20'https://m.kshop.co.kr/display/mc/specialplan/detail?spdpId=2000002361&amp;isMain=false')"><img alt="네이처드림" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177ae9efb4210.jpg"></a>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#혈행 개선</span>
+									</div>
+									<h2 class="mainTit">이유 없이 자꾸 아플때<br>
+									혈관을 의심하세요</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aea1a6ac60.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>33,900<small>원</small></strong></em> <span>하루 <strong>377<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">비린내 없이 깔끔한 오메가3</h3>
+											<p class="desc">만사혈(血)통, 혈액순환은 건강의 기본이죠.<br>
+											혈행개선에 좋은 오메가3, 그 중 알티지 오메가3는 흡수율이 더욱 뛰어납니다. 중금속 오염도가 낮은 소형어종 원료로 만들었으며, 비린내 없는 깔끔한 캡슐로 먹기도 좋아요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="832404" data-ga-prd-nm="rTG 알티지 오메가3 3박스" data-menu-obj="{}" data-prd-id="832404" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM자연의품격</strong><br>
+											rTG 알티지 오메가3 3박스</p>
+											<div class="iconBox">
+												<span class="month">3개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="832404">4</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#간 건강</span>
+									</div>
+									<h2 class="mainTit">자도자도 피곤하다면<br>
+									간 때문이야</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aea2c40160.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>26,900<small>원</small></strong></em> <span>하루 <strong>149<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">실리마린 하루 권장량 가득</h3>
+											<p class="desc">그간 회식과 야근으로 혹사당한 간, 간은 손상되도 증상이 잘 안나타나서 미리 챙겨야 해요.<br>
+											1정에 실리마린 하루 섭취량을 모두 담았으며, 세포 대사에 중요한 비타민B군을 더해 효과가 높아지게 만들었습니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="764168" data-ga-prd-nm="건강한 간 밀크씨슬 6박스" data-menu-obj="{}" data-prd-id="764168" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM자연의품격</strong><br>
+											건강한 간 밀크씨슬 6박스</p>
+											<div class="iconBox">
+												<span class="month">6개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="764168">32</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#체지방 감소</span>
+									</div>
+									<h2 class="mainTit">먹을수록 가벼운 나</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aea54b6f90.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>56,900<small>원</small></strong></em> <span>하루 <strong>1,355<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">체지방 줄이고 묵직함 날리고</h3>
+											<p class="desc">다이어트를 위해 식단 조절을 경험한 분들이라면 한번씩은 겪었을 변비, 걱정마세요.<br>
+											인증받은 다이어트 기능성 원료인 키토산과 장 속 쌓이는 묵직함을 날려주는 식이섬유 성분으로 체지방을 집중 공략해드릴게요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="821789" data-ga-prd-nm="주홍이 11플러스 키토산 팻아웃 3통" data-menu-obj="{}" data-prd-id="821789" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GRN</strong><br>
+											주홍이 11플러스 키토산 팻아웃 3통</p>
+											<div class="iconBox">
+												<span class="month">6주분</span> <span class="time">하루 세 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="821789">152</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="banner">
+										<a href="javascript:goSchem('sub1',%20'https://m.kshop.co.kr/display/mc/specialplan/detail?spdpId=2000002321&amp;isMain=false')"><img alt="GRN" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aea5fc5d70.jpg"></a>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#관절·뼈건강</span>
+									</div>
+									<h2 class="mainTit">노년 품위 유지의 기본</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aea7f66d20.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>29,900<small>원</small></strong></em> <span>하루 <strong>83<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">소화 흡수 잘되는 해조칼슘</h3>
+											<p class="desc">뼈를 위한 영양제는 곧 칼슘이다?<br>
+											반은 맞고 반은 틀려요. 칼슘 섭취 뿐만 아니라 몸 속에서 잘 흡수되도록 하는 것도 중요하답니다. 체내 이용률을 높이기 위해 마그네슘, 비타민D를 적절히 배합한 이 제품 추천드려요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="800018" data-ga-prd-nm="칼슘 마그네슘 아연 비타민D 골드 4병" data-menu-obj="{}" data-prd-id="800018" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>뉴트리디데이</strong><br>
+											칼슘 마그네슘 아연 비타민D 골드 4병</p>
+											<div class="iconBox">
+												<span class="month">12개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="800018">2,517</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#피부 건강</span>
+									</div>
+									<h2 class="mainTit">속 피부에 화장하기</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aea9b42f40.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>24,900<small>원</small></strong></em> <span>하루 <strong>208<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">상큼하게 즐기는 피쉬콜라겐</h3>
+											<p class="desc">돼지껍데기는 아무리 먹어도 피부에 무용지물이예요. 동물성 고분자 콜라겐은 흡수가 잘 되지 않기 때문인데, 반면 어류에서 추출한 저분자 콜라겐은 흡수가 잘 이뤄집니다.<br>
+											섭취 후 속부터 차오르는 피부 속 촉촉함을 느껴보세요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="611506" data-ga-prd-nm="저분자 콜라겐 비타민C 4박스" data-menu-obj="{}" data-prd-id="611506" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM자연의품격</strong><br>
+											저분자 콜라겐 비타민C 4박스</p>
+											<div class="iconBox">
+												<span class="month">4개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="611506">79</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177af2241aa30.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>19,900<small>원</small></strong></em> <span>하루 <strong>663<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">물 타지 않아 더 탱글탱글</h3>
+											<p class="desc">설탕, 색소 등 합성첨가물 없이 100% 스페인산 석류로 만든 콜라겐 젤리를 소개합니다.<br>
+											분자량이 3,000Da 미만이면 저분자 콜라겐으로 분류하는데요, 1,000Da 이하의 콜라겐에 정제수 없이 석류 한 알을 그대로 담았답니다.<br>
+											새콤달콤 간식처럼 편하게 드세요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="806664" data-ga-prd-nm="리얼석류콜라겐 젤리 2박스" data-menu-obj="{}" data-prd-id="806664" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>퍼니트</strong><br>
+											리얼석류콜라겐 젤리 2박스</p>
+											<div class="iconBox">
+												<span class="month">1개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="806664">581</span>명</strong>이 주문중입니다.</p>
+									</div>
+									<div class="banner">
+										<a href="javascript:goSchem('sub1',%20'https://m.kshop.co.kr/display/mc/specialplan/detail?spdpId=2000002323&amp;isMain=false')"><img alt="퍼니트" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177aeaa10e970.jpg"></a>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#갱년기</span>
+									</div>
+									<h2 class="mainTit">마음은 "우울"<br>
+									얼굴은 "화끈"해질때</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177af22981360.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>50,000<small>원</small></strong></em> <span>하루 <strong>250<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">달맞이꽃종자유 100% 함유</h3>
+											<p class="desc">불안정한 호르몬 때문에 다양한 변화를 겪는 갱년기, 고민이시죠?<br>
+											달맞이꽃종자유에 함유된 감마리놀렌산은 월경 전 불편한 상태와 피부상태 개선에 도움을 준답니다. 체내 합성이 안되서 꼭 외부 섭취가 필요한데, 가정의학 전문의가 공동성분배합한 이 제품, 추천해요.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="721626" data-ga-prd-nm="달맞이꽃 종자유 2병" data-menu-obj="{}" data-prd-id="721626" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>리얼닥터</strong><br>
+											달맞이꽃 종자유 2병</p>
+											<div class="iconBox">
+												<span class="month">6.5개월분</span> <span class="time">하루 두 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="721626">1</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#전립선</span>
+									</div>
+									<h2 class="mainTit">남성의 시원한 자신감</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177af22ecfa70.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>31,900<small>원</small></strong></em> <span>하루 <strong>177<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">전립선 건강과 지구력 증진</h3>
+											<p class="desc">점점 떨어지는 힘과 자신감, 귀찮아서 먹지 않았어도 이제 미루지 마세요. 남성만을 위한 7종 복합기능성 제품 소개할게요.<br>
+											전립선 건강을 위한 쏘팔메토와 지구력 증진에 도움이 되는 옥타코사놀, 그리고 활력을 더해줄 비타민과 미네랄까지 단 한알에 담았습니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="568630" data-ga-prd-nm="쏘팔메토 07 2박스" data-menu-obj="{}" data-prd-id="568630" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM자연의품격</strong><br>
+											쏘팔메토 07 2박스</p>
+											<div class="iconBox">
+												<span class="month">6개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="568630">50</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+								<div class="items">
+									<div class="hashtag">
+										<span>#항산화</span>
+									</div>
+									<h2 class="mainTit">떨어지는 활력<br>
+									잡아드려요</h2>
+									<div class="productItem">
+										<div class="LinkWrap">
+											<div class="imgBox">
+												<img alt="" src="https://imgs.kshop.co.kr/d2/emc/202102/17/20210217177af232eb880.jpg">
+												<div class="redBox">
+													<em>K쇼핑가 <strong>17,900<small>원</small></strong></em> <span>하루 <strong>298<small>원</small></strong></span>
+												</div>
+											</div>
+											<h3 class="subTit">활력을 부르는 코엔자임Q10</h3>
+											<p class="desc">코엔자임Q10은 몸에 나쁜 활성산소로부터 세포를 지키는 항산화 및 높은 혈압 감소에 도움을 주는 성분이예요. 그 외에 중장년 남성의 활력건강을 위한 비타민B군, 나이아신, 엽산 등 10종 성분도 빈틈없이 넣었습니다.</p><a class="productLink prodLink" data-dp-crn-nm="" data-dp-crn-no="" data-dsp-idx="" data-ga-disp-nm="푸드닥터" data-ga-disp-pos="0" data-ga-prd-id="528402" data-ga-prd-nm="코큐텐11 2박스" data-menu-obj="{}" data-prd-id="528402" data-prd-idx="" data-spdp-id="" data-tmpl-nm="" data-tmpl-no="" href="javascript:void(0);">&gt;상품링크</a>
+										</div>
+										<div class="pinkBox">
+											<p class="tit"><strong>GNM자연의품격</strong><br>
+											코큐텐11 2박스</p>
+											<div class="iconBox">
+												<span class="month">2개월분</span> <span class="time">하루 한 번</span>
+											</div>
+										</div>
+										<p class="order"><strong><span id="528402">27</span>명</strong>이 주문중입니다.</p>
+									</div>
+								</div>
+							</div>
+							<nav class="nav">
+								<ul class="menu-list">
+									<li class="menu-item active"><span>장 건강</span></li>
+									<li class="menu-item"><span class="new">면역력</span></li>
+									<li class="menu-item"><span>영양보충</span></li>
+									<li class="menu-item"><span>눈 건강</span></li>
+									<li class="menu-item"><span>혈행 개선</span></li>
+									<li class="menu-item"><span>간 건강</span></li>
+									<li class="menu-item"><span>체지방 감소</span></li>
+									<li class="menu-item"><span>관절·뼈 건강</span></li>
+									<li class="menu-item"><span class="woman new">피부 건강</span></li>
+									<li class="menu-item"><span class="woman">갱년기</span></li>
+									<li class="menu-item"><span class="man">전립선</span></li>
+									<li class="menu-item"><span class="man">항산화</span></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!--script>
+		$(document).ready(function() {
+            $("#contents").addClass("mainFoodDctor");
+			
+            /* 이미지 로딩 완료 이벤트 처리 */
+            var imgCnt = $("#foodDctor img").length;
+            var loadedImgCnt = 0;
+
+            onImgLoad("#foodDctor img", function() {
+                loadedImgCnt++;
+                if (loadedImgCnt >= imgCnt) {
+                    initScroll();
+                }
+            });
+            
+        });
+
+		/* 캐싱된 이미지 포함 load 이벤트를 처리하기 위한 함수 */
+		var onImgLoad = function(selector, callback) {
+			$(selector).each(function() {
+				
+				if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+					callback.apply(this);
+					console.log('this.complete: '+this)
+				} else {
+					$(this).on('load', function() {
+						//console.log('callback '+ this)
+						callback.apply(this);
+					});
+				}
+			});
+		};
+
+		function initScroll() {
+			var arr = [0]
+			var totalHeight = 0;
+			$('#foodDctor .product > .items').each(function(index, item) {
+				totalHeight += Math.floor($(this).outerHeight());
+
+				//console.log(index ,item, totalHeight)
+				arr.push(totalHeight);
+			});
+			console.log(arr)
+			$('#foodDctor .menu-item').click(function() {
+				var index = $(this).index();
+				$('.menu-item').removeClass('active');
+				$(this).addClass('active');
+				$('.nav').scrollTop(index * 70 - 20);
+				$('.product').scrollTop(arr[index]);
+				return false;
+			});
+			var position = $('#foodDctor .product').scrollTop();//0
+			console.log(arr)
+
+			$('#foodDctor .product').scroll(function() {
+				var scroll = $(this).scrollTop();
+				
+				for (var i = 0; i < arr.length; i++) {
+					if (scroll >= arr[i]) {
+						//console.log(scroll, arr[i])
+						$('.menu-item').removeClass('active');
+						$('.menu-item').eq(i).addClass('active');
+						$('.nav').scrollTop(i * 70 - 20);
+					}
+				}
+				if (scroll > position) {
+					$('body').addClass('moveUp').removeClass('moveDown');
+				}else{
+					$('body').addClass('moveDown').removeClass('moveUp');
+				}
+				position = scroll;
+				
+			});
+		}
+    </script-->
+
+	<script>
+		window.onload = function() { 
+			let arr = [0]; //스크롤이벤트시 필요한값
+			let arr_2 = [0]; //클릭이벤트시 필요한값
+			let prodTotalHeight = 0;
+			let scrollTop;
+			let prev;
+			let next;
+			let navItemCurrent;
+
+			const prodWrap = document.querySelector('.product')
+			const prodItem = document.querySelectorAll('.product .items');
+			const nav = document.querySelector('#foodDctor .nav')
+			const navItem = document.querySelectorAll('#foodDctor .menu-item');
+			
+
+			for(let i=0; i<prodItem.length; i++){
+				prodTotalHeight +=  prodItem[i].offsetHeight;
+				arr.push(prodTotalHeight - 30);
+				arr_2.push(prodTotalHeight);
+			}
+			console.log(arr)
+			
+			//스크롤 이벤트
+			function scrollHandler(){
+				//console.log( scrollTop)
+				for(let i=0; i<arr.length; i++){
+					
+					if(scrollTop > arr[i]){
+						navItem[i].classList.add('active')
+						prev = navItem[i-1];
+						next = navItem[i+1];
+						//console.log(scrollTop, arr[i])
+						$('#foodDctor .nav').stop().animate({scrollTop: i * 70 } ,100)
+						// nav.scrollTo({
+						// 	left: 0,
+						// 	top: i * 70
+						// })
+					}
+
+					if(prev){
+						prev.classList.remove('active')
+					}
+					if(next){
+						next.classList.remove('active')
+					}
+				}
+			}
+
+			//네비 아이템 클릭이벤트
+			for (let i = 0; i < navItem.length; i++) {
+				
+				navItem[i].addEventListener('click', function(){
+					if(navItemCurrent){
+						navItemCurrent.classList.remove('active')
+					}
+
+					this.classList.add('active');
+					navItemCurrent = this;
+
+					prodWrap.scrollTo(0, arr_2[i] + 10)
+				});
+				
+			}
+
+			//css flex에 ovflow가 있을경우 window에 스크롤이 작동을 안한다
+			//고로 .overflow가 있는 .product에 이벤트를 거는게 맞겠다
+			prodWrap.addEventListener('scroll', function(e){
+				scrollTop = prodWrap.scrollTop //yoffset이 아닌이유는 div 내에 스크롤을 만들어야해서
+				scrollHandler()
+			})
+		}
+		
+
+
+	</script>
+</body>
+</html>

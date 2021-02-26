@@ -7,26 +7,76 @@
 	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
 	<meta name="keywords" content="K 쇼핑" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
 
 
  </head>
 
  <style type="text/css">
+	body{font-size: 3rem;}
+	h1{background: #fff000;}
+	.menu{display:flex}
+	.menu-link{
+		
+		margin:.1em;
+		padding: .3em;
+		color: #fff;
+		text-decoration: none;
+		background: dodgerblue;
+		list-style: none;
+	}
+	.menu-active{background: orange;}
+	.cont{display: none; border: 1px solid #000;}
+	.cont.menu-active{display:block}
 </style>
 
 <body>
+	<h1>EVENT</h1>
+	<nav class="menu">
+		<a href="#" class="menu-link" data-menu="1">menu-1</a>
+		<a href="#" class="menu-link " data-menu="2">menu-2</a>
+		<a href="#" class="menu-link" data-menu="3">menu-3</a>
+	</nav>
+	<div class="cont" data-menu="1">121212<Br/>121212<Br/>121212<Br/>121212<Br/></div>
+	<div class="cont" data-menu="2">2221212<Br/>121212<Br/>121212<Br/>121212<Br/></div>
+	<div class="cont" data-menu="3">331212<Br/>121212<Br/>121212<Br/>121212<Br/></div>
 </body>
 
 <script>
-	function solution(a, b, c){
-		let answer;
-		if(a<b) answer=a;
-		else answer=b;
-		if(c<answer) answer=c; 
-		return answer;
+	const menu = document.querySelector('.menu');
+	var cont = document.querySelectorAll('.cont');
+	var currentMenu;
+
+	function clickHenadler(e){
+
+		var target = e.target;
+		var menuData = target.dataset.menu - 1;
+
+		//console.log(menuData)
+		for(i=0; i<cont.length; i++){
+			cont[i].classList.remove('menu-active')
+			cont[menuData].classList.add('menu-active')
+		}
+
+		if(currentMenu){
+			currentMenu.classList.remove('menu-active')
+		}
+
+		target.classList.add('menu-active');
+		currentMenu = target;
+		//console.log(target)
+
 	}
 
-	console.log(solution(2, 5, 1));
+	menu.addEventListener('click', clickHenadler)
+
+	// $('.menu').on('click', '.menu-link', function(){
+	// 	$('.menu > .menu-link').removeClass('menu-active')
+	// 	$(this).addClass('menu-active')
+	// })
+
+
+	
 </script>
 
  

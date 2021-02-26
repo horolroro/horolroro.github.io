@@ -82,13 +82,7 @@
 .tab-content>.active {
     display: block;
 }
-.eventPrdList .evtListTab{width: 100%;margin-top:100px}
-.eventPrdList .evtListTab ul{display: flex; justify-content: center;}
-.eventPrdList .evtListTab ul li{flex:1; border: 1px solid #dcdcdc;border-left: 0;}
-.eventPrdList .evtListTab ul li:nth-child(1){flex:0 1 214px; border-left: 1px solid#dcdcdc; }
-.eventPrdList .evtListTab ul li a{display: flex; justify-content: center; align-items: center; height: 60px; color: #222; font-size: 22px;font-family:'notoM'; text-align: center;line-height: 100%;}
-.eventPrdList .evtListTab ul li.active{border: 1px solid #000;}
-.eventPrdList .evtListTab ul li.active a{color: #fff;  background: #000;}
+
 </style>
 		<!-- S : 템플릿  planshop/_sub1 -->
 		<div id="body">
@@ -135,17 +129,6 @@
 				</div>
 			</div>
 
-			<!-- 이벤트 상세 제품리스트 -->
-			<section class="eventPrdList">
-				<!-- 제품리스트 상단 탭 -->
-				<nav class="evtListTab">
-					<ul>
-						<li class="active"><a href="#">전체보기</a></li>
-						<li><a href="#">화산송이 모공케어!</a></li>
-						<li><a href="#">블루라이트 차단! 무기자차 선크림 찰떡궁합템	</a></li>
-					</ul>
-				</nav>
-			</section>
 		</div>
 
 		<script>
@@ -184,35 +167,34 @@
 					});
 				});
 			};
-			$('#tabs.nav-tabs li').tabbing();
+			//$('#tabs.nav-tabs li').tabbing();
 			// -- FUNCTIOON 형태 -- //
 
-			// function tabs(elm){
-			// 	var $elm = $(elm)
-			// 	$elm.on('click', function(event) {
-			// 		event.preventDefault();
-			// 		var sum = 0;
-			// 		$(this).prevAll().each(function() {
-			// 			console.log('prevAll THIS WIDTH==='+$(this).width())
-			// 			sum += $(this).width();
+			function tabs(elm){
+				var $elm = $(elm)
+				$elm.on('click', function(event) {
+					event.preventDefault();
+					var sum = 0;
+					$(this).prevAll().each(function() {
+						sum += $(this).width();
 						
-			// 		});
-			// 		//가운데 구하는공식
-			// 		var dist = sum - ($(this).parent().width() - $(this).width()) / 2;
-			// 		console.log('dist=='+dist);
-			// 		if (dist < 0) {
-			// 			dist = 0;
-			// 		}
-			// 		/* else if(dist+sum > get){
-			// 			dist = get-sum+dist+dist;
-			// 		} */
-			// 		$(this).parent().animate({
-			// 			scrollLeft: dist
-			// 		}, 300);
-			// 	});
-			// }
+					});
+					//가운데 구하는공식
+					var dist = sum - ($(this).parent().width() - $(this).width()) / 2;
+					console.log('dist=='+dist);
+					if (dist < 0) {
+						dist = 0;
+					}
+					/* else if(dist+sum > get){
+						dist = get-sum+dist+dist;
+					} */
+					$(this).parent().animate({
+						scrollLeft: dist
+					}, 300);
+				});
+			}
 
-			// tabs('.nav-tabs li');
+			tabs('.nav-tabs li');
 			
 
 			$('#tabs li').click(function(){

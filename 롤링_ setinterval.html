@@ -51,7 +51,7 @@
 	
 	
 var rollingSlide = function(obj, dir) {
-	// var dir = '1' ? 'left' : 'right';
+	 var dir = '1' ? 'left' : 'right';
 
 	var wrap = $(obj);
 	var relWrap = wrap.find('> ul');
@@ -70,12 +70,14 @@ var rollingSlide = function(obj, dir) {
 		timer = setInterval(function(){
 			
 			pos--;
+			//console.log(pos--)
 			if('-' + resetNum == pos) {
 				style[dir] = 0;
 				pos = 0;
 			} else {
 				style[dir] = pos + 'px';
 			}
+			console.log(style)
 			relWrap.css(style);
 		},45);
 	}
@@ -86,6 +88,7 @@ var rollingSlide = function(obj, dir) {
 			clearInterval(timer);
 		},
 		'mouseleave': function(){
+
 			wrap.active();
 		}
 	});

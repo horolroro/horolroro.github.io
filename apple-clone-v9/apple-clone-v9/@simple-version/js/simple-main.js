@@ -357,3 +357,96 @@
 	setCanvasImages();
 
 })();
+
+
+var newProdRecom = function(){
+	//HOW TO USE
+	//https://www.javascripting.com/view/jquery-nicescroll
+	$(".prdRecom .desc").niceScroll({
+		cursorcolor: "#6b6b6b",
+		cursorborderradius: "0px",
+		cursoropacitymin: 0.3,
+		background: "#adadad",
+		cursorwidth: "4px",
+		cursorborder: "0",
+		autohidemode: "leave",
+		cursorminheight: 30,
+	})
+	try{
+		//스크롤이 높이값 변화시 자리를 못잡는 문제 해결
+		// 1. 대상 선정
+		var target = document.querySelector('.banner')
+		var target_2 = document.querySelector('.txtBanner')
+		// 2. 옵저버 인스턴스 생성
+		var observer = new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				console.log(mutation);
+				$(".prdRecom .desc").getNiceScroll().resize();
+			});
+		});
+		// 3. 옵션 설정
+		var config = {
+			attributes: true,
+		};
+		// 4. 실행
+		observer.observe(target, config);
+		observer.observe(target_2, config);
+	}catch(e){}
+}
+newProdRecom()
+
+var newProdRecom = function(){
+	//HOW TO USE
+	//https://www.javascripting.com/view/jquery-nicescroll
+	$(".prdRecom .desc").niceScroll({
+		cursorcolor: "#6b6b6b",
+		cursorborderradius: "0px",
+		cursoropacitymin: 0.3,
+		background: "#adadad",
+		cursorwidth: "4px",
+		cursorborder: "0",
+		autohidemode: "leave",
+		cursorminheight: 30,
+	})
+	
+	//배너가 있을경우에 배너 닫을때, 스크롤이 자리를 못잡는 문제 해결
+	// 1. 대상 선정
+	var target = document.querySelector('.banner');
+	var target_2 = document.querySelector('.txtBanner');
+	
+	if(typeof(target) != 'undefined' && target != null){
+		// 2. 옵저버 인스턴스 생성
+		var observer = new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				//console.log(mutation);
+				$(".prdRecom .desc").getNiceScroll().resize();
+			});
+		});
+		// 3. 옵션 설정
+		var config = {
+			attributes: true,
+		};
+		// 4. 실행
+		observer.observe(target, config);
+	}
+
+	if(typeof(target_2) != 'undefined' && target_2 != null){
+		// 2. 옵저버 인스턴스 생성
+		var observer_2 = new MutationObserver(function(mutations) {
+			mutations.forEach(function(mutation) {
+				//console.log(mutation);
+				$(".prdRecom .desc").getNiceScroll().resize();
+			});
+		});
+		// 3. 옵션 설정
+		var config_2 = {
+			attributes: true,
+		};
+		// 4. 실행
+		observer_2.observe(target_2, config_2);
+	}
+}
+//실행
+newProdRecom();
+
+

@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="대한민국 NO.1 T커머스 K쇼핑, TV홈쇼핑, 모바일K쇼핑 앱, 베스트100, 다양한 카테고리, 프로모션, 할인 정보 등 안내." />
+	<meta name="keywords" content="K 쇼핑" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" /> <!-- 병헌 : 사파리에서 전화번호 자동 표기 방지 -->
+
+	<link rel="stylesheet" type="text/css" class="comcss" href="./reset.css"/>
+	<script type="text/javascript" src="https://static.kshop.co.kr/ec/js/jquery-1.12.0.js"></script>
+
+ </head>
+
+ <style type="text/css">
+	/* RESET */
+
+	body{background: #fff;}
+
+	.cate ul{display: flex; justify-content: space-between;; align-items: center;white-space: nowrap;overflow-x: auto;}
+	.cate ul li a{padding: 10px; font-size: 13px; display: inline-block;}
+	.cate ul li.active a{background: #000;color: #fff;}
+
+ 	.nav{position: relative;}
+	.tab{margin-top:50px;}
+	.nav{margin:10px}
+	.nav ul {display: inline-flex;overflow-x: scroll; overflow-y: hidden;flex-wrap: nowrap !important;align-items: center;margin-left: -10px;}
+	.nav h3{display: inline;}
+	.nav ul > li a{display: block;border-bottom: 1px solid #000;font-size: 14px;}
+	.nav ul > li a.active{font-weight: bold;}
+	.nav ul > li{padding:0 10px}
+	.nav ul > li:first-child{border-right: 1px solid red;}
+	.nav > li a.active{display: block;}
+	/* 스크롤가림*/
+	.cate ul::-webkit-scrollbar,.nav ul::-webkit-scrollbar {display: none;}
+	.tab-content{position: relative;}
+	.tab-content .tab_cont{display: none; transition: 0.5s;}
+	.tab-content .tab_cont.active{display: block;z-index: 9;}
+	/* .tab-content .tab_cont li em{font-weight: bold; width: 26px; border: 1px solid red; display: inline-block; text-align: center; margin-right: 5px;}
+	.tab-content .tab_cont li:hover{background: #104138; color: #fff;} */
+
+	.onlineRank{display: flex;border: 1px solid red;width: 100%;}
+	.onlineRank .side{width: 350px;border: 1px solid red;}
+	.onlineRank .prodListWrap{display: flex; justify-content: center; padding: 30px; }
+
+	.onlineRank .prodListWrap ul.card-list{display: flex;flex-flow:row wrap;justify-content: flex-start;margin-left: -10px;transition: 0.5s;}
+	.onlineRank .prodListWrap ul.card-list li {display: flex;margin: 0 0px 31px 10px;width: 250px; background: #fff;}
+	.onlineRank .prodListWrap ul.card-list li img{width: 100%;}
+	/* .onlineRank .prodListWrap ul.card-list::after{content: '';flex: auto;} */
+
+	.realTimeRanking .rankingList {margin-left: 22px;}
+	.realTimeRanking .rankingList ul {background: #fff;}
+	.realTimeRanking .rankingList.active {display: block;}
+
+	.realTimeRanking .rankingList li {color: #222;}
+	.realTimeRanking .rankingList li.active .rank:after {opacity: 1;}
+	.realTimeRanking .rankingList .rank {
+		position: relative;
+		z-index: 3;
+		display: block;
+		padding-left: 68px;
+		color: #222;
+		font: 20px/40px 'notoL';
+	}
+	.realTimeRanking .rankingList .rank .txt {
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.realTimeRanking .rankingList li.active .rank {
+		background: #104138;
+		color: #fff;
+		font: 22px/48px 'notoM';
+	}
+	.realTimeRanking .rankingList .rank:after {
+		content: "";
+		position: absolute;
+		top: 0; left: -24px;
+		border: 24px solid transparent;
+		border-right: 24px solid #104138;
+		border-left: 0;
+		opacity: 0;
+	}
+	.realTimeRanking .rankingList .rank .num {
+		position: absolute;
+		top: 0; left: 25px;
+		width: 45px;
+		text-align: center;
+		font-size: 20px;
+		font-family: 'roboM';
+	}
+	.realTimeRanking .rankingList .rank .people {
+		display: inline-block;
+		width: 46px; line-height: 22px;
+		margin-right: 6px;
+		background: #167a68;
+		border: 1px solid #167a68;
+		border-radius: 22px;
+		font: 12px/22px 'notoL';
+		color: #fff;
+		text-align: center;
+		vertical-align: 2px;
+	}
+	.realTimeRanking .rankingList li:nth-of-type(5) ~ li .rank .people {
+		background: #fff;
+		color: #167a68;
+	}
+	.realTimeRanking .rankingList .rank .people span {font: 14px/1 'roboR';}
+	.desc{background-color: #167a68;flex:1}
+	.card-item a{display: flex;flex-direction: column;}
+
+	@media (max-width: 1200px) {
+		.onlineRank .prodListWrap{display: flex; justify-content: center; }
+	}
+</style>
+
+<body>
+	<div style="max-width:1280px; margin:0 auto">
+		<div class="nav">
+			<h3>온라인 실시간</h3>
+			<ul class="tab-menu">
+				<li><a href="#tab-1" class="menu-link-1">실시간온라인판매랭킹</a></li>
+				<li><a href="#tab-2" class="menu-link-2">실시간VIEW랭킹</a></li>
+			</ul>
+		</div>
+	
+
+		<div class="onlineRank realTimeRanking">
+			<div class="side">
+				<div class="rankingList tab-content">
+					<div id="tab-1" class="tab_cont">
+						<ul>
+							<li class="">
+								<a href="#">
+									<span class="rank">
+										<span class="num">1</span>
+										<span class="txt">실시간 온라인 판매 랭킹</span>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div id="tab-2" class="tab_cont">
+						<ul>
+							<li class="">
+								<a href="#">
+									<span class="rank">
+										<span class="num">2</span>
+										<span class="txt">실시간 온라인 판매 랭킹</span>
+									</span>
+								</a>
+							</li>
+							<li class="">
+								<a href="#">
+									<span class="rank">
+										<span class="num">2</span>
+										<span class="txt">용암해수 쿨링 팩</span>
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="prodListWrap">
+				<ul class="card-list">
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+							</div>
+						</a>
+					</li>
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+								//console.log('targetHref = '+ targetHref)
+								//console.log(this)
+								console.log(targetWidth)
+								high.style.width = targetWidth + 'px';
+								high.style.left = targetLeft + 'px';
+							</div>
+						</a>
+					</li>
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+								//console.log('targetHref = '+ targetHref)
+								//console.log(this)
+								console.log(targetWidth)
+								high.style.width = targetWidth + 'px';
+								high.style.left = targetLeft + 'px';
+							</div>
+						</a>
+					</li>
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+								//console.log('targetHref = '+ targetHref)
+								//console.log(this)
+								console.log(targetWidth)
+								high.style.width = targetWidth + 'px';
+								high.style.left = targetLeft + 'px';
+							</div>
+						</a>
+					</li>
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+								//console.log('targetHref = '+ targetHref)
+								//console.log(this)
+								console.log(targetWidth)
+								high.style.width = targetWidth + 'px';
+								high.style.left = targetLeft + 'px';
+							</div>
+						</a>
+					</li>
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+								//console.log('targetHref = '+ targetHref)
+								//console.log(this)
+								console.log(targetWidth)
+								high.style.width = targetWidth + 'px';
+								high.style.left = targetLeft + 'px';
+							</div>
+						</a>
+					</li>
+					<li class="card-item">
+						<a href="sub.html">
+							<figure class="card_image"><img src="./images/card_01.jpg" alt=""></figure>
+							<div class="desc">
+								var targetHref = oriHref.replace('#','');
+								//console.log('targetHref = '+ targetHref)
+								//console.log(this)
+								console.log(targetWidth)
+								high.style.width = targetWidth + 'px';
+								high.style.left = targetLeft + 'px';
+							</div>
+						</a>
+					</li>
+	
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script>
+
+	var tab = {
+		menu : function(){
+			//이벤트 위임방식
+			const tabMenu = document.querySelector('.tab-menu');
+			let current;
+
+			//활성
+			function active(elm){
+				elm.classList.add('active');
+				document.querySelector(`${elm.getAttribute('href')}`).classList.add('active');
+				current = elm;
+			}
+			//비활성
+			function deActive(elm){
+				elm.classList.remove('active');
+				document.querySelector(`${elm.getAttribute('href')}`).classList.remove('active');
+			}
+
+			function clickHandler(e){
+				e.preventDefault()
+				if(current)	deActive(current);
+				active(e.target);
+			}
+
+			tabMenu.addEventListener('click', clickHandler)
+
+			//첫번째 메뉴 활성화
+			active(document.querySelector('.tab-menu .menu-link-1'))
+		}
+	}
+
+	if($('.tab-menu').length){
+		tab.menu()
+	}
+	
+
+	
+</script>
+
+ 
+</html>
